@@ -1,47 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transportes Cuervo Negro</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% statics 'images/Logo TCN azul.png' %}">
+    <link rel="stylesheet" href="{% statics 'css/operadores.css' %}">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="" alt="Logo TCN">
-        </div>
+    <div class="top-nav">
 
+    <div class="logo-box">
+        <img src="{% static 'images/Logo TCN azul.png' %}" alt="Logo TCN">
+    </div>
+
+    <div class="menu-box">
         <ul class="menu">
-            <li class="activea"><a href="home.html"></a>Inicio</li>
-            <li><a href="reservaciones.html">Reservaciones</a></li>
-            <li><a href="corridas.html">Corridas</a></li>
-            <li><a href="rutas.html"></a>Rutas</li>
-            <li><a href="operadores.html">Operadores</li>
-             <li><a href="autobuses.html">Autobuses</a></li>
+            <li><a href="#">Home</a></li>
+            <li class="activea"><a href="#">Reservaciones</a></li>
+            <li><a href="#">Corridas</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Operadores</a></li>
+            <li><a href="#">Autobuses</a></li>
         </ul>
-    </nav>
+    </div>
 
-    <div class="contenedor">
+</div>
 
-        <h1 class="titulo">Operadores</h1>
+    <div class="container">
+        <h1 class="title">Operadores</h1>
 
-        <div class="tarjetas">
-            
-            <div class="tarjeta-activa">
-                 <span>Operadores</span>
-                 <h2>xxx</h2>
+        <div class="cards">
+
+            <div class="card active-card">
+                <span>Operadores Activos</span>
+                <h2>12</h2>
             </div>
 
-            <div class="tarjeta-activa">
-                 <span>Lorem</span>
-                 <h2>xxx</h2>
+            <div class="card">
+                <span>Disponibles</span>
+                <h2>8</h2>
             </div>
 
-            <div class="tarjeta-activa">
-                 <span>ipdum</span>
-                 <h2>xxx</h2>
+            <div class="card">
+                <span>En Ruta</span>
+                <h2>4</h2>
             </div>
 
             <div class="filter-box">
@@ -61,11 +66,23 @@
                     <option>Tecate</option>
                 </select>
             </div>
+
         </div>
-
-
     </div>
-    
+
+    <div class="main-section">
+    <div class="sidebar">
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+    </div>
+
+    <div class="content-box">
+        <!-- aquí va la tabla después -->
+    </div>
+</div>
 
 </body>
 </html>
