@@ -1,12 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Reservaciones | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <link rel="icon" type="image/png" href="../statics/images/Logo TCN azul.png">
+    <link rel="stylesheet" href="../statics/css/operadores.css">
 </head>
 <body>
-    
+
+    <div class="top-nav">
+
+    <div class="logo-box">
+        <img src="../statics/images/Logo TCN azul.png" alt="Logo TCN">
+    </div>
+
+    <div class="menu-box">
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li class="activea"><a href="#">Reservaciones</a></li>
+            <li><a href="#">Corridas</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Operadores</a></li>
+            <li><a href="#">Autobuses</a></li>
+        </ul>
+    </div>
+
+</div>
+
+    <div class="container">
+        <h1 class="title">Reservaciones</h1>
+
+        <div class="cards">
+
+            <div class="card active-card">
+                <span>Reservaciones Activas</span>
+                <h2>200</h2>
+            </div>
+
+            <div class="card">
+                <span>Total Reservado Hoy</span>
+                <h2>80</h2>
+            </div>
+
+            <div class="card">
+                <span>Reservaciones Futuras</span>
+                <h2>120</h2>
+            </div>
+
+            <div class="filters">
+
+                <div class="filter-item">
+                    <label class="text" for="buscar_fecha">Fecha:</label>
+                    <input type="date" id="buscar_fecha">
+                </div>
+
+                <div class="filter-item">
+                    <label class="text" for="buscar_numero">Número de reservación:</label>
+                    <input type="text" id="buscar_numero" placeholder="Ingresa el número de la reservación">
+                </div>
+
+                <div class="filter-item">
+                    <label class="text" for="buscar_nombre">Buscar por nombre:</label>
+                    <input type="text" id="buscar_nombre" placeholder="Nombre de pasajero">
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="main-section">
+    <div class="sidebar">
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+        <div class="side-btn">+</div>
+    </div>
+
+    <div class="content-box">
+        <!-- aquí va la tabla después -->
+    </div>
+</div>
+
 </body>
 </html>
