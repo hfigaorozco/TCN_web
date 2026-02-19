@@ -1,13 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <title>Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCN/Corridas</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
-    <link rel="stylesheet" href="statics\css\corridas.css">
+    <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
+    <link rel="stylesheet" href="../statics/css/corridas.css">
 </head>
+
 <body>
-    
+
+    <div class="top-nav">
+
+        <div class="logo-box">
+            <img src="../statics/images/Logo TCN azul.png" alt="Logo TCN">
+        </div>
+
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="#">Reservaciones</a></li>
+                <li class="activea"><a href="corridas.html">Corridas</a></li>
+                <li><a href="rutas.html">Rutas</a></li>
+                <li><a href="operadores.html">Operadores</a></li>
+                <li><a href="autobuses.html">Autobuses</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h1 class="title">Corridas</h1>
+
+        <div class="cards">
+
+            <div class="card active-card">
+                <span>Corridas Activas</span>
+                <h2>36</h2>
+            </div>
+
+            <div class="card">
+                <span>Pasajeros</span>
+                <h2>8</h2>
+            </div>
+
+            <div class="card">
+                <span>En Ruta</span>
+                <h2>4</h2>
+            </div>
+
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Origen</option>
+                    <option>Todos</option>
+                    <option>Ensenada</option>
+                    <option>San Felipe</option>
+                    <option>San Quintín</option>
+                    <option>Mexicali</option>
+                    <option>Tecate</option>
+                    <option>Tijuana</option>
+                </select>
+            </div>
+
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Destino</option>
+                    <option>Todos</option>
+                    <option>Ensenada</option>
+                    <option>San Felipe</option>
+                    <option>San Quintín</option>
+                    <option>Mexicali</option>
+                    <option>Tecate</option>
+                    <option>Tijuana</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="sidebar">
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+        </div>
+
+        <div class="content-box">
+            <!-- aquí va la tabla después -->
+             <tAblE>
+                <thEaD>
+                    <tR></tR>
+                </thEaD>
+             </tAblE>
+        </div>
+    </div>
+
 </body>
+
 </html>
