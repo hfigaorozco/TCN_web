@@ -1,12 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <title>Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCN/Corridas</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <link rel="icon" type="image/png" href="../statics/images/Logo TCN azul.png">
+    <link rel="stylesheet" href="../statics/css/corridas.css">
 </head>
+
 <body>
-    
+
+    <div class="top-nav">
+
+        <div class="logo-box">
+            <img src="../statics/images/logo.png" alt="Logo TCN" height="80px" >
+        </div>
+
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Reservaciones</a></li>
+                <li><a href="#">Corridas</a></li>
+                <li><a href="#">Rutas</a></li>
+                <li class="activea"><a href="#">Operadores</a></li>
+                <li><a href="#">Autobuses</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h1 class="title">Operadores</h1>
+
+        <div class="cards">
+
+            <div class="card active-card">
+                <span>Operadores Activos</span>
+                <h2>12</h2>
+            </div>
+
+            <div class="card">
+                <span>Disponibles</span>
+                <h2>8</h2>
+            </div>
+
+            <div class="card">
+                <span>En Ruta</span>
+                <h2>4</h2>
+            </div>
+
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Origen</option>
+                    <option>Tecate de México</option>
+                    <option>Tijuana</option>
+                    <option>Mexicali</option>
+                </select>
+            </div>
+
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Destino</option>
+                    <option>Tijuana</option>
+                    <option>Toluca</option>
+                    <option>Tecate</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="sidebar">
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+            <div class="side-btn">+</div>
+        </div>
+
+        <div class="content-box">
+            <!-- aquí va la tabla después -->
+        </div>
+    </div>
+
 </body>
+
 </html>
