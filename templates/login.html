@@ -3,20 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="statics/css/login.css">
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <title>Login | Transportes Cuervo Negro</title>
+    <link rel="stylesheet" href="../statics/css/login.css">
 </head>
 <body>
 
-    <main>
-        <header>¡Hola, identifícate!</header>
-        <p>Accede a las funcionalidades de la aplicación de TCN admin.</p>
-    </main>
+<main class="container">
 
-    <footer>
-        <p>Transportes Cuervo Negro, 2026</p>
-    </footer>
+    <section class="image-section">
+        <img src="../statics/images/bus login.png" alt="Autobús de TCN en carretera">
+    </section>
+
+    <section class="form-section">
+
+        <header class="form-header">
+            <h1>¡Hola, identifícate!</h1>
+            <br>
+            <p>
+                Accede para descubrir las funcionalidades de la aplicación web
+                de Transportes Cuervo Negro.
+            </p>
+            <br>
+        </header>
+
+        <form>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" pattern="[0-9]{10}" id="telefono" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" maxlength="32" required>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Continuar
+            </button>
+
+        </form>
+
+        <footer class="form-footer">
+            <p>¿Aún sin cuenta?</p>
+            <a href="registro.html" class="btn-outline">Regístrate</a>
+        </footer>
+
+    </section>
+
+</main>
 
 </body>
 </html>
