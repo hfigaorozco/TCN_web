@@ -2,17 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Transportes Cuervo Negro</title>
+    <title>Autobuses | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../statics/images/Logo TCN azul.png">
-    <link rel="stylesheet" href="../statics/css/operadores.css">
+    <link rel="stylesheet" href="../statics/css/autobuses.css">
 </head>
 <body>
 
     <div class="top-nav">
 
     <div class="logo-box">
-        <img src="../statics/images/Logo TCN azul.png" alt="Logo TCN">
+        <img src="../statics/images/TCN BLUE.jpg" alt="Logo TCN">
     </div>
 
     <div class="menu-box">
@@ -48,10 +48,15 @@
                 <h2>4</h2>
             </div>
 
-            <div class="filter-box">
-                <select>
-                    <option selected disabled>Tipo de servicio</option>
-                    <option>Todos los servicios</option>
+            <div class="filter filter-number">
+                <label for="numero_bus">Número de autobús:</label>
+                <input id="numero_bus" type="text" maxlength="3" placeholder="Ingresa el número">
+            </div>
+
+            <div class="filter">
+                <label for="tipo_servicio">Tipo de servicio:</label>
+                <select id="tipo_servicio">
+                    <option value="todos">Todos los servicios</option>
                     <option value="plus">Plus</option>
                     <option value="platino">Platino</option>
                 </select>

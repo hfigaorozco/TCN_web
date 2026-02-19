@@ -18,13 +18,14 @@ body{
 
 .logo-box{
     background: white;
-    padding: 31px 60px;
+    padding: 30px 80px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
 .logo-box img{
-    height: 65px;
+    height: 80px;
+    border-radius: 50%;
 }
 
 /* ===== CAJA DEL MENÚ ===== */
@@ -120,22 +121,46 @@ body{
 
 /* ================= FILTROS ================= */
 
-.filter-box{
-    margin-left: auto;
-    
+.filter{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: right;
 }
 
-.filter-box select{
-    padding: 14px 25px;
-    border-radius: 20px;
-    border: none;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+.filter:first-of-type{
+    margin-left: auto;
+}
+
+.filter label{
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+}
+
+.filter input,
+.filter select{
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 18px 22px;
     font-size: 16px;
+    min-width: 220px;
+    height: 55px;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
+
+.filter input:focus,
+.filter select:focus{
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
     outline: none;
-    cursor: pointer;
-    min-width: 180px;
+}
+
+.filter select{
     appearance: none;
+    cursor: pointer;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
