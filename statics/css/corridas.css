@@ -186,6 +186,7 @@ body {
     color: #bbb;
     cursor: pointer;
     transition: 0.3s;
+    vertical-align: middle;
 }
 
 .side-btn:hover {
