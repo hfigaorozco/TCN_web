@@ -105,9 +105,10 @@ CREATE TABLE autobus(
 -- 13. TABLA CORRIDA
 CREATE TABLE corrida(
     numero INT PRIMARY KEY AUTO_INCREMENT, 
-    fecha DATE NOT NULL, 
     hora_salida TIME NOT NULL, 
-    hora_llegada TIME NOT NULL, 
+    fecha_salida DATE NOT NULL,
+    hora_llegada TIME NOT NULL,
+    fecha_llegada DATE NOT NULL, 
     tarifaBase FLOAT NOT NULL, 
     lugaresDisp INT NOT NULL,
     autobus INT NOT NULL, 
