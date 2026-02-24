@@ -82,9 +82,35 @@
         </div>
     </div>
     
-    <dialog id="agregar">
-        <button id="cerrarAgregar">cerrar</button>
-        <h2>mas info</h2>
+    <dialog id="agregar" class="dialog-agregar">
+        <h1>Agregar Corrida</h1>
+        <form>
+            <div class="cajitas">
+                <div>
+                    <h3>Ruta</h3>
+                    <select>
+                        <option selected disabled>Ruta</option>
+                        <option>TIJ-TEC</option>
+                        <option>TIJ-MEX</option>
+                        <option>TIJ-SNQ</option>
+                        <option>TIJ-SFL</option>
+                        <option>TIJ-ESE</option>
+                    </select>
+                </div>
+                <div>
+                    <h3>Fecha</h3>
+                    <input type="date">
+                </div>
+                <div>
+                    <h3>Salida</h3>
+                    <input type="time" width="118px">
+                </div>
+            </div>
+        </form>
+        <div></div>
+            <button id="aceptarAgregar">Aceptar</button>
+            <button id="cancelarAgregar">Cancelar</button>
+        </div>
     </dialog>
     <div class="main-section">
         <div class="sidebar">
