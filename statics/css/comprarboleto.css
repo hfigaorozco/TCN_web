@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com');
+
+body {
+    background-color: #F5F5F5;
+}
+
+/* TITULO */
+
+.encabezado {
+    align-items: center;
+    text-align: center;
+    height: 70px;
+    padding: 15px 20px;
+}
+
+.titulo {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* TARJETITAS GUAY*/
+
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 63px;
+    text-align: center;
+    align-items: center;
+}
+
+.tarjeta_boton {
+    align-items: center;
+}
+
+.btn_regresar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #2b64e7;
+    border: none;
+    border-radius: 12px;
+    width: 200px;
+    height: 93px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn_regresar img {
+    height: 36px;
+    width: 36px;
+}
+
+.btn_regresar:hover {
+    background-color: rgb(9, 19, 90);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn_regresar:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta_ruta {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 408px;
+    height: 93px;
+    border-radius: 15px;
+    outline: 2px solid #c9ced4;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+
+.tarjeta_ruta:hover {
+    outline: 4px solid #2b64e7;
+}
+
+.tarjeta_ruta h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.label_ruta {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.dinamico_ruta {
+    font-size: 25px;
+    color: #2b64e7;
+}
+
+.tarjeta_fecha {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 408px;
+    height: 93px;
+    border-radius: 15px;
+    outline: 2px solid #c9ced4;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+
+.tarjeta_fecha:hover {
+    outline: 4px solid #2b64e7;
+}
+
+.tarjeta_fecha h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.label_fecha {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.dinamico_fecha {
+    font-size: 25px;
+    color: #2b64e7;
+}
+
+.tarjeta_pasajeros {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 408px;
+    height: 93px;
+    border-radius: 15px;
+    outline: 2px solid #c9ced4;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+
+.tarjeta_pasajeros:hover {
+    outline: 4px solid #2b64e7;
+}
+
+.tarjeta_pasajeros h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.label_pasajeros {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.dinamico_pasajeros {
+    font-size: 25px;
+    color: #2b64e7;
+}
+
+
+/* TABLA DE CORRIDAS */
+
+
+.lista_corridas {
+    width: 95%;
+    max-width: 1685px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+}
+
+.corrida {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    transition:
+        transform 0.25s ease,
+        outline 0.25s ease,
+        box-shadow 0.25s ease;
+    min-width: 1600px;
+    min-height: 120px;
+}
+
+.corrida:hover {
+    transform: translateY(-5px);
+}
+
+
+.corrida h3,
+.corrida .barra,
+.corrida .btn_seleccionar {
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* ELEMENTOS IZQUIERDA */
+
+
+.izquierda {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.izquierda h3 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bus {
+    font-size: 23px;
+}
+
+.lugares {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+/* ORIGEN */
+
+
+.origen {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.origen h3 {
+    margin: 0;
+}
+
+.fecha h3 {
+    font-size: 17px;
+}
+
+.ciudad h3 {
+    font-size: 35px;
+}
+
+.hora h3 {
+    font-size: 27px;
+}
+
+
+/* MEDIO */
+
+
+.medio {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.clase h3 {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+.barra {
+    width: 650px;
+    height: 6px;
+    border-radius: 2px;
+}
+
+.btn_seleccionar {
+    width: 200px;
+    height: 42px;
+    font-size: 25px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition:
+        background-color 0.25s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.btn_seleccionar:hover {
+    transform: translateY(-2px);
+}
+
+.btn_seleccionar:active {
+    transform: translateY(0px);
+}
+
+
+/* DESTINO */
+
+
+.destino {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.destino h3 {
+    margin: 0;
+}
+
+.fecha_llegada {
+    font-size: 17px;
+}
+
+.ciudad_destino {
+    font-size: 35px;
+}
+
+.hora_llegada {
+    font-size: 27px;
+}
+
+
+/* DERECHA */
+
+
+.derecha {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.derecha h3 {
+    margin: 0;
+}
+
+.label_precio {
+    font-size: 23px;
+}
+
+.precio {
+    font-size: 20px;
+}
+
+
+/* VARIANTE PLATINO (AZUL) */
+
+
+.corrida--platino:hover {
+    outline: 3px solid #1061C4;
+}
+
+.corrida--platino .dinamico_numbus,
+.corrida--platino .dinamico_lugares,
+.corrida--platino .fecha h3,
+.corrida--platino .hora h3,
+.corrida--platino .fecha_llegada,
+.corrida--platino .hora_llegada,
+.corrida--platino .precio,
+.corrida--platino .clase h3 {
+    color: #1061C4;
+}
+
+.corrida--platino .barra {
+    background-color: #1061C4;
+}
+
+.corrida--platino .btn_seleccionar {
+    background-color: #2b64e7;
+}
+
+.corrida--platino .btn_seleccionar:hover {
+    background-color: #0e0c7a;
+}
+
+
+/* VARIANTE PLUS (NARANJA) */
+
+
+.corrida--plus:hover {
+    outline: 3px solid #FF8600;
+}
+
+.corrida--plus .dinamico_numbus,
+.corrida--plus .dinamico_lugares,
+.corrida--plus .fecha h3,
+.corrida--plus .hora h3,
+.corrida--plus .fecha_llegada,
+.corrida--plus .hora_llegada,
+.corrida--plus .precio,
+.corrida--plus .clase h3 {
+    color: #FF8600;
+}
+
+.corrida--plus .barra {
+    background-color: #FF8600;
+}
+
+.corrida--plus .btn_seleccionar {
+    background-color: #FF8600;
+}
+
+.corrida--plus .btn_seleccionar:hover {
+    background-color: #cc6b00;
+}

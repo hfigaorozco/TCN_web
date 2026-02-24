@@ -1,110 +1,133 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background-color: #ffffff;
-}
-
-
-.container {
+.main {
     display: flex;
+    flex-direction: row;
+    display: flex;
+    width: 100%;
     height: 100vh;
 }
 
-
-.image-section {
-    width: 50%;
-    overflow: hidden;
+.izquierda {
+    background-color: red;
+    width: 40%;
+    height: 100%;
 }
 
-.image-section img {
+.izquierda img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 
-
-.form-section {
-    width: 50%;
-    background-color: #ffffff;
+.derecha {
+    background-color: white;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px;
-    position: relative;
+    width: 60%;
+    height: 100%;
 }
 
-
-.form-header {
+.logo_TCN {
     text-align: center;
-    max-width: 520px;
+    width: 100%;
+    height: 20%;
 }
 
-.form-header h1 {
-    font-size: 40px;
-    margin-bottom: 15px;
+.logo_TCN img {
+    width: 60%;
+    height: 65%;
 }
 
-.form-header p {
+.texto {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20%;
+}
+
+.texto-izquierda {
+    width: 10%;
+    height: 100%;
+}
+
+.texto-centro {
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.texto-centro h1 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.texto-centro h2 {
     font-size: 20px;
-    color: #555;
-    margin-bottom: 35px;
-    line-height: 1.5;
+    font-weight: 100;
 }
 
+.texto-derecha {
+    width: 10%;
+    height: 100%;
+}
 
-form {
+.formulario {
     width: 100%;
-    max-width: 420px;
+    height: 65%;
+    display: flex;
+    flex-direction: row;
 }
 
-.form-group {
-    margin-bottom: 25px;
+.form-izquierda {
+    width: 20%;
+    height: 100%;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-size: 15px;
+.form-derecha {
+    width: 20%;
+    height: 100%;
 }
 
-.form-group input {
+.form-centro {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    gap: 20px;
+}
+
+.form-centro-primerinput {
     width: 100%;
-    height: 55px;
-    padding: 0 18px;
-    border-radius: 25px;
-    border: 2px solid #0066ff;
+    height: 15%;
+}
+
+.form-centro-segundoinput {
+    width: 100%;
+    height: 15%;
+}
+
+.form-centro-primerinput h4 {
+    margin: 0;
+}
+
+.form-centro-primerinput input {
+    border-radius: 12px;
+    border: 3px solid #1061C4;
+    height: 35px;
+    width: 400px;
     font-size: 16px;
-    transition: 0.3s;
 }
 
-.form-group input:focus {
-    border-color: #1f5fa9;
-    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
-    outline: none;
+.form-centro-segundoinput h4 {
+    margin: 0;
 }
 
-
-.btn-primary {
-    width: 100%;
-    height: 50px;
-    margin-top: 15px;
-    background-color: #1f5fa9;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 25px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #082d57;
+.form-centro-segundoinput input {
+    border-radius: 12px;
+    border: 3px solid #1061C4;
+    height: 35px;
+    width: 400px;
+    font-size: 16px;
 }
