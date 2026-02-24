@@ -25,10 +25,6 @@ body {
     height: 90px;
 }
 
-.logo-box img{
-    height: 80px;
-}
-
 /* ===== CAJA DEL MENÚ ===== */
 
 .menu-box {
@@ -122,22 +118,36 @@ body {
 
 /* ================= FILTROS ================= */
 
-.filter-box {
-    margin-left: auto;
-
+.filter-boxes {
+    padding-left: 450px;
+    align-items: right;
+    display: flex;
+    gap: 25px;
 }
 
+.filter-box{
+    margin-left: auto;
+    padding-left: 50px;
+    height: auto;
+    gap: 15px;
+    display: flex;
+}
+
+.filter-box h2{
+    font-weight: normal;
+}
 .filter-box select {
     padding: 14px 25px;
     border-radius: 20px;
     border: none;
     background: white;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+    font-size: 20px;
     outline: none;
     cursor: pointer;
     min-width: 180px;
     appearance: none;
+    height: auto;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
@@ -159,10 +169,9 @@ body {
     gap: 20px;
 }
 
-.side-btn {
+.side-btn{
     width: 80px;
     height: 60px;
-    background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -172,13 +181,18 @@ body {
     color: #bbb;
     cursor: pointer;
     transition: 0.3s;
+    vertical-align: middle;
 }
 
-.side-btn:hover {
-    background: #2f6fed;
-    color: white;
+/* ================= BOTON AGREGAR ================= */
+.agregar{
+    background: white url("../images/agregar.png") no-repeat center;
 }
 
+.agregar:hover {
+    background: #2f6fed url("../images/agregarHover.png") no-repeat center;
+    background-size: 32px 32px;
+}
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
@@ -189,3 +203,18 @@ body {
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
 }
+
+/* ================= INPUT ================= */
+.input{
+    border-radius: 20px;
+    border: none;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    outline: none;
+    cursor: auto;
+    width: 130px;
+    height: auto;
+    padding-left: 25px;
+}
+
