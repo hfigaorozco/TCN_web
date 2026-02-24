@@ -9,46 +9,55 @@
 <body>
 
     <div class="main">
-
-        <div class="izquierda">
+        <div class="left">
             <img src="../statics/images/bus login.png" alt="Autobús de TCN">
         </div>
 
-        <div class="derecha">
-            <div class="logo_TCN">
-                <br><br><br>
-                <img src="../statics/images/logo.png" alt="Logo de TCN">
-            </div>
+        <div class="right">
+            <div class="izq"></div>
 
-            <div class="texto">
-                <div class="texto-izquierda"></div>
-                <div class="texto-centro">
+            <div class="contenedor">
+                <div class="up">
+                    <br><br>
+                    <img src="../statics/images/logo.png" alt="Logo oficial de TCN">
+                </div>
+
+                <div class="header">
                     <h1>¡Hola, identifícate!</h1>
-                    <h2>Accede para descubrir las funcionalidades de la aplicación web de Transportes Cuervo Negro.</h2>
-                </div>
-                <div class="texto-derecha"></div>
-            </div>
-
-            <div class="formulario">
-                <div class="form-izquierda"></div>
-
-                <div class="form-centro">
-                    <div class="form-centro-primerinput">
-                        <h4>Teléfono:</h4>
-                        <input type="number" placeholder="Ingresa tu número de teléfono">
-                    </div>
-
-                    <div class="form-centro-segundoinput">
-                        <h4>Contraseña:</h4>
-                        <input type="password" placeholder="Ingresa tu contraseña">
-                    </div>
+                    <p>Accede para descubrir las funcionalidades de la aplicación web de Transportes Cuervo Negro</p>
                 </div>
 
-                <div class="form-derecha"></div>
+                <div class="form-container">
+                    <div class="form-up"></div>
+
+                    <div class="form">
+
+                        <div class="inputs">
+
+                            <h3>Teléfono:</h3>
+
+                            <input type="number" id="numTelefono" maxlength="10" placeholder="Número celular" required>
+
+                            <h3>Contraseña:</h3>
+
+                            <input type="password" id="contraseña" placeholder="Ingresa tu contraseña" maxlength="32" required>
+
+                        </div>
+
+                        <div class="button">
+                            <br>
+                            <button type="submit" class="btn-iniciarsesion">Iniciar sesión</button>
+                        </div>                        
+
+                    </div>
+
+                    <div class="form-down"></div>
+                </div>
             </div>
+
+            <div class="der"></div>
         </div>
-
     </div>
-    
+  
 </body>
 </html>
