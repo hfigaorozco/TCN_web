@@ -1,28 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transportes Cuervo Negro</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/index.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="../statics/images/TCN BLUE.jpg" alt="Logo TCN">
+<!-- ================= NAVBAR ================= -->
+
+<div class="top-nav">
+
+    <div class="logo-box">
+        <img src="../statics/images/logo.png" alt="Logo TCN">
+    </div>
+
+    <div class="menu-box">
+        <ul class="menu">
+            <li class="activea"><a href="#">Inicio</a></li>
+            <li><a href="#">Reservaciones</a></li>
+            <li><a href="#">Corridas</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Operadores</a></li>
+            <li><a href="#">Autobuses</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ================= BOTONES SUPERIORES ================= -->
+
+<div class="action-bar">
+    <button class="primary-btn">Registro de cuentas</button>
+    <button class="primary-btn">Vender boletos</button>
+    <button class="icon-btn">👤</button>
+</div>
+
+<!-- ================= TÍTULO ================= -->
+
+<div class="title-row">
+    <h1 class="title">Dashboard</h1>
+</div>
+
+<!-- ================= SECCIÓN PRINCIPAL ================= -->
+
+<div class="main-section">
+
+    <!-- COLUMNA CORRIDAS -->
+    <div class="section-column">
+
+        <!-- FILTRO ARRIBA DEL CUADRO -->
+        <div class="filter-top">
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Seleccionar fecha</option>
+                    <option>20-01-2026</option>
+                    <option>21-01-2026</option>
+                    <option>22-01-2026</option>
+                </select>
+            </div>
         </div>
 
-        <ul class="menu">
-            <li class="activea"><a href="home.html"></a>Inicio</li>
-            <li><a href="reservaciones.html">Reservaciones</a></li>
-            <li><a href="corridas.html">Corridas</a></li>
-            <li><a href="rutas.html"></a>Rutas</li>
-            <li><a href="operadores.html">Operadores/a></li>
-             <li><a href="autobuses.html">Autobuses</a></li>
-        </ul>
-    </nav>
+        <!-- CORRIDAS -->
+        <div class="content-box">
 
-  
+            <div class="card-title">Corridas</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Estado</th>
+                        <th>Cupos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08:30</td>
+                        <td>CDMX</td>
+                        <td>CDMX</td>
+                        <td><span class="status disponible">Disponible</span></td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Puebla</td>
+                        <td>CDMX</td>
+                        <td><span class="status disponible">Disponible</span></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>12:30</td>
+                        <td>Querétaro</td>
+                        <td>CDMX</td>
+                        <td><span class="status finalizada">Finalizada</span></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- PASAJEROS -->
+    <div class="content-box">
+
+        <div class="card-title">Pasajeros</div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Asiento</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12</td>
+                    <td>Juan Pérez</td>
+                    <td>Normal</td>
+                    <td><span class="status pagado">Pagado</span></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Ana López</td>
+                    <td>Estudiante</td>
+                    <td><span class="status pendiente">Pendiente</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<!-- ================= PANEL INFERIOR ================= -->
+
+<div class="detail-section">
+    <div class="detail-box">
+        <h3>Detalle de Corrida</h3>
+        <p><strong>Autobús:</strong> A-23</p>
+        <p><strong>Conductor:</strong> Carlos Ramírez</p>
+        <p><strong>Ruta:</strong> CDMX → Puebla</p>
+        <p><strong>Salida:</strong> 08:30</p>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <span>Ocupación 70%</span>
+    </div>
+</div>
+
 </body>
 </html>
