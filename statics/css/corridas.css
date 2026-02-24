@@ -182,6 +182,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     vertical-align: middle;
+    border: none;
 }
 
 /* ================= BOTON AGREGAR ================= */
@@ -218,3 +219,9 @@ body {
     padding-left: 25px;
 }
 
+/* ================= Dialog ================= */
+dialog{
+    background: black;
+    width: 800px;
+    height: 300px;
+}
