@@ -1,133 +1,197 @@
-.main {
-    display: flex;
-    flex-direction: row;
-    display: flex;
-    width: 100%;
-    height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.izquierda {
-    background-color: red;
+body {
+    background-color: #ffffff;
+}
+
+
+/* ── CONTENEDOR PRINCIPAL ── */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ── SECCIÓN IMAGEN ── */
+
+.image-section {
     width: 40%;
-    height: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.izquierda img {
+.image-section img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.derecha {
-    background-color: white;
-    padding: 20px 20px;
+
+/* ── SECCIÓN FORMULARIO ── */
+
+.form-section {
+    width: 60%;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    width: 60%;
-    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
 }
 
-.logo_TCN {
+
+/* ── ENCABEZADO ── */
+
+.form-header {
     text-align: center;
-    width: 100%;
-    height: 20%;
+    max-width: 520px;
+    margin-bottom: 30px;
 }
 
-.logo_TCN img {
-    width: 60%;
-    height: 65%;
+.logo {
+    width: 500px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
-.texto {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 20%;
+.form-header h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
-.texto-izquierda {
-    width: 10%;
-    height: 100%;
-}
-
-.texto-centro {
-    width: 80%;
-    height: 100%;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.texto-centro h1 {
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.texto-centro h2 {
+.form-header p {
     font-size: 20px;
-    font-weight: 100;
+    color: #555;
+    line-height: 1.5;
 }
 
-.texto-derecha {
-    width: 10%;
-    height: 100%;
-}
 
-.formulario {
+/* ── FORMULARIO ── */
+
+form {
     width: 100%;
-    height: 65%;
-    display: flex;
-    flex-direction: row;
+    max-width: 420px;
 }
 
-.form-izquierda {
-    width: 20%;
-    height: 100%;
+.form-group {
+    margin-bottom: 25px;
 }
 
-.form-derecha {
-    width: 20%;
-    height: 100%;
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
-.form-centro {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    gap: 20px;
-}
-
-.form-centro-primerinput {
+.form-group input {
     width: 100%;
-    height: 15%;
-}
-
-.form-centro-segundoinput {
-    width: 100%;
-    height: 15%;
-}
-
-.form-centro-primerinput h4 {
-    margin: 0;
-}
-
-.form-centro-primerinput input {
-    border-radius: 12px;
-    border: 3px solid #1061C4;
-    height: 35px;
-    width: 400px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 25px;
+    border: 2px solid #0066ff;
     font-size: 16px;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.form-centro-segundoinput h4 {
-    margin: 0;
+.form-group input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-5px);
 }
 
-.form-centro-segundoinput input {
-    border-radius: 12px;
-    border: 3px solid #1061C4;
-    height: 35px;
-    width: 400px;
-    font-size: 16px;
+
+/* ── BOTÓN ── */
+
+.btn-primary {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    background-color: #1f5fa9;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.btn-primary:hover {
+    background-color: #082d57;
+    transform: translateY(-5px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+
+/* ════════════════════════════
+   RESPONSIVE - MEDIA QUERIES
+   ════════════════════════════ */
+
+/* Tablet (≤ 900px): imagen más angosta */
+@media (max-width: 900px) {
+    .image-section {
+        width: 35%;
+    }
+
+    .form-section {
+        width: 65%;
+        padding: 40px 30px;
+    }
+
+    .form-header h1 {
+        font-size: 32px;
+    }
+
+    .form-header p {
+        font-size: 17px;
+    }
+}
+
+/* Móvil (≤ 640px): imagen oculta, formulario centrado */
+@media (max-width: 640px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-section {
+        display: none;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 50px 24px;
+        min-height: 100vh;
+    }
+
+    .logo {
+        width: 110px;
+    }
+
+    .form-header h1 {
+        font-size: 28px;
+    }
+
+    .form-header p {
+        font-size: 15px;
+    }
+
+    .btn-primary {
+        font-size: 20px;
+    }
 }

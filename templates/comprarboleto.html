@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,284 +9,213 @@
 <body>
 
     <div class="main">
-        
-        <div class="encabezado">
-            <header class="titulo">HORARIOS</header>
-        </div>
 
-        <br>
+        <header class="encabezado">
+            <h1 class="titulo">HORARIOS</h1>
+        </header>
 
-        <div class="info">
-            <div class="tarjeta_boton">
-                <button  class="btn_regresar"><img src="../statics/images/home.png" alt="Regresar">Regresar</button>
-            </div>
+        <main>
 
-            <div class="tarjeta_ruta">
-                <div class="separacion1"></div>
-                <h3 class="label_ruta">Ruta:</h3>
-                <h3 class="dinamico_ruta">Tijuana-Hermosillo</h3>
-            </div>
+            <section class="info" aria-label="Resumen de búsqueda">
 
-            <div class="tarjeta_fecha">
-                <div class="separacion2"></div>
-                <h3 class="label_fecha">Fecha:</h3>
-                <h3 class="dinamico_fecha">22/03/2026</h3>
-            </div>
+                <nav class="tarjeta_boton" aria-label="Navegación">
+                    <button class="btn_regresar">
+                        <img src="../statics/images/home.png" alt="Ícono de inicio">
+                        Regresar
+                    </button>
+                </nav>
 
-            <div class="tarjeta_pasajeros">
-                <div class="separacion3"></div>
-                <h3 class="label_pasajeros">Pasajeros:</h3>
-                <h3 class="dinamico_pasajeros">3</h3>
-            </div>
-        </div>
-
-
-        <div class="lista_corridas">
-
-            <div class="corrida corrida--plus">
-
-                <div class="izquierda">
-                    <div class="bus">
-                        <div class=""></div>
-                        <h3>Autobús</h3>
-                        <h3 class="dinamico_numbus">160</h3>
-                    </div>
-
-                    <div class="lugares">
-                        <h3>Lugares:</h3>
-                        <h3 class="dinamico_lugares">30</h3>
-                    </div>
+                <div class="tarjeta_ruta" role="region" aria-label="Ruta seleccionada">
+                    <div class="separacion1"></div>
+                    <h2 class="label_ruta">Ruta:</h2>
+                    <p class="dinamico_ruta">Tijuana-Hermosillo</p>
                 </div>
 
-                <div class="origen">
-                    <div class="fecha">
-                        <h3>22/03/2026</h3>
-                    </div>
-
-                    <div class="ciudad">
-                        <h3>Tijuana</h3>
-                    </div>
-
-                    <div class="hora">
-                        <h3>9:30</h3>
-                    </div>
+                <div class="tarjeta_fecha" role="region" aria-label="Fecha de viaje">
+                    <div class="separacion2"></div>
+                    <h2 class="label_fecha">Fecha:</h2>
+                    <p class="dinamico_fecha">22/03/2026</p>
                 </div>
 
-                <div class="medio">
-                    <div class="clase">
-                        <h3>PLUS</h3>
-                    </div>
-
-                    <div class="barra"></div>
-
-                    <div class="seccion_boton">
-                        <button class="btn_seleccionar">Seleccionar</button>
-                    </div>
+                <div class="tarjeta_pasajeros" role="region" aria-label="Número de pasajeros">
+                    <div class="separacion3"></div>
+                    <h2 class="label_pasajeros">Pasajeros:</h2>
+                    <p class="dinamico_pasajeros">3</p>
                 </div>
 
-                <div class="destino">
-                    <h3 class="fecha_llegada">23/03/2026</h3>
-                    <h3 class="ciudad_destino">Hermosillo</h3>
-                    <h3 class="hora_llegada">2:00</h3>
-                </div>
-
-                <div class="derecha">
-                    <div class="label_precio">
-                        <h3>Precio</h3>
-                    </div>
-                    
-                    <div class="precio">
-                        <h3>$1650</h3>
-                    </div>
-                </div>
-
-            </div>
+            </section>
 
 
-            <div class="corrida corrida--platino">
+            <section class="lista_corridas" aria-label="Corridas disponibles">
 
-                <div class="izquierda">
-                    <div class="bus">
-                        <div class=""></div>
-                        <h3>Autobús</h3>
-                        <h3 class="dinamico_numbus">510</h3>
+                <article class="corrida corrida--plus">
+
+                    <div class="izquierda">
+                        <div class="bus">
+                            <p>Autobús</p>
+                            <p class="dinamico_numbus">160</p>
+                        </div>
+                        <div class="lugares">
+                            <p>Lugares:</p>
+                            <p class="dinamico_lugares">30</p>
+                        </div>
                     </div>
 
-                    <div class="lugares">
-                        <h3>Lugares:</h3>
-                        <h3 class="dinamico_lugares">15</h3>
-                    </div>
-                </div>
-
-                <div class="origen">
-                    <div class="fecha">
-                        <h3>22/03/2026</h3>
+                    <div class="origen">
+                        <p class="fecha">22/03/2026</p>
+                        <p class="ciudad">Tijuana</p>
+                        <p class="hora">9:30</p>
                     </div>
 
-                    <div class="ciudad">
-                        <h3>Tijuana</h3>
+                    <div class="medio">
+                        <p class="clase">PLUS</p>
+                        <div class="barra" role="presentation"></div>
+                        <div class="seccion_boton">
+                            <button class="btn_seleccionar">Seleccionar</button>
+                        </div>
                     </div>
 
-                    <div class="hora">
-                        <h3>14:30</h3>
-                    </div>
-                </div>
-
-                <div class="medio">
-                    <div class="clase">
-                        <h3>PLATINO</h3>
+                    <div class="destino">
+                        <p class="fecha_llegada">23/03/2026</p>
+                        <p class="ciudad_destino">Hermosillo</p>
+                        <p class="hora_llegada">2:00</p>
                     </div>
 
-                    <div class="barra"></div>
-
-                    <div class="seccion_boton">
-                        <button class="btn_seleccionar">Seleccionar</button>
-                    </div>
-                </div>
-
-                <div class="destino">
-                    <h3 class="fecha_llegada">23/03/2026</h3>
-                    <h3 class="ciudad_destino">Hermosillo</h3>
-                    <h3 class="hora_llegada">5:00</h3>
-                </div>
-
-                <div class="derecha">
-                    <div class="label_precio">
-                        <h3>Precio</h3>
-                    </div>
-                    
-                    <div class="precio">
-                        <h3>$2150</h3>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="corrida corrida--plus">
-
-                <div class="izquierda">
-                    <div class="bus">
-                        <div class=""></div>
-                        <h3>Autobús</h3>
-                        <h3 class="dinamico_numbus">113</h3>
+                    <div class="derecha">
+                        <p class="label_precio">Precio</p>
+                        <p class="precio">$1650</p>
                     </div>
 
-                    <div class="lugares">
-                        <h3>Lugares:</h3>
-                        <h3 class="dinamico_lugares">27</h3>
-                    </div>
-                </div>
+                </article>
 
-                <div class="origen">
-                    <div class="fecha">
-                        <h3>22/03/2026</h3>
-                    </div>
 
-                    <div class="ciudad">
-                        <h3>Tijuana</h3>
-                    </div>
+                <article class="corrida corrida--platino">
 
-                    <div class="hora">
-                        <h3>16:30</h3>
-                    </div>
-                </div>
-
-                <div class="medio">
-                    <div class="clase">
-                        <h3>PLUS</h3>
+                    <div class="izquierda">
+                        <div class="bus">
+                            <p>Autobús</p>
+                            <p class="dinamico_numbus">510</p>
+                        </div>
+                        <div class="lugares">
+                            <p>Lugares:</p>
+                            <p class="dinamico_lugares">15</p>
+                        </div>
                     </div>
 
-                    <div class="barra"></div>
-
-                    <div class="seccion_boton">
-                        <button class="btn_seleccionar">Seleccionar</button>
-                    </div>
-                </div>
-
-                <div class="destino">
-                    <h3 class="fecha_llegada">23/03/2026</h3>
-                    <h3 class="ciudad_destino">Hermosillo</h3>
-                    <h3 class="hora_llegada">5:00</h3>
-                </div>
-
-                <div class="derecha">
-                    <div class="label_precio">
-                        <h3>Precio</h3>
-                    </div>
-                    
-                    <div class="precio">
-                        <h3>$1650</h3>
-                    </div>
-                </div>
-
-            </div>
-            
-
-            <div class="corrida corrida--plus">
-
-                <div class="izquierda">
-                    <div class="bus">
-                        <div class=""></div>
-                        <h3>Autobús</h3>
-                        <h3 class="dinamico_numbus">183</h3>
+                    <div class="origen">
+                        <p class="fecha">22/03/2026</p>
+                        <p class="ciudad">Tijuana</p>
+                        <p class="hora">14:30</p>
                     </div>
 
-                    <div class="lugares">
-                        <h3>Lugares:</h3>
-                        <h3 class="dinamico_lugares">7</h3>
-                    </div>
-                </div>
-
-                <div class="origen">
-                    <div class="fecha">
-                        <h3>22/03/2026</h3>
+                    <div class="medio">
+                        <p class="clase">PLATINO</p>
+                        <div class="barra" role="presentation"></div>
+                        <div class="seccion_boton">
+                            <button class="btn_seleccionar">Seleccionar</button>
+                        </div>
                     </div>
 
-                    <div class="ciudad">
-                        <h3>Tijuana</h3>
+                    <div class="destino">
+                        <p class="fecha_llegada">23/03/2026</p>
+                        <p class="ciudad_destino">Hermosillo</p>
+                        <p class="hora_llegada">5:00</p>
                     </div>
 
-                    <div class="hora">
-                        <h3>18:30</h3>
-                    </div>
-                </div>
-
-                <div class="medio">
-                    <div class="clase">
-                        <h3>PLUS</h3>
+                    <div class="derecha">
+                        <p class="label_precio">Precio</p>
+                        <p class="precio">$2150</p>
                     </div>
 
-                    <div class="barra"></div>
+                </article>
 
-                    <div class="seccion_boton">
-                        <button class="btn_seleccionar">Seleccionar</button>
+
+                <article class="corrida corrida--plus">
+
+                    <div class="izquierda">
+                        <div class="bus">
+                            <p>Autobús</p>
+                            <p class="dinamico_numbus">113</p>
+                        </div>
+                        <div class="lugares">
+                            <p>Lugares:</p>
+                            <p class="dinamico_lugares">27</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="destino">
-                    <h3 class="fecha_llegada">23/03/2026</h3>
-                    <h3 class="ciudad_destino">Hermosillo</h3>
-                    <h3 class="hora_llegada">9:30</h3>
-                </div>
-
-                <div class="derecha">
-                    <div class="label_precio">
-                        <h3>Precio</h3>
+                    <div class="origen">
+                        <p class="fecha">22/03/2026</p>
+                        <p class="ciudad">Tijuana</p>
+                        <p class="hora">16:30</p>
                     </div>
-                    
-                    <div class="precio">
-                        <h3>$1650</h3>
+
+                    <div class="medio">
+                        <p class="clase">PLUS</p>
+                        <div class="barra" role="presentation"></div>
+                        <div class="seccion_boton">
+                            <button class="btn_seleccionar">Seleccionar</button>
+                        </div>
                     </div>
-                </div>
 
-            </div>
+                    <div class="destino">
+                        <p class="fecha_llegada">23/03/2026</p>
+                        <p class="ciudad_destino">Hermosillo</p>
+                        <p class="hora_llegada">5:00</p>
+                    </div>
+
+                    <div class="derecha">
+                        <p class="label_precio">Precio</p>
+                        <p class="precio">$1650</p>
+                    </div>
+
+                </article>
 
 
-        </div>
+                <article class="corrida corrida--plus">
 
+                    <div class="izquierda">
+                        <div class="bus">
+                            <p>Autobús</p>
+                            <p class="dinamico_numbus">183</p>
+                        </div>
+                        <div class="lugares">
+                            <p>Lugares:</p>
+                            <p class="dinamico_lugares">7</p>
+                        </div>
+                    </div>
+
+                    <div class="origen">
+                        <p class="fecha">22/03/2026</p>
+                        <p class="ciudad">Tijuana</p>
+                        <p class="hora">18:30</p>
+                    </div>
+
+                    <div class="medio">
+                        <p class="clase">PLUS</p>
+                        <div class="barra" role="presentation"></div>
+                        <div class="seccion_boton">
+                            <button class="btn_seleccionar">Seleccionar</button>
+                        </div>
+                    </div>
+
+                    <div class="destino">
+                        <p class="fecha_llegada">23/03/2026</p>
+                        <p class="ciudad_destino">Hermosillo</p>
+                        <p class="hora_llegada">9:30</p>
+                    </div>
+
+                    <div class="derecha">
+                        <p class="label_precio">Precio</p>
+                        <p class="precio">$1650</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+        </main>
 
     </div>
-    
+
 </body>
 </html>
