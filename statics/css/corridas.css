@@ -205,6 +205,16 @@ body {
     background-size: 32px 32px;
 }
 
+/* ================= BOTON ELIMINAR ================= */
+.eliminar {
+    background: white url("../images/eliminar.png") no-repeat center;
+}
+
+.eliminar:hover {
+    background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
+    background-size: 32px 32px;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
@@ -230,7 +240,103 @@ body {
     padding-left: 25px;
 }
 
-/* ================= DIALOG ABRIR ================= */
+/* ================= DIALOG BASE ================= */
+.dialog-base {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    width: 37.04vh;
+    height: 41.67vh;
+}
+
+.dialog-base h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-base select,
+.dialog-base input {
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+    transition: 0.3s;
+}
+
+.dialog-base select:focus,
+.dialog-base input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.dialog-base button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.cajitas {
+    display: flex;
+    gap: 20px;
+}
+
+/* ================= DIALOG AGREGAR ================= */
+.dialog-agregar select {
+    height: 38.19px;
+}
+
+.dialog-agregar input {
+    height: 30px;
+    width: 100px;
+}
+
+/* ================= DIALOG EDITAR ================= */
+.dialog-editar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-editar input {
+    height: 3vh;
+    width: 10vh;
+}
+
+/* ================= DIALOG ELIMINAR ================= */
+.dialog-eliminar{
+    height: fit-content;
+}
+
+.dialog-eliminar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-eliminar input {
+    height: 3vh;
+    width: 15vh;
+}
+
+/* ================= BOTON ACEPTAR Y CANCELAR ================= */
+.btn-aceptar:hover {
+    background: #2f6fed;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #ce3535;
+    color: white;
+}
+
+
+/* ================= DIALOG ABRIR ================= 
 .dialog-agregar{
     background: rgb(255, 255, 255);
     width: 400px;
@@ -243,6 +349,14 @@ body {
 .dialog-agregar h3{
     font-weight: normal;
     margin-bottom: 5px;
+}
+
+.dialog-agregar select:focus,
+.dialog-agregar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
 }
 
 .dialog-agregar select{
@@ -297,11 +411,11 @@ body {
     color: white;
 }
 
-/* ================= DIALOG EDITAR ================= */
+/* ================= DIALOG EDITAR ================= 
 .dialog-editar {
     background: rgb(255, 255, 255);
-    width: 400px;
-    height: 450px;
+    width: 37.04vh;
+    height: 41.67vh;
     border-radius: 20px;
     border: none;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
@@ -320,14 +434,6 @@ body {
     font-size: 13px;
     font-family: 'Segoe UI', sans-serif;
     padding: 03px;
-}
-
-.ruta {
-    width: 100px;
-}
-
-.autobus {
-    width: 182.64px;
 }
 
 .dialog-editar input {
@@ -358,3 +464,60 @@ body {
     outline: none;
     transform: translateY(-1px);
 }
+
+
+/* ================= DIALOG ELIMINAR ================= 
+.dialog-eliminar {
+    background: rgb(255, 255, 255);
+    width: 37.04vh;
+    height: 41.67vh;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-eliminar h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-eliminar select {
+    height: 3vh;
+    width: min-content;
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.dialog-eliminar input {
+    height: 3vh;
+    width: 10vh;
+    border: #555 solid 0.5px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+    transition: 0.3s;
+}
+
+.dialog-eliminar button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.dialog-eliminar select:focus,
+.dialog-eliminar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+*/

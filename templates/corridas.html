@@ -83,7 +83,7 @@
     </div>
 
     <!--*********************************DIALOGO PARA AGREGAR*********************************-->
-    <dialog id="agregar" class="dialog-agregar">
+    <dialog id="agregar" class="dialog-agregar dialog-base">
         <h1>Agregar Corrida</h1>
         <form>
             <DIV>
@@ -149,7 +149,7 @@
     </dialog>
 
     <!--*********************************DIALOGO PARA EDITAR*********************************-->
-    <dialog id="editar" class="dialog-editar">
+    <dialog id="editar" class="dialog-editar dialog-base">
         <h1>Editar Corrida</h1>
         <form>
             <div class="cajitas">
@@ -201,13 +201,42 @@
         </div>
     </dialog>
 
+    <!--*********************************DIALOGO PARA ELIMINAR*********************************-->
+    <dialog id="eliminar" class="dialog-eliminar dialog-base">
+        <h1>Eliminar Corrida</h1>
+        <form>
+            <div class="cajitas">
+                <div>
+                    <h3>Corrida</h3>
+                    <input type="number" min="0" max="3000" placeholder="Corrida a editar">
+                </div>
+                <div>
+                    <h3>Estado actual</h3>
+                    <input type="text" placeholder="Estado de corrida">
+                </div>
+            </div>
+            <div>
+                <h3>Estado</h3>
+                <select>
+                    <option selected disabled>Estado</option>
+                    <option>ACTIVO</option>
+                    <option>INACTIVO</option>
+                </select>
+            </div>
+    
+        </form>
+        <div style="height: max-content; padding: 5vh 0px 0px 20vh;">
+            <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
+            <button id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
+        </div>
+    </dialog>
 
     <!--*********************************AREA DE BOTONES LATERALES Y TABLA GENERAL*********************************-->
     <div class="main-section">
         <div class="sidebar">
             <button class="side-btn agregar" id="abrirAgregar"></button>
             <button class="side-btn editar" id = "abrirEditar"></button>
-            <div class="side-btn">+</div>
+            <div class="side-btn eliminar" id="abrirEliminar"></div>
             <div class="side-btn">+</div>
             <div class="side-btn">+</div>
         </div>

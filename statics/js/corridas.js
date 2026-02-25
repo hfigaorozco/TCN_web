@@ -33,3 +33,21 @@ aceptarEditar.addEventListener('click', e => {
 cancelarEditar.addEventListener('click', e => {
     editar.close( );
 })
+
+/* ================= BOTON Y DIALOGO ELIMNAR ================= */
+const eliminar = document.getElementById('eliminar');
+const abrirEliminar = document.getElementById('abrirEliminar');
+const aceptarEliminar = document.getElementById('aceptarEliminar');
+const cancelarEliminar= document.getElementById('cancelarEliminar');
+
+abrirEliminar.addEventListener('click', e => {
+    eliminar.showModal( );
+})
+
+aceptarEliminar.addEventListener('click', e => {
+    eliminar.close( );
+})
+
+cancelarEliminar.addEventListener('click', e => {
+    eliminar.close( );
+})
