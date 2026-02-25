@@ -85,31 +85,66 @@
     <dialog id="agregar" class="dialog-agregar">
         <h1>Agregar Corrida</h1>
         <form>
-            <div class="cajitas">
-                <div>
-                    <h3>Ruta</h3>
-                    <select>
-                        <option selected disabled>Ruta</option>
-                        <option>TIJ-TEC</option>
-                        <option>TIJ-MEX</option>
-                        <option>TIJ-SNQ</option>
-                        <option>TIJ-SFL</option>
-                        <option>TIJ-ESE</option>
-                    </select>
+            <DIV>
+                <div class="cajitas">
+                    <div>
+                        <h3>Ruta</h3>
+                        <select class="ruta">
+                            <option selected disabled>Ruta</option>
+                            <option>TIJ-TEC</option>
+                            <option>TIJ-MEX</option>
+                            <option>TIJ-SNQ</option>
+                            <option>TIJ-SFL</option>
+                            <option>TIJ-ESE</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h3>Operador</h3>
+                        <select>
+                            <option selected disabled>Operador</option>
+                            <option>1 - Héctor Armando Figueroa Orozco</option>
+                            <option>2 - Juan Manuel Hernández Martínez</option>
+                            <option>3 - Leonardo Ivan Valdez Galán</option>
+                            <option>130 - IRIZA IRIZ6 (DE29XU)</option>
+                        </select>
+                    </div>
+                    
                 </div>
-                <div>
-                    <h3>Fecha</h3>
-                    <input type="date">
+                <div class="cajitas">
+                    <div>
+                        <h3>Fecha</h3>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <h3>Salida</h3>
+                        <input type="time" width="118px">
+                    </div>
+                    <div>
+                        <h3>Llegada</h3>
+                        <input type="time" width="118px">
+                    </div>
                 </div>
-                <div>
-                    <h3>Salida</h3>
-                    <input type="time" width="118px">
+                <div class="cajitas">
+                    <div>
+                        <h3>Precio</h3>
+                        <input type="number" min="100" max="3000" placeholder="Precio (M.X.N.)">
+                    </div>
+                    <div>
+                        <h3>Autobús</h3>
+                        <select>
+                            <option selected disabled>Autobús</option>
+                            <option>106 - IRIZA IRIZ6 (ERT56T)</option>
+                            <option>118 - IRIZA IRIZ6 (BC09IJ)</option>
+                            <option>130 - IRIZA IRIZ6 (DE29XU)</option>
+                        </select>
+                    </div>
                 </div>
+
             </div>
         </form>
-        <div></div>
-            <button id="aceptarAgregar">Aceptar</button>
-            <button id="cancelarAgregar">Cancelar</button>
+        <div style="height: max-content; padding: 70px 0px 0px 200px;">
+            <button id="aceptarAgregar" class="btn-aceptar">Aceptar</button>
+            <button id="cancelarAgregar" class="btn-cancelar">Cancelar</button>
         </div>
     </dialog>
     <div class="main-section">

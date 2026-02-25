@@ -222,8 +222,8 @@ body {
 /* ================= DIALOG ABRIR ================= */
 .dialog-agregar{
     background: rgb(255, 255, 255);
-    width: 500px;
-    height: mins-content;
+    width: 400px;
+    height: 450px;
     border-radius: 20px;
     border: none;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
@@ -238,10 +238,17 @@ body {
     height: 38.19px;
     border:#555 solid 1px;
     border-radius: 10px;
-    width: 100px;
     font-size: 13px; 
     font-family: 'Segoe UI', sans-serif;
     padding: 03px;
+}
+
+.ruta {
+    width: 100px;
+}
+
+.autobus{
+    width: 182.64px;
 }
 
 .dialog-agregar input {
@@ -254,9 +261,27 @@ body {
     padding: 03px;
 }
 
-
-
 .cajitas{
     display: flex;
     gap: 20px;
+}
+
+.dialog-agregar button{
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.btn-aceptar:hover{
+    background: #2f6fed;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #ce3535;
+    color: white;
 }

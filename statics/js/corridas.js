@@ -1,11 +1,16 @@
 const agregar = document.getElementById('agregar');
 const abrirAgregar = document.getElementById('abrirAgregar');
-const cerrarAgregar = document.getElementById('cerrarAgregar');
+const aceptarAgregar = document.getElementById('aceptarAgregar');
+const cancelarAgregar = document.getElementById('cancelarAgregar');
 
 abrirAgregar.addEventListener('click', e => {
     agregar.showModal( );
 })
 
-cerrarAgregar.addEventListener('click', e => {
+aceptarAgregar.addEventListener('click', e => {
+    agregar.close( );
+})
+
+cancelarAgregar.addEventListener('click', e => {
     agregar.close( );
 })
