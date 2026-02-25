@@ -399,6 +399,12 @@ body {
     height: auto;
 }
 
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+.titulo-cajitas-boletos{
+    gap: 48%;
+    display: flex;
+}
+
 
 
 /* ================= DIALOG ABRIR ================= 

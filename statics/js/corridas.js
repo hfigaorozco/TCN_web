@@ -64,3 +64,16 @@ abrirFechaCiudad.addEventListener('click', e => {
 cerrarFechaCiudad.addEventListener('click', e => {
     fechaCiudad.close( );
 })
+
+/* ================= BOTON Y DIALOGO VER BOLETOS VENDIDOS POR DIA ================= */
+const boletos = document.getElementById('boletos');
+const abrirBoletos = document.getElementById('abrirBoletos');
+const cerrarBoletos = document.getElementById('cerrarBoletos');
+
+abrirBoletos.addEventListener('click', e => {
+    boletos.showModal( );
+})
+
+cerrarBoletos.addEventListener('click', e => {
+    boletos.close( );
+})
