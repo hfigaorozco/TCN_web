@@ -34,20 +34,15 @@ cancelarEditar.addEventListener('click', e => {
     editar.close( );
 })
 
-/* ================= BOTON Y DIALOGO ELIMNAR ================= */
-const eliminar = document.getElementById('eliminar');
-const abrirEliminar = document.getElementById('abrirEliminar');
-const aceptarEliminar = document.getElementById('aceptarEliminar');
-const cancelarEliminar= document.getElementById('cancelarEliminar');
+/* ================= BOTON Y DIALOGO VER POR FECHA Y CIUDAD ================= */
+const fechaCiudad = document.getElementById('fechaCiudad');
+const abrirFechaCiudad = document.getElementById('abrirFechaCiudad');
+const cerrarFechaCiudad = document.getElementById('cerrarFechaCiudad');
 
-abrirEliminar.addEventListener('click', e => {
-    eliminar.showModal( );
+abrirFechaCiudad.addEventListener('click', e => {
+    fechaCiudad.showModal( );
 })
 
-aceptarEliminar.addEventListener('click', e => {
-    eliminar.close( );
-})
-
-cancelarEliminar.addEventListener('click', e => {
-    eliminar.close( );
+cerrarFechaCiudad.addEventListener('click', e => {
+    fechaCiudad.close( );
 })

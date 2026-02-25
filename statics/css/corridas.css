@@ -222,6 +222,16 @@ body {
     background-size: 3.2vh 3.2vh;
 }
 
+/* ================= BOTON FECHA Y CIUDAD ================= */
+.fechaCiudad {
+    background: white url("../images/calendario.png") no-repeat center;
+}
+
+.fechaCiudad:hover {
+    background: #2f6fed url("../images/calendarioHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
@@ -340,6 +350,12 @@ body {
 .btn-cancelar:hover {
     background: #ce3535;
     color: white;
+}
+
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+.dialog-fechaCiudad{
+    height: fit-content;
+    width: fit-content;
 }
 
 
