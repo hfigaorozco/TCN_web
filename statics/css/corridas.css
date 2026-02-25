@@ -232,6 +232,16 @@ body {
     background-size: 3.2vh 3.2vh;
 }
 
+/* ================= BOTON BOLETOS VENDIDOS ================= */
+.boletos {
+    background: white url("../images/boletos.png") no-repeat center;
+}
+
+.boletos:hover {
+    background: #2f6fed url("../images/boletosHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
@@ -243,6 +253,14 @@ body {
     padding: 3vh;
 }
 
+.content-box table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 1.5vh;
+}
 /* ================= INPUT ================= */
 .input{
     border-radius: 20px;
@@ -351,12 +369,36 @@ body {
     background: #ce3535;
     color: white;
 }
+.aceptar-cancelar{
+    height: max-content;
+    padding: 7vh 0px 0px 19vh;
+}
 
 /* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
 .dialog-fechaCiudad{
     height: fit-content;
     width: fit-content;
 }
+
+.titulo-cajitas{
+    gap: 12vh;
+    display: flex;
+}
+
+.tabla-fechaCiudad {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 1.5vh;
+}
+
+.cerrar-fechaCiudad{
+    padding: 5vh 0px 0px 90%;
+    height: auto;
+}
+
 
 
 /* ================= DIALOG ABRIR ================= 

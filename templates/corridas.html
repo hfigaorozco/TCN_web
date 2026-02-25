@@ -142,7 +142,7 @@
 
             </div>
         </form>
-        <div style="height: max-content; padding: 70px 0px 0px 200px;">
+        <div class="aceptar-cancelar">
             <button id="aceptarAgregar" class="btn-aceptar">Aceptar</button>
             <button id="cancelarAgregar" class="btn-cancelar">Cancelar</button>
         </div>
@@ -195,7 +195,7 @@
             </div>
 
         </form>
-        <div style="height: max-content; padding: 5vh 0px 0px 200px;">
+        <div class="aceptar-cancelar">
             <button id="aceptarEditar" class="btn-aceptar">Aceptar</button>
             <button id="cancelarEditar" class="btn-cancelar">Cancelar</button>
         </div>
@@ -225,7 +225,7 @@
             </div>
     
         </form>
-        <div style="height: max-content; padding: 5vh 0px 0px 20vh;">
+        <div class="aceptar-cancelar">
             <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
             <button id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
         </div>
@@ -233,31 +233,155 @@
 
     <!--*********************************DIALOGO PARA CORRIDAS POR FECHA Y CIUDADES*********************************-->
     <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
-        <h1>Eliminar Corrida</h1>
+        
         <form>
-            <div class="cajitas">
-                <div>
-                    <h3>Corrida</h3>
-                    <input type="number" min="0" max="3000" placeholder="Corrida a editar">
-                </div>
-                <div>
-                    <h3>Estado actual</h3>
-                    <input type="text" placeholder="Estado de corrida">
+            <div class="titulo-cajitas">
+                <h1>Corridas por fecha y ciudad</h1>
+                <div class="cajitas">
+                    <div>
+                        <h3>Fecha</h3>
+                        <input type="date" placeholder="Corrida a editar">
+                    </div>
+                    <div>
+                        <h3>Ciudad</h3>
+                        <select>
+                            <option selected disabled>Origen</option>
+                            <option>Todos</option>
+                            <option>Ensenada</option>
+                            <option>San Felipe</option>
+                            <option>San Quintín</option>
+                            <option>Mexicali</option>
+                            <option>Tecate</option>
+                            <option>Tijuana</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h3>Estado</h3>
-                <select>
-                    <option selected disabled>Estado</option>
-                    <option>ACTIVO</option>
-                    <option>INACTIVO</option>
-                </select>
+            <div class="content-box">
+                <!-- aquí va la tabla después -->
+                <table class="tabla-fechaCiudad">
+                    <tr bgcolor = "#2f6fed" style="color: white;">
+                        <th width="15%">Salida</th>
+                        <th width="10%">Corrida</th>
+                        <th width="15%">Destino</th>
+                        <th width="15%">Autobús</th>
+                        <th width="15%">Matrícula</th>
+                        <th width="30%">Operador</th>
+                    </tr>
+                    <tr align="center">
+                        <td>8:00</td>
+                        <td>25</td>
+                        <td>Mexicali</td>
+                        <td>520</td>
+                        <td>GHY700</td>
+                        <td>Sofía Castro Ortega</td>
+                    </tr>
+                    <tr align="center">
+                        <td>13:00</td>
+                        <td>26</td>
+                        <td>Mexicali</td>
+                        <td>170</td>
+                        <td>MX89NL</td>
+                        <td>David Ruiz Moreno</td>
+                    </tr>
+                    <tr align="center">
+                        <td>10:00</td>
+                        <td>31</td>
+                        <td>San Quintín</td>
+                        <td>130</td>
+                        <td>DE29XU</td>
+                        <td>Andrea Reyes Vargas</td>
+                    </tr>
+                    <tr align="center">
+                        <td>8:00</td>
+                        <td>13</td>
+                        <td>Tijuana</td>
+                        <td>104</td>
+                        <td>UY767Y</td>
+                        <td>Javier Díaz Ramírez</td>
+                    </tr>
+                </table>
             </div>
-    
         </form>
-        <div style="height: max-content; padding: 5vh 0px 0px 20vh;">
-            <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
-            <button id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
+        <div class="cerrar-fechaCiudad">
+            <button id="cerrarFechaCiudad" class="btn-cancelar">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!--*********************************DIALOGO PARA CORRIDAS POR FECHA Y CIUDADES*********************************-->
+    <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
+    
+        <form>
+            <div class="titulo-cajitas">
+                <h1>Corridas por fecha y ciudad</h1>
+                <div class="cajitas">
+                    <div>
+                        <h3>Fecha</h3>
+                        <input type="date" placeholder="Corrida a editar">
+                    </div>
+                    <div>
+                        <h3>Ciudad</h3>
+                        <select>
+                            <option selected disabled>Origen</option>
+                            <option>Todos</option>
+                            <option>Ensenada</option>
+                            <option>San Felipe</option>
+                            <option>San Quintín</option>
+                            <option>Mexicali</option>
+                            <option>Tecate</option>
+                            <option>Tijuana</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="content-box">
+                <!-- aquí va la tabla después -->
+                <table class="tabla-fechaCiudad">
+                    <tr bgcolor="#2f6fed" style="color: white;">
+                        <th width="15%">Salida</th>
+                        <th width="10%">Corrida</th>
+                        <th width="15%">Destino</th>
+                        <th width="15%">Autobús</th>
+                        <th width="15%">Matrícula</th>
+                        <th width="30%">Operador</th>
+                    </tr>
+                    <tr align="center">
+                        <td>8:00</td>
+                        <td>25</td>
+                        <td>Mexicali</td>
+                        <td>520</td>
+                        <td>GHY700</td>
+                        <td>Sofía Castro Ortega</td>
+                    </tr>
+                    <tr align="center">
+                        <td>13:00</td>
+                        <td>26</td>
+                        <td>Mexicali</td>
+                        <td>170</td>
+                        <td>MX89NL</td>
+                        <td>David Ruiz Moreno</td>
+                    </tr>
+                    <tr align="center">
+                        <td>10:00</td>
+                        <td>31</td>
+                        <td>San Quintín</td>
+                        <td>130</td>
+                        <td>DE29XU</td>
+                        <td>Andrea Reyes Vargas</td>
+                    </tr>
+                    <tr align="center">
+                        <td>8:00</td>
+                        <td>13</td>
+                        <td>Tijuana</td>
+                        <td>104</td>
+                        <td>UY767Y</td>
+                        <td>Javier Díaz Ramírez</td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <div class="cerrar-fechaCiudad">
+            <button id="cerrarFechaCiudad" class="btn-cancelar">Cerrar</button>
         </div>
     </dialog>
 
@@ -268,7 +392,7 @@
             <button class="side-btn editar" id = "abrirEditar"></button>
             <div class="side-btn eliminar" id="abrirEliminar"></div>
             <div class="side-btn fechaCiudad" id="abrirFechaCiudad"></div>
-            <div class="side-btn">+</div>
+            <button class="side-btn boletos" id="abrirBoletos"></button>
         </div>
         <!--*********************************AREA DE TABLA GENERAL*********************************-->
         <div class="content-box">
