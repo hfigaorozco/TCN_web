@@ -194,6 +194,17 @@ body {
     background: #2f6fed url("../images/agregarHover.png") no-repeat center;
     background-size: 32px 32px;
 }
+
+/* ================= BOTON EDITAR ================= */
+.editar {
+    background: white url("../images/editar.png") no-repeat center;
+}
+
+.editar:hover {
+    background: #2f6fed url("../images/editarHover.png") no-repeat center;
+    background-size: 32px 32px;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
@@ -284,4 +295,66 @@ body {
 .btn-cancelar:hover {
     background: #ce3535;
     color: white;
+}
+
+/* ================= DIALOG EDITAR ================= */
+.dialog-editar {
+    background: rgb(255, 255, 255);
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-editar h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-editar select {
+    height: 3vh;
+    width: min-content;
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.ruta {
+    width: 100px;
+}
+
+.autobus {
+    width: 182.64px;
+}
+
+.dialog-editar input {
+    height: 3vh;
+    width: 10vh;
+    border: #555 solid 0.5px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+    transition: 0.3s;
+}
+
+.dialog-editar button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.dialog-editar select:focus,
+.dialog-editar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
 }

@@ -1,3 +1,4 @@
+/* ================= BOTON Y DIALOGO AGREGAR ================= */
 const agregar = document.getElementById('agregar');
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
@@ -13,4 +14,22 @@ aceptarAgregar.addEventListener('click', e => {
 
 cancelarAgregar.addEventListener('click', e => {
     agregar.close( );
+})
+
+/* ================= BOTON Y DIALOGO EDITAR ================= */
+const editar = document.getElementById('editar');
+const abrirEditar = document.getElementById('abrirEditar');
+const aceptarEditar = document.getElementById('aceptarEditar');
+const cancelarEditar= document.getElementById('cancelarEditar');
+
+abrirEditar.addEventListener('click', e => {
+    editar.showModal( );
+})
+
+aceptarEditar.addEventListener('click', e => {
+    editar.close( );
+})
+
+cancelarEditar.addEventListener('click', e => {
+    editar.close( );
 })
