@@ -75,67 +75,44 @@ body{
 /* ================= TÍTULO ================= */
 
 .title{
-    font-size: 48px;
-    margin: 30px 0;
+    font-size: 70px;
+    margin: 30px 0 10px 0;
     font-weight: 600;
 }
 
-/* ================= CARDS ================= */
 
-.cards{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card{
-    background: white;
-    padding: 20px 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    min-width: 180px;
-}
-
-.card span{
-    color: #555;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.card h2{
-    margin: 5px 0 0;
-    font-size: 32px;
-    font-weight: 500;
-}
-
-.active-card{
-    background-color: #2f6fed;
-}
-
-.active-card span,
-.active-card h2{
-    color: white;
-}
 
 /* ================= FILTROS ================= */
 
-.filter-box{
-    margin-left: auto;
-    
+.filter-box {
+    display: flex;
+    justify-content: flex-end; /* 👉 lo manda a la derecha */
+    gap: 15px;
 }
 
-.filter-box select{
-    padding: 14px 25px;
-    border-radius: 20px;
-    border: none;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
-    font-size: 16px;
+.filter-box input,
+.filter-box select {
+    width: 200px;   /* 👈 ancho controlado */
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: 0.3s;
     outline: none;
-    cursor: pointer;
-    min-width: 180px;
-    appearance: none;
+    box-sizing: border-box; 
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+    border-color: #2f6fed;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.15);
+}
+
+/* Placeholder */
+.filter-box input::placeholder {
+    color: #9ca3af;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
@@ -162,6 +139,7 @@ body{
     height: 60px;
     background: white;
     border-radius: 20px;
+    border: 1px solid #e5e7eb;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
@@ -177,6 +155,37 @@ body{
     color: white;
 }
 
+/* ================= BOTON AGREGAR ================= */
+.agregar{
+    background: white url("../images/agregar.png") no-repeat center;
+}
+
+.agregar:hover {
+    background: #2f6fed url("../images/agregarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON EDITAR ================= */
+.editar {
+    background: white url("../images/editar.png") no-repeat center;
+}
+
+.editar:hover {
+    background: #2f6fed url("../images/editarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON FECHA Y CIUDAD ================= */
+.fechaCiudad {
+    background: white url("../images/ciudad.png") no-repeat center;
+}
+
+.fechaCiudad:hover {
+    background: #2f6fed url("../images/ciudadHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box{
@@ -186,4 +195,180 @@ body{
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
     padding: 30px;
+}
+
+/* ================= TABLAS MODERNAS ================= */
+
+.table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+.table thead{
+    background: transparent;
+}
+
+.table th{
+    text-align: left;
+    padding: 0 18px 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+    border: none;
+}
+
+.table tbody tr{
+    background: #f9fafe;
+    transition: 0.3s;
+}
+
+.table tbody tr td{
+    padding: 16px 18px;
+    font-size: 14px;
+    color: #555;
+    border: none;
+}
+
+/* Bordes redondeados por fila */
+
+.table tbody tr td:first-child{
+    border-radius: 14px 0 0 14px;
+}
+
+.table tbody tr td:last-child{
+    border-radius: 0 14px 14px 0;
+}
+
+/* Hover moderno */
+
+.table tbody tr:hover{
+    background: #eef2ff;
+    transform: scale(1.01);
+}
+
+/* ================= DIALOGOS MODERNOS PREMIUM ================= */
+
+dialog {
+    border: none;
+    border-radius: 28px;
+    padding: 0;
+
+    width: 500px;
+    max-width: calc(100% - 60px);
+
+    background: white;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.18);
+}
+
+/* Fondo oscuro con blur */
+dialog::backdrop {
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(6px);
+}
+
+/* Contenedor interno */
+.dialog-content {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* Título */
+.dialog-content h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ================= INPUTS ================= */
+
+.dialog-content input,
+.dialog-content select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: 0.3s;
+    outline: none;
+    box-sizing: border-box; 
+}
+
+/* Focus elegante */
+.dialog-content input:focus,
+.dialog-content select:focus {
+    border-color: #2f6fed;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.15);
+}
+
+/* Placeholder */
+.dialog-content input::placeholder {
+    color: #9ca3af;
+}
+
+/* ================= SELECT BONITO ================= */
+
+.dialog-content select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    cursor: pointer;
+}
+
+/* ================= BOTONES ================= */
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.dialog-btn {
+    padding: 12px 22px;
+    border-radius: 16px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dialog-btn.primary {
+    background: #2f6fed;
+    color: white;
+}
+
+.dialog-btn.primary:hover {
+    background: #1f5ad1;
+    transform: translateY(-2px);
+}
+
+.dialog-btn.secondary {
+    background: #eef2ff;
+    color: #2f6fed;
+}
+
+.dialog-btn.secondary:hover {
+    background: #dbe4ff;
+}
+
+/* ================= ANIMACION ================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }

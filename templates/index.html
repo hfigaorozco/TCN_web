@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
     <link rel="stylesheet" href="../statics/css/index.css">
 </head>
 <body>
@@ -71,6 +72,100 @@
              <li><a href="autobuses.html">Autobuses</a></li>
         </ul>
     </nav>
+        <!-- CORRIDAS -->
+        <div class="content-box">
+
+            <div class="card-title">Corridas</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Hora</th>
+                        <th>Autobús</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08:30</td>
+                        <td>CDMX</td>
+                        <td>CDMX</td>
+                        <td><span class="status disponible">Disponible</span></td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Puebla</td>
+                        <td>CDMX</td>
+                        <td><span class="status disponible">Disponible</span></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>12:30</td>
+                        <td>Querétaro</td>
+                        <td>CDMX</td>
+                        <td><span class="status finalizada">Finalizada</span></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- PASAJEROS -->
+    <div class="content-box">
+
+        <div class="card-title">Pasajeros</div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Asiento</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12</td>
+                    <td>Juan Pérez</td>
+                    <td>Normal</td>
+                    <td><span class="status pagado">Pagado</span></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Ana López</td>
+                    <td>Estudiante</td>
+                    <td><span class="status pendiente">Pendiente</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<!-- ================= PANEL INFERIOR ================= -->
+
+<div class="detail-section">
+    <div class="detail-box">
+        <h3>Detalle de Corrida</h3>
+        <p><strong>Autobús:</strong> A-23</p>
+        <p><strong>Conductor:</strong> Carlos Ramírez</p>
+        <p><strong>Ruta:</strong> CDMX → Puebla</p>
+        <p><strong>Salida:</strong> 08:30</p>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <span>Ocupación 70%</span>
+    </div>
+</div>
 
 </body>
 </html>
