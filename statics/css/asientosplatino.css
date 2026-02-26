@@ -301,3 +301,372 @@ body {
         padding: 5% 3% 5% 20%;
     }
 }
+
+
+/* ================= PANEL INFERIOR ================= */
+
+.detail-section{
+    width: 95%;
+    margin: 30px auto 60px auto;
+}
+
+.detail-box{
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+}
+
+.detail-box h3{
+    margin-bottom: 15px;
+}
+
+.detail-box p{
+    margin-bottom: 6px;
+}
+
+/* ================= PROGRESS BAR ================= */
+
+.progress-bar{
+    width: 100%;
+    height: 14px;
+    background: #eee;
+    border-radius: 20px;
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+.progress{
+    height: 100%;
+    width: 70%;
+    background: #2f6fed;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+/* ================= COLUMNA CON FILTRO ================= */
+
+.section-column{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= FILTRO ARRIBA DEL CARD ================= */
+
+.filter-top{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+
+/* ================ DIÁLOGO PERFIL ================== */
+
+#dialogo-perfil {
+    padding: 0;
+    width: 90%;
+    max-width: 360px;
+    min-width: 280px;
+    height: auto;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+
+#dialogo-perfil {
+    top: 40px;        
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 24px 24px 24px;
+    gap: 20px;
+    background: #ffffff;
+}
+
+
+/* ── SECCIÓN SUPERIOR ── */
+
+.dialog-superior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.dialog-titulo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dialog-avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.dialog-nombre {
+    font-size: 17px;
+    font-weight: 600;
+    color: #2f6fed;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ── SECCIÓN INFO ── */
+
+.dialog-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.dialog-info-fila {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dialog-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dialog-valor {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2f6fed;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ── BOTONES ── */
+
+.dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.dialog-btn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.dialog-btn:hover {
+    transform: translateY(-2px);
+}
+
+.dialog-btn:active {
+    transform: translateY(0);
+}
+
+.dialog-btn--azul {
+    background-color: #2f6fed;
+    color: #ffffff;
+}
+
+.dialog-btn--azul:hover {
+    background-color: #1a4db5;
+}
+
+.dialog-btn--naranja {
+    background-color: #ffffff;
+    color: #FF8600;
+    border: 2px solid #FF8600;
+}
+
+.dialog-btn--naranja:hover {
+    background-color: #FF8600;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #FF8600;
+}
+
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 480px) {
+    #dialogo-perfil {
+        width: 92%;
+        top: 20px;
+    }
+
+    .dialog-titulo {
+        font-size: 22px;
+    }
+
+    .dialog-avatar {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+
+
+/* ================ DIÁLOGO PASAJERO PLATINO ================== */
+
+#dialogo-pasajero {
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 360px;
+    min-width: 280px;
+    height: auto;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+#dialogo-pasajero::backdrop {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.dialog-pasajero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 28px 28px 28px;
+    gap: 22px;
+    background: #ffffff;
+}
+
+
+/* ── TÍTULO ── */
+
+.dialog-pasajero-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+
+/* ── GRUPOS DE INPUT ── */
+
+.dialog-pasajero-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.dialog-pasajero-group label {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.dialog-pasajero-group input {
+    width: 100%;
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 9px;
+    text-align: center;
+    border: 2px solid #1061C4;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.dialog-pasajero-group input::placeholder {
+    color: #ADAEB1;
+    opacity: 0.85;
+}
+
+.dialog-pasajero-group input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 26, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* ── BOTÓN ── */
+
+.dialog-btn-continuar {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #2f6fed;
+    color: #ffffff;
+    margin-top: 5px;
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.dialog-btn-continuar:hover {
+    background-color: #1a4db5;
+    transform: translateY(-2px);
+}
+
+.dialog-btn-continuar:active {
+    transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 480px) {
+    #dialogo-pasajero {
+        width: 92%;
+        top: 20px;
+    }
+
+    .dialog-pasajero-titulo {
+        font-size: 20px;
+    }
+}
