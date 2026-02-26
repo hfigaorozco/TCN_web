@@ -195,6 +195,7 @@ body {
 /* ================= BOTON AGREGAR ================= */
 .agregar{
     background: white url("../images/agregar.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 .agregar:hover {
@@ -205,6 +206,7 @@ body {
 /* ================= BOTON EDITAR ================= */
 .editar {
     background: white url("../images/editar.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 .editar:hover {
@@ -215,6 +217,7 @@ body {
 /* ================= BOTON ELIMINAR ================= */
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 .eliminar:hover {
@@ -225,6 +228,7 @@ body {
 /* ================= BOTON FECHA Y CIUDAD ================= */
 .fechaCiudad {
     background: white url("../images/calendario.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 .fechaCiudad:hover {
@@ -235,6 +239,7 @@ body {
 /* ================= BOTON BOLETOS VENDIDOS ================= */
 .boletos {
     background: white url("../images/boletos.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 .boletos:hover {
@@ -259,7 +264,7 @@ body {
     border-spacing: 0;
     overflow: hidden;
     border-radius: 10px;
-    font-size: 1.5vh;
+    font-size: 1.7vh;
 }
 /* ================= INPUT ================= */
 .input{
@@ -404,191 +409,3 @@ body {
     gap: 48%;
     display: flex;
 }
-
-
-
-/* ================= DIALOG ABRIR ================= 
-.dialog-agregar{
-    background: rgb(255, 255, 255);
-    width: 400px;
-    height: 450px;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.dialog-agregar h3{
-    font-weight: normal;
-    margin-bottom: 5px;
-}
-
-.dialog-agregar select:focus,
-.dialog-agregar input:focus {
-    border-color: #1f5fa9;
-    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
-    outline: none;
-    transform: translateY(-1px);
-}
-
-.dialog-agregar select{
-    height: 38.19px;
-    border:#555 solid 1px;
-    border-radius: 10px;
-    font-size: 13px; 
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-}
-
-.ruta {
-    width: 100px;
-}
-
-.autobus{
-    width: 182.64px;
-}
-
-.dialog-agregar input {
-    height: 30px;
-    border: #555 solid 1px;
-    border-radius: 10px;
-    width: 100px;
-    font-size: 13px;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-}
-
-.cajitas{
-    display: flex;
-    gap: 20px;
-}
-
-.dialog-agregar button{
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    font-size: 20px;
-    color: #bbb;
-    font-weight: 500;
-    border: 0.2px;
-    transition: 0.3s;
-}
-
-.btn-aceptar:hover{
-    background: #2f6fed;
-    color: white;
-}
-
-.btn-cancelar:hover {
-    background: #ce3535;
-    color: white;
-}
-
-/* ================= DIALOG EDITAR ================= 
-.dialog-editar {
-    background: rgb(255, 255, 255);
-    width: 37.04vh;
-    height: 41.67vh;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.dialog-editar h3 {
-    font-weight: normal;
-    margin-bottom: 5px;
-}
-
-.dialog-editar select {
-    height: 3vh;
-    width: min-content;
-    border: #555 solid 1px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-}
-
-.dialog-editar input {
-    height: 3vh;
-    width: 10vh;
-    border: #555 solid 0.5px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-    transition: 0.3s;
-}
-
-.dialog-editar button {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    font-size: 20px;
-    color: #bbb;
-    font-weight: 500;
-    border: 0.2px;
-    transition: 0.3s;
-}
-
-.dialog-editar select:focus,
-.dialog-editar input:focus {
-    border-color: #1f5fa9;
-    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
-    outline: none;
-    transform: translateY(-1px);
-}
-
-
-/* ================= DIALOG ELIMINAR ================= 
-.dialog-eliminar {
-    background: rgb(255, 255, 255);
-    width: 37.04vh;
-    height: 41.67vh;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.dialog-eliminar h3 {
-    font-weight: normal;
-    margin-bottom: 5px;
-}
-
-.dialog-eliminar select {
-    height: 3vh;
-    width: min-content;
-    border: #555 solid 1px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-}
-
-.dialog-eliminar input {
-    height: 3vh;
-    width: 10vh;
-    border: #555 solid 0.5px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 03px;
-    transition: 0.3s;
-}
-
-.dialog-eliminar button {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    font-size: 20px;
-    color: #bbb;
-    font-weight: 500;
-    border: 0.2px;
-    transition: 0.3s;
-}
-
-.dialog-eliminar select:focus,
-.dialog-eliminar input:focus {
-    border-color: #1f5fa9;
-    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
-    outline: none;
-    transform: translateY(-1px);
-}
-
-*/
