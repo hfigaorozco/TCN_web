@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
@@ -27,11 +28,37 @@ body {
 }
 
 .image-section img {
+=======
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+body, html {
+  margin: 0;
+  height: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.left {
+    width: 40%;
+}
+
+.left img {
+>>>>>>> 11cc92f35fbe70f4779cfae0d910dadf8cd10e28
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+<<<<<<< HEAD
 
 /* ── SECCIÓN FORMULARIO ── */
 
@@ -194,4 +221,125 @@ form {
     .btn-primary {
         font-size: 20px;
     }
+=======
+.right {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.izq {
+    width: 15%;
+}
+
+.der {
+    width: 15%;
+}
+
+.contenedor {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.up {
+    height: 22%;
+    text-align: center;
+    align-items: center;
+}
+
+.up img {
+    height: 60%;
+    width: 75%;
+}
+
+.header {
+    height: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.header p {
+    font-size: 18px;
+}
+
+.form-container {
+    height: 58%;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-up {
+    width: 13%;
+}
+
+.form {
+    width: 74%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-down {
+    width: 13%;
+}
+
+.inputs {
+    height: 50%;
+}
+
+.inputs h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.inputs input{
+    border: 2px solid #1061C4;
+    border-radius: 7px;
+    width: 100%;
+    height: 30px;
+    transition:
+        transform 0.25s ease,
+        outline 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.inputs input:focus{
+    outline: none;
+    border: 2px solid #FF8600;
+    transform: translateY(-5px);
+}
+
+.button {
+    height: 50%;
+    text-align: center;
+}
+
+.btn-iniciarsesion {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 230px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1061C4;
+    color: white;
+    transition:
+        transform 0.25s ease,
+        outline 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn-iniciarsesion:hover {
+    background-color: rgb(8, 39, 77);
+    color: white;
+    transform: translateY(-5px);
+>>>>>>> 11cc92f35fbe70f4779cfae0d910dadf8cd10e28
 }
