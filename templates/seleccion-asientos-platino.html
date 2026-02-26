@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Asientos | Transportes Cuervo Negro</title>
+    <link rel="icon" type="img/png" href="../statics/images/LOGO TCN azul.png">
+    <link rel="stylesheet" href="../statics/css/asientosplatino.css">
+</head>
+<body>
+
+<div class="main">
+
+    <header class="encabezado">
+        <h1 class="titulo">Selecciona los asientos</h1>
+    </header>
+
+    <section class="info" aria-label="Información de la corrida">
+
+        <button class="btn-regresar" id="btn-inicio">
+            <img src="../statics/images/home.png" alt="Inicio">
+            Regresar
+        </button>
+
+        <div class="tarjeta-info">
+            <span class="info-label">Ruta:</span>
+            <span class="info-valor">Tijuana - Hermosillo</span>
+        </div>
+
+        <div class="tarjeta-info">
+            <span class="info-label">Fecha:</span>
+            <span class="info-valor">22/03/2026</span>
+        </div>
+
+        <div class="tarjeta-info">
+            <span class="info-label">Hora:</span>
+            <span class="info-valor">12:00</span>
+        </div>
+
+        <div class="tarjeta-info">
+            <span class="info-label">Autobús:</span>
+            <span class="info-valor">510</span>
+        </div>
+
+        <div class="tarjeta-info">
+            <span class="info-label">Servicio:</span>
+            <span class="info-valor">PLATINO</span>
+        </div>
+
+    </section>
+
+    <section class="leyenda" aria-label="Guía de colores">
+        <div class="leyenda-item">
+            <span class="leyenda-circulo disponible"></span>
+            <span>Disponible</span>
+        </div>
+        <div class="leyenda-item">
+            <span class="leyenda-circulo ocupado"></span>
+            <span>Ocupado</span>
+        </div>
+        <div class="leyenda-item">
+            <span class="leyenda-circulo seleccionado"></span>
+            <span>Seleccionado</span>
+        </div>
+    </section>
+
+    <section class="mapa-wrapper" aria-label="Mapa de asientos">
+
+        <div class="mapa-bus">
+            <img src="../statics/images/mapa platino.png" alt="Mapa del autobús PLATINO" class="mapa-img">
+
+            <div class="asientos-grid">
+
+                <!-- PISO SUPERIOR (asientos 3–36) -->
+                <div class="piso piso-superior">
+                    <!-- Fila A: 4 8 12 16 20 24 28 32 36 -->
+                    <div class="fila">
+                        <button class="asiento disponible" data-asiento="4">4</button>
+                        <button class="asiento disponible" data-asiento="8">8</button>
+                        <button class="asiento disponible" data-asiento="12">12</button>
+                        <button class="asiento disponible" data-asiento="16">16</button>
+                        <button class="asiento disponible" data-asiento="20">20</button>
+                        <button class="asiento disponible" data-asiento="24">24</button>
+                        <button class="asiento disponible" data-asiento="28">28</button>
+                        <button class="asiento disponible" data-asiento="32">32</button>
+                        <button class="asiento disponible" data-asiento="36">36</button>
+                    </div>
+                    <!-- Fila B: 3 7 11 15 19 23 27 31 35 -->
+                    <div class="fila">
+                        <button class="asiento disponible" data-asiento="3">3</button>
+                        <button class="asiento disponible" data-asiento="7">7</button>
+                        <button class="asiento disponible" data-asiento="11">11</button>
+                        <button class="asiento disponible" data-asiento="15">15</button>
+                        <button class="asiento disponible" data-asiento="19">19</button>
+                        <button class="asiento disponible" data-asiento="23">23</button>
+                        <button class="asiento disponible" data-asiento="27">27</button>
+                        <button class="asiento disponible" data-asiento="31">31</button>
+                        <button class="asiento disponible" data-asiento="35">35</button>
+                    </div>
+                </div>
+
+                <!-- PISO INFERIOR (asientos 1–34) -->
+                <div class="piso piso-inferior">
+                    <!-- Fila C: 2 6 10 14 18 22 26 30 34 -->
+                    <div class="fila">
+                        <button class="asiento disponible" data-asiento="2">2</button>
+                        <button class="asiento disponible" data-asiento="6">6</button>
+                        <button class="asiento disponible" data-asiento="10">10</button>
+                        <button class="asiento disponible" data-asiento="14">14</button>
+                        <button class="asiento disponible" data-asiento="18">18</button>
+                        <button class="asiento disponible" data-asiento="22">22</button>
+                        <button class="asiento disponible" data-asiento="26">26</button>
+                        <button class="asiento disponible" data-asiento="30">30</button>
+                        <button class="asiento disponible" data-asiento="34">34</button>
+                    </div>
+                    <!-- Fila D: 1 5 9 13 17 21 25 29 33 -->
+                    <div class="fila">
+                        <button class="asiento disponible" data-asiento="1">1</button>
+                        <button class="asiento disponible" data-asiento="5">5</button>
+                        <button class="asiento disponible" data-asiento="9">9</button>
+                        <button class="asiento disponible" data-asiento="13">13</button>
+                        <button class="asiento disponible" data-asiento="17">17</button>
+                        <button class="asiento disponible" data-asiento="21">21</button>
+                        <button class="asiento disponible" data-asiento="25">25</button>
+                        <button class="asiento disponible" data-asiento="29">29</button>
+                        <button class="asiento disponible" data-asiento="33">33</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

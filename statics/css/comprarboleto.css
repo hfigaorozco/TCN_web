@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ── TÍTULO ── */
+
+.encabezado {
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.titulo {
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+
+/* ── TARJETAS DE INFO ── */
+
+.info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.btn_regresar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #2b64e7;
+    border: none;
+    border-radius: 12px;
+    width: 200px;
+    height: 93px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn_regresar img {
+    height: 36px;
+    width: 36px;
+}
+
+.btn_regresar:hover {
+    background-color: rgb(9, 19, 90);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn_regresar:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta_ruta,
+.tarjeta_fecha,
+.tarjeta_pasajeros {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    height: 93px;
+    border-radius: 15px;
+    outline: 2px solid #c9ced4;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: outline 0.2s ease;
+}
+
+.tarjeta_ruta {
+    width: 408px;
+}
+
+.tarjeta_fecha,
+.tarjeta_pasajeros {
+    width: 220px;
+}
+
+.tarjeta_ruta:hover,
+.tarjeta_fecha:hover,
+.tarjeta_pasajeros:hover {
+    outline: 4px solid #2b64e7;
+}
+
+.tarjeta_ruta p,
+.tarjeta_fecha p,
+.tarjeta_pasajeros p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.label_ruta,
+.label_fecha,
+.label_pasajeros {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dinamico_ruta,
+.dinamico_fecha,
+.dinamico_pasajeros {
+    font-size: 25px;
+    color: #2b64e7;
+}
+
+
+/* ── LISTA DE CORRIDAS ── */
+
+.lista_corridas {
+    width: 95%;
+    max-width: 1685px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+}
+
+.corrida {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    transition:
+        transform 0.25s ease,
+        outline 0.25s ease,
+        box-shadow 0.25s ease;
+    min-height: 120px;
+    gap: 15px;
+}
+
+.corrida:hover {
+    transform: translateY(-5px);
+}
+
+.corrida p,
+.corrida .barra,
+.corrida .btn_seleccionar {
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* ── IZQUIERDA ── */
+
+.izquierda {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.izquierda p {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bus {
+    font-size: 23px;
+}
+
+.lugares {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+/* ── ORIGEN ── */
+
+.origen {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.origen p {
+    margin: 0;
+}
+
+.fecha {
+    font-size: 17px;
+}
+
+.ciudad {
+    font-size: 35px;
+}
+
+.hora {
+    font-size: 27px;
+}
+
+
+/* ── MEDIO ── */
+
+.medio {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.clase {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+.barra {
+    width: 100%;
+    max-width: 650px;
+    height: 6px;
+    border-radius: 2px;
+}
+
+.btn_seleccionar {
+    width: 200px;
+    height: 42px;
+    font-size: 25px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        background-color 0.25s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.btn_seleccionar:hover {
+    transform: translateY(-2px);
+}
+
+.btn_seleccionar:active {
+    transform: translateY(0px);
+}
+
+
+/* ── DESTINO ── */
+
+.destino {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.destino p {
+    margin: 0;
+}
+
+.fecha_llegada {
+    font-size: 17px;
+}
+
+.ciudad_destino {
+    font-size: 35px;
+}
+
+.hora_llegada {
+    font-size: 27px;
+}
+
+
+/* ── DERECHA ── */
+
+.derecha {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.derecha p {
+    margin: 0;
+}
+
+.label_precio {
+    font-size: 23px;
+}
+
+.precio {
+    font-size: 20px;
+}
+
+
+/* ── VARIANTE PLATINO (AZUL) ── */
+
+.corrida--platino:hover {
+    outline: 3px solid #1061C4;
+}
+
+.corrida--platino .dinamico_numbus,
+.corrida--platino .dinamico_lugares,
+.corrida--platino .fecha,
+.corrida--platino .hora,
+.corrida--platino .fecha_llegada,
+.corrida--platino .hora_llegada,
+.corrida--platino .precio,
+.corrida--platino .clase {
+    color: #1061C4;
+}
+
+.corrida--platino .barra {
+    background-color: #1061C4;
+}
+
+.corrida--platino .btn_seleccionar {
+    background-color: #2b64e7;
+}
+
+.corrida--platino .btn_seleccionar:hover {
+    background-color: #0e0c7a;
+}
+
+
+/* ── VARIANTE PLUS (NARANJA) ── */
+
+.corrida--plus:hover {
+    outline: 3px solid #FF8600;
+}
+
+.corrida--plus .dinamico_numbus,
+.corrida--plus .dinamico_lugares,
+.corrida--plus .fecha,
+.corrida--plus .hora,
+.corrida--plus .fecha_llegada,
+.corrida--plus .hora_llegada,
+.corrida--plus .precio,
+.corrida--plus .clase {
+    color: #FF8600;
+}
+
+.corrida--plus .barra {
+    background-color: #FF8600;
+}
+
+.corrida--plus .btn_seleccionar {
+    background-color: #FF8600;
+}
+
+.corrida--plus .btn_seleccionar:hover {
+    background-color: #cc6b00;
+}
+
+
+/* ════════════════════════════
+   RESPONSIVE - MEDIA QUERIES
+   ════════════════════════════ */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+    .titulo {
+        font-size: 50px;
+    }
+
+    .info {
+        gap: 15px;
+    }
+
+    .tarjeta_ruta,
+    .tarjeta_fecha,
+    .tarjeta_pasajeros {
+        width: 280px;
+        height: auto;
+        padding: 10px;
+    }
+
+    .label_ruta,
+    .label_fecha,
+    .label_pasajeros,
+    .dinamico_ruta,
+    .dinamico_fecha,
+    .dinamico_pasajeros {
+        font-size: 18px;
+    }
+
+    .corrida {
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .barra {
+        max-width: 400px;
+    }
+
+    .ciudad,
+    .ciudad_destino {
+        font-size: 26px;
+    }
+}
+
+/* Móvil grande (≤ 768px) */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 36px;
+    }
+
+    .info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjeta_ruta,
+    .tarjeta_fecha,
+    .tarjeta_pasajeros {
+        width: 90%;
+    }
+
+    .btn_regresar {
+        width: 160px;
+        height: 70px;
+        font-size: 18px;
+    }
+
+    .corrida {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        padding: 20px;
+    }
+
+    .barra {
+        width: 80%;
+        max-width: 100%;
+    }
+
+    .medio {
+        width: 100%;
+    }
+
+    .ciudad,
+    .ciudad_destino {
+        font-size: 28px;
+    }
+
+    .btn_seleccionar {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Móvil pequeño (≤ 480px) */
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 28px;
+    }
+
+    .label_ruta,
+    .label_fecha,
+    .label_pasajeros,
+    .dinamico_ruta,
+    .dinamico_fecha,
+    .dinamico_pasajeros {
+        font-size: 15px;
+    }
+
+    .ciudad,
+    .ciudad_destino {
+        font-size: 22px;
+    }
+
+    .hora,
+    .hora_llegada {
+        font-size: 20px;
+    }
+
+    .clase {
+        font-size: 18px;
+    }
+
+    .btn_seleccionar {
+        font-size: 18px;
+        height: 38px;
+    }
+
+    .lista_corridas {
+        gap: 25px;
+    }
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Reservaciones | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../statics/images/logo.png">
+    <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
     <link rel="stylesheet" href="../statics/css/reservaciones.css">
 </head>
 <body>
@@ -17,12 +17,12 @@
 
     <div class="menu-box">
         <ul class="menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="activea"><a href="#">Reservaciones</a></li>
-            <li><a href="#">Corridas</a></li>
-            <li><a href="#">Rutas</a></li>
-            <li><a href="#">Operadores</a></li>
-            <li><a href="#">Autobuses</a></li>
+            <li><a href="corridas.html">Corridas</a></li>
+            <li><a href="rutas.html">Rutas</a></li>
+            <li><a href="operadores.html">Operadores</a></li>
+            <li><a href="autobuses.html">Autobuses</a></li>
         </ul>
     </div>
 
@@ -35,17 +35,17 @@
 
             <div class="card active-card">
                 <span>Reservaciones Activas</span>
-                <h2>200</h2>
+                <h2>3</h2>
             </div>
 
             <div class="card">
                 <span>Total Reservado Hoy</span>
-                <h2>80</h2>
+                <h2>1</h2>
             </div>
 
             <div class="card">
                 <span>Reservaciones Futuras</span>
-                <h2>120</h2>
+                <h2>2</h2>
             </div>
 
             <div class="filters">
@@ -73,17 +73,86 @@
 
     <div class="main-section">
     <div class="sidebar">
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
+        <button class="side-btn mostrar" id="mostrarBoleto"></button>
     </div>
 
     <div class="content-box">
-        <!-- aquí va la tabla después -->
+        <table>
+            <tr bgcolor="#2f6fed" style="color: white;">
+                <th width="20%">Fecha</th>
+                <th>Corrida</th>
+                <th>Cliente</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Salida</th>
+                <th>Llegada</th>
+                <th>Pasajeros</th>
+                <th>Límite de pago</th>
+            </tr>
+            <tr align="center">
+                <td>26/02/2026</td>
+                <td>1</td>
+                <td>Dalila Gamez</td>
+                <td>Tijuana</td>
+                <td>Hermosillo</td>
+                <td>28/02/2026 9:30</td>
+                <th>29/02/2026 12:30</th>
+                <th>3</th>
+                <th>27/02/2026</th>
+            </tr>
+            <tr align="center">
+                <td>26/02/2026</td>
+                <td>1</td>
+                <td>Carolina Bernal</td>
+                <td>Tijuana</td>
+                <td>Hermosillo</td>
+                <td>28/02/2026 9:30</td>
+                <th>29/02/2026 12:30</th>
+                <th>1</th>
+                <th>27/02/2026</th>
+            </tr>
+            <tr align="center">
+                <td>26/02/2026</td>
+                <td>1</td>
+                <td>Ivan Hernandez Orozco</td>
+                <td>Tijuana</td>
+                <td>Hermosillo</td>
+                <td>28/02/2026 9:30</td>
+                <th>29/02/2026 12:30</th>
+                <th>1</th>
+                <th>27/02/2026</th>
+            </tr>
+        </table>
     </div>
+
 </div>
+
+    <dialog id="dialogo-boleto">
+        <div class="dialog-boleto-container">
+
+            <button class="boleto-flecha boleto-flecha--izq" id="boletoPrev">&#8592;</button>
+
+            <div class="boleto-contenido">
+                <img src="../statics/images/boleto ejemplo.webp" alt="Boleto" class="boleto-img">
+            </div>
+
+            <button class="boleto-flecha boleto-flecha--der" id="boletoNext">&#8594;</button>
+
+        </div>
+
+        <div class="boleto-acciones">
+            <button class="boleto-btn boleto-btn--naranja" id="boletoCerrar">
+                <span>&#10005;</span> Cerrar
+            </button>
+            <button class="boleto-btn boleto-btn--azul" id="boletoReimprimir">
+                <span>&#128438;</span> Reimprimir
+            </button>
+        </div>
+
+    </dialog>
+
+
+<script src="../statics/js/reservaciones.js"></script>
 
 </body>
 </html>

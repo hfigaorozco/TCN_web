@@ -111,6 +111,11 @@ body{
     transform: translateY(-3px);
 }
 
+.icon-btn img{
+    height: 60%;
+    width: 60%;
+}
+
 /* ================= TÍTULO ================= */
 
 .title-row{
@@ -331,4 +336,312 @@ body{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
+}
+
+
+/* ================ DIÁLOGO PERFIL ================== */
+
+#dialogo-perfil {
+    padding: 0;
+    width: 90%;
+    max-width: 360px;
+    min-width: 280px;
+    height: auto;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+
+#dialogo-perfil {
+    top: 40px;        
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 24px 24px 24px;
+    gap: 20px;
+    background: #ffffff;
+}
+
+
+/* ── SECCIÓN SUPERIOR ── */
+
+.dialog-superior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.dialog-titulo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dialog-avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.dialog-nombre {
+    font-size: 17px;
+    font-weight: 600;
+    color: #2f6fed;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ── SECCIÓN INFO ── */
+
+.dialog-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.dialog-info-fila {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dialog-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dialog-valor {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2f6fed;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ── BOTONES ── */
+
+.dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.dialog-btn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.dialog-btn:hover {
+    transform: translateY(-2px);
+}
+
+.dialog-btn:active {
+    transform: translateY(0);
+}
+
+.dialog-btn--azul {
+    background-color: #2f6fed;
+    color: #ffffff;
+}
+
+.dialog-btn--azul:hover {
+    background-color: #1a4db5;
+}
+
+.dialog-btn--naranja {
+    background-color: #FF8600;
+    color: #ffffff;
+}
+
+.dialog-btn--naranja:hover {
+    background-color: #cc6b00;
+}
+
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 480px) {
+    #dialogo-perfil {
+        width: 92%;
+        top: 20px;
+    }
+
+    .dialog-titulo {
+        font-size: 22px;
+    }
+
+    .dialog-avatar {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+
+
+/* ================ DIÁLOGO CAMBIO DE CONTRASEÑA ================== */
+
+#dialogo-contrasena {
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 360px;
+    min-width: 280px;
+    height: auto;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+#dialogo-contrasena::backdrop {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.dialog-contra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 28px 28px 28px;
+    gap: 22px;
+    background: #ffffff;
+}
+
+
+/* ── TÍTULO ── */
+
+.dialog-contra-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+
+/* ── GRUPOS DE INPUT ── */
+
+.dialog-contra-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.dialog-contra-group label {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.dialog-contra-group input {
+    width: 100%;
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 9px;
+    text-align: center;
+    border: 2px solid #FF8600;
+    font-size: 14px;
+    color: #FF8600;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.dialog-contra-group input::placeholder {
+    color: #FF8600;
+    opacity: 0.85;
+}
+
+.dialog-contra-group input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 134, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* ── BOTÓN ── */
+
+.dialog-contra-btn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #2f6fed;
+    color: #ffffff;
+    margin-top: 5px;
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.dialog-contra-btn:hover {
+    background-color: #1a4db5;
+    transform: translateY(-2px);
+}
+
+.dialog-contra-btn:active {
+    transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 480px) {
+    #dialogo-contrasena {
+        width: 92%;
+        top: 20px;
+    }
+
+    .dialog-contra-titulo {
+        font-size: 20px;
+    }
 }
