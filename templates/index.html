@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transportes Cuervo Negro</title>
-    <link rel="icon" type="image/x-icon" href="/statics/images/Logo TCN azul.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/index.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="../statics/images/TCN BLUE.jpg" alt="Logo TCN">
+<!-- ================= NAVBAR ================= -->
+
+<div class="top-nav">
+
+    <div class="logo-box">
+        <img src="../statics/images/logo.png" alt="Logo TCN">
+    </div>
+
+    <div class="menu-box">
+        <ul class="menu">
+            <li class="activea"><a href="#">Inicio</a></li>
+            <li><a href="#">Reservaciones</a></li>
+            <li><a href="#">Corridas</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Operadores</a></li>
+            <li><a href="#">Autobuses</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ================= BOTONES SUPERIORES ================= -->
+
+<div class="action-bar">
+    <button class="primary-btn">Registro de cuentas</button>
+    <button class="primary-btn">Vender boletos</button>
+    <button class="icon-btn">👤</button>
+</div>
+
+<!-- ================= TÍTULO ================= -->
+
+<div class="title-row">
+    <h1 class="title">Dashboard</h1>
+</div>
+
+<!-- ================= SECCIÓN PRINCIPAL ================= -->
+
+<div class="main-section">
+
+    <!-- COLUMNA CORRIDAS -->
+    <div class="section-column">
+
+        <!-- FILTRO ARRIBA DEL CUADRO -->
+        <div class="filter-top">
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Seleccionar fecha</option>
+                    <option>20-01-2026</option>
+                    <option>21-01-2026</option>
+                    <option>22-01-2026</option>
+                </select>
+            </div>
         </div>
 
         <ul class="menu">
@@ -23,6 +72,5 @@
         </ul>
     </nav>
 
-  
 </body>
 </html>

@@ -7,8 +7,9 @@ body {
 /* ================= NAVBAR ================= */
 
 .top-nav {
-    width: 95%;
-    margin: 25px auto;
+    width: 182.4vh;
+    height: auto;
+    margin: 2.4vh auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,29 +20,30 @@ body {
 .logo-box {
     overflow: hidden;
     background: white;
-    padding: 10px 20px 05px 20px;
-    border-radius: 20px;
+    padding: 1vh 1.9vh 0.4vh 1.9vh;
+    border-radius: 2vh;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
-    height: 65px;
+    height: 9vh;
 }
 
-.logo-box {
-    height: 90px;
+.logo-box img{
+    height: 8vh;
+    width: auto;
 }
 
 /* ===== CAJA DEL MENÚ ===== */
 
 .menu-box {
     background: white;
-    padding: 30px 50px;
-    border-radius: 20px;
+    padding: 3vh 5vh;
+    border-radius: 2vh;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .menu {
     list-style: none;
     display: flex;
-    gap: 45px;
+    gap: 4.5vh;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -50,9 +52,9 @@ body {
 .menu li a {
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 20px;
+    font-size: 2vh;
     font-weight: 600;
-    padding: 20px 22px;
+    padding: 2vh 2.2vh;
     border-radius: 20px;
     transition: 0.3s;
 }
@@ -70,15 +72,15 @@ body {
 /* ================= CONTENEDOR ================= */
 
 .container {
-    width: 95%;
+    width: 182.4vh;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
 .title {
-    font-size: 48px;
-    margin: 30px 0;
+    font-size: 4.8vh;
+    margin: 3vh 0;
     font-weight: 600;
 }
 
@@ -87,27 +89,27 @@ body {
 .cards {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 2vh;
     flex-wrap: wrap;
 }
 
 .card {
     background: white;
-    padding: 20px 30px;
+    padding: 2vh 3vh;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    min-width: 180px;
+    min-width: 18vh;
 }
 
 .card span {
     color: #555;
-    font-size: 14px;
+    font-size: 1.4vh;
     font-weight: 500;
 }
 
 .card h2 {
-    margin: 5px 0 0;
-    font-size: 32px;
+    margin: 0.5vh 0 0;
+    font-size: 3.2vh;
     font-weight: 500;
 }
 
@@ -122,70 +124,471 @@ body {
 
 /* ================= FILTROS ================= */
 
-.filter-box {
-    margin-left: auto;
-
+.filter-boxes {
+    padding-left: 15.26%;
+    align-items: right;
+    display: flex;
+    gap: 2.5vh;
 }
 
+.filter-box{
+    margin-left: auto;
+    padding-left: 5vh;
+    height: auto;
+    gap: 1.5vh;
+    display: flex;
+}
+
+.filter-box h2{
+    font-weight: normal;
+    font-size: 2.4vh;
+}
 .filter-box select {
-    padding: 14px 25px;
+    padding: 1.4vh 2.5vh;
     border-radius: 20px;
     border: none;
     background: white;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+    font-size: 2vh;
     outline: none;
     cursor: pointer;
-    min-width: 180px;
+    min-width: 18vh;
     appearance: none;
+    height: auto;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
 .main-section {
-    width: 95%;
-    margin: 40px auto;
+    width: 182.4vh;
+    margin: 4vh auto;
     display: flex;
-    gap: 30px;
+    gap: 3vh;
     align-items: stretch;
 }
 
 /* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 90px;
+    width: 9vh;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2vh;
 }
 
-.side-btn {
-    width: 80px;
-    height: 60px;
-    background: white;
+.side-btn{
+    width: 8vh;
+    height: 6vh;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 3.2vh;
     color: #bbb;
     cursor: pointer;
     transition: 0.3s;
+    vertical-align: middle;
+    border: none;
 }
 
-.side-btn:hover {
-    background: #2f6fed;
-    color: white;
+/* ================= BOTON AGREGAR ================= */
+.agregar{
+    background: white url("../images/agregar.png") no-repeat center;
+}
+
+.agregar:hover {
+    background: #2f6fed url("../images/agregarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON EDITAR ================= */
+.editar {
+    background: white url("../images/editar.png") no-repeat center;
+}
+
+.editar:hover {
+    background: #2f6fed url("../images/editarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON ELIMINAR ================= */
+.eliminar {
+    background: white url("../images/eliminar.png") no-repeat center;
+}
+
+.eliminar:hover {
+    background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON FECHA Y CIUDAD ================= */
+.fechaCiudad {
+    background: white url("../images/calendario.png") no-repeat center;
+}
+
+.fechaCiudad:hover {
+    background: #2f6fed url("../images/calendarioHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON BOLETOS VENDIDOS ================= */
+.boletos {
+    background: white url("../images/boletos.png") no-repeat center;
+}
+
+.boletos:hover {
+    background: #2f6fed url("../images/boletosHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
 }
 
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
     flex: 1;
-    min-height: 500px;
+    min-height: 50vh;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    padding: 3vh;
 }
+
+.content-box table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 1.5vh;
+}
+/* ================= INPUT ================= */
+.input{
+    border-radius: 20px;
+    border: none;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    font-size: 2vh;
+    outline: none;
+    cursor: auto;
+    width: 13vh;
+    height: auto;
+    padding-left: 25px;
+}
+
+/* ================= DIALOG BASE ================= */
+.dialog-base {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    width: 37.04vh;
+    height: 41.67vh;
+}
+
+.dialog-base h3 {
+    font-weight: normal;
+    margin-bottom: 0.5vh;
+}
+
+.dialog-base select,
+.dialog-base input {
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 1.3vh;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 0.3vh;
+    transition: 0.3s;
+}
+
+.dialog-base select:focus,
+.dialog-base input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.dialog-base button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 2vh;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.cajitas {
+    display: flex;
+    gap: 2vh;
+}
+
+/* ================= DIALOG AGREGAR ================= */
+.dialog-agregar select {
+    height: 3.819vh;
+}
+
+.dialog-agregar input {
+    height: 3.0vh;
+    width: 10vh;
+}
+
+/* ================= DIALOG EDITAR ================= */
+.dialog-editar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-editar input {
+    height: 3vh;
+    width: 10vh;
+}
+
+/* ================= DIALOG ELIMINAR ================= */
+.dialog-eliminar{
+    height: fit-content;
+}
+
+.dialog-eliminar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-eliminar input {
+    height: 3vh;
+    width: 15vh;
+}
+
+/* ================= BOTON ACEPTAR Y CANCELAR ================= */
+.btn-aceptar:hover {
+    background: #2f6fed;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #ce3535;
+    color: white;
+}
+.aceptar-cancelar{
+    height: max-content;
+    padding: 7vh 0px 0px 19vh;
+}
+
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+.dialog-fechaCiudad{
+    height: fit-content;
+    width: fit-content;
+}
+
+.titulo-cajitas{
+    gap: 12vh;
+    display: flex;
+}
+
+.tabla-fechaCiudad {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 1.5vh;
+}
+
+.cerrar-fechaCiudad{
+    padding: 5vh 0px 0px 90%;
+    height: auto;
+}
+
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+.titulo-cajitas-boletos{
+    gap: 48%;
+    display: flex;
+}
+
+
+
+/* ================= DIALOG ABRIR ================= 
+.dialog-agregar{
+    background: rgb(255, 255, 255);
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-agregar h3{
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-agregar select:focus,
+.dialog-agregar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.dialog-agregar select{
+    height: 38.19px;
+    border:#555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px; 
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.ruta {
+    width: 100px;
+}
+
+.autobus{
+    width: 182.64px;
+}
+
+.dialog-agregar input {
+    height: 30px;
+    border: #555 solid 1px;
+    border-radius: 10px;
+    width: 100px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.cajitas{
+    display: flex;
+    gap: 20px;
+}
+
+.dialog-agregar button{
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.btn-aceptar:hover{
+    background: #2f6fed;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #ce3535;
+    color: white;
+}
+
+/* ================= DIALOG EDITAR ================= 
+.dialog-editar {
+    background: rgb(255, 255, 255);
+    width: 37.04vh;
+    height: 41.67vh;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-editar h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-editar select {
+    height: 3vh;
+    width: min-content;
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.dialog-editar input {
+    height: 3vh;
+    width: 10vh;
+    border: #555 solid 0.5px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+    transition: 0.3s;
+}
+
+.dialog-editar button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.dialog-editar select:focus,
+.dialog-editar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+
+/* ================= DIALOG ELIMINAR ================= 
+.dialog-eliminar {
+    background: rgb(255, 255, 255);
+    width: 37.04vh;
+    height: 41.67vh;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-eliminar h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.dialog-eliminar select {
+    height: 3vh;
+    width: min-content;
+    border: #555 solid 1px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+}
+
+.dialog-eliminar input {
+    height: 3vh;
+    width: 10vh;
+    border: #555 solid 0.5px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 03px;
+    transition: 0.3s;
+}
+
+.dialog-eliminar button {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-size: 20px;
+    color: #bbb;
+    font-weight: 500;
+    border: 0.2px;
+    transition: 0.3s;
+}
+
+.dialog-eliminar select:focus,
+.dialog-eliminar input:focus {
+    border-color: #1f5fa9;
+    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+*/
