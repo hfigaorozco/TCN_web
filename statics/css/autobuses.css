@@ -24,14 +24,14 @@ body{
 }
 
 .logo-box img{
-    height: 80px;
+    height: clamp(50px, 6vw, 80px);
 }
 
 /* ===== CAJA DEL MENÚ ===== */
 
 .menu-box{
     background: white;
-    padding: 30px 50px;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -48,7 +48,7 @@ body{
 .menu li a{
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 20px;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 600;
     padding: 20px 22px;
     border-radius: 20px;
@@ -178,7 +178,8 @@ body{
     width: 90px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    align-items: center;
 }
 
 .side-btn{
@@ -201,6 +202,35 @@ body{
     color: white;
 }
 
+.sidebar span {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ================= BOTON AGREGAR ================= */
+
+.agregar{
+    background: white url("../images/agregar.png") no-repeat center;
+    border: none;
+}
+
+.agregar:hover {
+    background: #2f6fed url("../images/agregarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
+/* ================= BOTON ELIMINAR ================= */
+
+.eliminar {
+    background: white url("../images/eliminar.png") no-repeat center;
+}
+
+.eliminar:hover {
+    background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box{
@@ -210,4 +240,483 @@ body{
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
     padding: 30px;
+}
+
+.content-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+
+.content-box table tr {
+    transition: background-color 0.8s ease;
+}
+
+.content-box table tr:hover {
+    background-color: #eef3ff;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1400px) {
+    .logo-box img { height: 60px; }
+    .menu li a { font-size: 16px; padding: 12px 15px; }
+    .menu-box { padding: 20px 30px; }
+}
+
+
+/* ================= ESTILOS COMPARTIDOS DIÁLOGOS ================= */
+
+#dialogo-agregar-bus,
+#dialogo-eliminar-bus,
+#dialogo-agregar-marca,
+#dialogo-agregar-modelo {
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    width: 90%;
+    min-width: 280px;
+    height: fit-content;      /* ← solo ocupa lo que necesita */
+    max-height: 90vh;
+    overflow-y: auto;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+#dialogo-agregar-bus::backdrop,
+#dialogo-eliminar-bus::backdrop,
+#dialogo-agregar-marca::backdrop,
+#dialogo-agregar-modelo::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Anchos individuales */
+#dialogo-agregar-bus    { max-width: 420px; }
+#dialogo-eliminar-bus   { max-width: 400px; }
+#dialogo-agregar-marca  { max-width: 360px; }
+#dialogo-agregar-modelo { max-width: 360px; }
+
+
+/* ================= DIÁLOGO: REGISTRAR AUTOBÚS ================= */
+
+.dialog-bus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 28px 24px 28px;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+.dialog-bus-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dialog-bus-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dialog-bus-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 14px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.dialog-bus-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: right;
+}
+
+.dialog-bus-group input,
+.dialog-bus-group select {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 2px solid #1061C4;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+    appearance: auto;
+    box-sizing: border-box;
+}
+
+.dialog-bus-group input::placeholder { color: #999; }
+
+.dialog-bus-group input:focus,
+.dialog-bus-group select:focus {
+    box-shadow: 0 0 0 3px rgba(16, 97, 196, 0.18);
+}
+
+.dialog-bus-btn {
+    margin-top: 16px;
+    align-self: center;
+    width: 160px;
+    height: 44px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1061C4;
+    color: #ffffff;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-bus-btn:hover { background-color: #07398a; transform: translateY(-2px); }
+.dialog-bus-btn:active { transform: translateY(0); }
+
+
+/* ================= DIÁLOGO: BAJA DE AUTOBÚS ================= */
+
+.dialog-baja-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 28px 24px 28px;
+    background: #ffffff;
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.dialog-baja-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.dialog-baja-aviso {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: #f5f7ff;
+    border-radius: 8px;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dialog-baja-icono {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.dialog-baja-aviso p {
+    font-size: 13px;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dialog-baja-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dialog-baja-group {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.dialog-baja-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: right;
+}
+
+.dialog-baja-group select {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 2px solid #1061C4;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.dialog-baja-group select:focus {
+    box-shadow: 0 0 0 3px rgba(16, 97, 196, 0.18);
+}
+
+.dialog-baja-btn {
+    align-self: center;
+    width: 160px;
+    height: 44px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #FF8600;
+    color: #ffffff;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-baja-btn:hover { background-color: #cc6b00; transform: translateY(-2px); }
+.dialog-baja-btn:active { transform: translateY(0); }
+
+
+/* ================= DIÁLOGO: NUEVA MARCA ================= */
+
+.dialog-marca-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 28px 24px 28px;
+    background: #ffffff;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+.dialog-marca-logo {
+    width: 120px;
+    height: auto;
+    align-self: center;
+}
+
+.dialog-marca-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.dialog-marca-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dialog-marca-group {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.dialog-marca-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: right;
+}
+
+.dialog-marca-group input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 2px solid #1061C4;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.dialog-marca-group input::placeholder { color: #1061C4; opacity: 0.8; }
+.dialog-marca-group input:focus { box-shadow: 0 0 0 3px rgba(16, 97, 196, 0.18); }
+
+.dialog-marca-btn {
+    align-self: center;
+    margin-top: 6px;
+    width: 160px;
+    height: 44px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1061C4;
+    color: #ffffff;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-marca-btn:hover { background-color: #07398a; transform: translateY(-2px); }
+.dialog-marca-btn:active { transform: translateY(0); }
+
+
+/* ================= DIÁLOGO: NUEVO MODELO ================= */
+
+.dialog-modelo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 28px 24px 28px;
+    background: #ffffff;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+.dialog-modelo-logo {
+    width: 120px;
+    height: auto;
+    align-self: center;
+}
+
+.dialog-modelo-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.dialog-modelo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dialog-modelo-group {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.dialog-modelo-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: right;
+}
+
+.dialog-modelo-group input,
+.dialog-modelo-group select {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 2px solid #1061C4;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+    appearance: auto;
+    box-sizing: border-box;
+}
+
+.dialog-modelo-group input::placeholder { color: #1061C4; opacity: 0.8; }
+
+.dialog-modelo-group input:focus,
+.dialog-modelo-group select:focus {
+    box-shadow: 0 0 0 3px rgba(16, 97, 196, 0.18);
+}
+
+.dialog-modelo-btn {
+    align-self: center;
+    margin-top: 6px;
+    width: 160px;
+    height: 44px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1061C4;
+    color: #ffffff;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-modelo-btn:hover { background-color: #07398a; transform: translateY(-2px); }
+.dialog-modelo-btn:active { transform: translateY(0); }
+
+
+/* ================= RESPONSIVE DIÁLOGOS ================= */
+
+@media (max-width: 480px) {
+    #dialogo-agregar-bus,
+    #dialogo-eliminar-bus,
+    #dialogo-agregar-marca,
+    #dialogo-agregar-modelo {
+        width: 95%;
+        top: 20px;
+    }
+
+    .dialog-bus-group,
+    .dialog-baja-group,
+    .dialog-marca-group,
+    .dialog-modelo-group {
+        grid-template-columns: 75px 1fr;
+    }
 }

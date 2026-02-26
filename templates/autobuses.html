@@ -11,22 +11,22 @@
 
     <div class="top-nav">
 
-    <div class="logo-box">
-        <img src="../statics/images/logo.png" alt="Logo TCN">
-    </div>
+        <div class="logo-box">
+            <img src="../statics/images/logo.png" alt="Logo TCN">
+        </div>
 
-    <div class="menu-box">
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Reservaciones</a></li>
-            <li><a href="#">Corridas</a></li>
-            <li><a href="#">Rutas</a></li>
-            <li><a href="#">Operadores</a></li>
-            <li class="activea"><a href="#">Autobuses</a></li>
-        </ul>
-    </div>
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reservaciones.html">Reservaciones</a></li>
+                <li><a href="corridas.html">Corridas</a></li>
+                <li><a href="rutas.html">Rutas</a></li>
+                <li><a href="operadores.html">Operadores</a></li>
+                <li class="activea"><a href="#">Autobuses</a></li>
+            </ul>
+        </div>
 
-</div>
+    </div>
 
     <div class="container">
         <h1 class="title">Autobuses</h1>
@@ -35,12 +35,12 @@
 
             <div class="card active-card">
                 <span>Autobuses Activos</span>
-                <h2>12</h2>
+                <h2>5</h2>
             </div>
 
             <div class="card">
                 <span>Disponibles</span>
-                <h2>8</h2>
+                <h2>1</h2>
             </div>
 
             <div class="card">
@@ -66,18 +66,233 @@
     </div>
 
     <div class="main-section">
-    <div class="sidebar">
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
-        <div class="side-btn">+</div>
+
+        <div class="sidebar">
+            <button class="side-btn agregar" id="abrirAgregar"></button>
+            <div class="side-btn eliminar" id="abrirEliminar"></div>
+            <button class="side-btn agregar marca" id="abrirAgregarMarca"></button>
+            <span>Marca</span>
+            <button class="side-btn agregar modelo" id="abrirAgregarModelo"></button>
+            <span>Modelo</span>
+        </div>
+
+        <div class="content-box">
+            <table>
+                <tr bgcolor="#2f6fed" style="color: white;">
+                    <th width="20%">Número</th>
+                    <th>Matrícula</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Asientos</th>
+                </tr>
+                <tr align="center">
+                    <td>164</td>
+                    <td>TIJ980</td>
+                    <td>Volvo</td>
+                    <td>9800</td>
+                    <td>44</td>
+                </tr>
+                <tr align="center">
+                    <td>180</td>
+                    <td>TUX897</td>
+                    <td>Volvo</td>
+                    <td>9800</td>
+                    <td>44</td>
+                </tr>
+                <tr align="center">
+                    <td>510</td>
+                    <td>VO98IU</td>
+                    <td>Irizar</td>
+                    <td>i8s</td>
+                    <td>36</td>
+                </tr>
+                <tr align="center">
+                    <td>511</td>
+                    <td>GH76Y8</td>
+                    <td>Irizar</td>
+                    <td>i8s</td>
+                    <td>36</td>
+                </tr>
+                <tr align="center">
+                    <td>514</td>
+                    <td>TYH765</td>
+                    <td>Irizar</td>
+                    <td>i6</td>
+                    <td>36</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
-    <div class="content-box">
-        <!-- aquí va la tabla después -->
-    </div>
-</div>
+    <!--  DIÁLOGO REGISTRAR AUTOBÚS  -->
+    <dialog id="dialogo-agregar-bus">
+        <div class="dialog-bus-container">
+
+            <h1 class="dialog-bus-titulo">Registrar autobús</h1>
+
+            <form method="dialog" novalidate>
+                <div class="dialog-bus-form">
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-numero">Número:</label>
+                        <input type="text" id="bus-numero" name="numero" maxlength="3" placeholder="Digite el número">
+                    </div>
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-matricula">Matrícula:</label>
+                        <input type="text" id="bus-matricula" name="matricula" maxlength="10" placeholder="Ingrese la matrícula">
+                    </div>
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-marca">Marca:</label>
+                        <select id="bus-marca" name="marca">
+                            <option value="" disabled selected>Seleccionar marca</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="irizar">Irizar</option>
+                        </select>
+                    </div>
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-modelo">Modelo:</label>
+                        <select id="bus-modelo" name="modelo">
+                            <option value="" disabled selected>Seleccionar modelo</option>
+                            <option value="9800">9800</option>
+                            <option value="i8s">i8s</option>
+                            <option value="i6">i6</option>
+                        </select>
+                    </div>
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-servicio">Tipo servicio:</label>
+                        <select id="bus-servicio" name="servicio">
+                            <option value="" disabled selected>Tipo de servicio</option>
+                            <option value="plus">Plus</option>
+                            <option value="platino">Platino</option>
+                        </select>
+                    </div>
+
+                    <div class="dialog-bus-group">
+                        <label for="bus-wifi">Clave WIFI:</label>
+                        <input type="text" id="bus-wifi" name="wifi" maxlength="50" placeholder="Ingrese la clave WIFI">
+                    </div>
+
+                    <button type="submit" class="dialog-bus-btn">Registrar</button>
+
+                </div>
+            </form>
+
+        </div>
+    </dialog>
+
+
+    <!-- Dialogo de baja autobus -->
+
+    <dialog id="dialogo-eliminar-bus">
+        <div class="dialog-baja-container">
+
+            <h1 class="dialog-baja-titulo">Baja de autobús</h1>
+
+            <div class="dialog-baja-aviso">
+                <img src="../statics/images/advertencia.png" alt="Advertencia" class="dialog-baja-icono">
+                <p>Al darse de baja un autobús este ya no aparecerá en las consultas del sistema</p>
+            </div>
+
+            <form method="dialog" novalidate>
+                <div class="dialog-baja-form">
+
+                    <div class="dialog-baja-group">
+                        <label for="baja-numero">Autobús:</label>
+                        <select id="baja-numero" name="numero">
+                            <option value="" disabled selected>Seleccionar número</option>
+                            <option value="164">164</option>
+                            <option value="180">180</option>
+                            <option value="510">510</option>
+                            <option value="511">511</option>
+                            <option value="514">514</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="dialog-baja-btn">Confirmar baja</button>
+
+                </div>
+            </form>
+
+        </div>
+    </dialog>
+
+
+    <!-- Dialogo marca-->
+
+    <dialog id="dialogo-agregar-marca">
+        <div class="dialog-marca-container">
+
+            <img src="../statics/images/logo.png" alt="Logo TCN" class="dialog-marca-logo">
+
+            <h1 class="dialog-marca-titulo">Nueva marca</h1>
+
+            <form method="dialog" novalidate>
+                <div class="dialog-marca-form">
+
+                    <div class="dialog-marca-group">
+                        <label for="marca-codigo">Código:</label>
+                        <input type="text" id="marca-codigo" name="codigo" maxlength="5" placeholder="Máximo 5 caracteres">
+                    </div>
+
+                    <div class="dialog-marca-group">
+                        <label for="marca-nombre">Nombre:</label>
+                        <input type="text" id="marca-nombre" name="nombre" maxlength="50" placeholder="Nombre de la marca">
+                    </div>
+
+                    <button type="submit" class="dialog-marca-btn">Registrar</button>
+
+                </div>
+            </form>
+
+        </div>
+    </dialog>
+
+
+    <!-- Dialogo agregar modelo -->
+
+    <dialog id="dialogo-agregar-modelo">
+        <div class="dialog-modelo-container">
+
+            <img src="../statics/images/logo.png" alt="Logo TCN" class="dialog-modelo-logo">
+
+            <h1 class="dialog-modelo-titulo">Nuevo modelo</h1>
+
+            <form method="dialog" novalidate>
+                <div class="dialog-modelo-form">
+
+                    <div class="dialog-modelo-group">
+                        <label for="modelo-codigo">Código:</label>
+                        <input type="text" id="modelo-codigo" name="codigo" maxlength="5" placeholder="Máximo 5 caracteres">
+                    </div>
+
+                    <div class="dialog-modelo-group">
+                        <label for="modelo-nombre">Nombre:</label>
+                        <input type="text" id="modelo-nombre" name="nombre" maxlength="50" placeholder="Nombre de la marca">
+                    </div>
+
+                    <div class="dialog-modelo-group">
+                        <label for="modelo-marca">Marca:</label>
+                        <select id="modelo-marca" name="marca">
+                            <option value="" disabled selected>Seleccionar marca</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="irizar">Irizar</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="dialog-modelo-btn">Registrar</button>
+
+                </div>
+            </form>
+
+        </div>
+    </dialog>
+
+    <script src="../statics/js/autobuses.js"></script>
 
 </body>
 </html>

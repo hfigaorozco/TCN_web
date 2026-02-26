@@ -18,20 +18,20 @@ body{
 
 .logo-box{
     background: white;
-    padding: 31px 60px;
+    padding: 20px 40px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
 .logo-box img{
-    height: 65px;
+    height: clamp(50px, 6vw, 80px);
 }
 
 /* ===== CAJA DEL MENÚ ===== */
 
 .menu-box{
     background: white;
-    padding: 30px 50px;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -48,7 +48,7 @@ body{
 .menu li a{
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 20px;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 600;
     padding: 20px 22px;
     border-radius: 20px;
@@ -146,13 +146,12 @@ body{
     align-items: stretch;
 }
 
-/* ================= SIDEBAR ================= */
-
 .sidebar{
     width: 90px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    align-items: center;
 }
 
 .side-btn{
@@ -175,6 +174,25 @@ body{
     color: white;
 }
 
+.sidebar span {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ================= BOTON BOLETOS ================= */
+
+.mostrar{
+    background: rgb(255, 255, 255) url("../images/boletos gris.png") no-repeat center;
+    background-size: 4.3vh 4.3vh;
+    border: none;
+}
+
+.mostrar:hover {
+    background: #2f6fed url("../images/boletosHover.png") no-repeat center;
+    background-size: 3.2vh 3.2vh;
+}
+
 /* ================= CAJA GRANDE ================= */
 
 .content-box{
@@ -183,5 +201,169 @@ body{
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
-    padding: 30px;
+    padding: 20px;
+}
+
+.content-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.content-box table tr {
+    transition: background-color 0.8s ease;
+}
+
+.content-box table tr:hover {
+    background-color: #eef3ff;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1400px) {
+    .logo-box img { height: 60px; }
+    .menu li a { font-size: 16px; padding: 12px 15px; }
+    .menu-box { padding: 20px 30px; }
+}
+
+/* ================= DIÁLOGO VISOR DE BOLETO ================= */
+
+#dialogo-boleto {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: visible;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    box-shadow: none;
+}
+
+#dialogo-boleto::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* ── CONTENEDOR PRINCIPAL (flechas + boleto) ── */
+
+.dialog-boleto-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ── FLECHAS ── */
+
+.boleto-flecha {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    border: none;
+    background-color: #2b64e7;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boleto-flecha:hover {
+    background-color: #09135a;
+    transform: scale(1.08);
+}
+
+.boleto-flecha:active {
+    transform: scale(1.0);
+}
+
+/* ── IMAGEN DEL BOLETO ── */
+
+.boleto-contenido {
+    border: 3px solid #2b64e7;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.boleto-img {
+    display: block;
+    width: 340px;
+    max-width: 70vw;
+    height: auto;
+}
+
+/* ── BOTONES INFERIORES ── */
+
+.boleto-acciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.boleto-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 160px;
+    height: 46px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.boleto-btn:hover { transform: translateY(-2px); }
+.boleto-btn:active { transform: translateY(0); }
+
+.boleto-btn--naranja {
+    background-color: #FF8600;
+    color: #ffffff;
+}
+
+.boleto-btn--naranja:hover { background-color: #cc6b00; }
+
+.boleto-btn--azul {
+    background-color: #2b64e7;
+    color: #ffffff;
+}
+
+.boleto-btn--azul:hover { background-color: #09135a; }
+
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 600px) {
+    .boleto-flecha {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .boleto-img {
+        width: 260px;
+    }
+
+    .boleto-btn {
+        width: 130px;
+        font-size: 14px;
+    }
 }
