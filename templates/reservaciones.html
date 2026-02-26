@@ -10,23 +10,21 @@
 <body>
 
     <div class="top-nav">
-
-    <div class="logo-box">
-        <img src="../statics/images/logo.png" alt="Logo TCN">
+        <div class="logo-box">
+            <img src="../statics/images/logo.png" alt="Logo TCN">
+        </div>
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="activea"><a href="#">Reservaciones</a></li>
+                <li><a href="corridas.html">Corridas</a></li>
+                <li><a href="rutas.html">Rutas</a></li>
+                <li><a href="operadores.html">Operadores</a></li>
+                <li><a href="autobuses.html">Autobuses</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div class="menu-box">
-        <ul class="menu">
-            <li><a href="index.html">Home</a></li>
-            <li class="activea"><a href="#">Reservaciones</a></li>
-            <li><a href="corridas.html">Corridas</a></li>
-            <li><a href="rutas.html">Rutas</a></li>
-            <li><a href="operadores.html">Operadores</a></li>
-            <li><a href="autobuses.html">Autobuses</a></li>
-        </ul>
-    </div>
-
-</div>
 
     <div class="container">
         <h1 class="title">Reservaciones</h1>
@@ -34,112 +32,109 @@
         <div class="cards">
 
             <div class="card active-card">
-                <span>Reservaciones Activas</span>
-                <h2>3</h2>
+                <span>Reservaciones activas</span>
+                <h2>200</h2>
             </div>
 
             <div class="card">
-                <span>Total Reservado Hoy</span>
-                <h2>1</h2>
+                <span>Total reservado hoy</span>
+                <h2>80</h2>
             </div>
 
             <div class="card">
-                <span>Reservaciones Futuras</span>
-                <h2>2</h2>
+                <span>Reservaciones futuras</span>
+                <h2>120</h2>
             </div>
 
-            <div class="filters">
-
-                <div class="filter-item">
-                    <label class="text" for="buscar_fecha">Fecha:</label>
-                    <input type="date" id="buscar_fecha">
-                </div>
-
-                <div class="filter-item">
-                    <label class="text" for="buscar_numero">Número de reservación:</label>
-                    <input type="text" id="buscar_numero" placeholder="Ingresa el número de la reservación">
-                </div>
-
-                <div class="filter-item">
-                    <label class="text" for="buscar_nombre">Buscar por nombre:</label>
-                    <input type="text" id="buscar_nombre" placeholder="Nombre de pasajero">
-                </div>
-
+            <div class="filter-box filter-box--mediano">
+                <label for="filtro-fecha">Fecha:</label>
+                <input type="date" id="filtro-fecha">
             </div>
 
+            <div class="filter-box filter-box--corto">
+                <label for="filtro-numero" >Número:</label>
+                <input type="number" id="filtro-numero" placeholder="Reservación" min="1">
+            </div>
+
+            <div class="filter-box">
+                <label for="filtro-pasajero">Pasajero:</label>
+                <input type="text" id="filtro-pasajero" placeholder="Nombre de pasajero">
+            </div>
 
         </div>
     </div>
 
+    <!-- SECCION PRINCIPAL -->
     <div class="main-section">
-    <div class="sidebar">
-        <button class="side-btn mostrar" id="mostrarBoleto"></button>
+
+        <div class="sidebar">
+            <button class="side-btn mostrar" id="mostrarBoleto"></button>
+        </div>
+
+        <div class="content-box">
+            <table>
+                <thead>
+                    <tr bgcolor="#2f6fed" style="color: white;">
+                        <th>Fecha</th>
+                        <th>Corrida</th>
+                        <th>Cliente</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Salida</th>
+                        <th>Llegada</th>
+                        <th>Pasajeros</th>
+                        <th>Limite de pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>26/02/2026</td>
+                        <td>1</td>
+                        <td>Dalila Gamez</td>
+                        <td>Tijuana</td>
+                        <td>Hermosillo</td>
+                        <td>28/02/2026 9:30</td>
+                        <td>29/02/2026 12:30</td>
+                        <td>3</td>
+                        <td>27/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>26/02/2026</td>
+                        <td>1</td>
+                        <td>Carolina Bernal</td>
+                        <td>Tijuana</td>
+                        <td>Hermosillo</td>
+                        <td>28/02/2026 9:30</td>
+                        <td>29/02/2026 12:30</td>
+                        <td>1</td>
+                        <td>27/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>26/02/2026</td>
+                        <td>1</td>
+                        <td>Ivan Hernandez Orozco</td>
+                        <td>Tijuana</td>
+                        <td>Hermosillo</td>
+                        <td>28/02/2026 9:30</td>
+                        <td>29/02/2026 12:30</td>
+                        <td>1</td>
+                        <td>27/02/2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
-    <div class="content-box">
-        <table>
-            <tr bgcolor="#2f6fed" style="color: white;">
-                <th width="20%">Fecha</th>
-                <th>Corrida</th>
-                <th>Cliente</th>
-                <th>Origen</th>
-                <th>Destino</th>
-                <th>Salida</th>
-                <th>Llegada</th>
-                <th>Pasajeros</th>
-                <th>Límite de pago</th>
-            </tr>
-            <tr align="center">
-                <td>26/02/2026</td>
-                <td>1</td>
-                <td>Dalila Gamez</td>
-                <td>Tijuana</td>
-                <td>Hermosillo</td>
-                <td>28/02/2026 9:30</td>
-                <th>29/02/2026 12:30</th>
-                <th>3</th>
-                <th>27/02/2026</th>
-            </tr>
-            <tr align="center">
-                <td>26/02/2026</td>
-                <td>1</td>
-                <td>Carolina Bernal</td>
-                <td>Tijuana</td>
-                <td>Hermosillo</td>
-                <td>28/02/2026 9:30</td>
-                <th>29/02/2026 12:30</th>
-                <th>1</th>
-                <th>27/02/2026</th>
-            </tr>
-            <tr align="center">
-                <td>26/02/2026</td>
-                <td>1</td>
-                <td>Ivan Hernandez Orozco</td>
-                <td>Tijuana</td>
-                <td>Hermosillo</td>
-                <td>28/02/2026 9:30</td>
-                <th>29/02/2026 12:30</th>
-                <th>1</th>
-                <th>27/02/2026</th>
-            </tr>
-        </table>
-    </div>
-
-</div>
-
+    <!-- DIALOGO BOLETO -->
     <dialog id="dialogo-boleto">
         <div class="dialog-boleto-container">
-
-            <button class="boleto-flecha boleto-flecha--izq" id="boletoPrev">&#8592;</button>
-
+            <button class="boleto-flecha" id="boletoPrev">&#8592;</button>
             <div class="boleto-contenido">
                 <img src="../statics/images/boleto ejemplo.webp" alt="Boleto" class="boleto-img">
             </div>
-
-            <button class="boleto-flecha boleto-flecha--der" id="boletoNext">&#8594;</button>
-
+            <button class="boleto-flecha" id="boletoNext">&#8594;</button>
         </div>
-
         <div class="boleto-acciones">
             <button class="boleto-btn boleto-btn--naranja" id="boletoCerrar">
                 <span>&#10005;</span> Cerrar
@@ -148,11 +143,9 @@
                 <span>&#128438;</span> Reimprimir
             </button>
         </div>
-
     </dialog>
 
-
-<script src="../statics/js/reservaciones.js"></script>
+    <script src="../statics/js/reservaciones.js"></script>
 
 </body>
 </html>

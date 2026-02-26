@@ -1,4 +1,4 @@
-body{
+body {
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -6,7 +6,7 @@ body{
 
 /* ================= NAVBAR ================= */
 
-.top-nav{
+.top-nav {
     width: 95%;
     margin: 25px auto;
     display: flex;
@@ -14,29 +14,25 @@ body{
     align-items: center;
 }
 
-/* ===== CAJA DEL LOGO ===== */
-
-.logo-box{
+.logo-box {
     background: white;
     padding: 20px 40px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
-.logo-box img{
+.logo-box img {
     height: clamp(50px, 6vw, 80px);
 }
 
-/* ===== CAJA DEL MENÚ ===== */
-
-.menu-box{
+.menu-box {
     background: white;
     padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
-.menu{
+.menu {
     list-style: none;
     display: flex;
     gap: 45px;
@@ -45,7 +41,7 @@ body{
     align-items: center;
 }
 
-.menu li a{
+.menu li a {
     text-decoration: none;
     color: #9a9a9a;
     font-size: clamp(14px, 1.2vw, 20px);
@@ -55,90 +51,118 @@ body{
     transition: 0.3s;
 }
 
-.menu li.activea a{
+.menu li.activea a {
     background: #2f6fed;
     color: white;
 }
 
-.menu li a:hover{
+.menu li a:hover {
     background: #e8eefc;
     color: #2f6fed;
 }
 
 /* ================= CONTENEDOR ================= */
 
-.container{
+.container {
     width: 95%;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
-.title{
+.title {
     font-size: 48px;
     margin: 30px 0;
     font-weight: 600;
 }
 
-/* ================= CARDS ================= */
+/* ================= CARDS Y FILTROS EN ROW ================= */
 
-.cards{
+.cards {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.card{
+.card {
     background: white;
     padding: 20px 30px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    min-width: 180px;
+    min-width: 160px;
+    text-align: center;
 }
 
-.card span{
+.card span {
     color: #555;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 }
 
-.card h2{
+.card h2 {
     margin: 5px 0 0;
     font-size: 32px;
     font-weight: 500;
 }
 
-.active-card{
+.active-card {
     background-color: #2f6fed;
 }
 
 .active-card span,
-.active-card h2{
+.active-card h2 {
     color: white;
 }
 
 /* ================= FILTROS ================= */
 
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
-.filter-item label {
+.filter-box label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+}
+
+.filter-box--corto input {
+    min-width: unset !important;
+    width: 180px !important;
+}
+
+.filter-box--mediano input {
+    min-width: unset !important;
+    width: 180px !important;
+}
+
+.filter-box input {
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
     font-size: 20px;
-    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    min-width: 380px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.filter-item input {
-    background-color: #ffffff;
-    border-radius: 6px;              
-    border: 1px solid #ddd;          
-    outline: 2px solid #e0e0e0;     
-    padding: 8px 12px;
+.filter-box input:focus {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
 }
-
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
-.main-section{
+.main-section {
     width: 95%;
     margin: 40px auto;
     display: flex;
@@ -146,7 +170,9 @@ body{
     align-items: stretch;
 }
 
-.sidebar{
+/* ================= SIDEBAR ================= */
+
+.sidebar {
     width: 90px;
     display: flex;
     flex-direction: column;
@@ -154,7 +180,7 @@ body{
     align-items: center;
 }
 
-.side-btn{
+.side-btn {
     width: 80px;
     height: 60px;
     background: white;
@@ -163,29 +189,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    color: #bbb;
     cursor: pointer;
     transition: 0.3s;
-}
-
-.side-btn:hover{
-    background: #2f6fed;
-    color: white;
-}
-
-.sidebar span {
-    margin: 0;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* ================= BOTON BOLETOS ================= */
-
-.mostrar{
-    background: rgb(255, 255, 255) url("../images/boletos gris.png") no-repeat center;
-    background-size: 4.3vh 4.3vh;
     border: none;
+}
+
+.side-btn:hover {
+    background: #2f6fed;
+}
+
+.mostrar {
+    background: white url("../images/boletos gris.png") no-repeat center;
+    background-size: 4.3vh 4.3vh;
 }
 
 .mostrar:hover {
@@ -193,31 +208,41 @@ body{
     background-size: 3.2vh 3.2vh;
 }
 
-/* ================= CAJA GRANDE ================= */
+/* ================= TABLA ================= */
 
-.content-box{
+.content-box {
     flex: 1;
     min-height: 500px;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
     padding: 20px;
+    overflow-x: auto;
 }
 
 .content-box table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 15px;
+    font-size: 18px;
 }
 
-.content-box table tr {
-    transition: background-color 0.8s ease;
+.content-box table th {
+    padding: 12px 16px;
+    text-align: center;
 }
 
-.content-box table tr:hover {
+.content-box table td {
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.content-box table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.content-box table tbody tr:hover {
     background-color: #eef3ff;
     cursor: pointer;
-    transform: translateY(2px);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -228,7 +253,13 @@ body{
     .menu-box { padding: 20px 30px; }
 }
 
-/* ================= DIÁLOGO VISOR DE BOLETO ================= */
+@media (max-width: 900px) {
+    .cards { gap: 12px; }
+    .filter-box input { min-width: 140px; }
+}
+
+
+/* ================= DIALOGO BOLETO ================= */
 
 #dialogo-boleto {
     padding: 0;
@@ -252,16 +283,12 @@ body{
     background: rgba(0, 0, 0, 0.55);
 }
 
-/* ── CONTENEDOR PRINCIPAL (flechas + boleto) ── */
-
 .dialog-boleto-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
 }
-
-/* ── FLECHAS ── */
 
 .boleto-flecha {
     width: 52px;
@@ -289,8 +316,6 @@ body{
     transform: scale(1.0);
 }
 
-/* ── IMAGEN DEL BOLETO ── */
-
 .boleto-contenido {
     border: 3px solid #2b64e7;
     border-radius: 16px;
@@ -304,8 +329,6 @@ body{
     max-width: 70vw;
     height: auto;
 }
-
-/* ── BOTONES INFERIORES ── */
 
 .boleto-acciones {
     display: flex;
@@ -348,22 +371,8 @@ body{
 
 .boleto-btn--azul:hover { background-color: #09135a; }
 
-
-/* ── RESPONSIVE ── */
-
 @media (max-width: 600px) {
-    .boleto-flecha {
-        width: 38px;
-        height: 38px;
-        font-size: 16px;
-    }
-
-    .boleto-img {
-        width: 260px;
-    }
-
-    .boleto-btn {
-        width: 130px;
-        font-size: 14px;
-    }
+    .boleto-flecha { width: 38px; height: 38px; font-size: 16px; }
+    .boleto-img { width: 260px; }
+    .boleto-btn { width: 130px; font-size: 14px; }
 }
