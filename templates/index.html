@@ -35,7 +35,9 @@
 <div class="action-bar">
     <button class="primary-btn">Registro de cuentas</button>
     <button class="primary-btn">Vender boletos</button>
-    <button class="icon-btn">👤</button>
+    <button class="icon-btn">
+        <img src="../statics/images/usuario blanco.png" alt="Logo Usuarios">
+    </button>
 </div>
 
 <!-- ================= TÍTULO ================= -->
@@ -90,22 +92,22 @@
                 <tbody>
                     <tr>
                         <td>08:30</td>
-                        <td>CDMX</td>
-                        <td>CDMX</td>
+                        <td>Tijuana</td>
+                        <td>Tijuana</td>
                         <td><span class="status disponible">Disponible</span></td>
                         <td>10</td>
                     </tr>
                     <tr>
                         <td>10:00</td>
-                        <td>Puebla</td>
-                        <td>CDMX</td>
+                        <td>Hermosillo</td>
+                        <td>Tijuana</td>
                         <td><span class="status disponible">Disponible</span></td>
                         <td>2</td>
                     </tr>
                     <tr>
                         <td>12:30</td>
-                        <td>Querétaro</td>
-                        <td>CDMX</td>
+                        <td>Tijuana</td>
+                        <td>Hermosillo</td>
                         <td><span class="status finalizada">Finalizada</span></td>
                         <td>0</td>
                     </tr>
@@ -140,7 +142,7 @@
                 <tr>
                     <td>15</td>
                     <td>Ana López</td>
-                    <td>Estudiante</td>
+                    <td>Normal</td>
                     <td><span class="status pendiente">Pendiente</span></td>
                 </tr>
             </tbody>
@@ -155,9 +157,9 @@
 <div class="detail-section">
     <div class="detail-box">
         <h3>Detalle de Corrida</h3>
-        <p><strong>Autobús:</strong> A-23</p>
+        <p><strong>Autobús:</strong> 183</p>
         <p><strong>Conductor:</strong> Carlos Ramírez</p>
-        <p><strong>Ruta:</strong> CDMX → Puebla</p>
+        <p><strong>Ruta:</strong> TIjuana → Hermosillo</p>
         <p><strong>Salida:</strong> 08:30</p>
 
         <div class="progress-bar">
@@ -166,6 +168,63 @@
         <span>Ocupación 70%</span>
     </div>
 </div>
+
+<dialog id="dialogo-perfil">
+    <div class="dialog-container">
+
+        <div class="dialog-superior">
+            <h1 class="dialog-titulo">Perfil</h1>
+            <img src="../statics/images/usuario.png" alt="Icono de usuario" class="dialog-avatar">
+            <p class="dialog-nombre" id="usuario">Héctor Armando Figueroa</p>
+        </div>
+
+        <div class="dialog-info">
+            <div class="dialog-info-fila">
+                <span class="dialog-label">Rol:</span>
+                <span class="dialog-valor" id="rol">Administrador</span>
+            </div>
+            <div class="dialog-info-fila">
+                <span class="dialog-label">Teléfono:</span>
+                <span class="dialog-valor" id="telefono">664-363-8418</span>
+            </div>
+        </div>
+
+        <div class="dialog-buttons">
+            <button id="btn-cambiar-contra" class="dialog-btn dialog-btn--azul">Modificar contraseña</button>
+            <button id="btn-salir" class="dialog-btn dialog-btn--naranja">Cerrar sesión</button>
+        </div>
+
+    </div>
+</dialog>
+
+
+<dialog id="dialogo-contrasena" open>
+    <div class="dialog-contra-container">
+
+        <h1 class="dialog-contra-titulo">Cambio de contraseña</h1>
+
+        <form method="dialog" novalidate>
+
+            <div class="dialog-contra-group">
+                <label for="contrasena-actual">Contraseña actual:</label>
+                <input type="password" id="contrasena-actual" name="contrasena-actual"
+                       placeholder="Ingrese la contraseña" maxlength="32" required>
+            </div>
+            <br>
+            <div class="dialog-contra-group">
+                <label for="contrasena-nueva">Nueva contraseña:</label>
+                <input type="password" id="contrasena-nueva" name="contrasena-nueva"
+                       placeholder="De 8 a 32 caracteres" minlength="8" maxlength="32" required>
+            </div>
+
+            <br>
+
+            <button type="submit" class="dialog-contra-btn">Guardar cambios</button>
+
+        </form>
+
+    </div>
+</dialog>
 
 </body>
 </html>

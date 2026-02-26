@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +5,26 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+body, html {
+    margin: 0;
+    height: 100%;
     background-color: #ffffff;
 }
 
+/* Quitar flechas de inputs numéricos */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 /* ── CONTENEDOR PRINCIPAL ── */
-
 .container {
     display: flex;
     min-height: 100vh;
 }
 
-
 /* ── SECCIÓN IMAGEN ── */
-
 .image-section {
     width: 40%;
     overflow: hidden;
@@ -28,40 +32,12 @@ body {
 }
 
 .image-section img {
-=======
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-
-body, html {
-  margin: 0;
-  height: 100%;
-}
-
-.main {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-}
-
-.left {
-    width: 40%;
-}
-
-.left img {
->>>>>>> 11cc92f35fbe70f4779cfae0d910dadf8cd10e28
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-<<<<<<< HEAD
-
 /* ── SECCIÓN FORMULARIO ── */
-
 .form-section {
     width: 60%;
     background-color: #ffffff;
@@ -72,9 +48,7 @@ body, html {
     padding: 60px;
 }
 
-
 /* ── ENCABEZADO ── */
-
 .form-header {
     text-align: center;
     max-width: 520px;
@@ -98,9 +72,7 @@ body, html {
     line-height: 1.5;
 }
 
-
 /* ── FORMULARIO ── */
-
 form {
     width: 100%;
     max-width: 420px;
@@ -125,9 +97,7 @@ form {
     border: 2px solid #0066ff;
     font-size: 16px;
     cursor: pointer;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .form-group input:focus {
@@ -137,9 +107,7 @@ form {
     transform: translateY(-5px);
 }
 
-
 /* ── BOTÓN ── */
-
 .btn-primary {
     width: 100%;
     height: 50px;
@@ -151,9 +119,7 @@ form {
     font-weight: bold;
     font-size: 25px;
     cursor: pointer;
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease;
+    transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .btn-primary:hover {
@@ -165,12 +131,11 @@ form {
     transform: translateY(0);
 }
 
-
 /* ════════════════════════════
    RESPONSIVE - MEDIA QUERIES
    ════════════════════════════ */
 
-/* Tablet (≤ 900px): imagen más angosta */
+/* Tablet (≤ 900px) */
 @media (max-width: 900px) {
     .image-section {
         width: 35%;
@@ -190,7 +155,7 @@ form {
     }
 }
 
-/* Móvil (≤ 640px): imagen oculta, formulario centrado */
+/* Móvil (≤ 640px) */
 @media (max-width: 640px) {
     .container {
         flex-direction: column;
@@ -221,125 +186,4 @@ form {
     .btn-primary {
         font-size: 20px;
     }
-=======
-.right {
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-}
-
-.izq {
-    width: 15%;
-}
-
-.der {
-    width: 15%;
-}
-
-.contenedor {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-}
-
-.up {
-    height: 22%;
-    text-align: center;
-    align-items: center;
-}
-
-.up img {
-    height: 60%;
-    width: 75%;
-}
-
-.header {
-    height: 20%;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: 800;
-}
-
-.header p {
-    font-size: 18px;
-}
-
-.form-container {
-    height: 58%;
-    display: flex;
-    flex-direction: row;
-}
-
-.form-up {
-    width: 13%;
-}
-
-.form {
-    width: 74%;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-down {
-    width: 13%;
-}
-
-.inputs {
-    height: 50%;
-}
-
-.inputs h3 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.inputs input{
-    border: 2px solid #1061C4;
-    border-radius: 7px;
-    width: 100%;
-    height: 30px;
-    transition:
-        transform 0.25s ease,
-        outline 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.inputs input:focus{
-    outline: none;
-    border: 2px solid #FF8600;
-    transform: translateY(-5px);
-}
-
-.button {
-    height: 50%;
-    text-align: center;
-}
-
-.btn-iniciarsesion {
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    width: 230px;
-    height: 40px;
-    border: none;
-    border-radius: 12px;
-    background-color: #1061C4;
-    color: white;
-    transition:
-        transform 0.25s ease,
-        outline 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.btn-iniciarsesion:hover {
-    background-color: rgb(8, 39, 77);
-    color: white;
-    transform: translateY(-5px);
->>>>>>> 11cc92f35fbe70f4779cfae0d910dadf8cd10e28
 }
