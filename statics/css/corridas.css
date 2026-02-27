@@ -238,7 +238,7 @@ body {
 
 /* ================= BOTON BOLETOS VENDIDOS ================= */
 .boletos {
-    background: white url("../images/boletos.png") no-repeat center;
+    background: white url("../images/boletos gris.png") no-repeat center;
     background-size: 3.2vh 3.2vh;
 }
 
