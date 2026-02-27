@@ -86,13 +86,13 @@ body{
 
 .filter-box {
     display: flex;
-    justify-content: flex-end; /* 👉 lo manda a la derecha */
+    justify-content: flex-end;
     gap: 15px;
 }
 
 .filter-box input,
 .filter-box select {
-    width: 200px;   /* 👈 ancho controlado */
+    width: 200px; 
     padding: 14px 18px;
     border-radius: 16px;
     border: 1px solid #e5e7eb;

@@ -485,12 +485,16 @@ body{
 }
 
 .dialog-btn--naranja {
-    background-color: #FF8600;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #FF8600;
+    border: 2px solid #FF8600;
 }
 
 .dialog-btn--naranja:hover {
-    background-color: #cc6b00;
+    background-color: #FF8600;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #FF8600;
 }
 
 
@@ -583,9 +587,8 @@ body{
     padding: 0 18px;
     border-radius: 9px;
     text-align: center;
-    border: 2px solid #FF8600;
+    border: 2px solid #1061C4;
     font-size: 14px;
-    color: #FF8600;
     font-family: 'Segoe UI', sans-serif;
     outline: none;
     transition:
@@ -594,12 +597,12 @@ body{
 }
 
 .dialog-contra-group input::placeholder {
-    color: #FF8600;
+    color: #ADAEB1;
     opacity: 0.85;
 }
 
 .dialog-contra-group input:focus {
-    box-shadow: 0 0 0 3px rgba(255, 134, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 26, 255, 0.2);
     transform: translateY(-2px);
 }
 
