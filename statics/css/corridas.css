@@ -287,8 +287,8 @@ body {
     border-radius: 20px;
     border: none;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    width: 37.04vh;
-    height: 41.67vh;
+    width: fit-content;
+    height: fit-content;
 }
 
 .dialog-base h3 {
@@ -318,9 +318,7 @@ body {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     font-size: 2vh;
-    color: #bbb;
     font-weight: 500;
-    border: 0.2px;
     transition: 0.3s;
 }
 
@@ -366,13 +364,30 @@ body {
 }
 
 /* ================= BOTON ACEPTAR Y CANCELAR ================= */
-.btn-aceptar:hover {
+.btn-aceptar{
     background: #2f6fed;
+    border-radius: 2.5vh;
+    padding: 5px 15px 5px 15px;
     color: white;
+    font-size: 2vh;
+    border: none;
+}
+
+.btn-aceptar:hover {
+    background: #fff;
+    color: #2f6fed;
+    border: #2f6fed solid 1px;
+}
+
+.btn-cancelar {
+    background: white;
+    color: #FF8600;
+    border: #FF8600 solid 1px;
+    padding: 5px 15px 5px 15px;
 }
 
 .btn-cancelar:hover {
-    background: #ce3535;
+    background: #FF8600;
     color: white;
 }
 .aceptar-cancelar{
