@@ -87,7 +87,7 @@ body {
     display: flex;
     align-items: center;
     gap: 2vh;
-    flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .card {
@@ -123,15 +123,15 @@ body {
 /* ================= FILTROS ================= */
 
 .filter-boxes {
-    margin-left: 1vh ;
+    margin-left: auto ;
     display: flex;
     justify-content: flex-end;
+    flex-shrink: 0;
 }
 
 .filter-box {
     padding-left: 1vh;
     height: auto;
-    gap: 1vh;
 }
 
 .filter-box h2 {
@@ -146,19 +146,37 @@ body {
 }
 
 .filter-box--corto input {
-    min-width: unset !important;
-    width: 16vh !important;
+    min-width: 16vh !important;
     font-weight: normal;
-    height: 5vh;
     padding-left: 2.5vh;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    font-size: 2vh;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filter-box--mediano input {
-    min-width: unset !important;
-    width: 15vh !important;
+    min-width: 17vh !important;
     font-weight: normal;
-    height: 5vh;
     padding-left: 2.5vh;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    font-size: 2vh;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filter-box input {
@@ -273,7 +291,94 @@ body {
 }
 
 /* ================= RESPONSIVE ================= */
+.cards-filters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 3vh 0;
+    flex-wrap: nowrap;
+    width: 100%;
+}
 
+
+@media (max-width: 1280px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .filter-box input {
+        width: 18vh;
+    }
+
+    .filter-box--corto input {
+        width: 14vh !important;
+    }
+
+    .filter-box--mediano input {
+        width: 13vh !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .cards {
+        gap: 1vh;
+    }
+
+    .card {
+        padding: 1.5vh 2vh;
+        width: 15vh;
+    }
+
+    .filter-boxes {
+        gap: 0.5vh;
+    }
+
+    .filter-box input {
+        width: 15vh;
+        font-size: 1.8vh;
+    }
+
+    .filter-box--corto input {
+        width: 12vh !important;
+    }
+
+    .filter-box--mediano input {
+        width: 11vh !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 1vh;
+    }
+
+    .cards {
+        flex-shrink: 0;
+    }
+
+    .filter-boxes {
+        flex-shrink: 0;
+    }
+
+    .filter-box h2 {
+        font-size: 1.8vh;
+    }
+
+    .filter-box input {
+        width: 13vh;
+        height: 4vh;
+        font-size: 1.6vh;
+    }
+}
+
+
+/*
 @media (max-width: 1400px) {
     .logo-box img { height: 60px; }
     .menu li a { font-size: 16px; padding: 12px 15px; }
@@ -284,7 +389,7 @@ body {
     .cards { gap: 12px; }
     .filter-box input { min-width: 140px; }
 }
-
+*/
 
 /* ================= DIALOGO BOLETO ================= */
 
