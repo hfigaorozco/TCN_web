@@ -2,12 +2,13 @@ body {
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
 .top-nav {
-    width: 182.4vh;
+    width: 95%;
     height: auto;
     margin: 2.4vh auto;
     display: flex;
@@ -20,7 +21,7 @@ body {
 .logo-box {
     overflow: hidden;
     background: white;
-    padding: 1vh 1.9vh 0.4vh 1.9vh;
+    padding: 2vh 4vh;
     border-radius: 2vh;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
     height: 9vh;
@@ -72,7 +73,7 @@ body {
 /* ================= CONTENEDOR ================= */
 
 .container {
-    width: 182.4vh;
+    width: 94%;
     margin: 0 auto;
 }
 
@@ -98,7 +99,7 @@ body {
     padding: 2vh 3vh;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    min-width: 18vh;
+    width: 18vh;
     text-align: center;
 }
 
@@ -126,10 +127,11 @@ body {
 /* ================= FILTROS ================= */
 
 .filter-boxes {
-    padding-left: 15.26%;
-    align-items: right;
+    margin-left: auto;
     display: flex;
     gap: 2.5vh;
+    margin-left: auto;
+    justify-content: flex-end;
 }
 
 .filter-box{
@@ -137,32 +139,55 @@ body {
     padding-left: 5vh;
     height: auto;
     gap: 1.5vh;
-    display: flex;
 }
 
 .filter-box h2{
     font-weight: normal;
     font-size: 2.4vh;
 }
+
+.filter-box input {
+    font-weight: normal;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+    font-size: 2vh;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    width: 15vh;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-box input:focus {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+}
+
 .filter-box select {
-    padding: 1.4vh 2.5vh;
-    border-radius: 20px;
-    border: none;
+    padding: 0 1.6vh;
+    height: 4.4vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
     background: white;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     font-size: 2vh;
     outline: none;
+    appearance: none;
     cursor: pointer;
     min-width: 18vh;
-    appearance: none;
-    height: auto;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
 .main-section {
-    width: 182.4vh;
-    margin: 4vh auto;
+    width: 94%;
+    margin: 2.5vh auto;
     display: flex;
     gap: 3vh;
     align-items: stretch;
@@ -252,11 +277,11 @@ body {
 
 .content-box {
     flex: 1;
-    min-height: 50vh;
+    height: 50vh;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 3vh;
+    padding: 2vh;
 }
 
 .content-box table{
@@ -267,7 +292,28 @@ body {
     border-radius: 10px;
     font-size: 1.7vh;
 }
+
+.content-box table th{
+    color: white;
+    padding: 1vh 1.6vh;
+    background-color: #2f6fed;
+}
+
+.content-box table td{
+    text-align: center;
+    padding: 1vh 1.2vh;
+}
+
+.content-box table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.content-box table tbody tr:hover {
+    background-color: #eef3ff;
+    cursor: pointer;
+}
 /* ================= INPUT ================= */
+/*
 .input{
     border-radius: 20px;
     border: none;
@@ -279,9 +325,14 @@ body {
     width: 13vh;
     height: auto;
     padding-left: 25px;
-}
+}*/
 
 /* ================= DIALOG BASE ================= */
+dialog::backdrop {
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(6px);
+}
+
 .dialog-base {
     background: rgb(255, 255, 255);
     border-radius: 20px;
