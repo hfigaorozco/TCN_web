@@ -1,16 +1,38 @@
 /* ================= BOTON Y DIALOGO AGREGAR ================= */
-const agregar = document.getElementById('agregar');
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
 const cancelarAgregar = document.getElementById('cancelarAgregar');
+let toastBox = document.getElementById('toast-box')
+let successMsg = '<i class="fa-solid fa-check"></i> Operacion exitosa'
+let errorMsg= '<i class="fa-solid fa-xmark"></i> Operacion fallida'
+
 
 abrirAgregar.addEventListener('click', e => {
-    agregar.showModal( );
+    agregar.showModal();
 })
-
+/*
 aceptarAgregar.addEventListener('click', e => {
-    agregar.close( );
+    agregar.close()
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerHTML = msg;
+    toastBox.appendChild(toast);
 })
+*/
+/* ----------------------------------PRUEBA DE TOAST---------------------------------- */
+function showToast(msg){
+    agregar.close()
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerHTML = msg;
+    toastBox.appendChild(toast);
+
+    if(msg.includes('fallida')){
+        toast.classList.add('error');
+    }
+
+    setTimeout(()=>{toast.remove();}, 3000);
+}
 
 cancelarAgregar.addEventListener('click', e => {
     agregar.close( );
@@ -28,6 +50,11 @@ abrirEditar.addEventListener('click', e => {
 
 aceptarEditar.addEventListener('click', e => {
     editar.close( );
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerHTML = 'Operacion Exitosa';
+    toastBox.appendChild(toast);
+    
 })
 
 cancelarEditar.addEventListener('click', e => {
@@ -77,3 +104,4 @@ abrirBoletos.addEventListener('click', e => {
 cerrarBoletos.addEventListener('click', e => {
     boletos.close( );
 })
+

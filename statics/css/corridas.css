@@ -476,3 +476,48 @@ dialog::backdrop {
     gap: 48%;
     display: flex;
 }
+
+
+/* ================= TOAST PRUEBA ================= */
+#toast-box{
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 2vh;
+}
+
+.toast{
+    width: 40vh;
+    height: 8vh;
+    background-color: rgb(211, 233, 178);
+    font-weight: 500;
+    margin: 1.5vh 0;
+    border: green 1px solid;
+    border-radius: 2.5vh;
+    box-shadow: 0 0 2vh rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    transform: translateX(100%);
+    animation: moveleft 0.1s linear forwards;
+}
+
+@keyframes moveleft{
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.toast i{
+    margin: 0 2vh;
+    font-size: 3.5vh;
+    color: green;
+}
+
+.toast.error i{
+    color: red;
+}
+
