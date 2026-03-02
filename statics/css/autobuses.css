@@ -14,8 +14,6 @@ body{
     align-items: center;
 }
 
-/* ===== CAJA DEL LOGO ===== */
-
 .logo-box{
     background: white;
     padding: 20px 40px;
@@ -26,8 +24,6 @@ body{
 .logo-box img{
     height: clamp(50px, 6vw, 80px);
 }
-
-/* ===== CAJA DEL MENÚ ===== */
 
 .menu-box{
     background: white;
@@ -125,7 +121,6 @@ body{
     display: flex;
     flex-direction: column;
     gap: 6px;
-    align-items: right;
 }
 
 .filter:first-of-type{
@@ -245,8 +240,16 @@ body{
 
 .content-box table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;  
+    border-spacing: 0;
     font-size: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.content-box table th,
+.content-box table td {
+    padding: 18px 16px;  
 }
 
 .content-box table tr {
@@ -256,7 +259,6 @@ body{
 .content-box table tr:hover {
     background-color: #eef3ff;
     cursor: pointer;
-    transform: translateY(2px);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -279,13 +281,13 @@ body{
     border-radius: 8px;
     width: 90%;
     min-width: 280px;
-    height: fit-content;      /* ← solo ocupa lo que necesita */
+    height: fit-content;
     max-height: 90vh;
     overflow-y: auto;
     position: fixed;
-    top: 40px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     margin: 0;
     box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
 }
@@ -450,22 +452,22 @@ body{
 .dialog-baja-form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;  
     width: 100%;
 }
 
 .dialog-baja-group {
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 90px 1fr;
     align-items: center;
     width: 100%;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 20px;
     box-sizing: border-box;
 }
 
 .dialog-baja-group label {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
     color: #111;
     font-family: 'Segoe UI', sans-serif;
@@ -474,11 +476,11 @@ body{
 
 .dialog-baja-group select {
     width: 100%;
-    height: 38px;
+    height: 44px;
     padding: 0 12px;
     border-radius: 6px;
     border: 2px solid #1061C4;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Segoe UI', sans-serif;
     color: #333;
     background-color: #ffffff;
@@ -525,7 +527,7 @@ body{
 }
 
 .dialog-marca-logo {
-    width: 120px;
+    width: 270px;
     height: auto;
     align-self: center;
 }
@@ -618,7 +620,7 @@ body{
 }
 
 .dialog-modelo-logo {
-    width: 120px;
+    width: 270px;
     height: auto;
     align-self: center;
 }
@@ -711,7 +713,6 @@ body{
     #dialogo-agregar-marca,
     #dialogo-agregar-modelo {
         width: 95%;
-        top: 20px;
     }
 
     .dialog-bus-group,
