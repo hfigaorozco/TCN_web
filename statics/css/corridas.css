@@ -7,43 +7,35 @@ body {
 /* ================= NAVBAR ================= */
 
 .top-nav {
-    width: 182.4vh;
-    height: auto;
-    margin: 2.4vh auto;
+    width: 95%;
+    margin: 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* ===== CAJA DEL LOGO ===== */
-
 .logo-box {
-    overflow: hidden;
     background: white;
-    padding: 1vh 1.9vh 0.4vh 1.9vh;
-    border-radius: 2vh;
+    padding: 20px 40px;
+    border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
-    height: 9vh;
 }
 
-.logo-box img{
-    height: 8vh;
-    width: auto;
+.logo-box img {
+    height: clamp(50px, 6vw, 80px);
 }
-
-/* ===== CAJA DEL MENÚ ===== */
 
 .menu-box {
     background: white;
-    padding: 3vh 5vh;
-    border-radius: 2vh;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
+    border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .menu {
     list-style: none;
     display: flex;
-    gap: 4.5vh;
+    gap: 45px;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -52,9 +44,9 @@ body {
 .menu li a {
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 2vh;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 600;
-    padding: 2vh 2.2vh;
+    padding: 20px 22px;
     border-radius: 20px;
     transition: 0.3s;
 }
@@ -72,15 +64,15 @@ body {
 /* ================= CONTENEDOR ================= */
 
 .container {
-    width: 182.4vh;
+    width: 95%;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
 .title {
-    font-size: 4.8vh;
-    margin: 3vh 0;
+    font-size: 48px;
+    margin: 30px 0;
     font-weight: 600;
 }
 
@@ -89,28 +81,28 @@ body {
 .cards {
     display: flex;
     align-items: center;
-    gap: 2vh;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .card {
     background: white;
-    padding: 2vh 3vh;
+    padding: 20px 30px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    min-width: 18vh;
+    min-width: 160px;
     text-align: center;
 }
 
 .card span {
     color: #555;
-    font-size: 1.4vh;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .card h2 {
-    margin: 0.5vh 0 0;
-    font-size: 3.2vh;
+    margin: 5px 0 0;
+    font-size: 32px;
     font-weight: 500;
 }
 
@@ -126,269 +118,361 @@ body {
 /* ================= FILTROS ================= */
 
 .filter-boxes {
-    padding-left: 15.26%;
-    align-items: right;
-    display: flex;
-    gap: 2.5vh;
-}
-
-.filter-box{
     margin-left: auto;
-    padding-left: 5vh;
-    height: auto;
-    gap: 1.5vh;
     display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.filter-box h2{
-    font-weight: normal;
-    font-size: 2.4vh;
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.filter-box h2 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #555;
+    white-space: nowrap;
+    margin: 0;
+}
+
 .filter-box select {
-    padding: 1.4vh 2.5vh;
-    border-radius: 20px;
-    border: none;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
     background: white;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+    font-family: 'Segoe UI', sans-serif;
     outline: none;
     cursor: pointer;
-    min-width: 18vh;
+    min-width: 170px;
     appearance: none;
-    height: auto;
+    height: 54px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-box select:focus {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+}
+
+/* ================= INPUT NÚMERO ================= */
+
+.input {
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    width: 150px;
+    height: 54px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
 .main-section {
-    width: 182.4vh;
-    margin: 4vh auto;
+    width: 95%;
+    margin: 40px auto;
     display: flex;
-    gap: 3vh;
+    gap: 30px;
     align-items: stretch;
 }
 
 /* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 9vh;
+    width: 90px;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 15px;
+    align-items: center;
 }
 
-.side-btn{
-    width: 8vh;
-    height: 6vh;
+.side-btn {
+    width: 80px;
+    height: 60px;
+    background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.2vh;
-    color: #bbb;
     cursor: pointer;
     transition: 0.3s;
-    vertical-align: middle;
     border: none;
 }
 
-/* ================= BOTON AGREGAR ================= */
-.agregar{
+.side-btn:hover {
+    background: #2f6fed;
+}
+
+/* ================= BOTONES SIDEBAR ================= */
+
+.agregar {
     background: white url("../images/agregar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .agregar:hover {
     background: #2f6fed url("../images/agregarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON EDITAR ================= */
 .editar {
     background: white url("../images/editar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .editar:hover {
     background: #2f6fed url("../images/editarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON ELIMINAR ================= */
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .eliminar:hover {
     background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON FECHA Y CIUDAD ================= */
 .fechaCiudad {
     background: white url("../images/calendario.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .fechaCiudad:hover {
     background: #2f6fed url("../images/calendarioHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON BOLETOS VENDIDOS ================= */
 .boletos {
     background: white url("../images/boletos gris.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .boletos:hover {
     background: #2f6fed url("../images/boletosHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
     flex: 1;
-    min-height: 50vh;
+    min-height: 500px;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 3vh;
+    padding: 20px;
+    overflow-x: auto;
 }
 
-.content-box table{
+.content-box table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    font-size: 16px;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 10px;
-    font-size: 1.7vh;
-}
-/* ================= INPUT ================= */
-.input{
-    border-radius: 20px;
-    border: none;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
-    outline: none;
-    cursor: auto;
-    width: 13vh;
-    height: auto;
-    padding-left: 25px;
 }
 
+.content-box table th,
+.content-box table td {
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.content-box table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.content-box table tbody tr:hover {
+    background-color: #eef3ff;
+    cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1400px) {
+    .logo-box img { height: 60px; }
+    .menu li a { font-size: 16px; padding: 12px 15px; }
+    .menu-box { padding: 20px 30px; }
+}
+
+@media (max-width: 900px) {
+    .cards { gap: 12px; }
+    .filter-boxes { margin-left: 0; }
+}
+
+
 /* ================= DIALOG BASE ================= */
+
 .dialog-base {
-    background: rgb(255, 255, 255);
-    border-radius: 20px;
+    background: white;
+    border-radius: 16px;
     border: none;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    width: 37.04vh;
-    height: 41.67vh;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 460px;
+    height: fit-content;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 28px;
+    box-sizing: border-box;
+}
+
+.dialog-base::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.dialog-base h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .dialog-base h3 {
-    font-weight: normal;
-    margin-bottom: 0.5vh;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
 }
 
 .dialog-base select,
 .dialog-base input {
-    border: #555 solid 1px;
-    border-radius: 10px;
-    font-size: 1.3vh;
+    border: 1.5px solid #1061C4;
+    border-radius: 8px;
+    font-size: 14px;
     font-family: 'Segoe UI', sans-serif;
-    padding: 0.3vh;
-    transition: 0.3s;
+    padding: 6px 10px;
+    height: 36px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    background: white;
 }
 
 .dialog-base select:focus,
 .dialog-base input:focus {
     border-color: #1f5fa9;
     box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
-    outline: none;
-    transform: translateY(-1px);
-}
-
-.dialog-base button {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    font-size: 2vh;
-    color: #bbb;
-    font-weight: 500;
-    border: 0.2px;
-    transition: 0.3s;
 }
 
 .cajitas {
     display: flex;
-    gap: 2vh;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
 }
 
-/* ================= DIALOG AGREGAR ================= */
-.dialog-agregar select {
-    height: 3.819vh;
+.cajitas > div {
+    flex: 1;
+    min-width: 100px;
 }
 
-.dialog-agregar input {
-    height: 3.0vh;
-    width: 10vh;
+/* ================= BOTONES ACEPTAR / CANCELAR ================= */
+
+.aceptar-cancelar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-/* ================= DIALOG EDITAR ================= */
-.dialog-editar select {
-    height: 3vh;
-    width: min-content;
+.btn-aceptar,
+.btn-cancelar {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    color: #555;
+    background: #f0f2f5;
 }
 
-.dialog-editar input {
-    height: 3vh;
-    width: 10vh;
-}
-
-/* ================= DIALOG ELIMINAR ================= */
-.dialog-eliminar{
-    height: fit-content;
-}
-
-.dialog-eliminar select {
-    height: 3vh;
-    width: min-content;
-}
-
-.dialog-eliminar input {
-    height: 3vh;
-    width: 15vh;
-}
-
-/* ================= BOTON ACEPTAR Y CANCELAR ================= */
 .btn-aceptar:hover {
     background: #2f6fed;
     color: white;
+    transform: translateY(-2px);
 }
 
 .btn-cancelar:hover {
     background: #ce3535;
     color: white;
-}
-.aceptar-cancelar{
-    height: max-content;
-    padding: 7vh 0px 0px 19vh;
+    transform: translateY(-2px);
 }
 
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.dialog-fechaCiudad{
-    height: fit-content;
-    width: fit-content;
+/* ================= DIALOG AGREGAR ================= */
+
+.dialog-agregar {
+    max-width: 500px;
 }
 
-.titulo-cajitas{
-    gap: 12vh;
+/* ================= DIALOG EDITAR ================= */
+
+.dialog-editar {
+    max-width: 460px;
+}
+
+/* ================= DIALOG ELIMINAR ================= */
+
+.dialog-eliminar {
+    max-width: 380px;
+}
+
+/* ================= DIALOG FECHA Y CIUDAD / BOLETOS ================= */
+
+.dialog-fechaCiudad {
+    max-width: 700px;
+    width: 95%;
+}
+
+.titulo-cajitas {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.titulo-cajitas-boletos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .tabla-fechaCiudad {
@@ -397,16 +481,16 @@ body {
     border-spacing: 0;
     overflow: hidden;
     border-radius: 10px;
-    font-size: 1.5vh;
+    font-size: 14px;
 }
 
-.cerrar-fechaCiudad{
-    padding: 5vh 0px 0px 90%;
-    height: auto;
+.tabla-fechaCiudad th,
+.tabla-fechaCiudad td {
+    padding: 10px 14px;
 }
 
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.titulo-cajitas-boletos{
-    gap: 48%;
+.cerrar-fechaCiudad {
     display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
