@@ -269,118 +269,157 @@ body {
 
 /* ================= DIALOGO BOLETO ================= */
 
-#dialogo-boleto {
+.dialogo-boleto {
+    background-color: white;
     padding: 0;
     border: none;
-    border-radius: 0;
-    background: transparent;
-    width: auto;
-    height: auto;
-    max-width: 95vw;
-    max-height: 95vh;
-    overflow: visible;
+    border-radius: 8px;
+    width: 35%;
+    min-width: 280px;
+    height: fit-content;
+    max-height: 90vh;
+    overflow-y: auto;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    box-shadow: none;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-#dialogo-boleto::backdrop {
-    background: rgba(0, 0, 0, 0.55);
-}
-
-.dialog-boleto-container {
+/* Solo aplica flex cuando el diálogo está abierto */
+.dialogo-boleto[open] {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 16px;
 }
 
-.boleto-flecha {
-    width: 52px;
-    height: 52px;
+.dialogo-boleto::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.left {
+    padding: 10px;
+    margin: 0;
+    height: auto;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    padding: 10px;
+    margin: 0;
+    height: auto;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.left button {
+    background-color: #2f6fed;
     border-radius: 12px;
     border: none;
-    background-color: #2b64e7;
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background-color 0.2s ease, transform 0.15s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: white;
+    transition: all 0.2s ease;
 }
 
-.boleto-flecha:hover {
-    background-color: #09135a;
-    transform: scale(1.08);
+.left button:hover {
+    background-color: #0b1e44;
+    transform: translateY(-5px);
 }
 
-.boleto-flecha:active {
-    transform: scale(1.0);
+.right button {
+    background-color: #2f6fed;
+    border-radius: 12px;
+    border: none;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: white;
+    transition: all 0.2s ease;
 }
 
-.boleto-contenido {
-    border: 3px solid #2b64e7;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #ffffff;
+.right button:hover {
+    background-color: #0b1e44;
+    transform: translateY(-5px);
 }
 
-.boleto-img {
-    display: block;
-    width: 340px;
-    max-width: 70vw;
+.center {
     height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 0;
 }
 
-.boleto-acciones {
+.center-img {
+    display: flex;
+    justify-content: center;
+    height: 92%;
+    width: 100%;
+}
+
+.center-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.center-buttons {
+    height: 8%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.boleto-btn {
-    display: flex;
     align-items: center;
-    gap: 8px;
-    width: 160px;
-    height: 46px;
+    margin: 0;
+    gap: 7%;
+}
+
+.center-buttons button {
     border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+    border-radius: 12px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.2s ease;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    transition: background-color 0.25s ease, transform 0.2s ease;
+    align-items: center;
+    gap: 5%;
 }
 
-.boleto-btn:hover { transform: translateY(-2px); }
-.boleto-btn:active { transform: translateY(0); }
+.center-buttons button:hover {
+    transform: translateY(-5px);
+}
 
-.boleto-btn--naranja {
+#btnCerrar {
     background-color: #FF8600;
-    color: #ffffff;
+    width: 115px;
 }
 
-.boleto-btn--naranja:hover { background-color: #cc6b00; }
-
-.boleto-btn--azul {
-    background-color: #2b64e7;
-    color: #ffffff;
+#btnCerrar:hover {
+    background-color: #673a07;
 }
 
-.boleto-btn--azul:hover { background-color: #09135a; }
+#btnReimprimir {
+    background-color: #2f6fed;
+    width: 195px;
+}
 
-@media (max-width: 600px) {
-    .boleto-flecha { width: 38px; height: 38px; font-size: 16px; }
-    .boleto-img { width: 260px; }
-    .boleto-btn { width: 130px; font-size: 14px; }
+#btnReimprimir:hover {
+    background-color: #0b1e44;
+}
+
+#btnReimprimir img {
+    height: 70%;
+    width: 15%;
 }

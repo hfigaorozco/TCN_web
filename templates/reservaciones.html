@@ -127,22 +127,37 @@
     </div>
 
     <!-- DIALOGO BOLETO -->
-    <dialog id="dialogo-boleto">
-        <div class="dialog-boleto-container">
-            <button class="boleto-flecha" id="boletoPrev">&#8592;</button>
-            <div class="boleto-contenido">
-                <img src="../statics/images/boleto ejemplo.webp" alt="Boleto" class="boleto-img">
+    <dialog class="dialogo-boleto" id="dialogoBoleto">
+        
+        <div class="left">
+            <button>←</button>
+        </div>
+
+        <div class="center">
+            
+            <div class="center-img">
+                <img src="../statics/images/boleto ejemplo.jpg" alt="Boleto del pasajero">
             </div>
-            <button class="boleto-flecha" id="boletoNext">&#8594;</button>
+
+            <div class="center-buttons">
+
+                <button id="btnCerrar">
+                    X Cerrar
+                </button>
+
+                <button id="btnReimprimir">
+                    <img src="../statics/images/impresora.png" alt="">
+                    Reimprimir
+                </button>
+
+            </div>
+
         </div>
-        <div class="boleto-acciones">
-            <button class="boleto-btn boleto-btn--naranja" id="boletoCerrar">
-                <span>&#10005;</span> Cerrar
-            </button>
-            <button class="boleto-btn boleto-btn--azul" id="boletoReimprimir">
-                <span>&#128438;</span> Reimprimir
-            </button>
+
+        <div class="right">
+            <button>→</button>
         </div>
+
     </dialog>
 
     <script src="../statics/js/reservaciones.js"></script>

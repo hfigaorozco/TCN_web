@@ -6,15 +6,25 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #f0f2f5;
 }
 
-
-/* ── CONTENEDOR PRINCIPAL ── */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
 
 .container {
     display: flex;
-    min-height: 100vh;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 580px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -95,7 +105,7 @@ body {
 }
 
 .aviso p {
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
     line-height: 1.5;
 }
@@ -203,7 +213,6 @@ form {
 .btn-primary:active {
     transform: translateY(0);
 }
-
 
 
 /* Tablet (≤ 900px) */
