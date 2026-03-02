@@ -208,23 +208,69 @@ body{
 
 .agregar{
     background: white url("../images/agregar.png") no-repeat center;
+    background-size: 45px 45px;
     border: none;
 }
 
 .agregar:hover {
     background: #2f6fed url("../images/agregarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 /* ================= BOTON ELIMINAR ================= */
 
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
+    background-size: 32px 32px;
 }
 
 .eliminar:hover {
     background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
+}
+
+/* ================= BOTON AGREGAR MARCA ================= */
+
+.side-btn-agregar-marca {
+    width: 80px;
+    height: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    background: white url("../images/marca gris.png") no-repeat center;
+    background-size: 32px 32px;
+}
+
+.side-btn-agregar-marca:hover {
+    background: #2f6fed url("../images/marca gris.png") no-repeat center;
+    background-size: 32px 32px;
+}
+
+/* ================= BOTON AGREGAR MODELO ================= */
+
+.side-btn-agregar-modelo {
+    width: 80px;
+    height: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    background: white url("../images/autobus gris.png") no-repeat center;
+    background-size: 32px 32px;
+}
+
+.side-btn-agregar-modelo:hover {
+    background: #2f6fed url("../images/autobus gris.png") no-repeat center;
+    background-size: 32px 32px;
 }
 
 /* ================= CAJA GRANDE ================= */
