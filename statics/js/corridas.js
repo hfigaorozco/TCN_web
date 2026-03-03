@@ -1,43 +1,47 @@
 /* ================= BOTON Y DIALOGO AGREGAR ================= */
+let notificaciones = document.querySelector('.notificaciones')
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
 const cancelarAgregar = document.getElementById('cancelarAgregar');
+const agregar = document.getElementById('agregar')
 let toastBox = document.getElementById('toast-box')
-let successMsg = '<i class="fa-solid fa-check"></i> Operacion exitosa'
-let errorMsg= '<i class="fa-solid fa-xmark"></i> Operacion fallida'
-
 
 abrirAgregar.addEventListener('click', e => {
     agregar.showModal();
 })
-/*
-aceptarAgregar.addEventListener('click', e => {
-    agregar.close()
-    let toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.innerHTML = msg;
-    toastBox.appendChild(toast);
-})
-*/
-/* ----------------------------------PRUEBA DE TOAST---------------------------------- */
-function showToast(msg){
-    agregar.close()
-    let toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.innerHTML = msg;
-    toastBox.appendChild(toast);
 
-    if(msg.includes('fallida')){
-        toast.classList.add('error');
-    }
-
-    setTimeout(()=>{toast.remove();}, 3000);
+function createToast(type, icon, title, text){
+    let newToast = document.createElement('div');
+    newToast.innerHTML =`
+        <div class="toast ${type}">
+            <i class="${icon}"></i>
+            <div class="content">
+                <div class="title">${title}</div>
+                <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-x" onclick="(this.parentElement).remove() "></i>
+        </div>`;
+    notificaciones.appendChild(newToast);
+    newToast.setTimeout = setTimeout(()=>{newToast.remove();}, 3000);
 }
 
-cancelarAgregar.addEventListener('click', e => {
-    agregar.close( );
-})
+aceptarAgregar.onclick =  function(){
+    agregar.close()
+    let type = 'exito';
+    let icon = "fa-solid fa-check";
+    let title = 'Operación exitosa';
+    let text = 'El registro ha sido exitoso';
+    createToast(type, icon, title, text);
+}
 
+cancelarAgregar.onclick = function(){
+    agregar.close()
+    let type = 'error';
+    let icon = "fa-solid fa-exclamation";
+    let title = 'Ocurrió un error';
+    let text = 'Hubo un error al hacer el registro';
+    createToast(type, icon, title, text);
+}
 /* ================= BOTON Y DIALOGO EDITAR ================= */
 const editar = document.getElementById('editar');
 const abrirEditar = document.getElementById('abrirEditar');
