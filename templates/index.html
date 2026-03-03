@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio | Transportes Cuervo Negro</title>
+    <title>Dashboard | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
     <link rel="stylesheet" href="../statics/css/index.css">
@@ -34,7 +34,7 @@
 
 <div class="action-bar">
     <button class="primary-btn" id="btn-registroCuentas" onclick="window.location.href='registro.html'">Registro de cuentas</button>
-    <button class="primary-btn" id="btn-venderBoletos" onclick="window.location.href='comprarboleto.html'">Vender boletos</button>
+    <button class="primary-btn" id="btn-venderBoletos">Vender boletos</button>
     <button class="icon-btn" id="btn-usuario">
         <img src="../statics/images/usuario blanco.png" alt="Logo Usuarios">
     </button>
@@ -184,7 +184,7 @@
 
         <div class="dialog-buttons">
             <button id="btn-cambiar-contra" class="dialog-btn dialog-btn--azul">Modificar contraseña</button>
-            <button id="btn-salir" class="dialog-btn dialog-btn--naranja">Cerrar sesión</button>
+            <button id="btn-salir" class="dialog-btn dialog-btn--naranja" onclick="window.location.href='login.html'">Cerrar sesión</button>
         </div>
 
     </div>
@@ -221,6 +221,37 @@
 
     </div>
 </dialog>
+
+
+<dialog id="dialogo-buscar">
+    <div id="dialogo-busqueda">
+        <h2>Búsqueda de viaje</h2>
+
+        <label for="origen">Origen:</label>
+        <select id="origen">
+            <option>Selecciona el origen</option>
+        </select>
+
+        <label for="destino">Destino:</label>
+        <select id="destino">
+            <option>Selecciona el destino</option>
+        </select>
+
+        <label>Fecha:</label>
+        <div class="fecha-container">
+            <input type="text" placeholder="DD">
+            <input type="text" placeholder="MM">
+            <input type="text" placeholder="YYYY">
+        </div>
+
+        <label for="pasajeros">Pasajeros:</label>
+        <input id="pasajeros" class="pasajeros-input" type="text" placeholder="Cantidad">
+
+        <div class="boton-container">
+            <button onclick="window.location.href='comprarboleto.html'">Continuar</button>
+        </div>
+    </div>
+<dialog>
 
     <script src="../statics/js/dashboard.js"></script>
 

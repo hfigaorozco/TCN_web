@@ -129,6 +129,7 @@ body{
 }
 
 .primary-btn:hover{
+    background-color: #041833;
     transform: translateY(-3px);
     box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
 }
@@ -148,6 +149,7 @@ body{
 }
 
 .icon-btn:hover{
+    background-color: #041833;
     transform: translateY(-3px);
 }
 
@@ -361,4 +363,304 @@ body{
     .card-title{
         left: 20px;
     }
+}
+
+
+/* DIALOGO DE PERFIL */
+
+
+#dialogo-perfil {
+    border: none;
+    border-radius: 25px;
+    padding: 0;
+    width: 430px;
+    max-width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dialogo-perfil::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#dialogo-perfil[open] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dialogo-perfil .dialog-container {
+    background: hsl(0, 0%, 100%);
+    border-radius: 25px;
+    padding: 45px 35px;
+    text-align: center;
+}
+
+#dialogo-perfil .dialog-superior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+#dialogo-perfil .dialog-titulo {
+    font-size: 34px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+#dialogo-perfil .dialog-avatar {
+    width: 70px;
+}
+
+#dialogo-perfil .dialog-nombre {
+    font-size: 26px;
+    font-weight: 600;
+    color: #1e5db3;
+    margin: 0;
+}
+
+#dialogo-perfil .dialog-info {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#dialogo-perfil .dialog-info-fila {
+    font-size: 22px;
+}
+
+#dialogo-perfil .dialog-label {
+    font-weight: 700;
+    color: #333;
+}
+
+#dialogo-perfil .dialog-valor {
+    font-weight: 500;
+    color: #1e5db3;
+}
+
+#dialogo-perfil .dialog-btn--azul {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background: #1e5db3;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#dialogo-perfil .dialog-btn--azul:hover {
+    background: #041833;
+    transform: translateY(-5px);
+}
+
+#dialogo-perfil .dialog-btn--naranja {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    background: white;
+    border: 2px solid #ff7a00;
+    color: #ff7a00;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#dialogo-perfil .dialog-btn--naranja:hover {
+    background: #ff7a00;
+    color: white;
+    transform: translateY(-5px);
+}
+
+#dialogo-perfil .dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* DIALOGO CONTRA */
+
+#dialogo-contrasena {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    width: 400px;              
+    max-width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dialogo-contrasena::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+#dialogo-contrasena .dialog-contra-container {
+    background: #f2f2f2;
+    border-radius: 20px;
+    padding: 40px 35px;       
+    text-align: center;
+}
+
+#dialogo-contrasena .dialog-contra-titulo {
+    font-size: 30px;          
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 35px;
+}
+
+#dialogo-contrasena .dialog-contra-group {
+    margin-bottom: 30px;
+}
+
+#dialogo-contrasena label {
+    display: block;
+    font-size: 18px;         
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+#dialogo-contrasena input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #2f6fd6;
+    outline: none;
+    background: #f9f9f9;
+    transition: 0.25s ease;
+}
+
+#dialogo-contrasena input:focus {
+    border-color: #1e5db3;
+    box-shadow: 0 0 0 3px rgba(30, 93, 179, 0.15);
+}
+
+#dialogo-contrasena .dialog-contra-btn {
+    width: 70%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    background: #1e5db3;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.25s ease;
+}
+
+#dialogo-contrasena .dialog-contra-btn:hover {
+    background: #071934;
+    transform: translateY(-2px);
+}
+
+/* DALOGO DE BUSQUEDA*/
+
+#dialogo-buscar{
+    top: 15%;
+    left: 30%;
+}
+
+#dialogo-busqueda{
+    width: 520px;
+    background:#ffffff;
+    border: none !important;
+    outline: none !important;
+    border-radius:18px;
+    padding:40px 50px 45px 50px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+    display:grid;
+    grid-template-columns: 140px 1fr;
+    row-gap:28px;
+    align-items:center;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#dialogo-busqueda h2{
+    grid-column:1 / 3;
+    text-align:center;
+    font-size:32px;
+    margin:0 0 15px 0;
+    font-weight:700;
+    color:#333;
+}
+
+#dialogo-busqueda label{
+    font-size:26px;
+    font-weight:600;
+    color:#333;
+}
+
+#dialogo-busqueda select,
+#dialogo-busqueda input{
+    height:44px;
+    border:2px solid #f28c28;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:18px;
+    background:white;
+    outline:none;
+}
+
+.fecha-container{
+    display:flex;
+    gap:12px;
+}
+
+.fecha-container input{
+    width:75px;
+    text-align:center;
+    transition: all 0.2 ease;
+}
+
+.fecha-container input:hover {
+    transform:translateY(-2px);
+}
+
+.pasajeros-input{
+    width:145px;
+    transition: all 0.2s ease;
+}
+
+.pasajeros-input:focus {
+    transform:translateY(-4px);
+}
+
+.boton-container{
+    grid-column:1 / 3;
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
+#dialogo-busqueda button{
+    background:#ff8c00;
+    border:none;
+    padding:16px 55px;
+    font-size:24px;
+    font-weight:600;
+    color:white;
+    border-radius:16px;
+    transition: all 0.2s ease;
+}
+
+#dialogo-busqueda button:hover{
+    transform:translateY(-4px);
+    background-color: #452703;
 }

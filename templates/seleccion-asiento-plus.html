@@ -17,7 +17,7 @@
 
     <section class="info" aria-label="Información de la corrida">
 
-        <button class="btn-regresar" id="btn-inicio">
+        <button class="btn-regresar" id="btn-inicio" onclick="window.location.href='index.html'">
             <img src="../statics/images/home.png" alt="Inicio">
             Regresar
         </button>
@@ -142,7 +142,7 @@
 
 </div>
 
-<dialog id="dialogo-pasajero" open>
+<dialog id="dialogo-pasajero">
     <div class="dialog-pasajero-container">
 
         <h1 class="dialog-pasajero-titulo">Ingresa los datos</h1>
@@ -168,12 +168,14 @@
             </div>
             <br>
 
-            <button type="submit" class="dialog-btn-continuar">Continuar</button>
+            <button type="submit" class="dialog-btn-continuar" onclick="window.location.href='confirmacion-compra.html'">Continuar</button>
 
         </form>
 
     </div>
 </dialog>
+
+<script src="../statics/js/seleccionPlus.js"></script>
 
 </body>
 </html>
