@@ -10,6 +10,7 @@ abrirAgregar.addEventListener('click', e => {
     agregar.showModal();
 })
 
+/* ================= FUNCION PARA CREAR TOAST ================= */
 function createToast(type, icon, title, text){
     let newToast = document.createElement('div');
     newToast.innerHTML =`
@@ -25,6 +26,7 @@ function createToast(type, icon, title, text){
     newToast.setTimeout = setTimeout(()=>{newToast.remove();}, 3000);
 }
 
+/* ================= FUNCION PARA CREAR TOAST DE EXITO Y CERRAR DIALOG ================= */
 aceptarAgregar.onclick =  function(){
     agregar.close()
     let type = 'exito';
@@ -34,6 +36,7 @@ aceptarAgregar.onclick =  function(){
     createToast(type, icon, title, text);
 }
 
+/* ================= FUNCION PARA CREAR TOAST DE ERROR Y CERRAR DIALOG ================= */
 cancelarAgregar.onclick = function(){
     agregar.close()
     let type = 'error';
@@ -42,6 +45,8 @@ cancelarAgregar.onclick = function(){
     let text = 'Hubo un error al hacer el registro';
     createToast(type, icon, title, text);
 }
+
+
 /* ================= BOTON Y DIALOGO EDITAR ================= */
 const editar = document.getElementById('editar');
 const abrirEditar = document.getElementById('abrirEditar');
