@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         asiento.addEventListener("click", () => {
 
             const numeroAsiento = asiento.dataset.asiento;
-
-            console.log("Asiento seleccionado:", numeroAsiento);
-
             dialogo.showModal();
 
         });

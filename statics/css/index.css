@@ -575,16 +575,19 @@ body{
 #dialogo-buscar{
     top: 15%;
     left: 30%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
 }
 
 #dialogo-busqueda{
     width: 520px;
-    background:#ffffff;
+    background: white;
     border: none !important;
     outline: none !important;
     border-radius:18px;
     padding:40px 50px 45px 50px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
     display:grid;
     grid-template-columns: 140px 1fr;
     row-gap:28px;
