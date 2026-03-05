@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
     <link rel="stylesheet" href="../statics/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -52,9 +53,7 @@
 
     <!-- COLUMNA CORRIDAS -->
     <div class="section-column">
-       
 
-    </nav>
         <!-- CORRIDAS -->
         <div class="content-box">
 
@@ -184,7 +183,8 @@
 
         <div class="dialog-buttons">
             <button id="btn-cambiar-contra" class="dialog-btn dialog-btn--azul">Modificar contraseña</button>
-            <button id="btn-salir" class="dialog-btn dialog-btn--naranja" onclick="window.location.href='login.html'">Cerrar sesión</button>
+            <!-- Se eliminó el onclick inline para manejarlo desde el JS -->
+            <button id="btn-salir" class="dialog-btn dialog-btn--naranja">Cerrar sesión</button>
         </div>
 
     </div>
@@ -192,7 +192,6 @@
 
 
 <!-- ================= DIALOGO CONTRA ================= -->
-
 
 <dialog id="dialogo-contrasena">
     <div class="dialog-contra-container">
@@ -251,9 +250,11 @@
             <button onclick="window.location.href='comprarboleto.html'">Continuar</button>
         </div>
     </div>
-<dialog>
+</dialog>
 
-    <script src="../statics/js/dashboard.js"></script>
+<!-- ================= SECCIÓN PARA TOASTS ================= -->
+<div class="notificaciones"></div>
+<script src="../statics/js/dashboard.js"></script>
 
 </body>
 </html>
