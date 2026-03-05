@@ -1,20 +1,51 @@
 /* ================= BOTON Y DIALOGO AGREGAR ================= */
-const agregar = document.getElementById('agregar');
+let notificaciones = document.querySelector('.notificaciones')
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
 const cancelarAgregar = document.getElementById('cancelarAgregar');
+const agregar = document.getElementById('agregar')
+let toastBox = document.getElementById('toast-box')
 
 abrirAgregar.addEventListener('click', e => {
-    agregar.showModal( );
+    agregar.showModal();
 })
 
-aceptarAgregar.addEventListener('click', e => {
-    agregar.close( );
-})
+/* ================= FUNCION PARA CREAR TOAST ================= */
+function createToast(type, icon, title, text){
+    let newToast = document.createElement('div');
+    newToast.innerHTML =`
+        <div class="toast ${type}">
+            <i class="${icon}"></i>
+            <div class="content">
+                <div class="title">${title}</div>
+                <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-x" onclick="(this.parentElement).remove() "></i>
+        </div>`;
+    notificaciones.appendChild(newToast);
+    newToast.setTimeout = setTimeout(()=>{newToast.remove();}, 3000);
+}
 
-cancelarAgregar.addEventListener('click', e => {
-    agregar.close( );
-})
+/* ================= FUNCION PARA CREAR TOAST DE EXITO Y CERRAR DIALOG ================= */
+aceptarAgregar.onclick =  function(){
+    agregar.close()
+    let type = 'exito';
+    let icon = "fa-solid fa-check";
+    let title = 'Operación exitosa';
+    let text = 'El registro ha sido exitoso';
+    createToast(type, icon, title, text);
+}
+
+/* ================= FUNCION PARA CREAR TOAST DE ERROR Y CERRAR DIALOG ================= */
+cancelarAgregar.onclick = function(){
+    agregar.close()
+    let type = 'error';
+    let icon = "fa-solid fa-exclamation";
+    let title = 'Ocurrió un error';
+    let text = 'Hubo un error al hacer el registro';
+    createToast(type, icon, title, text);
+}
+
 
 /* ================= BOTON Y DIALOGO EDITAR ================= */
 const editar = document.getElementById('editar');
@@ -28,6 +59,11 @@ abrirEditar.addEventListener('click', e => {
 
 aceptarEditar.addEventListener('click', e => {
     editar.close( );
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerHTML = 'Operacion Exitosa';
+    toastBox.appendChild(toast);
+    
 })
 
 cancelarEditar.addEventListener('click', e => {
@@ -77,3 +113,4 @@ abrirBoletos.addEventListener('click', e => {
 cerrarBoletos.addEventListener('click', e => {
     boletos.close( );
 })
+

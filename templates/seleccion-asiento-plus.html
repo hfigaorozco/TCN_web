@@ -17,7 +17,7 @@
 
     <section class="info" aria-label="Información de la corrida">
 
-        <button class="btn-regresar" id="btn-inicio">
+        <button class="btn-regresar" id="btn-inicio" onclick="window.location.href='index.html'">
             <img src="../statics/images/home.png" alt="Inicio">
             Regresar
         </button>
@@ -141,6 +141,41 @@
     </section>
 
 </div>
+
+<dialog id="dialogo-pasajero">
+    <div class="dialog-pasajero-container">
+
+        <h1 class="dialog-pasajero-titulo">Ingresa los datos</h1>
+
+        <form method="dialog" novalidate>
+
+            <div class="dialog-pasajero-group">
+                <label for="Nombres">Nombres del pasajero:</label>
+                <input type="text" id="nombrePasajero" name="nombres-pasajero"
+                       placeholder="Ingrese los nombres" minlength="2" maxlength="40" required>
+            </div>
+            <br>
+            <div class="dialog-pasajero-group">
+                <label for="Apellidos">Apellidos del pasajero:</label>
+                <input type="text" id="apellidosPasajero" name="apellidos-pasajero"
+                       placeholder="Ingrese los apellidos" minlength="2" maxlength="40" required>
+            </div>
+            <br>
+            <div class="dialog-pasajero-group">
+                <label for="Edad">Edad del pasajero:</label>
+                <input type="number" id="edadPasajero" name="edad-pasajero"
+                       placeholder="Digite la edad" minlength="2" maxlength="2" required>
+            </div>
+            <br>
+
+            <button type="submit" class="dialog-btn-continuar" onclick="window.location.href='confirmacion-compra.html'">Continuar</button>
+
+        </form>
+
+    </div>
+</dialog>
+
+<script src="../statics/js/seleccionPlus.js"></script>
 
 </body>
 </html>

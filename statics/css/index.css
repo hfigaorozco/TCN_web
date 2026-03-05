@@ -9,32 +9,35 @@
 body{
     background: #f4f6fb;
     font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
 .top-nav{
     width: 95%;
-    margin: 15px auto;
+    margin: 25px auto; /* Igual que los CSS anteriores */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .logo-box{
     background: white;
-    padding: 25px 55px;
+    padding: 20px 40px; /* Ajuste de tamaño igual al anterior */
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
 .logo-box img{
-    height: 60px;
+    height: clamp(50px,6vw,80px);
 }
 
 .menu-box{
     background: white;
-    padding: 25px 45px;
+    padding: clamp(15px,2vw,25px) clamp(20px,3vw,50px); /* Igual que antes */
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -42,17 +45,18 @@ body{
 .menu{
     list-style: none;
     display: flex;
-    gap: 40px;
+    gap: 45px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .menu li a{
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 18px;
+    font-size: clamp(14px,1.2vw,20px);
     font-weight: 600;
-    padding: 18px 20px;
-    border-radius: 18px;
+    padding: 20px 22px;
+    border-radius: 20px;
     transition: 0.3s;
 }
 
@@ -66,6 +70,40 @@ body{
     color: #2f6fed;
 }
 
+/* ================= FILTRO ================= */
+
+.filter-box{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.filter-box label{
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+}
+
+.filter-box input, .filter-box select{
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 16px 22px;
+    font-size: 16px;
+    min-width: 220px;
+    height: 50px;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.08);
+}
+
+.filter-box input:focus, .filter-box select:focus{
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+    outline: none;
+}
+
 /* ================= BOTONES SUPERIORES ================= */
 
 .action-bar{
@@ -74,6 +112,7 @@ body{
     display: flex;
     justify-content: flex-end;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .primary-btn{
@@ -90,6 +129,7 @@ body{
 }
 
 .primary-btn:hover{
+    background-color: #041833;
     transform: translateY(-3px);
     box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
 }
@@ -100,14 +140,16 @@ body{
     border-radius: 18px;
     border: none;
     background: #2f6fed;
-    color: white;
-    font-size: 18px;
     cursor: pointer;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-btn:hover{
+    background-color: #041833;
     transform: translateY(-3px);
 }
 
@@ -120,14 +162,13 @@ body{
 
 .title-row{
     width: 95%;
-    margin: -55px auto 15px auto;
+    margin: -40px auto 15px auto;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
 .title{
-    font-size: 48px;
+    font-size: clamp(30px,4vw,48px);
     font-weight: 600;
 }
 
@@ -139,6 +180,7 @@ body{
     display: flex;
     gap: 30px;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 
 /* ================= CONTENT BOX ================= */
@@ -172,116 +214,54 @@ body{
     color: #666;
 }
 
-/* ================= HEADER DE TABLA ================= */
-
-
-
-/* ================= FILTROS ================= */
-
-.filter-box select{
-    padding: 12px 22px;
-    border-radius: 18px;
-    border: none;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
-    font-size: 14px;
-    cursor: pointer;
-    min-width: 180px;
-    outline: none;
-    appearance: none;
-    transition: 0.3s;
-}
-
-.filter-box select:hover{
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-}
-
-/* ================= TABLAS MODERNAS ================= */
+/* ================= TABLAS ================= */
 
 .table{
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 12px;
+    border-spacing: 0 12px; /* separa filas */
+    background: transparent;
 }
 
 .table thead{
-    background: transparent;
+    background: #2f6fed; /* azul de encabezado */
+    color: white;
+    border-radius: 12px;
 }
 
 .table th{
     text-align: left;
-    padding: 0 18px 10px 18px;
-    font-size: 13px;
+    padding: 12px 18px;
+    font-size: 14px;
     font-weight: 600;
-    color: #999;
-    border: none;
 }
 
 .table tbody tr{
     background: #f9fafe;
     transition: 0.3s;
+    border-radius: 12px;
 }
 
 .table tbody tr td{
-    padding: 16px 18px;
+    padding: 14px 18px;
     font-size: 14px;
     color: #555;
-    border: none;
 }
 
-/* Bordes redondeados por fila */
-
 .table tbody tr td:first-child{
-    border-radius: 14px 0 0 14px;
+    border-radius: 12px 0 0 12px;
 }
 
 .table tbody tr td:last-child{
-    border-radius: 0 14px 14px 0;
+    border-radius: 0 12px 12px 0;
 }
-
-/* Hover moderno */
 
 .table tbody tr:hover{
     background: #eef2ff;
     transform: scale(1.01);
 }
 
-/* ================= ESTADOS ================= */
-
-.status{
-    padding: 6px 14px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-block;
-}
-
-.disponible{
-    background: #e6f7ee;
-    color: #1aa36f;
-}
-
-.abordando{
-    background: #fff4e5;
-    color: #e69a00;
-}
-
-.finalizada{
-    background: #ffe6e6;
-    color: #d63031;
-}
-
-.pagado{
-    background: #e6f7ee;
-    color: #1aa36f;
-}
-
-.pendiente{
-    background: #fff4e5;
-    color: #e69a00;
-}
-
-/* ================= PANEL INFERIOR ================= */
+/* ================= DETAIL SECTION ================= */
 
 .detail-section{
     width: 95%;
@@ -295,15 +275,7 @@ body{
     box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
 }
 
-.detail-box h3{
-    margin-bottom: 15px;
-}
-
-.detail-box p{
-    margin-bottom: 6px;
-}
-
-/* ================= PROGRESS BAR ================= */
+/* ================= PROGRESS ================= */
 
 .progress-bar{
     width: 100%;
@@ -322,329 +294,373 @@ body{
     transition: width 0.5s ease;
 }
 
-/* ================= COLUMNA CON FILTRO ================= */
+/* ================= RESPONSIVE ================= */
 
-.section-column{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+@media (max-width: 1024px){
+    .menu{
+        justify-content: center;
+    }
+
+    .action-bar{
+        justify-content: center;
+    }
+
+    .main-section{
+        flex-direction: column;
+    }
 }
 
-/* ================= FILTRO ARRIBA DEL CARD ================= */
+@media (max-width: 768px){
+    .top-nav{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-.filter-top{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 15px;
+    .menu{
+        justify-content: center;
+    }
+
+    .action-bar{
+        justify-content: center;
+    }
+
+    .title-row{
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .filter-box{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .filter-box input, .filter-box select{
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px){
+    .primary-btn{
+        width: 100%;
+    }
+
+    .icon-btn{
+        width: 45px;
+        height: 45px;
+    }
+
+    .content-box{
+        padding: 25px 20px;
+    }
+
+    .card-title{
+        left: 20px;
+    }
 }
 
 
-/* ================ DIÁLOGO PERFIL ================== */
+/* DIALOGO DE PERFIL */
+
 
 #dialogo-perfil {
-    padding: 0;
-    width: 90%;
-    max-width: 360px;
-    min-width: 280px;
-    height: auto;
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
-    border: none;
-    border-radius: 20px;
-    overflow: hidden; 
-}
-
-#dialogo-perfil {
-    top: 40px;        
-    left: 50%;
-    transform: translateX(-50%);
-    border: none;
-    border-radius: 20px;
-    overflow: hidden; 
-}
-
-.dialog-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 30px 24px 24px 24px;
-    gap: 20px;
-    background: #ffffff;
-}
-
-
-/* ── SECCIÓN SUPERIOR ── */
-
-.dialog-superior {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-
-.dialog-titulo {
-    font-size: 26px;
-    font-weight: 700;
-    color: #111;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.dialog-avatar {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
-
-.dialog-nombre {
-    font-size: 17px;
-    font-weight: 600;
-    color: #2f6fed;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-
-/* ── SECCIÓN INFO ── */
-
-.dialog-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding: 0 10px;
-}
-
-.dialog-info-fila {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.dialog-label {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.dialog-valor {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2f6fed;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-
-/* ── BOTONES ── */
-
-.dialog-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    margin-top: 5px;
-}
-
-.dialog-btn {
-    width: 100%;
-    height: 46px;
     border: none;
     border-radius: 25px;
-    font-size: 16px;
+    padding: 0;
+    width: 430px;
+    max-width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dialogo-perfil::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#dialogo-perfil[open] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dialogo-perfil .dialog-container {
+    background: hsl(0, 0%, 100%);
+    border-radius: 25px;
+    padding: 45px 35px;
+    text-align: center;
+}
+
+#dialogo-perfil .dialog-superior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+#dialogo-perfil .dialog-titulo {
+    font-size: 34px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+#dialogo-perfil .dialog-avatar {
+    width: 70px;
+}
+
+#dialogo-perfil .dialog-nombre {
+    font-size: 26px;
+    font-weight: 600;
+    color: #1e5db3;
+    margin: 0;
+}
+
+#dialogo-perfil .dialog-info {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#dialogo-perfil .dialog-info-fila {
+    font-size: 22px;
+}
+
+#dialogo-perfil .dialog-label {
+    font-weight: 700;
+    color: #333;
+}
+
+#dialogo-perfil .dialog-valor {
+    font-weight: 500;
+    color: #1e5db3;
+}
+
+#dialogo-perfil .dialog-btn--azul {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background: #1e5db3;
+    color: white;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    font-family: 'Segoe UI', sans-serif;
-    transition:
-        background-color 0.25s ease,
-        transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.dialog-btn:hover {
-    transform: translateY(-2px);
+#dialogo-perfil .dialog-btn--azul:hover {
+    background: #041833;
+    transform: translateY(-5px);
 }
 
-.dialog-btn:active {
-    transform: translateY(0);
+#dialogo-perfil .dialog-btn--naranja {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    background: white;
+    border: 2px solid #ff7a00;
+    color: #ff7a00;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.dialog-btn--azul {
-    background-color: #2f6fed;
-    color: #ffffff;
-}
-
-.dialog-btn--azul:hover {
-    background-color: #1a4db5;
-}
-
-.dialog-btn--naranja {
-    background-color: #ffffff;
-    color: #FF8600;
-    border: 2px solid #FF8600;
-}
-
-.dialog-btn--naranja:hover {
-    background-color: #FF8600;
+#dialogo-perfil .dialog-btn--naranja:hover {
+    background: #ff7a00;
     color: white;
-    font-weight: bold;
-    border: 2px solid #FF8600;
+    transform: translateY(-5px);
 }
 
-
-/* ── RESPONSIVE ── */
-
-@media (max-width: 480px) {
-    #dialogo-perfil {
-        width: 92%;
-        top: 20px;
-    }
-
-    .dialog-titulo {
-        font-size: 22px;
-    }
-
-    .dialog-avatar {
-        width: 65px;
-        height: 65px;
-    }
+#dialogo-perfil .dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-
-
-/* ================ DIÁLOGO CAMBIO DE CONTRASEÑA ================== */
+/* DIALOGO CONTRA */
 
 #dialogo-contrasena {
-    padding: 0;
     border: none;
     border-radius: 20px;
-    width: 90%;
-    max-width: 360px;
-    min-width: 280px;
-    height: auto;
+    padding: 0;
+    width: 400px;              
+    max-width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     position: fixed;
-    top: 40px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.18);
-    overflow: hidden;
+    transform: translate(-50%, -50%);
 }
 
 #dialogo-contrasena::backdrop {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.45);
 }
 
-.dialog-contra-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 30px 28px 28px 28px;
-    gap: 22px;
-    background: #ffffff;
+#dialogo-contrasena .dialog-contra-container {
+    background: #f2f2f2;
+    border-radius: 20px;
+    padding: 40px 35px;       
+    text-align: center;
 }
 
-
-/* ── TÍTULO ── */
-
-.dialog-contra-titulo {
-    font-size: 24px;
+#dialogo-contrasena .dialog-contra-titulo {
+    font-size: 30px;          
     font-weight: 700;
-    color: #111;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
+    color: #333;
+    margin-bottom: 35px;
 }
 
+#dialogo-contrasena .dialog-contra-group {
+    margin-bottom: 30px;
+}
 
-/* ── GRUPOS DE INPUT ── */
+#dialogo-contrasena label {
+    display: block;
+    font-size: 18px;         
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
 
-.dialog-contra-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+#dialogo-contrasena input {
     width: 100%;
-}
-
-.dialog-contra-group label {
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-    color: #111;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-}
-
-.dialog-contra-group input {
-    width: 100%;
-    height: 44px;
-    padding: 0 18px;
-    border-radius: 9px;
-    text-align: center;
-    border: 2px solid #1061C4;
-    font-size: 14px;
-    font-family: 'Segoe UI', sans-serif;
-    outline: none;
-    transition:
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
-}
-
-.dialog-contra-group input::placeholder {
-    color: #ADAEB1;
-    opacity: 0.85;
-}
-
-.dialog-contra-group input:focus {
-    box-shadow: 0 0 0 3px rgba(0, 26, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-
-/* ── BOTÓN ── */
-
-.dialog-contra-btn {
-    width: 100%;
-    height: 46px;
-    border: none;
-    border-radius: 9px;
+    padding: 12px 16px;
     font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #2f6fd6;
+    outline: none;
+    background: #f9f9f9;
+    transition: 0.25s ease;
+}
+
+#dialogo-contrasena input:focus {
+    border-color: #1e5db3;
+    box-shadow: 0 0 0 3px rgba(30, 93, 179, 0.15);
+}
+
+#dialogo-contrasena .dialog-contra-btn {
+    width: 70%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    background: #1e5db3;
+    color: white;
+    font-size: 17px;
     font-weight: 600;
     cursor: pointer;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #2f6fed;
-    color: #ffffff;
-    margin-top: 5px;
-    transition:
-        background-color 0.25s ease,
-        transform 0.2s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.25s ease;
 }
 
-.dialog-contra-btn:hover {
-    background-color: #1a4db5;
+#dialogo-contrasena .dialog-contra-btn:hover {
+    background: #071934;
     transform: translateY(-2px);
 }
 
-.dialog-contra-btn:active {
-    transform: translateY(0);
+/* DALOGO DE BUSQUEDA*/
+
+#dialogo-buscar{
+    top: 15%;
+    left: 30%;
 }
 
-/* ── RESPONSIVE ── */
+#dialogo-busqueda{
+    width: 520px;
+    background:#ffffff;
+    border: none !important;
+    outline: none !important;
+    border-radius:18px;
+    padding:40px 50px 45px 50px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+    display:grid;
+    grid-template-columns: 140px 1fr;
+    row-gap:28px;
+    align-items:center;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
 
-@media (max-width: 480px) {
-    #dialogo-contrasena {
-        width: 92%;
-        top: 20px;
-    }
+#dialogo-busqueda h2{
+    grid-column:1 / 3;
+    text-align:center;
+    font-size:32px;
+    margin:0 0 15px 0;
+    font-weight:700;
+    color:#333;
+}
 
-    .dialog-contra-titulo {
-        font-size: 20px;
-    }
+#dialogo-busqueda label{
+    font-size:26px;
+    font-weight:600;
+    color:#333;
+}
+
+#dialogo-busqueda select,
+#dialogo-busqueda input{
+    height:44px;
+    border:2px solid #f28c28;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:18px;
+    background:white;
+    outline:none;
+}
+
+.fecha-container{
+    display:flex;
+    gap:12px;
+}
+
+.fecha-container input{
+    width:75px;
+    text-align:center;
+    transition: all 0.2 ease;
+}
+
+.fecha-container input:hover {
+    transform:translateY(-2px);
+}
+
+.pasajeros-input{
+    width:145px;
+    transition: all 0.2s ease;
+}
+
+.pasajeros-input:focus {
+    transform:translateY(-4px);
+}
+
+.boton-container{
+    grid-column:1 / 3;
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
+#dialogo-busqueda button{
+    background:#ff8c00;
+    border:none;
+    padding:16px 55px;
+    font-size:24px;
+    font-weight:600;
+    color:white;
+    border-radius:16px;
+    transition: all 0.2s ease;
+}
+
+#dialogo-busqueda button:hover{
+    transform:translateY(-4px);
+    background-color: #452703;
 }

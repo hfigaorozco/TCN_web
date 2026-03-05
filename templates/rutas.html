@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Transportes Cuervo Negro</title>
+    <title>Rutas | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../statics/css/rutas.css">
+    <link rel="icon" type="image/png" href="../statics/images/Logo TCN azul.png">
 </head>
 <body>
 
@@ -36,16 +37,27 @@
 
     <div class="cards">
 
-        <div class="filter-box">
-            <select>
+    <div class="card active-card">
+        <span>Rutas</span>
+        <h2>5</h2>
+    </div>
+
+    <div class="filter-box">
+
+        <div class="filter-group">
+            <label for="origen">Origen:</label>
+            <select id="origen">
                 <option selected disabled>Origen</option>
                 <option>Tijuana</option>
                 <option>Mexicali</option>
                 <option>Ensenada</option>
                 <option>Tecate</option>
             </select>
+        </div>
 
-            <select>
+        <div class="filter-group">
+            <label for="destino">Destino:</label>
+            <select id="destino">
                 <option selected disabled>Destino</option>
                 <option>Tijuana</option>
                 <option>Mexicali</option>
@@ -55,6 +67,8 @@
         </div>
 
     </div>
+
+</div>
 </div>
 
 <!-- ================= SECCIÓN PRINCIPAL ================= -->

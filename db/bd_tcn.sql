@@ -4,15 +4,15 @@ USE tcn;
 -- 0. TABLA USUARIO
 CREATE TABLE usuario(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    phone varchar(10) not null unique,
+    email varchar(40) not null unique,
     password varchar(16) not null,
-    es_admin tinyint(1) not null default 0
-);
+    rol varchar(15) not null
+); 
 
 -- 1. TABLA CIUDAD
 CREATE TABLE ciudad (
     codigo VARCHAR(3) PRIMARY KEY,
-    nombre VARCHAR(20) NOT NULL UNIQUE
+    nombre VARCHAR(30) NOT NULL UNIQUE
 );
 
 -- 2. TABLA EDO_AUTOBUS
@@ -27,32 +27,26 @@ CREATE TABLE edo_corrida(
     descripcion VARCHAR(10) NOT NULL UNIQUE
 );
 
--- 4. TABLA AMENIDAD
-CREATE TABLE amenidad(
-    codigo VARCHAR(4) PRIMARY KEY,
-    descripcion VARCHAR(25) NOT NULL
-);
-
--- 5. TABLA TIPO_AUTOBUS
+-- 4. TABLA TIPO_AUTOBUS
 CREATE TABLE tipo_autobus (
     codigo VARCHAR(4) PRIMARY KEY,
     descripcion VARCHAR(10) NOT NULL UNIQUE
 );
 
--- 6. TABLA TIPO_PASAJERO
+-- 5. TABLA TIPO_PASAJERO
 CREATE TABLE tipo_pasajero (
     codigo VARCHAR(4) PRIMARY KEY,
     descripcion VARCHAR(10) NOT NULL,
     porcentajeDesc INT NOT NULL
 );
 
--- 7. TABLA MARCA
+-- 6. TABLA MARCA
 CREATE TABLE marca (
     clave VARCHAR(5) PRIMARY KEY,
     nombre VARCHAR(15) NOT NULL
 );
 
--- 8. TABLA OPERADOR
+-- 7. TABLA OPERADOR
 CREATE TABLE operador (
     numero INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(15) NOT NULL,
@@ -63,26 +57,25 @@ CREATE TABLE operador (
     fechaContrato DATE NOT NULL
 );
 
--- 9. TABLA PASAJERO
+-- 8. TABLA PASAJERO
 CREATE TABLE pasajero (
     numero INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
     apellPat VARCHAR(20) NOT NULL,
     apellMat VARCHAR(20),
-    fechaNac DATE NOT NULL,
     edad INT NOT NULL,
     correoElect VARCHAR(40),
     telefono VARCHAR(10) NOT NULL
 );
 
--- 10. TABLA MODELO
+-- 9. TABLA MODELO
 CREATE TABLE modelo (
     clave VARCHAR(5) PRIMARY KEY,
     nombre VARCHAR(15) NOT NULL,
     marca VARCHAR(5) NOT NULL
 );
 
--- 11. TABLA RUTA
+-- 10. TABLA RUTA
 CREATE TABLE ruta (
     codigo VARCHAR(9) PRIMARY KEY,
     distancia FLOAT NOT NULL,       
@@ -90,7 +83,7 @@ CREATE TABLE ruta (
     ciudadDestino VARCHAR(3) NOT NULL       
 );
 
--- 12. TABLA AUTOBUS
+-- 11. TABLA AUTOBUS
 CREATE TABLE autobus(
     numero INT PRIMARY KEY,
     matricula CHAR(6) NOT NULL UNIQUE,
@@ -102,7 +95,7 @@ CREATE TABLE autobus(
     modelo VARCHAR(5) NOT NULL
 );
 
--- 13. TABLA CORRIDA
+-- 12. TABLA CORRIDA
 CREATE TABLE corrida(
     numero INT PRIMARY KEY AUTO_INCREMENT, 
     hora_salida TIME NOT NULL, 
@@ -117,7 +110,7 @@ CREATE TABLE corrida(
     estado VARCHAR(3) NOT NULL 
 );
 
--- 14. TABLA RESERVACION
+-- 13. TABLA RESERVACION
 CREATE TABLE reservacion (
     numero INT PRIMARY KEY AUTO_INCREMENT, 
     fecha DATE NOT NULL, 
@@ -131,7 +124,7 @@ CREATE TABLE reservacion (
     usuario INT NULL
 );
 
--- 15. TABLA ASIENTO
+-- 14. TABLA ASIENTO
 CREATE TABLE asiento(
     clave VARCHAR(6) PRIMARY KEY,
     numero INT NOT NULL,
@@ -139,14 +132,14 @@ CREATE TABLE asiento(
     autobus INT NOT NULL
 );
 
--- 16. TABLA ASIENTO_RESERVACION
+-- 15. TABLA ASIENTO_RESERVACION
 CREATE TABLE asiento_reservacion(
     asiento VARCHAR(6) NOT NULL,
     reservacion INT NOT NULL,
     PRIMARY KEY (asiento, reservacion)
 );
 
--- 17. TABLA BOLETO
+-- 16. TABLA BOLETO
 CREATE TABLE boleto(
     numero INT AUTO_INCREMENT PRIMARY KEY,
     precio FLOAT NOT NULL,
@@ -156,14 +149,7 @@ CREATE TABLE boleto(
     corrida INT NOT NULL
 );
 
--- 18. TABLA LISTADO_AMENIDADES
-CREATE TABLE listado_amenidades(
-    tipoAutobus VARCHAR(4) NOT NULL,
-    amenidad VARCHAR(4) NOT NULL,
-    PRIMARY KEY(tipoAutobus, amenidad)
-);
-
--- 19. TABLA CORRIDA_ASIENTO
+-- 17. TABLA CORRIDA_ASIENTO
 CREATE TABLE corrida_asiento(
     corrida INT NOT NULL,
     asiento VARCHAR(6) NOT NULL,
@@ -172,6 +158,12 @@ CREATE TABLE corrida_asiento(
 );
 
 -- RESTRICCIONES DE LLAVE FORÁNEA
+
+-- MODELO
+ALTER TABLE modelo
+ADD CONSTRAINT fk_modelo_marca
+FOREIGN KEY (marca) REFERENCES marca(clave)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- RUTA
 ALTER TABLE ruta
@@ -273,18 +265,6 @@ ALTER TABLE boleto
 ADD CONSTRAINT fk_boleto_corrida
 FOREIGN KEY (corrida) REFERENCES corrida(numero)
 ON UPDATE CASCADE ON DELETE RESTRICT;
-
--- LISTADO_AMENIDADES
-ALTER TABLE listado_amenidades
-ADD CONSTRAINT fk_listado_tipoAutobus
-FOREIGN KEY (tipoAutobus) REFERENCES tipo_autobus(codigo)
-ON UPDATE CASCADE ON DELETE RESTRICT;
-
-ALTER TABLE listado_amenidades
-ADD CONSTRAINT fk_listado_amenidad
-FOREIGN KEY (amenidad) REFERENCES amenidad(codigo)
-ON UPDATE CASCADE ON DELETE RESTRICT;
-
 
 -- TABLA CORRIDA_ASIENTO
 ALTER TABLE corrida_asiento
