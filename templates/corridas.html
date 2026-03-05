@@ -3,20 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Transportes Cuervo Negro</title>
+    <title>Corridas | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
     <link rel="stylesheet" href="../statics/css/corridas.css">
+    <script src="https://kit.fontawesome.com/8786bfad35.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div class="top-nav">
-
         <div class="logo-box">
             <img src="../statics/images/logo.png" alt="Logo TCN">
         </div>
-
         <div class="menu-box">
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -27,7 +26,6 @@
                 <li><a href="autobuses.html">Autobuses</a></li>
             </ul>
         </div>
-
     </div>
 
     <div class="container">
@@ -45,10 +43,11 @@
                 <h2>28</h2>
             </div>
 
-            <div class = "filter-boxes">
+            <!--*********************************FILTROS*********************************-->
+            <div class="filter-boxes">
                 <div class="filter-box">
                     <h2>Número</h2>
-                    <input type="number" min="0" placeholder="Número" class="input">
+                    <input type="number" min="0" placeholder="Número">
                 </div>
 
                 <div class="filter-box">
@@ -108,7 +107,7 @@
                             <option>3 - Leonardo Ivan Valdez Galán</option>
                         </select>
                     </div>
-                    
+
                 </div>
                 <div class="cajitas">
                     <div>
@@ -168,7 +167,7 @@
                     </select>
                 </div>
             </div>
-            
+
             <div>
                 <h3>Autobús</h3>
                 <select>
@@ -223,7 +222,7 @@
                     <option>INACTIVO</option>
                 </select>
             </div>
-    
+
         </form>
         <div class="aceptar-cancelar">
             <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
@@ -233,7 +232,7 @@
 
     <!--*********************************DIALOGO PARA CORRIDAS POR FECHA Y CIUDADES*********************************-->
     <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
-        
+
         <form>
             <div class="titulo-cajitas">
                 <h1>Corridas por fecha y ciudad</h1>
@@ -260,7 +259,7 @@
             <div class="content-box">
                 <!-- aquí va la tabla después -->
                 <table class="tabla-fechaCiudad">
-                    <tr bgcolor = "#2f6fed" style="color: white;">
+                    <tr bgcolor="#2f6fed">
                         <th width="15%">Salida</th>
                         <th width="10%">Corrida</th>
                         <th width="15%">Destino</th>
@@ -268,7 +267,7 @@
                         <th width="15%">Matrícula</th>
                         <th width="30%">Operador</th>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>8:00</td>
                         <td>25</td>
                         <td>Mexicali</td>
@@ -276,7 +275,7 @@
                         <td>GHY700</td>
                         <td>Sofía Castro Ortega</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>13:00</td>
                         <td>26</td>
                         <td>Mexicali</td>
@@ -284,7 +283,7 @@
                         <td>MX89NL</td>
                         <td>David Ruiz Moreno</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>10:00</td>
                         <td>31</td>
                         <td>San Quintín</td>
@@ -292,7 +291,7 @@
                         <td>DE29XU</td>
                         <td>Andrea Reyes Vargas</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>8:00</td>
                         <td>13</td>
                         <td>Tijuana</td>
@@ -310,7 +309,7 @@
 
     <!--*********************************DIALOGO PARA BOLETOS VENDIDOS EN UN DIA*********************************-->
     <dialog id="boletos" class="dialog-fechaCiudad dialog-base">
-    
+
         <form>
             <div class="titulo-cajitas-boletos">
                 <h1>Boletos vendidos en un día</h1>
@@ -332,7 +331,7 @@
                         <th width="11%">Vendidos</th>
                         <th width="12%">Disponibles</th>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>3</td>
                         <td>15:00</td>
                         <td>Tijuana</td>
@@ -341,7 +340,7 @@
                         <td>5</td>
                         <td>39</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>6</td>
                         <td>12:00</td>
                         <td>Mexicali</td>
@@ -350,7 +349,7 @@
                         <td>6</td>
                         <td>38</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>8</td>
                         <td>18:00</td>
                         <td>Mexicali</td>
@@ -359,7 +358,7 @@
                         <td>6</td>
                         <td>38</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>2</td>
                         <td>12:00</td>
                         <td>Tijuana</td>
@@ -380,7 +379,7 @@
     <div class="main-section">
         <div class="sidebar">
             <button class="side-btn agregar" id="abrirAgregar"></button>
-            <button class="side-btn editar" id = "abrirEditar"></button>
+            <button class="side-btn editar" id="abrirEditar"></button>
             <div class="side-btn eliminar" id="abrirEliminar"></div>
             <div class="side-btn fechaCiudad" id="abrirFechaCiudad"></div>
             <button class="side-btn boletos" id="abrirBoletos"></button>
@@ -388,7 +387,7 @@
         <!--*********************************AREA DE TABLA GENERAL*********************************-->
         <div class="content-box">
             <table>
-                <tr bgcolor="#2f6fed" style="color: white;">
+                <tr bgcolor="#2f6fed">
                     <th width="10%">#</th>
                     <th>Origen</th>
                     <th>Destino</th>
@@ -401,7 +400,7 @@
                     <th>Pasajeros</th>
                 </tr>
 
-                <tr align="center">
+                <tr>
                     <td>1</td>
                     <td>Tijuana</td>
                     <td>Mexicali</td>
@@ -413,7 +412,7 @@
                     <td>44</td>
                     <td>5</td>
                 </tr>
-                <tr align="center">
+                <tr>
                     <td>3</td>
                     <td>Tijuana</td>
                     <td>Mexicali</td>
@@ -425,7 +424,7 @@
                     <td>44</td>
                     <td>5</td>
                 </tr>
-                <tr align="center">
+                <tr>
                     <td>6</td>
                     <td>Mexicali</td>
                     <td>Tijuana</td>
@@ -437,7 +436,7 @@
                     <td>44</td>
                     <td>6</td>
                 </tr>
-                <tr align="center">
+                <tr>
                     <td>8</td>
                     <td>Mexicali</td>
                     <td>Tijuana</td>
@@ -449,7 +448,7 @@
                     <td>44</td>
                     <td>6</td>
                 </tr>
-                <tr align="center">
+                <tr>
                     <td>2</td>
                     <td>Tijuana</td>
                     <td>Mexicali</td>
@@ -464,7 +463,10 @@
             </table>
         </div>
     </div>
-    
+
+    <!-- /* ================= SECCION PARA TOASTS ================= */-->
+    <div class="notificaciones"></div>
     <script src="../statics/js/corridas.js"></script>
 </body>
+
 </html>
