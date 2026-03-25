@@ -2,14 +2,13 @@ body{
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
 .top-nav{
     width: 95%;
-    margin: 2.4vh auto;
+    margin: 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,28 +16,26 @@ body{
 
 .logo-box{
     background: white;
-    padding: 2vh 4vh;
-    border-radius: 2vh;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
-    height: 9vh;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
-.logo-box img {
-    height: 8vh;
-    width: auto;
+.logo-box img{
+    height: clamp(50px, 6vw, 80px);
 }
 
 .menu-box{
     background: white;
-    padding: 3vh 5vh;
-    border-radius: 2vh;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
+    border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
 
 .menu{
     list-style: none;
     display: flex;
-    gap: 4.5vh;
+    gap: 45px;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -47,9 +44,9 @@ body{
 .menu li a{
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 2vh;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 600;
-    padding: 2vh 2.2vh;
+    padding: 20px 22px;
     border-radius: 20px;
     transition: 0.3s;
 }
@@ -67,61 +64,60 @@ body{
 /* ================= CONTENEDOR ================= */
 
 .container{
-    width: 94%;
-    margin: 0vh auto;
+    width: 95%;
+    margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
 .title{
-    font-size: 4.8vh;
-    margin: 3vh 0;
+    font-size: 48px;
+    margin: 30px 0;
     font-weight: 600;
 }
 
 /* ================= CARDS ================= */
 
-.cards {
+.cards{
     display: flex;
     align-items: center;
-    gap: 2vh;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
-.card {
+.card{
     background: white;
-    padding: 2vh 3vh;
+    padding: 20px 30px;
     border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    width: 18vh;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+    min-width: 180px;
     text-align: center;
 }
 
-.card span {
+.card span{
     color: #555;
-    font-size: 1.4vh;
+    font-size: 14px;
     font-weight: 500;
 }
 
-.card h2 {
-    margin: 0.5vh 0 0;
-    font-size: 3.2vh;
+.card h2{
+    margin: 5px 0 0;
+    font-size: 32px;
     font-weight: 500;
 }
 
-.active-card {
+.active-card{
     background-color: #2f6fed;
 }
 
 .active-card span,
-.active-card h2 {
+.active-card h2{
     color: white;
 }
 
 /* ================= FILTROS ================= */
 
-.filter-boxes {
-    margin-left: auto;
+.filter{
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -137,26 +133,17 @@ body{
     color: #555;
 }
 
-.filter h2 {
-    font-weight: normal;
-    font-size: 2.4vh;
-}
-
 .filter input,
 .filter select{
-    font-weight: normal;
-    height: 4.4vh;
-    padding: 0 1.6vh;
-    border-radius: 1.2vh;
-    border: 0.1vh solid #e0e0e0;
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    font-size: 2vh;
-    font-family: 'Segoe UI', sans-serif;
-    outline: none;
-    width: 20vh;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 18px 22px;
+    font-size: 16px;
+    min-width: 220px;
+    height: 55px;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .filter input:focus,
@@ -183,27 +170,27 @@ body{
 
 /* ================= SIDEBAR ================= */
 
-.sidebar {
-    width: 9vh;
+.sidebar{
+    width: 90px;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 15px;
+    align-items: center;
 }
 
-.side-btn {
-    width: 8vh;
-    height: 6vh;
+.side-btn{
+    width: 80px;
+    height: 60px;
+    background: white;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.2vh;
+    font-size: 32px;
     color: #bbb;
     cursor: pointer;
     transition: 0.3s;
-    vertical-align: middle;
-    border: none;
 }
 
 .side-btn:hover{
@@ -214,7 +201,7 @@ body{
 .sidebar span {
     margin: 0;
     text-align: center;
-    font-size: 1.4vh;
+    font-size: 14px;
 }
 
 /* ================= BOTON AGREGAR ================= */
@@ -288,13 +275,13 @@ body{
 
 /* ================= CAJA GRANDE ================= */
 
-.content-box {
+.content-box{
     flex: 1;
-    height: 50vh;
+    min-height: 500px;
     background: white;
     border-radius: 20px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 2vh;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    padding: 30px;
 }
 
 .content-box table {
@@ -311,35 +298,24 @@ body{
     padding: 18px 16px;  
 }
 
-.content-box table th {
-    color: white;
-    padding: 1vh 1.6vh;
-    background-color: #2f6fed;
+.content-box table tr {
+    transition: background-color 0.8s ease;
 }
 
-.content-box table td {
-    text-align: center;
-    padding: 1vh 1.2vh;
-}
-
-.content-box table tbody tr {
-    transition: background-color 0.3s ease;
-}
-
-.content-box table tbody tr:hover {
+.content-box table tr:hover {
     background-color: #eef3ff;
     cursor: pointer;
 }
 
 /* ================= RESPONSIVE ================= */
-/*
+
 @media (max-width: 1400px) {
     .logo-box img { height: 60px; }
     .menu li a { font-size: 16px; padding: 12px 15px; }
     .menu-box { padding: 20px 30px; }
 }
 
-*/
+
 /* ================= ESTILOS COMPARTIDOS DIÁLOGOS ================= */
 
 #dialogo-agregar-bus,
