@@ -29,38 +29,39 @@
     <div class="container">
         <h1 class="title">Reservaciones</h1>
 
-        <div class="cards">
-
-            <div class="card active-card">
-                <span>Reservaciones activas</span>
-                <h2>200</h2>
+        <div class="cards-filters-wrapper">
+            <div class="cards">
+                <div class="card active-card">
+                    <span>Reservaciones activas</span>
+                    <h2>200</h2>
+                </div>
+        
+                <div class="card">
+                    <span>Total reservado hoy</span>
+                    <h2>80</h2>
+                </div>
+        
+                <div class="card">
+                    <span>Reservaciones futuras</span>
+                    <h2>120</h2>
+                </div>
             </div>
-
-            <div class="card">
-                <span>Total reservado hoy</span>
-                <h2>80</h2>
+            <div class="filter-boxes">
+                <div class="filter-box filter-box--mediano">
+                    <h2>Fecha</h2>
+                    <input type="date" id="filtro-fecha">
+                </div>
+        
+                <div class="filter-box filter-box--corto">
+                    <h2>Número</h2>
+                    <input type="number" id="filtro-numero" placeholder="Reservación" min="1">
+                </div>
+        
+                <div class="filter-box">
+                    <h2>Pasajero</h2>
+                    <input type="text" id="filtro-pasajero" placeholder="Nombre de pasajero">
+                </div>
             </div>
-
-            <div class="card">
-                <span>Reservaciones futuras</span>
-                <h2>120</h2>
-            </div>
-
-            <div class="filter-box filter-box--mediano">
-                <label for="filtro-fecha">Fecha:</label>
-                <input type="date" id="filtro-fecha">
-            </div>
-
-            <div class="filter-box filter-box--corto">
-                <label for="filtro-numero" >Número:</label>
-                <input type="number" id="filtro-numero" placeholder="Reservación" min="1">
-            </div>
-
-            <div class="filter-box">
-                <label for="filtro-pasajero">Pasajero:</label>
-                <input type="text" id="filtro-pasajero" placeholder="Nombre de pasajero">
-            </div>
-
         </div>
     </div>
 
@@ -74,7 +75,7 @@
         <div class="content-box">
             <table>
                 <thead>
-                    <tr bgcolor="#2f6fed" style="color: white;">
+                    <tr>
                         <th>Fecha</th>
                         <th>Corrida</th>
                         <th>Cliente</th>

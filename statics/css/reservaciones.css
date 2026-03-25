@@ -2,40 +2,45 @@ body {
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
 .top-nav {
     width: 95%;
-    margin: 25px auto;
+    margin: 2.4vh auto;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo-box {
+    overflow: hidden;
     background: white;
-    padding: 20px 40px;
-    border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    padding: 2vh 4vh;
+    border-radius: 2vh;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
+    height: 9vh;
 }
 
 .logo-box img {
-    height: clamp(50px, 6vw, 80px);
+    height: 8vh;
+    width: auto;
 }
 
 .menu-box {
     background: white;
-    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
-    border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    padding: 3vh 5vh;
+    border-radius: 2vh;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .menu {
     list-style: none;
     display: flex;
-    gap: 45px;
+    gap: 4.5vh;
     margin: 0;
     padding: 0;
     align-items: center;
@@ -44,9 +49,9 @@ body {
 .menu li a {
     text-decoration: none;
     color: #9a9a9a;
-    font-size: clamp(14px, 1.2vw, 20px);
+    font-size: 2vh;
     font-weight: 600;
-    padding: 20px 22px;
+    padding: 2vh 2.2vh;
     border-radius: 20px;
     transition: 0.3s;
 }
@@ -64,15 +69,15 @@ body {
 /* ================= CONTENEDOR ================= */
 
 .container {
-    width: 95%;
+    width: 94%;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
 .title {
-    font-size: 48px;
-    margin: 30px 0;
+    font-size: 4.8vh;
+    margin: 3vh 0;
     font-weight: 600;
 }
 
@@ -80,30 +85,29 @@ body {
 
 .cards {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    gap: 2vh;
+    flex-shrink: 0;
 }
 
 .card {
     background: white;
-    padding: 20px 30px;
+    padding: 2vh 3vh;
     border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    min-width: 160px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    width: 18vh;
     text-align: center;
 }
 
 .card span {
     color: #555;
-    font-size: 16px;
+    font-size: 1.4vh;
     font-weight: 500;
 }
 
 .card h2 {
-    margin: 5px 0 0;
-    font-size: 32px;
+    margin: 0.5vh 0 0;
+    font-size: 3.2vh;
     font-weight: 500;
 }
 
@@ -118,10 +122,21 @@ body {
 
 /* ================= FILTROS ================= */
 
-.filter-box {
+.filter-boxes {
+    margin-left: auto ;
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.filter-box {
+    padding-left: 1vh;
+    height: auto;
+}
+
+.filter-box h2 {
+    font-weight: normal;
+    font-size: 2.4vh;
 }
 
 .filter-box label {
@@ -131,26 +146,50 @@ body {
 }
 
 .filter-box--corto input {
-    min-width: unset !important;
-    width: 180px !important;
+    min-width: 16vh !important;
+    font-weight: normal;
+    padding-left: 2.5vh;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    font-size: 2vh;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filter-box--mediano input {
-    min-width: unset !important;
-    width: 180px !important;
+    min-width: 17vh !important;
+    font-weight: normal;
+    padding-left: 2.5vh;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    font-size: 2vh;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filter-box input {
-    height: 44px;
-    padding: 0 16px;
-    border-radius: 12px;
-    border: 1px solid #e0e0e0;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
     background: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    font-size: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    font-size: 2vh;
     font-family: 'Segoe UI', sans-serif;
     outline: none;
-    min-width: 380px;
+    width: 23vh;
     box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -163,34 +202,35 @@ body {
 /* ================= SECCIÓN PRINCIPAL ================= */
 
 .main-section {
-    width: 95%;
-    margin: 40px auto;
+    width: 94%;
+    margin: 2.5vh auto;
     display: flex;
-    gap: 30px;
+    gap: 3vh;
     align-items: stretch;
 }
 
 /* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 90px;
+    width: 9vh;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    gap: 2vh;
 }
 
 .side-btn {
-    width: 80px;
-    height: 60px;
-    background: white;
+    width: 8vh;
+    height: 6vh;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 3.2vh;
+    color: #bbb;
     cursor: pointer;
     transition: 0.3s;
+    vertical-align: middle;
     border: none;
 }
 
@@ -212,11 +252,11 @@ body {
 
 .content-box {
     flex: 1;
-    min-height: 500px;
+    min-height: 50vh;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
-    padding: 20px;
+    padding: 2vh;
     overflow-x: auto;
 }
 
@@ -235,8 +275,10 @@ body {
 }
 
 .content-box table th {
-    padding: 12px 16px;
+    padding: 1vh 1.2vh;
+    color: white;
     text-align: center;
+    background-color: #2f6fed;
 }
 
 .content-box table td {
@@ -254,7 +296,94 @@ body {
 }
 
 /* ================= RESPONSIVE ================= */
+.cards-filters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 3vh 0;
+    flex-wrap: nowrap;
+    width: 100%;
+}
 
+
+@media (max-width: 1280px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .filter-box input {
+        width: 18vh;
+    }
+
+    .filter-box--corto input {
+        width: 14vh !important;
+    }
+
+    .filter-box--mediano input {
+        width: 13vh !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .cards {
+        gap: 1vh;
+    }
+
+    .card {
+        padding: 1.5vh 2vh;
+        width: 15vh;
+    }
+
+    .filter-boxes {
+        gap: 0.5vh;
+    }
+
+    .filter-box input {
+        width: 15vh;
+        font-size: 1.8vh;
+    }
+
+    .filter-box--corto input {
+        width: 12vh !important;
+    }
+
+    .filter-box--mediano input {
+        width: 11vh !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-filters-wrapper {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 1vh;
+    }
+
+    .cards {
+        flex-shrink: 0;
+    }
+
+    .filter-boxes {
+        flex-shrink: 0;
+    }
+
+    .filter-box h2 {
+        font-size: 1.8vh;
+    }
+
+    .filter-box input {
+        width: 13vh;
+        height: 4vh;
+        font-size: 1.6vh;
+    }
+}
+
+
+/*
 @media (max-width: 1400px) {
     .logo-box img { height: 60px; }
     .menu li a { font-size: 16px; padding: 12px 15px; }
@@ -265,7 +394,7 @@ body {
     .cards { gap: 12px; }
     .filter-box input { min-width: 140px; }
 }
-
+*/
 
 /* ================= DIALOGO BOLETO ================= */
 

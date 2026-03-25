@@ -113,3 +113,4 @@ abrirBoletos.addEventListener('click', e => {
 cerrarBoletos.addEventListener('click', e => {
     boletos.close( );
 })
+
