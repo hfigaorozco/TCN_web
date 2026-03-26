@@ -32,7 +32,8 @@ body {
 }
 
 .logo-box img {
-    height: clamp(50px, 6vw, 80px);
+    height: 8vh;
+    width: auto;
 }
 
 .menu-box {
@@ -138,29 +139,26 @@ body {
 }
 
 .filter-box {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    margin-left: auto;
+    padding-left: 5vh;
+    height: auto;
+    gap: 1.5vh;
 }
 
 .filter-box h2 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #555;
-    margin: 0;
+    font-weight: normal;
+    font-size: 2.4vh;
 }
 
-.filter-box input,
-.filter-box select {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 18px;
-    padding: 18px 22px;
-    font-size: 16px;
-    min-width: 180px;
-    height: 55px;
-    box-sizing: border-box;
-    transition: all 0.25s ease;
+.filter-box input {
+    font-weight: normal;
+    height: 4.4vh;
+    padding: 0 1.6vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    font-size: 2vh;
     font-family: 'Segoe UI', sans-serif;
     outline: none;
 }
@@ -173,8 +171,22 @@ body {
 }
 
 .filter-box select {
+    padding: 0 1.6vh;
+    height: 4.4vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid #e0e0e0;
+    background: white;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    font-size: 2vh;
+    outline: none;
     appearance: none;
     cursor: pointer;
+    min-width: 170px;
+    appearance: none;
+    cursor: pointer;
+    min-width: 18vh;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
@@ -198,8 +210,8 @@ body {
 }
 
 .side-btn {
-    width: 80px;
-    height: 60px;
+    width: 8vh;
+    height: 6vh;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -210,8 +222,7 @@ body {
     border: none;
 }
 
-/* ================= BOTONES SIDEBAR ================= */
-
+/* ================= BOTON AGREGAR ================= */
 .agregar {
     background: white url("../images/agregar.png") no-repeat center;
     background-size: 32px 32px;
@@ -452,8 +463,62 @@ dialog::backdrop {
     transform: translateY(-2px);
 }
 
-.btn-aceptar:active {
-    transform: translateY(0);
+.btn-cancelar:hover {
+    background: #FF8600;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ================= DIALOG AGREGAR ================= */
+.dialog-agregar select {
+    height: 3.819vh;
+}
+
+.dialog-agregar input {
+    height: 3.0vh;
+    width: 10vh;
+}
+
+/* ================= DIALOG EDITAR ================= */
+.dialog-editar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-editar input {
+    height: 3vh;
+    width: 10vh;
+}
+
+/* ================= DIALOG ELIMINAR ================= */
+.dialog-eliminar {
+    height: fit-content;
+}
+
+.dialog-eliminar select {
+    height: 3vh;
+    width: min-content;
+}
+
+.dialog-eliminar input {
+    height: 3vh;
+    width: 15vh;
+}
+
+/* ================= BOTON ACEPTAR Y CANCELAR ================= */
+.btn-aceptar {
+    background: #2f6fed;
+    border-radius: 2.5vh;
+    padding: 5px 15px 5px 15px;
+    color: white;
+    font-size: 2vh;
+    border: none;
+}
+
+.btn-aceptar:hover {
+    background: #fff;
+    color: #2f6fed;
+    border: #2f6fed solid 1px;
 }
 
 .btn-cancelar {
@@ -474,21 +539,22 @@ dialog::backdrop {
 .btn-cancelar:hover {
     background: #FF8600;
     color: white;
-    transform: translateY(-2px);
 }
 
-.btn-cancelar:active {
-    transform: translateY(0);
+.aceptar-cancelar {
+    height: max-content;
+    padding: 7vh 0px 0px 19vh;
 }
 
-/* ================= DIÁLOGO FECHA Y CIUDAD / BOLETOS ================= */
-
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
 .dialog-fechaCiudad {
+    height: fit-content;
     width: fit-content;
     max-width: 92vw;
 }
 
 .titulo-cajitas {
+    gap: 12vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -515,23 +581,14 @@ dialog::backdrop {
     font-size: 14px;
 }
 
-.tabla-fechaCiudad th {
-    background-color: #2f6fed;
-    color: white;
-    padding: 12px 14px;
-    text-align: center;
-}
-
-.tabla-fechaCiudad td {
-    padding: 10px 14px;
-    text-align: center;
-}
-
-.tabla-fechaCiudad tbody tr:hover {
-    background-color: #eef3ff;
-}
-
 .cerrar-fechaCiudad {
+    padding: 5vh 0px 0px 90%;
+    height: auto;
+}
+
+/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+.titulo-cajitas-boletos {
+    gap: 48%;
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
@@ -539,6 +596,7 @@ dialog::backdrop {
 
 /* ================= TOAST ================= */
 
+/* ================= TOAST PRUEBA ================= */
 .notificaciones {
     position: fixed;
     bottom: 2vh;
@@ -561,10 +619,10 @@ dialog::backdrop {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    animation: show 0.3s ease 1 forwards;
+    animation: show 00.3s ease 1 forwards;
 }
 
-.toast .content {
+.toast.content {
     grid-column: 2;
     display: flex;
     flex-direction: column;
@@ -584,13 +642,13 @@ dialog::backdrop {
 }
 
 .toast .title {
-    font-size: 16px;
+    font-size: x-large;
     font-weight: bold;
     margin: 0;
 }
 
 .toast span {
-    font-size: 13px;
+    font-size: 1.6vh;
     line-height: 1;
     font-weight: 500;
 }
@@ -611,6 +669,26 @@ dialog::backdrop {
     content: '';
     box-shadow: 0 0 8px var(--color);
     animation: timeOut 3s linear 1 forwards;
+}
+
+@keyframes timeOut {
+    to {
+        width: 0;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .toast.error {

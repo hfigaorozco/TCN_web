@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Autobuses | Transportes Cuervo Negro</title>
@@ -8,6 +9,7 @@
     <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
     <link rel="stylesheet" href="{% static 'css/autobuses.css' %}">
 </head>
+
 <body>
 
     <div class="top-nav">
@@ -46,20 +48,18 @@
                 <h2>{{ total_en_ruta }}</h2>
             </div>
 
-            <div class="filter-boxes">
-                <div class="filter filter-number">
-                    <h2 for="numero_bus">Número</h2>
-                    <input id="numero_bus" type="text" maxlength="3" placeholder="Ingresa el número">
-                </div>
-                <div class="filter">
-                    <h2 for="tipo_servicio">Servicio</h2>
-                    <select id="tipo_servicio">
-                        <option value="todos">Todos los servicios</option>
-                        {% for tipo in tipos_autobus %}
-                        <option value="{{ tipo.codigo }}">{{ tipo.descripcion }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <div class="filter filter-number">
+                <label for="numero_bus">Número de autobús:</label>
+                <input id="numero_bus" type="text" maxlength="3" placeholder="Ingresa el número">
+            </div>
+
+            <div class="filter">
+                <label for="tipo_servicio">Tipo de servicio:</label>
+                <select id="tipo_servicio">
+                    <option value="todos">Todos los servicios</option>
+                    <option value="plus">Plus</option>
+                    <option value="platino">Platino</option>
+                </select>
             </div>
 
         </div>
@@ -117,7 +117,8 @@
 
                     <div class="dialog-bus-group">
                         <label for="bus-matricula">Matrícula:</label>
-                        <input type="text" id="bus-matricula" name="matricula" maxlength="6" placeholder="Ingrese la matrícula">
+                        <input type="text" id="bus-matricula" name="matricula" maxlength="10"
+                            placeholder="Ingrese la matrícula">
                     </div>
 
                     <div class="dialog-bus-group">
@@ -199,11 +200,13 @@
                 <div class="dialog-marca-form">
                     <div class="dialog-marca-group">
                         <label for="marca-codigo">Código:</label>
-                        <input type="text" id="marca-codigo" name="clave" maxlength="5" placeholder="Máximo 5 caracteres">
+                        <input type="text" id="marca-codigo" name="codigo" maxlength="5"
+                            placeholder="Máximo 5 caracteres">
                     </div>
                     <div class="dialog-marca-group">
                         <label for="marca-nombre">Nombre:</label>
-                        <input type="text" id="marca-nombre" name="nombre" maxlength="15" placeholder="Nombre de la marca">
+                        <input type="text" id="marca-nombre" name="nombre" maxlength="50"
+                            placeholder="Nombre de la marca">
                     </div>
                     <button type="submit" class="dialog-marca-btn">Registrar</button>
                 </div>
@@ -222,11 +225,13 @@
                 <div class="dialog-modelo-form">
                     <div class="dialog-modelo-group">
                         <label for="modelo-codigo">Código:</label>
-                        <input type="text" id="modelo-codigo" name="clave" maxlength="5" placeholder="Máximo 5 caracteres">
+                        <input type="text" id="modelo-codigo" name="codigo" maxlength="5"
+                            placeholder="Máximo 5 caracteres">
                     </div>
                     <div class="dialog-modelo-group">
                         <label for="modelo-nombre">Nombre:</label>
-                        <input type="text" id="modelo-nombre" name="nombre" maxlength="15" placeholder="Nombre del modelo">
+                        <input type="text" id="modelo-nombre" name="nombre" maxlength="50"
+                            placeholder="Nombre de la marca">
                     </div>
                     <div class="dialog-modelo-group">
                         <label for="modelo-marca">Marca:</label>
@@ -246,4 +251,5 @@
     <script src="{% static 'js/autobuses.js' %}"></script>
 
 </body>
+
 </html>
