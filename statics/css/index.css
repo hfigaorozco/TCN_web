@@ -261,6 +261,19 @@ body{
     transform: scale(1.01);
 }
 
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
 /* ================= DETAIL SECTION ================= */
 
 .detail-section{

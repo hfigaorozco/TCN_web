@@ -1,0 +1,7 @@
+INSERT INTO edo_autobus VALUES
+('ACTI', 'ACTIVO'),
+('INAC', 'INACTIVO')
+
+INSERT INTO tipo_autobus VALUES
+('PLUS', 'PLUS'),
+('PLAT', 'PLATINO')

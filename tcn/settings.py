@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
+    'rest_framework',
+    'login',
+    'registro',
+    'dashboard',
+    'autobuses',
+    'reservaciones',
+    'corridas',
+    'rutas',
+    'operadores',
 ]
 
 MIDDLEWARE = [
@@ -52,10 +62,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'tcn.urls'
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # carpeta global para buscar los templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +89,12 @@ WSGI_APPLICATION = 'tcn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tcn',
+        'USER': 'root',
+        'PASSWORD': '',  
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

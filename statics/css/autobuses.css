@@ -1,47 +1,58 @@
-body{
-    background: #f4f6fb;
+/* ================= RESET ================= */
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f6fb;
     font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
-.top-nav{
+.top-nav {
     width: 95%;
     margin: 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.logo-box{
+.logo-box {
     background: white;
     padding: 20px 40px;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-.logo-box img{
+.logo-box img {
     height: clamp(50px, 6vw, 80px);
 }
 
-.menu-box{
+.menu-box {
     background: white;
     padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-.menu{
+.menu {
     list-style: none;
     display: flex;
     gap: 45px;
     margin: 0;
     padding: 0;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.menu li a{
+.menu li a {
     text-decoration: none;
     color: #9a9a9a;
     font-size: clamp(14px, 1.2vw, 20px);
@@ -51,90 +62,97 @@ body{
     transition: 0.3s;
 }
 
-.menu li.activea a{
+.menu li.activea a {
     background: #2f6fed;
     color: white;
 }
 
-.menu li a:hover{
+.menu li a:hover {
     background: #e8eefc;
     color: #2f6fed;
 }
 
 /* ================= CONTENEDOR ================= */
 
-.container{
+.container {
     width: 95%;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
-.title{
-    font-size: 48px;
+.title {
+    font-size: clamp(30px, 4vw, 48px);
     margin: 30px 0;
     font-weight: 600;
 }
 
 /* ================= CARDS ================= */
 
-.cards{
+.cards {
     display: flex;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.card{
+.card {
     background: white;
     padding: 20px 30px;
     border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
     min-width: 180px;
     text-align: center;
 }
 
-.card span{
+.card span {
     color: #555;
     font-size: 14px;
     font-weight: 500;
 }
 
-.card h2{
+.card h2 {
     margin: 5px 0 0;
     font-size: 32px;
     font-weight: 500;
 }
 
-.active-card{
+.active-card {
     background-color: #2f6fed;
 }
 
 .active-card span,
-.active-card h2{
+.active-card h2 {
     color: white;
 }
 
 /* ================= FILTROS ================= */
 
-.filter{
+.filter-boxes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.filter {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.filter:first-of-type{
-    margin-left: auto;
-}
-
-.filter label{
+.filter label,
+.filter h2 {
     font-size: 15px;
     font-weight: 600;
     color: #555;
+    margin: 0;
 }
 
 .filter input,
-.filter select{
+.filter select {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 18px;
@@ -147,20 +165,20 @@ body{
 }
 
 .filter input:focus,
-.filter select:focus{
+.filter select:focus {
     border-color: #2f6fed;
     box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
     outline: none;
 }
 
-.filter select{
+.filter select {
     appearance: none;
     cursor: pointer;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
-.main-section{
+.main-section {
     width: 95%;
     margin: 40px auto;
     display: flex;
@@ -170,7 +188,7 @@ body{
 
 /* ================= SIDEBAR ================= */
 
-.sidebar{
+.sidebar {
     width: 90px;
     display: flex;
     flex-direction: column;
@@ -178,12 +196,12 @@ body{
     align-items: center;
 }
 
-.side-btn{
+.side-btn {
     width: 80px;
     height: 60px;
     background: white;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,7 +211,7 @@ body{
     transition: 0.3s;
 }
 
-.side-btn:hover{
+.side-btn:hover {
     background: #2f6fed;
     color: white;
 }
@@ -204,9 +222,9 @@ body{
     font-size: 14px;
 }
 
-/* ================= BOTON AGREGAR ================= */
+/* ================= BOTÓN AGREGAR ================= */
 
-.agregar{
+.agregar {
     background: white url("../images/agregar.png") no-repeat center;
     background-size: 33px 35px;
     border: none;
@@ -217,7 +235,7 @@ body{
     background-size: 32px 32px;
 }
 
-/* ================= BOTON ELIMINAR ================= */
+/* ================= BOTÓN ELIMINAR ================= */
 
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
@@ -229,13 +247,13 @@ body{
     background-size: 32px 32px;
 }
 
-/* ================= BOTON AGREGAR MARCA ================= */
+/* ================= BOTÓN AGREGAR MARCA ================= */
 
 .side-btn-agregar-marca {
     width: 80px;
     height: 60px;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -251,13 +269,13 @@ body{
     background-size: 32px 32px;
 }
 
-/* ================= BOTON AGREGAR MODELO ================= */
+/* ================= BOTÓN AGREGAR MODELO ================= */
 
 .side-btn-agregar-modelo {
     width: 80px;
     height: 60px;
     border-radius: 20px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,18 +293,18 @@ body{
 
 /* ================= CAJA GRANDE ================= */
 
-.content-box{
+.content-box {
     flex: 1;
     min-height: 500px;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
     padding: 30px;
 }
 
 .content-box table {
     width: 100%;
-    border-collapse: separate;  
+    border-collapse: separate;
     border-spacing: 0;
     font-size: 20px;
     border-radius: 12px;
@@ -295,7 +313,7 @@ body{
 
 .content-box table th,
 .content-box table td {
-    padding: 18px 16px;  
+    padding: 18px 16px;
 }
 
 .content-box table tr {
@@ -309,12 +327,57 @@ body{
 
 /* ================= RESPONSIVE ================= */
 
+@media (max-width: 1024px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-boxes {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .filter input,
+    .filter select {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .content-box table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 1400px) {
     .logo-box img { height: 60px; }
     .menu li a { font-size: 16px; padding: 12px 15px; }
     .menu-box { padding: 20px 30px; }
 }
-
 
 /* ================= ESTILOS COMPARTIDOS DIÁLOGOS ================= */
 
@@ -345,12 +408,10 @@ body{
     background: rgba(0, 0, 0, 0.45);
 }
 
-/* Anchos individuales */
 #dialogo-agregar-bus    { max-width: 420px; }
 #dialogo-eliminar-bus   { max-width: 400px; }
 #dialogo-agregar-marca  { max-width: 360px; }
 #dialogo-agregar-modelo { max-width: 360px; }
-
 
 /* ================= DIÁLOGO: REGISTRAR AUTOBÚS ================= */
 
@@ -443,7 +504,6 @@ body{
 .dialog-bus-btn:hover { background-color: #07398a; transform: translateY(-2px); }
 .dialog-bus-btn:active { transform: translateY(0); }
 
-
 /* ================= DIÁLOGO: BAJA DE AUTOBÚS ================= */
 
 .dialog-baja-container {
@@ -498,7 +558,7 @@ body{
 .dialog-baja-form {
     display: flex;
     flex-direction: column;
-    align-items: center;  
+    align-items: center;
     width: 100%;
 }
 
@@ -557,7 +617,6 @@ body{
 
 .dialog-baja-btn:hover { background-color: #3a2004; transform: translateY(-2px); }
 .dialog-baja-btn:active { transform: translateY(0); }
-
 
 /* ================= DIÁLOGO: NUEVA MARCA ================= */
 
@@ -650,7 +709,6 @@ body{
 
 .dialog-marca-btn:hover { background-color: #07398a; transform: translateY(-2px); }
 .dialog-marca-btn:active { transform: translateY(0); }
-
 
 /* ================= DIÁLOGO: NUEVO MODELO ================= */
 
@@ -749,7 +807,6 @@ body{
 
 .dialog-modelo-btn:hover { background-color: #07398a; transform: translateY(-2px); }
 .dialog-modelo-btn:active { transform: translateY(0); }
-
 
 /* ================= RESPONSIVE DIÁLOGOS ================= */
 

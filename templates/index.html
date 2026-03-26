@@ -1,11 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../statics/images/LOGO TCN azul.png">
-    <link rel="stylesheet" href="../statics/css/index.css">
+
+    <link rel="icon" type="image/png" href="{% static 'images/logo_tcn_azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -15,29 +17,33 @@
 <div class="top-nav">
 
     <div class="logo-box">
-        <img src="../statics/images/logo.png" alt="Logo TCN">
+        <img src="{% static 'images/logo.png' %}" alt="Logo TCN">
     </div>
 
     <div class="menu-box">
         <ul class="menu">
-            <li class="activea"><a href="index.html">Inicio</a></li>
-            <li><a href="reservaciones.html">Reservaciones</a></li>
-            <li><a href="corridas.html">Corridas</a></li>
-            <li><a href="rutas.html">Rutas</a></li>
-            <li><a href="operadores.html">Operadores</a></li>
-            <li><a href="autobuses.html">Autobuses</a></li>
+            <li class="activea"><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'reservaciones' %}">Reservaciones</a></li>
+            <li><a href="{% url 'corridas' %}">Corridas</a></li>
+            <li><a href="{% url 'rutas' %}">Rutas</a></li>
+            <li><a href="{% url 'operadores' %}">Operadores</a></li>
+            <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
         </ul>
     </div>
 
 </div>
 
-<!-- ================= BOTONES SUPERIORES ================= -->
+<!-- ================= BOTONES ================= -->
 
 <div class="action-bar">
-    <button class="primary-btn" id="btn-registroCuentas" onclick="window.location.href='registro.html'">Registro de cuentas</button>
-    <button class="primary-btn" id="btn-venderBoletos">Vender boletos</button>
-    <button class="icon-btn" id="btn-usuario">
-        <img src="../statics/images/usuario blanco.png" alt="Logo Usuarios">
+    <button class="primary-btn" onclick="window.location.href='{% url 'registro' %}'">
+        Registro de cuentas
+    </button>
+
+    <button class="primary-btn">Vender boletos</button>
+
+    <button id="btn-usuario" class="icon-btn">
+        <img src="{% static 'images/usuario blanco.png' %}" alt="Usuario">
     </button>
 </div>
 
@@ -47,18 +53,16 @@
     <h1 class="title">Dashboard</h1>
 </div>
 
-<!-- ================= SECCIÓN PRINCIPAL ================= -->
+<!-- ================= CONTENIDO ================= -->
 
 <div class="main-section">
 
-    <!-- COLUMNA CORRIDAS -->
     <div class="section-column">
 
-        <!-- CORRIDAS -->
         <div class="content-box">
 
             <div class="card-title">Corridas</div>
-            <div class="filter-top">
+
             <div class="filter-box">
                 <select>
                     <option selected disabled>Seleccionar fecha</option>
@@ -67,7 +71,8 @@
                     <option>22-01-2026</option>
                 </select>
             </div>
-        </div>
+
+            <br>
 
             <table class="table">
                 <thead>
@@ -75,32 +80,30 @@
                         <th>Hora</th>
                         <th>Origen</th>
                         <th>Destino</th>
-                        <th>Hora</th>
+                        <th>Estado</th>
                         <th>Autobús</th>
                     </tr>
                 </thead>
                 <tbody>
+
+                    {% for corrida in corridas %}
                     <tr>
-                        <td>08:30</td>
-                        <td>Tijuana</td>
-                        <td>Tijuana</td>
-                        <td><span class="status disponible">Disponible</span></td>
-                        <td>10</td>
+                        <td>{{ corrida.hora }}</td>
+                        <td>{{ corrida.origen }}</td>
+                        <td>{{ corrida.destino }}</td>
+                        <td>
+                            <span class="status {{ corrida.estado }}">
+                                {{ corrida.estado }}
+                            </span>
+                        </td>
+                        <td>{{ corrida.autobus }}</td>
                     </tr>
+                    {% empty %}
                     <tr>
-                        <td>10:00</td>
-                        <td>Hermosillo</td>
-                        <td>Tijuana</td>
-                        <td><span class="status disponible">Disponible</span></td>
-                        <td>2</td>
+                        <td colspan="5">No hay corridas disponibles</td>
                     </tr>
-                    <tr>
-                        <td>12:30</td>
-                        <td>Tijuana</td>
-                        <td>Hermosillo</td>
-                        <td><span class="status finalizada">Finalizada</span></td>
-                        <td>0</td>
-                    </tr>
+                    {% endfor %}
+
                 </tbody>
             </table>
 
@@ -123,18 +126,24 @@
                 </tr>
             </thead>
             <tbody>
+
+                {% for pasajero in pasajeros %}
                 <tr>
-                    <td>12</td>
-                    <td>Juan Pérez</td>
-                    <td>Normal</td>
-                    <td><span class="status pagado">Pagado</span></td>
+                    <td>{{ pasajero.asiento }}</td>
+                    <td>{{ pasajero.nombre }}</td>
+                    <td>{{ pasajero.tipo }}</td>
+                    <td>
+                        <span class="status {{ pasajero.estado }}">
+                            {{ pasajero.estado }}
+                        </span>
+                    </td>
                 </tr>
+                {% empty %}
                 <tr>
-                    <td>15</td>
-                    <td>Ana López</td>
-                    <td>Normal</td>
-                    <td><span class="status pendiente">Pendiente</span></td>
+                    <td colspan="4">Sin pasajeros</td>
                 </tr>
+                {% endfor %}
+
             </tbody>
         </table>
 
@@ -142,119 +151,26 @@
 
 </div>
 
-<!-- ================= PANEL INFERIOR ================= -->
-
-<div class="detail-section">
-    <div class="detail-box">
-        <h3>Detalle de Corrida</h3>
-        <p><strong>Autobús:</strong> 183</p>
-        <p><strong>Conductor:</strong> Carlos Ramírez</p>
-        <p><strong>Ruta:</strong> Tijuana - Hermosillo</p>
-        <p><strong>Salida:</strong> 08:30</p>
-
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <span>Ocupación 70%</span>
-    </div>
-</div>
-
-<!-- ================= DIALOGO PERFIL ================= -->
+<!-- ================= PERFIL ================= -->
 
 <dialog id="dialogo-perfil">
     <div class="dialog-container">
 
-        <div class="dialog-superior">
-            <h1 class="dialog-titulo">Perfil</h1>
-            <img src="../statics/images/usuario.png" alt="Icono de usuario" class="dialog-avatar">
-            <p class="dialog-nombre" id="usuario">Héctor Armando Figueroa</p>
-        </div>
+        <h1>Perfil</h1>
 
-        <div class="dialog-info">
-            <div class="dialog-info-fila">
-                <span class="dialog-label">Rol:</span>
-                <span class="dialog-valor" id="rol">Administrador</span>
-            </div>
-            <div class="dialog-info-fila">
-                <span class="dialog-label">Teléfono:</span>
-                <span class="dialog-valor" id="telefono">664-363-8418</span>
-            </div>
-        </div>
+        <img src="{% static 'images/usuario.png' %}">
+        <p>{{ user.username }}</p>
 
-        <div class="dialog-buttons">
-            <button id="btn-cambiar-contra" class="dialog-btn dialog-btn--azul">Modificar contraseña</button>
-            <!-- Se eliminó el onclick inline para manejarlo desde el JS -->
-            <button id="btn-salir" class="dialog-btn dialog-btn--naranja">Cerrar sesión</button>
-        </div>
+        <p><strong>Rol:</strong> {{ user.rol }}</p>
+
+        <button>Cerrar sesión</button>
 
     </div>
 </dialog>
 
+<!-- ================= JS ================= -->
 
-<!-- ================= DIALOGO CONTRA ================= -->
-
-<dialog id="dialogo-contrasena">
-    <div class="dialog-contra-container">
-
-        <h1 class="dialog-contra-titulo">Cambio de contraseña</h1>
-
-        <form method="dialog" novalidate>
-
-            <div class="dialog-contra-group">
-                <label for="contrasena-actual">Contraseña actual:</label>
-                <input type="password" id="contrasena-actual" name="contrasena-actual"
-                       placeholder="Ingrese la contraseña" maxlength="32" required>
-            </div>
-            <br>
-            <div class="dialog-contra-group">
-                <label for="contrasena-nueva">Nueva contraseña:</label>
-                <input type="password" id="contrasena-nueva" name="contrasena-nueva"
-                       placeholder="De 8 a 32 caracteres" minlength="8" maxlength="32" required>
-            </div>
-
-            <br>
-
-            <button type="submit" class="dialog-contra-btn">Guardar cambios</button>
-
-        </form>
-
-    </div>
-</dialog>
-
-
-<dialog id="dialogo-buscar">
-    <div id="dialogo-busqueda">
-        <h2>Búsqueda de viaje</h2>
-
-        <label for="origen">Origen:</label>
-        <select id="origen">
-            <option>Selecciona el origen</option>
-        </select>
-
-        <label for="destino">Destino:</label>
-        <select id="destino">
-            <option>Selecciona el destino</option>
-        </select>
-
-        <label>Fecha:</label>
-        <div class="fecha-container">
-            <input type="text" placeholder="DD">
-            <input type="text" placeholder="MM">
-            <input type="text" placeholder="YYYY">
-        </div>
-
-        <label for="pasajeros">Pasajeros:</label>
-        <input id="pasajeros" class="pasajeros-input" type="text" placeholder="Cantidad">
-
-        <div class="boton-container">
-            <button onclick="window.location.href='comprarboleto.html'">Continuar</button>
-        </div>
-    </div>
-</dialog>
-
-<!-- ================= SECCIÓN PARA TOASTS ================= -->
-<div class="notificaciones"></div>
-<script src="../statics/js/dashboard.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
 
 </body>
 </html>

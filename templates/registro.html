@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | Transportes Cuervo Negro</title>
-    <link rel="stylesheet" href="../statics/css/registro.css">
+
+    <!-- STATIC -->
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
 </head>
 <body>
 
@@ -13,22 +16,23 @@
     <main class="container">
 
         <section class="image-section" aria-hidden="true">
-            <img src="../statics/images/buses registro.png" alt="Autobuses de TCN">
+            <img src="{% static 'images/buses registro.png' %}" alt="Autobuses de TCN">
         </section>
 
         <section class="form-section">
 
             <header class="form-header">
-                <img src="../statics/images/logo.png" alt="Logo Transportes Cuervo Negro" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo Transportes Cuervo Negro" class="logo">
                 <h1>Registro de nuevos usuarios</h1>
             </header>
 
             <div class="aviso" role="alert">
-                <img src="../statics/images/advertencia.png" alt="Advertencia" class="icono-aviso">
+                <img src="{% static 'images/advertencia.png' %}" alt="Advertencia" class="icono-aviso">
                 <p>Los roles de cada usuario definen las opciones del sistema con las que tendrá permitido interactuar.</p>
             </div>
 
-            <form action="" method="post" novalidate>
+            <form method="post" novalidate>
+                {% csrf_token %}
 
                 <div class="form-group">
                     <label for="nombre">Nombre</label>

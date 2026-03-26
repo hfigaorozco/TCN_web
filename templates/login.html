@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Transportes Cuervo Negro</title>
-    <link rel="stylesheet" href="../statics/css/login.css">
+
+    <!-- STATIC -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
 
@@ -13,13 +16,13 @@
     <main class="container">
 
         <section class="image-section" aria-hidden="true">
-            <img src="../statics/images/bus login.png" alt="Autobús de TCN en carretera">
+            <img src="{% static 'images/bus login.png' %}" alt="Autobús de TCN en carretera">
         </section>
 
         <section class="form-section">
 
             <header class="form-header">
-                <img src="../statics/images/logo.png" alt="Logo Transportes Cuervo Negro" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo Transportes Cuervo Negro" class="logo">
                 <h1>¡Hola, identifícate!</h1>
                 <p>
                     Accede para descubrir las funcionalidades de la aplicación web
@@ -27,7 +30,8 @@
                 </p>
             </header>
 
-            <form action="" method="post">
+            <form method="post">
+                {% csrf_token %}
 
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -39,7 +43,7 @@
                     <input type="password" id="password" name="password" maxlength="32" placeholder="Ingresa tu contraseña" required>
                 </div>
 
-                <button type="submit" class="btn-primary" id="btn-iniciarSesion" onclick="window.location.href='index.html'">
+                <button type="submit" class="btn-primary">
                     Iniciar sesión
                 </button>
 

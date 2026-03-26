@@ -1,61 +1,63 @@
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background: #f4f6fb;
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* ================= NAVBAR ================= */
 
 .top-nav {
     width: 95%;
-    height: auto;
-    margin: 2.4vh auto;
+    margin: 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-
-/* ===== CAJA DEL LOGO ===== */
 
 .logo-box {
-    overflow: hidden;
     background: white;
-    padding: 2vh 4vh;
-    border-radius: 2vh;
+    padding: 20px 40px;
+    border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
-    height: 9vh;
 }
 
-.logo-box img{
-    height: 8vh;
-    width: auto;
+.logo-box img {
+    height: clamp(50px, 6vw, 80px);
 }
-
-/* ===== CAJA DEL MENÚ ===== */
 
 .menu-box {
     background: white;
-    padding: 3vh 5vh;
-    border-radius: 2vh;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
+    border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .menu {
     list-style: none;
     display: flex;
-    gap: 4.5vh;
+    gap: 45px;
     margin: 0;
     padding: 0;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .menu li a {
     text-decoration: none;
     color: #9a9a9a;
-    font-size: 2vh;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 600;
-    padding: 2vh 2.2vh;
+    padding: 20px 22px;
     border-radius: 20px;
     transition: 0.3s;
 }
@@ -73,15 +75,15 @@ body {
 /* ================= CONTENEDOR ================= */
 
 .container {
-    width: 94%;
+    width: 95%;
     margin: 0 auto;
 }
 
 /* ================= TÍTULO ================= */
 
 .title {
-    font-size: 4.8vh;
-    margin: 3vh 0;
+    font-size: clamp(30px, 4vw, 48px);
+    margin: 30px 0;
     font-weight: 600;
 }
 
@@ -90,28 +92,28 @@ body {
 .cards {
     display: flex;
     align-items: center;
-    gap: 2vh;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .card {
     background: white;
-    padding: 2vh 3vh;
+    padding: 20px 30px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    width: 18vh;
+    min-width: 180px;
     text-align: center;
 }
 
 .card span {
     color: #555;
-    font-size: 1.4vh;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .card h2 {
-    margin: 0.5vh 0 0;
-    font-size: 3.2vh;
+    margin: 5px 0 0;
+    font-size: 32px;
     font-weight: 500;
 }
 
@@ -127,184 +129,170 @@ body {
 /* ================= FILTROS ================= */
 
 .filter-boxes {
-    margin-left: auto;
     display: flex;
-    gap: 2.5vh;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
     margin-left: auto;
-    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
-.filter-box{
-    margin-left: auto;
-    padding-left: 5vh;
-    height: auto;
-    gap: 1.5vh;
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.filter-box h2{
-    font-weight: normal;
-    font-size: 2.4vh;
+.filter-box h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    margin: 0;
 }
 
-.filter-box input {
-    font-weight: normal;
-    height: 4.4vh;
-    padding: 0 1.6vh;
-    border-radius: 1.2vh;
-    border: 0.1vh solid #e0e0e0;
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-    font-size: 2vh;
+.filter-box input,
+.filter-box select {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 18px 22px;
+    font-size: 16px;
+    min-width: 180px;
+    height: 55px;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
     font-family: 'Segoe UI', sans-serif;
     outline: none;
-    width: 15vh;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.filter-box input:focus {
+.filter-box input:focus,
+.filter-box select:focus {
     border-color: #2f6fed;
     box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+    outline: none;
 }
 
 .filter-box select {
-    padding: 0 1.6vh;
-    height: 4.4vh;
-    border-radius: 1.2vh;
-    border: 0.1vh solid #e0e0e0;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
-    outline: none;
     appearance: none;
     cursor: pointer;
-    min-width: 170px;
-    appearance: none;
-    cursor: pointer;
-    min-width: 18vh;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
 
 .main-section {
-    width: 94%;
-    margin: 2.5vh auto;
+    width: 95%;
+    margin: 40px auto;
     display: flex;
-    gap: 3vh;
+    gap: 30px;
     align-items: stretch;
 }
 
 /* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 9vh;
+    width: 90px;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 15px;
+    align-items: center;
 }
 
-.side-btn{
-    width: 8vh;
-    height: 6vh;
+.side-btn {
+    width: 80px;
+    height: 60px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.2vh;
-    color: #bbb;
     cursor: pointer;
     transition: 0.3s;
-    vertical-align: middle;
     border: none;
 }
 
-/* ================= BOTON AGREGAR ================= */
-.agregar{
+/* ================= BOTONES SIDEBAR ================= */
+
+.agregar {
     background: white url("../images/agregar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .agregar:hover {
     background: #2f6fed url("../images/agregarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON EDITAR ================= */
 .editar {
     background: white url("../images/editar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .editar:hover {
     background: #2f6fed url("../images/editarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON ELIMINAR ================= */
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .eliminar:hover {
     background: #2f6fed url("../images/eliminarHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON FECHA Y CIUDAD ================= */
 .fechaCiudad {
     background: white url("../images/calendario.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .fechaCiudad:hover {
     background: #2f6fed url("../images/calendarioHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
-/* ================= BOTON BOLETOS VENDIDOS ================= */
 .boletos {
     background: white url("../images/boletos gris.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 .boletos:hover {
     background: #2f6fed url("../images/boletosHover.png") no-repeat center;
-    background-size: 3.2vh 3.2vh;
+    background-size: 32px 32px;
 }
 
 /* ================= CAJA GRANDE ================= */
 
 .content-box {
     flex: 1;
-    height: 50vh;
+    min-height: 500px;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 2vh;
+    border-radius: 24px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    overflow-x: auto;
 }
 
-.content-box table{
+.content-box table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    font-size: 15px;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 10px;
-    font-size: 1.7vh;
 }
 
-.content-box table th{
+.content-box table th {
     color: white;
-    padding: 1vh 1.6vh;
     background-color: #2f6fed;
+    padding: 14px 16px;
+    text-align: center;
 }
 
-.content-box table td{
+.content-box table td {
     text-align: center;
-    padding: 1vh 1.2vh;
+    padding: 14px 16px;
 }
 
 .content-box table tbody tr {
@@ -315,66 +303,113 @@ body {
     background-color: #eef3ff;
     cursor: pointer;
 }
-/* ================= INPUT ================= */
-/*
-.input{
-    border-radius: 20px;
-    border: none;
-    background: white;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
-    outline: none;
-    cursor: auto;
-    width: 13vh;
-    height: auto;
-    padding-left: 25px;
-}*/
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-boxes {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .filter-box input,
+    .filter-box select {
+        min-width: unset;
+        width: 100%;
+    }
+}
 
 /* ================= DIALOG BASE ================= */
+
 dialog::backdrop {
     background: rgba(15, 23, 42, 0.35);
     backdrop-filter: blur(6px);
 }
 
 .dialog-base {
-    background: rgb(255, 255, 255);
+    background: #ffffff;
     border-radius: 20px;
     border: none;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 28px;
     width: fit-content;
     height: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dialog-base h1 {
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .dialog-base h3 {
-    font-weight: normal;
-    margin-bottom: 0.5vh;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
 }
 
 .dialog-base select,
 .dialog-base input {
-    border: #555 solid 1px;
-    border-radius: 10px;
-    font-size: 1.3vh;
+    height: 38px;
+    padding: 0 12px;
+    border: 2px solid #1061C4;
+    border-radius: 8px;
+    font-size: 14px;
     font-family: 'Segoe UI', sans-serif;
-    padding: 0.3vh;
-    transition: 0.3s;
+    color: #333;
+    background: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .dialog-base select:focus,
 .dialog-base input:focus {
-    border-color: #1f5fa9;
-    box-shadow: 0 0 0 3px rgba(31, 95, 169, 0.15);
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
     outline: none;
-    transform: translateY(-1px);
 }
 
-.dialog-base button {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    font-size: 2vh;
-    font-weight: 500;
-    transition: 0.3s;
-}
+/* ================= CAJITAS (grupos de campos) ================= */
 
 .cajitas {
     display: flex;
@@ -385,7 +420,7 @@ dialog::backdrop {
 
 .cajitas > div {
     flex: 1;
-    min-width: 100px;
+    min-width: 120px;
 }
 
 /* ================= BOTONES ACEPTAR / CANCELAR ================= */
@@ -394,11 +429,10 @@ dialog::backdrop {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
-.btn-aceptar,
-.btn-cancelar {
+.btn-aceptar {
     height: 40px;
     padding: 0 24px;
     border-radius: 20px;
@@ -407,103 +441,69 @@ dialog::backdrop {
     font-weight: 600;
     cursor: pointer;
     font-family: 'Segoe UI', sans-serif;
+    background: #2f6fed;
+    color: white;
     transition: background-color 0.25s ease, transform 0.2s ease;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-    color: #555;
-    background: #f0f2f5;
 }
 
 .btn-aceptar:hover {
-    background: #2f6fed;
-    border-radius: 2.5vh;
-    padding: 5px 15px 5px 15px;
-    color: white;
+    background: #1a4db5;
     transform: translateY(-2px);
 }
 
-.btn-cancelar:hover {
-    background: #FF8600;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* ================= DIALOG AGREGAR ================= */
-.dialog-agregar select {
-    height: 3.819vh;
-}
-
-.dialog-agregar input {
-    height: 3.0vh;
-    width: 10vh;
-}
-
-/* ================= DIALOG EDITAR ================= */
-.dialog-editar select {
-    height: 3vh;
-    width: min-content;
-}
-
-.dialog-editar input {
-    height: 3vh;
-    width: 10vh;
-}
-
-/* ================= DIALOG ELIMINAR ================= */
-.dialog-eliminar{
-    height: fit-content;
-}
-
-.dialog-eliminar select {
-    height: 3vh;
-    width: min-content;
-}
-
-.dialog-eliminar input {
-    height: 3vh;
-    width: 15vh;
-}
-
-/* ================= BOTON ACEPTAR Y CANCELAR ================= */
-.btn-aceptar{
-    background: #2f6fed;
-    border-radius: 2.5vh;
-    padding: 5px 15px 5px 15px;
-    color: white;
-    font-size: 2vh;
-    border: none;
-}
-
-.btn-aceptar:hover {
-    background: #fff;
-    color: #2f6fed;
-    border: #2f6fed solid 1px;
+.btn-aceptar:active {
+    transform: translateY(0);
 }
 
 .btn-cancelar {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    border: 2px solid #FF8600;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
     background: white;
     color: #FF8600;
-    border: #FF8600 solid 1px;
-    padding: 5px 15px 5px 15px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-cancelar:hover {
     background: #FF8600;
     color: white;
-}
-.aceptar-cancelar{
-    height: max-content;
-    padding: 7vh 0px 0px 19vh;
+    transform: translateY(-2px);
 }
 
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.dialog-fechaCiudad{
-    height: fit-content;
+.btn-cancelar:active {
+    transform: translateY(0);
+}
+
+/* ================= DIÁLOGO FECHA Y CIUDAD / BOLETOS ================= */
+
+.dialog-fechaCiudad {
     width: fit-content;
+    max-width: 92vw;
 }
 
-.titulo-cajitas{
-    gap: 12vh;
+.titulo-cajitas {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.titulo-cajitas-boletos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .tabla-fechaCiudad {
@@ -512,120 +512,122 @@ dialog::backdrop {
     border-spacing: 0;
     overflow: hidden;
     border-radius: 10px;
-    font-size: 1.5vh;
+    font-size: 14px;
 }
 
-.cerrar-fechaCiudad{
-    padding: 5vh 0px 0px 90%;
-    height: auto;
+.tabla-fechaCiudad th {
+    background-color: #2f6fed;
+    color: white;
+    padding: 12px 14px;
+    text-align: center;
 }
 
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.titulo-cajitas-boletos{
-    gap: 48%;
+.tabla-fechaCiudad td {
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.tabla-fechaCiudad tbody tr:hover {
+    background-color: #eef3ff;
+}
+
+.cerrar-fechaCiudad {
     display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
 
+/* ================= TOAST ================= */
 
-/* ================= TOAST PRUEBA ================= */
-.notificaciones{
+.notificaciones {
     position: fixed;
     bottom: 2vh;
     right: 3vh;
 }
 
-.toast{
+.toast {
     overflow: hidden;
     position: relative;
-    padding: 0.8vh 1vh 1.2vh 1vh;
+    padding: 10px 12px 14px 12px;
     color: black;
-    margin-bottom: 1vh;
-    width: 40vh;
+    margin-bottom: 10px;
+    width: 320px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
     display: grid;
-    grid-template-columns: 7vh 1fr 7vh;
-    border: #2f6fed 0.25vh solid;
-    border-radius: 2.5vh;
+    grid-template-columns: 56px 1fr 56px;
+    border: #2f6fed 2px solid;
+    border-radius: 20px;
     --color: #2f6fed;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff; 
-    animation: show 00.3s ease 1 forwards;
+    background-color: #ffffff;
+    animation: show 0.3s ease 1 forwards;
 }
 
-.toast.content{
+.toast .content {
     grid-column: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5vh;
+    gap: 4px;
     line-height: 1.2;
 }
 
-.toast i{
+.toast i {
     color: #2f6fed;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: x-large;
+    font-size: 22px;
     height: 100%;
     width: 100%;
 }
 
-.toast .title{
-    font-size: x-large;
+.toast .title {
+    font-size: 16px;
     font-weight: bold;
     margin: 0;
 }
 
-.toast span{
-    font-size: 1.6vh;
+.toast span {
+    font-size: 13px;
     line-height: 1;
     font-weight: 500;
 }
 
-.toast span, .toast i:nth-child(3){
+.toast span,
+.toast i:nth-child(3) {
     color: black;
     opacity: 0.6;
 }
 
-.toast::before{
+.toast::before {
     position: absolute;
     bottom: 0;
     left: 0;
     background-color: var(--color);
     width: 100%;
-    height: 0.3vh;
+    height: 3px;
     content: '';
-    box-shadow: 0 0 1vh var(--color);
+    box-shadow: 0 0 8px var(--color);
     animation: timeOut 3s linear 1 forwards;
 }
 
-@keyframes timeOut{
-    to{
-        width: 0;
-    }
-}
-
-@keyframes show {
-    0% {
-        transform: translateX(100%);
-    }
-
-    40% {
-        transform: translateX(-5%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.toast.error{
+.toast.error {
     --color: #FF8600;
     border-color: #FF8600;
 }
 
-.toast.error i{
+.toast.error i {
     color: #FF8600;
+}
+
+@keyframes timeOut {
+    to { width: 0; }
+}
+
+@keyframes show {
+    0%   { transform: translateX(100%); }
+    40%  { transform: translateX(-5%); }
+    100% { transform: translateX(0); }
 }

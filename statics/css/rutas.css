@@ -237,7 +237,7 @@ body{
 
 .table{
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
     text-align: center;
     font-size: clamp(16px, 1.2vw, 20px);
 }
@@ -262,6 +262,19 @@ body{
 
 .table tbody tr:hover{
     background: #e8f0ff;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.table thead th:last-child {
+    border-top-right-radius: 12px;
 }
 
 /* ================= DIALOG ================= */

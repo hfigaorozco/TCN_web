@@ -22,4 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogo-agregar-modelo').showModal();
     });
 
+    // Calcular asientos automáticamente según tipo de autobús
+    document.getElementById('bus-servicio').addEventListener('change', function () {
+        const asientosPorTipo = {
+            'PLUS': 44,
+            'PLAT': 36,
+        };
+        const cantAsientos = asientosPorTipo[this.value] || 0;
+        document.getElementById('bus-asientos-hidden').value = cantAsientos;
+    });
+
+    // Submit manual del form de agregar autobús
+    document.querySelector('#dialogo-agregar-bus form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Verificar que el hidden tenga el valor correcto antes de enviar
+        const tipo = document.getElementById('bus-servicio').value;
+        const asientosPorTipo = { 'PLUS': 44, 'PLAT': 36 };
+        document.getElementById('bus-asientos-hidden').value = asientosPorTipo[tipo] || 0;
+
+        this.submit();
+    });
+
 });
