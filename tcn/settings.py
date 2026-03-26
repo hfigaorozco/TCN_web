@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'corridas',
     'rutas',
     'operadores',
+    'pasajeros',
+    'boletos',
+    'asientos',
 ]
 
 MIDDLEWARE = [
