@@ -84,18 +84,21 @@
     <dialog id="agregarOperador">
         <div class="dialog-content">
             <h2>Agregar Operador</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="agregar_operador">
+                <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+                <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+                <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10">
+                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
+                <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
 
-            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
-            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
-            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
-            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
-            <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
-            <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
-
-            <div class="dialog-actions">
-                <button class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
-                <button class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
-            </div>
+                <div class="dialog-actions">
+                    <button type="button" class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
+                    <button type="submit" class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
+                </div>
+            </form>
         </div>
     </dialog>
 
