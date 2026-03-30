@@ -40,17 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     'rest_framework',
-    'login',
-    'registro',
-    'dashboard',
-    'autobuses',
-    'reservaciones',
-    'corridas',
-    'rutas',
-    'operadores',
-    'pasajeros',
-    'boletos',
-    'asientos',
+    'apps.login',
+    'apps.registro',
+    'apps.dashboard',
+    'apps.autobuses',
+    'apps.reservaciones',
+    'apps.corridas',
+    'apps.rutas',
+    'apps.operadores',
+    'apps.pasajeros',
+    'apps.boletos',
+    'apps.asientos',
 ]
 
 MIDDLEWARE = [
@@ -136,8 +136,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'statics/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "statics",
+    BASE_DIR / "static",
 ]

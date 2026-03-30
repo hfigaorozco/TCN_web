@@ -23,13 +23,13 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transportes-cuervo-negro/', include([
-        path('', include('login.urls')),
-        path('', include('dashboard.urls')),
-        path('', include('registro.urls')),
-        path('', include('autobuses.urls')),
-        path('', include('reservaciones.urls')),
-        path('', include('corridas.urls')),
-        path('', include('rutas.urls')),
-        path('', include('operadores.urls')),
+        path('', include('apps.login.urls')),
+        path('', include('apps.dashboard.urls')),
+        path('', include('apps.registro.urls')),
+        path('', include('apps.autobuses.urls')),
+        path('', include('apps.reservaciones.urls')),
+        path('', include('apps.corridas.urls')),
+        path('', include('apps.rutas.urls')),
+        path('', include('apps.operadores.urls')),
     ])),
 ]
