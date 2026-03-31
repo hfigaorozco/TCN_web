@@ -129,7 +129,7 @@ body {
 .filter {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 0px;
 }
 
 .filter:first-of-type {
@@ -165,6 +165,13 @@ body {
 .filter select {
     appearance: none;
     cursor: pointer;
+}
+
+.filter-boxes {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-left: auto;
 }
 
 /* ================= SECCIÓN PRINCIPAL ================= */
@@ -307,11 +314,13 @@ body {
     padding: 18px 16px;
 }
 
-.content-box table tr {
-    transition: background-color 0.8s ease;
+/* ================= FILAS SALTEADAS ================= */
+
+.content-box table tbody tr:nth-child(even) {
+    background: #f5f8ff;
 }
 
-.content-box table tr:hover {
+.content-box table tbody tr:hover {
     background-color: #eef3ff;
     cursor: pointer;
 }
@@ -392,7 +401,7 @@ body {
 }
 
 .dialog-bus-titulo {
-    font-size: 24px;
+    font-size: 34px;
     font-weight: 700;
     font-style: italic;
     color: #111;
@@ -400,6 +409,7 @@ body {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .dialog-bus-form {

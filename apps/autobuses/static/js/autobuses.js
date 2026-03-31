@@ -2,46 +2,62 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Abrir diálogo: Registrar autobús
+    // Dialogos
+
     document.getElementById('abrirAgregar').addEventListener('click', () => {
         document.getElementById('dialogo-agregar-bus').showModal();
     });
 
-    // Abrir diálogo: Baja de autobús
     document.getElementById('abrirEliminar').addEventListener('click', () => {
         document.getElementById('dialogo-eliminar-bus').showModal();
     });
 
-    // Abrir diálogo: Nueva marca
     document.getElementById('abrirAgregarMarca').addEventListener('click', () => {
         document.getElementById('dialogo-agregar-marca').showModal();
     });
 
-    // Abrir diálogo: Nuevo modelo
     document.getElementById('abrirAgregarModelo').addEventListener('click', () => {
         document.getElementById('dialogo-agregar-modelo').showModal();
     });
 
-    // Calcular asientos automáticamente según tipo de autobús
-    document.getElementById('bus-servicio').addEventListener('change', function () {
-        const asientosPorTipo = {
-            'PLUS': 44,
-            'PLAT': 36,
-        };
-        const cantAsientos = asientosPorTipo[this.value] || 0;
-        document.getElementById('bus-asientos-hidden').value = cantAsientos;
+    // Filtros
+
+    const marcaSelect = document.getElementById('bus-marca');
+    const modeloSelect = document.getElementById('bus-modelo');
+    const todasLasOpciones = Array.from(modeloSelect.options).filter(opt => opt.value !== '');
+
+    marcaSelect.addEventListener('change', function () {
+        const marcaSeleccionada = this.value;
+
+        modeloSelect.innerHTML = '<option value="" disabled selected>Seleccionar modelo</option>';
+
+        todasLasOpciones.forEach(option => {
+            if (option.dataset.marca === marcaSeleccionada) {
+                modeloSelect.appendChild(option.cloneNode(true));
+            }
+        });
     });
 
-    // Submit manual del form de agregar autobús
-    document.querySelector('#dialogo-agregar-bus form').addEventListener('submit', function (e) {
-        e.preventDefault();
+    const inputNumero = document.getElementById('numero_bus');
+    const selectTipo = document.getElementById('tipo_servicio');
 
-        // Verificar que el hidden tenga el valor correcto antes de enviar
-        const tipo = document.getElementById('bus-servicio').value;
-        const asientosPorTipo = { 'PLUS': 44, 'PLAT': 36 };
-        document.getElementById('bus-asientos-hidden').value = asientosPorTipo[tipo] || 0;
+    function filtrarTabla() {
+        const numeroBuscado = inputNumero.value.trim();
+        const tipoSeleccionado = selectTipo.value;
+        const filas = document.querySelectorAll('.content-box table tbody tr');
 
-        this.submit();
-    });
+        filas.forEach(fila => {
+            const celdaNumero = fila.cells[0]?.textContent.trim();
+            const tipoFila = fila.dataset.tipo;
+
+            const coincideNumero = numeroBuscado === '' || celdaNumero.includes(numeroBuscado);
+            const coincideTipo = tipoSeleccionado === 'todos' || tipoFila === tipoSeleccionado;
+
+            fila.style.display = (coincideNumero && coincideTipo) ? '' : 'none';
+        });
+    }
+
+    inputNumero.addEventListener('input', filtrarTabla);
+    selectTipo.addEventListener('change', filtrarTabla);
 
 });

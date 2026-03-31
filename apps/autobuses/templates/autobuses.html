@@ -48,7 +48,6 @@
                 <h2>{{ total_en_ruta }}</h2>
             </div>
 
-<<<<<<< HEAD:templates/autobuses.html
             <div class="filter-boxes">
                 <div class="filter filter-number">
                     <h2 for="numero_bus">Buscar por número</h2>
@@ -63,20 +62,6 @@
                         {% endfor %}
                     </select>
                 </div>
-=======
-            <div class="filter filter-number">
-                <label for="numero_bus">Número de autobús:</label>
-                <input id="numero_bus" type="text" maxlength="3" placeholder="Ingresa el número">
-            </div>
-
-            <div class="filter">
-                <label for="tipo_servicio">Tipo de servicio:</label>
-                <select id="tipo_servicio">
-                    <option value="todos">Todos los servicios</option>
-                    <option value="plus">Plus</option>
-                    <option value="platino">Platino</option>
-                </select>
->>>>>>> c60a14bf1643b261d30d90007c3710aec84dc296:apps/autobuses/templates/autobuses.html
             </div>
 
         </div>
@@ -93,26 +78,30 @@
 
         <div class="content-box">
             <table>
-                <tr bgcolor="#2f6fed" style="color: white;">
-                    <th width="20%">Número</th>
-                    <th>Matrícula</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Asientos</th>
-                </tr>
-                {% for autobus in autobuses %}
-                <tr align="center">
-                    <td>{{ autobus.numero }}</td>
-                    <td>{{ autobus.matricula }}</td>
-                    <td>{{ autobus.marca }}</td>
-                    <td>{{ autobus.modelo }}</td>
-                    <td>{{ autobus.cantAsientos }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5">No hay autobuses registrados</td>
-                </tr>
-                {% endfor %}
+                <thead>
+                    <tr bgcolor="#2f6fed" style="color: white;">
+                        <th width="20%">Número</th>
+                        <th>Matrícula</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Asientos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for autobus in autobuses %}
+                    <tr align="center" data-tipo="{{ autobus.tipoAutobus.codigo }}">
+                        <td>{{ autobus.numero }}</td>
+                        <td>{{ autobus.matricula }}</td>
+                        <td>{{ autobus.marca }}</td>
+                        <td>{{ autobus.modelo }}</td>
+                        <td>{{ autobus.cantAsientos }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No hay autobuses registrados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
 
@@ -153,7 +142,9 @@
                         <select id="bus-modelo" name="modelo">
                             <option value="" disabled selected>Seleccionar modelo</option>
                             {% for modelo in modelos %}
-                            <option value="{{ modelo.clave }}">{{ modelo.nombre }}</option>
+                            <option value="{{ modelo.clave }}" data-marca="{{ modelo.marca.clave }}">
+                                {{ modelo.nombre }}
+                            </option>
                             {% endfor %}
                         </select>
                     </div>
@@ -170,7 +161,8 @@
 
                     <div class="dialog-bus-group">
                         <label for="bus-wifi">Clave WIFI:</label>
-                        <input type="text" id="bus-wifi" name="claveWIFI" maxlength="20" placeholder="Ingrese la clave WIFI (opcional)">
+                        <input type="text" id="bus-wifi" name="claveWIFI" maxlength="20"
+                            placeholder="Ingrese la clave WIFI">
                     </div>
 
                     <button type="submit" class="dialog-bus-btn">Registrar</button>
