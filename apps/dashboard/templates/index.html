@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Transportes Cuervo Negro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/logo_tcn_azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="top-nav">
+    <div class="logo-box">
+        <img src="{% static 'images/logo.png' %}" alt="Logo TCN">
+    </div>
+    <div class="menu-box">
+        <ul class="menu">
+            <li class="activea"><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'reservaciones' %}">Reservaciones</a></li>
+            <li><a href="{% url 'corridas' %}">Corridas</a></li>
+            <li><a href="{% url 'rutas' %}">Rutas</a></li>
+            <li><a href="{% url 'operadores' %}">Operadores</a></li>
+            <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- ================= BOTONES ================= -->
+
+<div class="action-bar">
+    <button class="primary-btn" onclick="window.location.href='{% url 'registro' %}'">
+        Registro de cuentas
+    </button>
+    <button class="primary-btn" id="btn-venderBoletos">Vender boletos</button>
+    <button id="btn-usuario" class="icon-btn">
+        <img src="{% static 'images/usuario blanco.png' %}" alt="Usuario">
+    </button>
+</div>
+
+<!-- ================= TÍTULO ================= -->
+
+<div class="title-row">
+    <h1 class="title">Dashboard</h1>
+</div>
+
+<!-- ================= CONTENIDO ================= -->
+
+<div class="main-section">
+
+    <div class="section-column">
+        <div class="content-box">
+            <div class="card-title">Corridas</div>
+            <div class="filter-box">
+                <select>
+                    <option selected disabled>Seleccionar fecha</option>
+                    <option>20-01-2026</option>
+                    <option>21-01-2026</option>
+                    <option>22-01-2026</option>
+                </select>
+            </div>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Estado</th>
+                        <th>Autobús</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for corrida in corridas %}
+                    <tr>
+                        <td>{{ corrida.hora }}</td>
+                        <td>{{ corrida.origen }}</td>
+                        <td>{{ corrida.destino }}</td>
+                        <td>
+                            <span class="status {{ corrida.estado }}">{{ corrida.estado }}</span>
+                        </td>
+                        <td>{{ corrida.autobus }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No hay corridas disponibles</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PASAJEROS -->
+    <div class="content-box">
+        <div class="card-title">Pasajeros</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Asiento</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pasajero in pasajeros %}
+                <tr>
+                    <td>{{ pasajero.asiento }}</td>
+                    <td>{{ pasajero.nombre }}</td>
+                    <td>{{ pasajero.tipo }}</td>
+                    <td>
+                        <span class="status {{ pasajero.estado }}">{{ pasajero.estado }}</span>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Sin pasajeros</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- ================= DIÁLOGO PERFIL ================= -->
+
+<dialog id="dialogo-perfil">
+    <div class="dialog-container">
+        <div class="dialog-superior">
+            <h1 class="dialog-titulo">Perfil</h1>
+            <img src="{% static 'images/usuario.png' %}" class="dialog-avatar" alt="Avatar">
+            <p class="dialog-nombre">{{ user.username }}</p>
+        </div>
+        <div class="dialog-info">
+            <div class="dialog-info-fila">
+                <span class="dialog-label">Rol: </span>
+                <span class="dialog-valor">{{ user.rol }}</span>
+            </div>
+            <div class="dialog-info-fila">
+                <span class="dialog-label">Correo: </span>
+                <span class="dialog-valor">{{ user.email }}</span>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <button class="dialog-btn--azul" id="btn-cambiar-contra">Modificar contraseña</button>
+            <button class="dialog-btn--naranja" id="btn-salir">Cerrar sesión</button>
+        </div>
+    </div>
+</dialog>
+
+<!-- ================= DIÁLOGO CAMBIO DE CONTRASEÑA ================= -->
+
+<dialog id="dialogo-contrasena">
+    <div class="dialog-contra-container">
+        <h1 class="dialog-contra-titulo">Cambio de contraseña</h1>
+        <div class="dialog-contra-group">
+            <label>Contraseña actual:</label>
+            <input type="password" placeholder="Ingrese la contraseña" autocomplete="new-password">
+        </div>
+        <div class="dialog-contra-group">
+            <label>Nueva contraseña:</label>
+            <input type="password" placeholder="De 8 a 32 caracteres" minlength="8" maxlength="32" autocomplete="new-password">
+        </div>
+        <button class="dialog-contra-btn">Guardar cambios</button>
+    </div>
+</dialog>
+
+<!-- ================= DIÁLOGO BÚSQUEDA DE VIAJE ================= -->
+
+<dialog id="dialogo-buscar">
+    <div class="dialog-buscar-container">
+
+        <h1 class="dialog-buscar-titulo">Búsqueda de viaje</h1>
+
+        <label class="dialog-buscar-label">Origen:</label>
+        <select class="dialog-buscar-input" autocomplete="off">
+            <option value="" disabled selected>Selecciona el origen</option>
+            {% for ciudad in ciudades %}
+            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="dialog-buscar-label">Destino:</label>
+        <select class="dialog-buscar-input" autocomplete="off">
+            <option value="" disabled selected>Selecciona el destino</option>
+            {% for ciudad in ciudades %}
+            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="dialog-buscar-label">Fecha:</label>
+        <div class="dialog-buscar-fecha">
+            <input type="text" placeholder="DD" maxlength="2" autocomplete="off">
+            <input type="text" placeholder="MM" maxlength="2" autocomplete="off">
+            <input type="text" placeholder="YYYY" maxlength="4" autocomplete="off">
+        </div>
+
+        <label class="dialog-buscar-label">Pasajeros:</label>
+        <input class="dialog-buscar-pasajeros" type="number" min="1" placeholder="Cantidad" autocomplete="off">
+
+        <div class="dialog-buscar-btn-container">
+            <button class="dialog-buscar-btn">Continuar</button>
+        </div>
+
+    </div>
+</dialog>
+
+<!-- ================= NOTIFICACIONES ================= -->
+
+<div class="notificaciones"></div>
+
+<!-- ================= JS ================= -->
+
+<script>
+    window.__urlLogin = "#";
+</script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+</body>
+</html>

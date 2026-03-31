@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservaciones | Transportes Cuervo Negro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/reservaciones.css' %}">
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="logo-box">
+            <img src="{% static 'images/logo.png' %}" alt="Logo TCN">
+        </div>
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li class="activea"><a href="#">Reservaciones</a></li>
+                <li><a href="{% url 'corridas' %}">Corridas</a></li>
+                <li><a href="{% url 'rutas' %}">Rutas</a></li>
+                <li><a href="{% url 'operadores' %}">Operadores</a></li>
+                <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Reservaciones</h1>
+
+        <div class="cards-filters-wrapper">
+            <div class="cards">
+                <div class="card active-card">
+                    <span>Reservaciones activas</span>
+                    <h2>{{ total_activas }}</h2>
+                </div>
+                <div class="card">
+                    <span>Total reservado hoy</span>
+                    <h2>{{ total_hoy }}</h2>
+                </div>
+                <div class="card">
+                    <span>Reservaciones futuras</span>
+                    <h2>{{ total_futuras }}</h2>
+                </div>
+            </div>
+
+            <div class="filter-boxes">
+                <div class="filter-box filter-box--mediano">
+                    <h2>Fecha</h2>
+                    <input type="date" id="filtro-fecha">
+                </div>
+                <div class="filter-box filter-box--corto">
+                    <h2>Número</h2>
+                    <input type="number" id="filtro-numero" placeholder="Reservación" min="1">
+                </div>
+                <div class="filter-box">
+                    <h2>Pasajero</h2>
+                    <input type="text" id="filtro-pasajero" placeholder="Nombre de pasajero">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN PRINCIPAL -->
+    <div class="main-section">
+
+        <div class="sidebar">
+            <button class="side-btn mostrar" id="mostrarBoleto"></button>
+        </div>
+
+        <div class="content-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Corrida</th>
+                        <th>Cliente</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Salida</th>
+                        <th>Llegada</th>
+                        <th>Pasajeros</th>
+                        <th>Límite de pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservacion in reservaciones %}
+                    <tr>
+                        <td>{{ reservacion.fecha }}</td>
+                        <td>{{ reservacion.corrida.numero }}</td>
+                        <td>{{ reservacion.pasajero.nombre }} {{ reservacion.pasajero.apellPat }}</td>
+                        <td>{{ reservacion.corrida.ruta.ciudadOrigen }}</td>
+                        <td>{{ reservacion.corrida.ruta.ciudadDestino }}</td>
+                        <td>{{ reservacion.corrida.fecha_salida }} {{ reservacion.corrida.hora_salida }}</td>
+                        <td>{{ reservacion.corrida.fecha_llegada }} {{ reservacion.corrida.hora_llegada }}</td>
+                        <td>{{ reservacion.cantPasajeros }}</td>
+                        <td>{{ reservacion.fechaLimPago }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9">No hay reservaciones registradas</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

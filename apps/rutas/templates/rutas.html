@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rutas | Transportes Cuervo Negro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/rutas.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/Logo TCN azul.png' %}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="top-nav">
+    <div class="logo-box">
+        <img src="{% static 'images/logo.png' %}" alt="Logo TCN">
+    </div>
+    <div class="menu-box">
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'reservaciones' %}">Reservaciones</a></li>
+            <li><a href="{% url 'corridas' %}">Corridas</a></li>
+            <li class="activea"><a href="#">Rutas</a></li>
+            <li><a href="{% url 'operadores' %}">Operadores</a></li>
+            <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- CONTENEDOR -->
+<div class="container">
+    <h1 class="title">Rutas</h1>
+
+    <div class="cards">
+
+        <div class="card active-card">
+            <span>Rutas</span>
+            <h2>{{ total_rutas }}</h2>
+        </div>
+
+        <div class="filter-box">
+            <div class="filter-group">
+                <label for="origen">Origen:</label>
+                <select id="origen">
+                    <option selected disabled>Origen</option>
+                    {% for ciudad in ciudades %}
+                    <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="destino">Destino:</label>
+                <select id="destino">
+                    <option selected disabled>Destino</option>
+                    {% for ciudad in ciudades %}
+                    <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECCIÓN PRINCIPAL -->
+<div class="main-section">
+
+    <div class="sidebar">
+        <button class="side-btn agregar" id="abrirAgregar"></button>
+        <button class="side-btn editar" id="abrirEditar"></button>
+        <button class="side-btn fechaCiudad" id="abrirCiudad"></button>
+    </div>
+
+    <div class="content-box">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Distancia (km)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ruta in rutas %}
+                <tr>
+                    <td>{{ ruta.ciudadOrigen }}</td>
+                    <td>{{ ruta.ciudadDestino }}</td>
+                    <td>{{ ruta.distancia }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No hay rutas registradas</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- DIALOG AGREGAR RUTA -->
+<dialog id="agregarRuta">
+    <div class="dialog-content">
+        <h2>Agregar Ruta</h2>
+
+        <select name="ciudadOrigen">
+            <option disabled selected>Seleccionar Origen</option>
+            {% for ciudad in ciudades %}
+            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="ciudadDestino">
+            <option disabled selected>Seleccionar Destino</option>
+            {% for ciudad in ciudades %}
+            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="number" name="distancia" placeholder="Distancia (km)" min="1">
+
+        <div class="dialog-actions">
+            <button class="btn btn-action btn-secondary" id="cancelarAgregarRuta">Cancelar</button>
+            <button class="btn btn-action btn-primary" id="aceptarAgregarRuta">Guardar</button>
+        </div>
+    </div>
+</dialog>
+
+<!-- DIALOG EDITAR RUTA -->
+<dialog id="editarRuta">
+    <div class="dialog-content">
+        <h2>Editar Ruta</h2>
+
+        <select name="ruta">
+            <option disabled selected>Seleccionar Ruta</option>
+            {% for ruta in rutas %}
+            <option value="{{ ruta.codigo }}">{{ ruta.ciudadOrigen }} → {{ ruta.ciudadDestino }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="number" name="distancia" placeholder="Nueva Distancia (km)" min="1">
+
+        <div class="dialog-actions">
+            <button class="btn btn-action btn-secondary" id="cancelarEditarRuta">Cancelar</button>
+            <button class="btn btn-action btn-primary" id="aceptarEditarRuta">Actualizar</button>
+        </div>
+    </div>
+</dialog>
+
+<!-- DIALOG AGREGAR CIUDAD -->
+<dialog id="agregarCiudad">
+    <div class="dialog-content">
+        <h2>Agregar Ciudad</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Ciudad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ciudad in ciudades %}
+                <tr>
+                    <td>{{ ciudad.codigo }}</td>
+                    <td>{{ ciudad.nombre }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">No hay ciudades registradas</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <input type="text" name="codigo" placeholder="Código" maxlength="3">
+        <input type="text" name="nombre" placeholder="Nombre de la ciudad" maxlength="30">
+
+        <div class="dialog-actions">
+            <button class="btn btn-action btn-secondary" id="cancelarCiudad">Cancelar</button>
+            <button class="btn btn-action btn-primary" id="aceptarCiudad">Guardar</button>
+        </div>
+    </div>
+</dialog>
+
+<script src="{% static 'js/rutas.js' %}" defer></script>
+
+</body>
+</html>

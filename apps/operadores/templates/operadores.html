@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Operadores | Transportes Cuervo Negro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/operadores.css' %}">
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="logo-box">
+            <img src="{% static 'images/logo.png' %}" alt="Logo TCN" height="80px">
+        </div>
+        <div class="menu-box">
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'reservaciones' %}">Reservaciones</a></li>
+                <li><a href="{% url 'corridas' %}">Corridas</a></li>
+                <li><a href="{% url 'rutas' %}">Rutas</a></li>
+                <li class="activea"><a href="#">Operadores</a></li>
+                <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Operadores</h1>
+
+        <div class="cards">
+            <div class="card active-card">
+                <span>Operadores</span>
+                <h2>{{ total_operadores }}</h2>
+            </div>
+
+            <div class="filter-box">
+                <label for="filtro-operador">Operadores:</label>
+                <input type="text" id="filtro-operador" placeholder="Operador">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-section">
+
+        <div class="sidebar">
+            <button class="side-btn agregar" id="abrirAgregarOperador"></button>
+            <button class="side-btn editar" id="abrirEditarOperador"></button>
+        </div>
+
+        <div class="content-box">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Operador</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Celular</th>
+                        <th>Fecha de contrato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for operador in operadores %}
+                    <tr>
+                        <td>{{ operador.numero }}</td>
+                        <td>{{ operador.nombre }} {{ operador.apellPat }} {{ operador.apellMat }}</td>
+                        <td>{{ operador.fechaNac }}</td>
+                        <td>{{ operador.telefono }}</td>
+                        <td>{{ operador.fechaContrato }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No hay operadores registrados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- DIALOG AGREGAR OPERADOR -->
+    <dialog id="agregarOperador">
+        <div class="dialog-content">
+            <h2>Agregar Operador</h2>
+
+            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
+            <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
+            <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
+
+            <div class="dialog-actions">
+                <button class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
+                <button class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- DIALOG EDITAR OPERADOR -->
+    <dialog id="editarOperador">
+        <div class="dialog-content">
+            <h2>Editar Operador</h2>
+
+            <select name="numero">
+                <option disabled selected>Seleccionar operador</option>
+                {% for operador in operadores %}
+                <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
+            <input type="date" name="fechaNac" disabled>
+
+            <div class="dialog-actions">
+                <button class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
+                <button class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="{% static 'js/operadores.js' %}" defer></script>
+
+</body>
+</html>
