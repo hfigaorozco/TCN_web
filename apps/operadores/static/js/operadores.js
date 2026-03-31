@@ -43,9 +43,9 @@ document.getElementById('operador').addEventListener(
     function(){
         const option = this.options[this.selectedIndex];
         document.getElementById('nombre').value = option.dataset.nombre || '';
-        document.getElementById('apellPat').value = option.dataset.apellPat || '';
-        document.getElementById('apellMat').value = option.dataset.apellMat || '';
+        document.getElementById('apellPat').value = option.dataset.apellpat || '';
+        document.getElementById('apellMat').value = option.dataset.apellmat || '';
         document.getElementById('telefono').value = option.dataset.telefono || '';
-        document.getElementById('fechaNac').value = option.dataset.fechaNac || '';
+        document.getElementById('fechaNac').value = option.dataset.fechanac || '';
     }
 )

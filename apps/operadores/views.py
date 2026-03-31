@@ -18,6 +18,15 @@ def pagina_operadores(request):
                 fechaContrato = request.POST['fechaContrato'],
             )
             return redirect('operadores')
+        
+        elif request.POST['action'] == 'editar_operador':
+            operador = Operador.objects.get(numero=request.POST['numero'])
+            operador.nombre = request.POST['nombre']
+            operador.apellPat = request.POST['apellPat']
+            operador.apellMat = request.POST['apellMat']
+            operador.telefono = request.POST['telefono']
+            operador.save()
+            return redirect('operadores')
     
     operadores = Operador.objects.all()
     numero_operador = request.GET.get('filtro_operador', '')
@@ -32,5 +41,10 @@ def pagina_operadores(request):
     if operador_numero:
         operador_seleccionado = Operador.objects.filter(numero = operador_numero).first()
     
-    return render(request, 'operadores.html', {'operadores': operadores})
+    context = {
+        'operadores': operadores,
+        'operador_seleccionado': operador_seleccionado,
+    }
+    
+    return render(request, 'operadores.html', context)
 
