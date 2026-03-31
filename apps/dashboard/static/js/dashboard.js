@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const btnUsuario        = document.getElementById('btn-usuario');
+    const btnUsuario         = document.getElementById('btn-usuario');
     const btnModificarContra = document.getElementById('btn-cambiar-contra');
-    const btnVenderBoletos  = document.getElementById('btn-venderBoletos');
-    const btnSalir          = document.getElementById('btn-salir');
+    const btnVenderBoletos   = document.getElementById('btn-venderBoletos');
+    const btnSalir           = document.getElementById('btn-salir');
 
     const dialogoUsuario  = document.getElementById('dialogo-perfil');
     const dialogoContra   = document.getElementById('dialogo-contrasena');
@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         dialogoUsuario.showModal();
     });
 
-    // Abrir diálogo de modificar contraseña
+    // Abrir diálogo de modificar contraseña (cierra el de perfil primero)
     btnModificarContra.addEventListener('click', () => {
+        dialogoUsuario.close();
         dialogoContra.showModal();
     });
 
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dialogoBusqueda.showModal();
     });
 
-    // Cerrar sesión: cierra el dialog, muestra toast y redirige al terminar
+    // Cerrar sesión
     btnSalir.addEventListener('click', () => {
         dialogoUsuario.close();
         createToast(
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Hasta pronto'
         );
         setTimeout(() => {
-            window.location.href = 'login.html';
+            window.location.href = window.__urlLogin;
         }, 3000);
     });
 

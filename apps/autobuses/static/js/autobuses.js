@@ -60,4 +60,35 @@ document.addEventListener('DOMContentLoaded', () => {
     inputNumero.addEventListener('input', filtrarTabla);
     selectTipo.addEventListener('change', filtrarTabla);
 
+
+    // ================= TOASTS =================
+
+    const notificaciones = document.querySelector('.notificaciones');
+
+    function createToast(type, icon, title, text) {
+        let newToast = document.createElement('div');
+        newToast.innerHTML = `
+            <div class="toast ${type}">
+                <i class="${icon}"></i>
+                <div class="content">
+                    <div class="title">${title}</div>
+                    <span>${text}</span>
+                </div>
+                <i class="fa-solid fa-x" onclick="(this.parentElement).remove()"></i>
+            </div>`;
+        notificaciones.appendChild(newToast);
+        setTimeout(() => { newToast.remove(); }, 3000);
+    }
+
+    // ================= MOSTRAR ERROR DEL SERVIDOR =================
+
+    if (window.__errorServidor) {
+        document.getElementById('dialogo-agregar-bus').showModal();
+        createToast('error', 'fa-solid fa-exclamation', 'Error', window.__errorServidor);
+    }
+
+    if (window.__exitoServidor) {
+        createToast('exito', 'fa-solid fa-check', 'Operación exitosa', window.__exitoServidor);
+    }
+
 });

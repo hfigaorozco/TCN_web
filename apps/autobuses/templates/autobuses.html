@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
     <link rel="stylesheet" href="{% static 'css/autobuses.css' %}">
+    <script src="https://kit.fontawesome.com/8786bfad35.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -111,7 +112,7 @@
     <dialog id="dialogo-agregar-bus">
         <div class="dialog-bus-container">
             <h1 class="dialog-bus-titulo">Registrar autobús</h1>
-            <form method="POST" novalidate>
+            <form method="POST" autocomplete="off" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="action" value="agregar_autobus">
                 <div class="dialog-bus-form">
@@ -169,6 +170,7 @@
                 </div>
             </form>
         </div>
+
     </dialog>
 
     <!-- DIÁLOGO BAJA AUTOBÚS -->
@@ -179,7 +181,7 @@
                 <img src="{% static 'images/advertencia.png' %}" alt="Advertencia" class="dialog-baja-icono">
                 <p>Al darse de baja un autobús este ya no aparecerá en las consultas del sistema</p>
             </div>
-            <form method="POST" novalidate>
+            <form method="POST" autocomplete="off" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="action" value="baja_autobus">
                 <div class="dialog-baja-form">
@@ -203,7 +205,7 @@
         <div class="dialog-marca-container">
             <img src="{% static 'images/logo.png' %}" alt="Logo TCN" class="dialog-marca-logo">
             <h1 class="dialog-marca-titulo">Nueva marca</h1>
-            <form method="POST" novalidate>
+            <form method="POST" autocomplete="off" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="action" value="agregar_marca">
                 <div class="dialog-marca-form">
@@ -228,7 +230,7 @@
         <div class="dialog-modelo-container">
             <img src="{% static 'images/logo.png' %}" alt="Logo TCN" class="dialog-modelo-logo">
             <h1 class="dialog-modelo-titulo">Nuevo modelo</h1>
-            <form method="POST" novalidate>
+            <form method="POST" autocomplete="off" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="action" value="agregar_modelo">
                 <div class="dialog-modelo-form">
@@ -256,6 +258,20 @@
             </form>
         </div>
     </dialog>
+
+    {% if error %}
+        <script>
+            window.__errorServidor = "{{ error }}";
+        </script>
+    {% endif %}
+
+    {% if toast_exito %}
+    <script>
+        window.__exitoServidor = "{{ toast_exito }}";
+    </script>
+    {% endif %}
+
+    <div class="notificaciones"></div>
 
     <script src="{% static 'js/autobuses.js' %}"></script>
 

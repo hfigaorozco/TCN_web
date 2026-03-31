@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@ body{
 
 .top-nav{
     width: 95%;
-    margin: 25px auto; /* Igual que los CSS anteriores */
+    margin: 25px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +24,7 @@ body{
 
 .logo-box{
     background: white;
-    padding: 20px 40px; /* Ajuste de tamaño igual al anterior */
+    padding: 20px 40px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -36,7 +35,7 @@ body{
 
 .menu-box{
     background: white;
-    padding: clamp(15px,2vw,25px) clamp(20px,3vw,50px); /* Igual que antes */
+    padding: clamp(15px,2vw,25px) clamp(20px,3vw,50px);
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -199,8 +198,6 @@ body{
     box-shadow: 0px 15px 35px rgba(0,0,0,0.12);
 }
 
-/* ===== TITULO INTERNO ===== */
-
 .card-title{
     position: absolute;
     top: -14px;
@@ -218,12 +215,12 @@ body{
 .table{
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 12px; /* separa filas */
+    border-spacing: 0 12px;
     background: transparent;
 }
 
 .table thead{
-    background: #2f6fed; /* azul de encabezado */
+    background: #2f6fed;
     color: white;
     border-radius: 12px;
 }
@@ -260,11 +257,6 @@ body{
     transform: scale(1.01);
 }
 
-.table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
 .table thead th:first-child {
     border-top-left-radius: 12px;
 }
@@ -273,113 +265,32 @@ body{
     border-top-right-radius: 12px;
 }
 
-/* ================= DETAIL SECTION ================= */
-
-.detail-section{
-    width: 95%;
-    margin: 30px auto 60px auto;
-}
-
-.detail-box{
-    background: white;
-    padding: 30px;
-    border-radius: 24px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
-}
-
-/* ================= PROGRESS ================= */
-
-.progress-bar{
-    width: 100%;
-    height: 14px;
-    background: #eee;
-    border-radius: 20px;
-    margin: 12px 0;
-    overflow: hidden;
-}
-
-.progress{
-    height: 100%;
-    width: 70%;
-    background: #2f6fed;
-    border-radius: 20px;
-    transition: width 0.5s ease;
-}
-
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1024px){
-    .menu{
-        justify-content: center;
-    }
-
-    .action-bar{
-        justify-content: center;
-    }
-
-    .main-section{
-        flex-direction: column;
-    }
+    .menu{ justify-content: center; }
+    .action-bar{ justify-content: center; }
+    .main-section{ flex-direction: column; }
 }
 
 @media (max-width: 768px){
-    .top-nav{
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .menu{
-        justify-content: center;
-    }
-
-    .action-bar{
-        justify-content: center;
-    }
-
-    .title-row{
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    .table{
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .filter-box{
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .filter-box input, .filter-box select{
-        width: 100%;
-    }
+    .top-nav{ flex-direction: column; align-items: center; text-align: center; }
+    .menu{ justify-content: center; }
+    .action-bar{ justify-content: center; }
+    .title-row{ justify-content: center; margin-top: 10px; }
+    .table{ display: block; overflow-x: auto; white-space: nowrap; }
+    .filter-box{ width: 100%; margin-top: 10px; }
+    .filter-box input, .filter-box select{ width: 100%; }
 }
 
 @media (max-width: 480px){
-    .primary-btn{
-        width: 100%;
-    }
-
-    .icon-btn{
-        width: 45px;
-        height: 45px;
-    }
-
-    .content-box{
-        padding: 25px 20px;
-    }
-
-    .card-title{
-        left: 20px;
-    }
+    .primary-btn{ width: 100%; }
+    .icon-btn{ width: 45px; height: 45px; }
+    .content-box{ padding: 25px 20px; }
+    .card-title{ left: 20px; }
 }
 
-
-/* DIALOGO DE PERFIL */
-
+/* ================= DIÁLOGO PERFIL ================= */
 
 #dialogo-perfil {
     border: none;
@@ -388,7 +299,6 @@ body{
     width: 430px;
     max-width: 90%;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-
     position: fixed;
     top: 50%;
     left: 50%;
@@ -397,6 +307,8 @@ body{
 
 #dialogo-perfil::backdrop {
     background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 #dialogo-perfil[open] {
@@ -406,10 +318,11 @@ body{
 }
 
 #dialogo-perfil .dialog-container {
-    background: hsl(0, 0%, 100%);
+    background: white;
     border-radius: 25px;
     padding: 45px 35px;
     text-align: center;
+    width: 100%;
 }
 
 #dialogo-perfil .dialog-superior {
@@ -459,6 +372,14 @@ body{
     color: #1e5db3;
 }
 
+#dialogo-perfil .dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
 #dialogo-perfil .dialog-btn--azul {
     width: 100%;
     padding: 15px;
@@ -496,19 +417,13 @@ body{
     transform: translateY(-5px);
 }
 
-#dialogo-perfil .dialog-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* DIALOGO CONTRA */
+/* ================= DIÁLOGO CAMBIO DE CONTRASEÑA ================= */
 
 #dialogo-contrasena {
     border: none;
     border-radius: 20px;
     padding: 0;
-    width: 400px;              
+    width: 400px;
     max-width: 90%;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     position: fixed;
@@ -519,17 +434,19 @@ body{
 
 #dialogo-contrasena::backdrop {
     background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 #dialogo-contrasena .dialog-contra-container {
     background: #f2f2f2;
     border-radius: 20px;
-    padding: 40px 35px;       
+    padding: 40px 35px;
     text-align: center;
 }
 
 #dialogo-contrasena .dialog-contra-titulo {
-    font-size: 30px;          
+    font-size: 30px;
     font-weight: 700;
     color: #333;
     margin-bottom: 35px;
@@ -541,7 +458,7 @@ body{
 
 #dialogo-contrasena label {
     display: block;
-    font-size: 18px;         
+    font-size: 18px;
     font-weight: 600;
     color: #333;
     margin-bottom: 12px;
@@ -582,106 +499,143 @@ body{
     transform: translateY(-2px);
 }
 
-/* DALOGO DE BUSQUEDA*/
+/* ================= DIÁLOGO BÚSQUEDA DE VIAJE ================= */
 
-#dialogo-buscar{
-    top: 15%;
-    left: 30%;
+#dialogo-buscar {
     border: none;
-    outline: none;
+    border-radius: 20px;
+    padding: 0;
+    width: 520px;
+    max-width: 92%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: transparent;
+    outline: none;
+}
+
+#dialogo-buscar::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.dialog-buscar-container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 50px 45px 50px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    row-gap: 28px;
+    align-items: center;
+}
+
+.dialog-buscar-titulo {
+    grid-column: 1 / 3;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.dialog-buscar-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.dialog-buscar-input {
+    height: 44px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0 12px;
+    font-size: 16px;
+    background: white;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease;
+    appearance: auto;
+}
+
+.dialog-buscar-input:focus {
+    border-color: #FF8600;
+    box-shadow: 0 0 0 3px rgba(255, 134, 0, 0.15);
+}
+
+.dialog-buscar-fecha {
+    display: flex;
+    gap: 10px;
+}
+
+.dialog-buscar-fecha input {
+    height: 44px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease;
     padding: 0;
 }
 
-#dialogo-busqueda{
-    width: 520px;
-    background: white;
-    border: none !important;
-    outline: none !important;
-    border-radius:18px;
-    padding:40px 50px 45px 50px;
-    display:grid;
-    grid-template-columns: 140px 1fr;
-    row-gap:28px;
-    align-items:center;
-    font-family: "Segoe UI", Arial, sans-serif;
+.dialog-buscar-fecha input:nth-child(1),
+.dialog-buscar-fecha input:nth-child(2) {
+    width: 70px;
 }
 
-#dialogo-busqueda h2{
-    grid-column:1 / 3;
-    text-align:center;
-    font-size:32px;
-    margin:0 0 15px 0;
-    font-weight:700;
-    color:#333;
+.dialog-buscar-fecha input:nth-child(3) {
+    width: 90px;
 }
 
-#dialogo-busqueda label{
-    font-size:26px;
-    font-weight:600;
-    color:#333;
+.dialog-buscar-fecha input:focus {
+    border-color: #FF8600;
+    box-shadow: 0 0 0 3px rgba(255, 134, 0, 0.15);
 }
 
-#dialogo-busqueda select,
-#dialogo-busqueda input{
-    height:44px;
-    border:2px solid #f28c28;
-    border-radius:10px;
-    padding:0 12px;
-    font-size:18px;
-    background:white;
-    outline:none;
+.dialog-buscar-pasajeros {
+    height: 44px;
+    border: 2px solid #FF8600;
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 15px;
+    outline: none;
+    width: 140px;
+    transition: box-shadow 0.2s ease;
 }
 
-.fecha-container{
-    display:flex;
-    gap:12px;
+.dialog-buscar-pasajeros:focus {
+    box-shadow: 0 0 0 3px rgba(255, 134, 0, 0.18);
 }
 
-.fecha-container input{
-    width:75px;
-    text-align:center;
-    transition: all 0.2 ease;
+.dialog-buscar-btn-container {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.fecha-container input:hover {
-    transform:translateY(-2px);
+.dialog-buscar-btn {
+    width: 180px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #FF8600;
+    color: white;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
-.pasajeros-input{
-    width:145px;
-    transition: all 0.2s ease;
+.dialog-buscar-btn:hover {
+    background-color: #cc6a00;
+    transform: translateY(-2px);
 }
 
-.pasajeros-input:focus {
-    transform:translateY(-4px);
-}
-
-.boton-container{
-    grid-column:1 / 3;
-    display:flex;
-    justify-content:center;
-    margin-top:10px;
-}
-
-#dialogo-busqueda button{
-    background:#ff8c00;
-    border:none;
-    padding:16px 55px;
-    font-size:24px;
-    font-weight:600;
-    color:white;
-    border-radius:16px;
-    transition: all 0.2s ease;
-}
-
-#dialogo-busqueda button:hover{
-    transform:translateY(-4px);
-    background-color: #452703;
-}
-
-
-
+/* ================= TOASTS ================= */
 
 .notificaciones{
     position: fixed;
@@ -704,8 +658,8 @@ body{
     --color: #2f6fed;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff; 
-    animation: show 00.3s ease 1 forwards;
+    background-color: #ffffff;
+    animation: show 0.3s ease 1 forwards;
 }
 
 .toast.content{
@@ -756,26 +710,6 @@ body{
     animation: timeOut 3s linear 1 forwards;
 }
 
-@keyframes timeOut{
-    to{
-        width: 0;
-    }
-}
-
-@keyframes show {
-    0% {
-        transform: translateX(100%);
-    }
-
-    40% {
-        transform: translateX(-5%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
 .toast.error{
     --color: #FF8600;
     border-color: #FF8600;
@@ -783,4 +717,14 @@ body{
 
 .toast.error i{
     color: #FF8600;
+}
+
+@keyframes timeOut{
+    to{ width: 0; }
+}
+
+@keyframes show {
+    0%   { transform: translateX(100%); }
+    40%  { transform: translateX(-5%); }
+    100% { transform: translateX(0); }
 }
