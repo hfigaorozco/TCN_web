@@ -20,6 +20,17 @@ def pagina_operadores(request):
             return redirect('operadores')
     
     operadores = Operador.objects.all()
+    numero_operador = request.GET.get('filtro_operador', '')
+    
+    if numero_operador:
+        operadores = operadores.filter(numero__icontains=numero_operador) 
+    
+    
+    operador_seleccionado = None
+    operador_numero = request.GET.get('operador_numero')
+    
+    if operador_numero:
+        operador_seleccionado = Operador.objects.filter(numero = operador_numero).first()
     
     return render(request, 'operadores.html', {'operadores': operadores})
 
