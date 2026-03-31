@@ -1,0 +1,23 @@
+    <dialog id="editarOperador">
+        <div class="dialog-content">
+            <h2>Editar Operador</h2>
+
+            <select name="numero">
+                <option disabled selected>Seleccionar operador</option>
+                {% for operador in operadores %}
+                <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
+            <input type="date" name="fechaNac" disabled>
+
+            <div class="dialog-actions">
+                <button class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
+                <button class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
+            </div>
+        </div>
+    </dialog>

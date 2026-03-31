@@ -107,29 +107,36 @@
 
     <!-- DIALOG EDITAR OPERADOR -->
     <dialog id="editarOperador">
-        <div class="dialog-content">
-            <h2>Editar Operador</h2>
-            <form method="POST" id="form_editar_operador">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="editar_operador">
-                <select name="numero" id="operador">
-                    <option disabled selected>Seleccionar operador</option>
-                    {% for operador in operadores %}
-                    <option value="{{ operador.numero }}" data-nombre="{{ operador.nombre }}" data-apellPat="{{ operador.apellPat }}" data-apellMat="{{ operador.apellMat }}" data-telefono="{{ operador.telefono }}" data-fechaNac="{{ operador.fechaNac|date:'Y-m-d' }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
-                    {% endfor %}
-                </select>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15">
-                <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" >
-                <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" >
-                <input type="tel" id="telefono" name="telefono" placeholder="Celular" maxlength="10" >
-                <input type="date" id="fechaNac" name="fechaNac" readonly >
+        <form method="POST" id="form_editar_operador" class="form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="editar_operador">
+            <div class="dialog-content">
+                <h2>Editar Operador</h2>
+                <!-- <form method="POST" id="form_editar_operador" class="form"> -->
+                    
 
-                <div class="dialog-actions">
-                    <button type="button" class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
-                    <button type="submit" class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
-                </div>
-            </form>
-        </div>
+                    <select name="numero" id="operador">
+                        <option disabled selected>Seleccionar operador</option>
+                        {% for operador in operadores %}
+
+                        <option value="{{ operador.numero }}" data-nombre="{{ operador.nombre }}" data-apellPat="{{ operador.apellPat }}" data-apellMat="{{ operador.apellMat }}" data-telefono="{{ operador.telefono }}" data-fechaNac="{{ operador.fechaNac|date:'Y-m-d' }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
+
+                        {% endfor %}
+                    </select>
+
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15">
+                    <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" >
+                    <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" >
+                    <input type="tel" id="telefono" name="telefono" placeholder="Celular" maxlength="10" >
+                    <input type="date" id="fechaNac" name="fechaNac" readonly >
+
+                    <div class="dialog-actions">
+                        <button type="button" class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
+                        <button type="submit" class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </form>
     </dialog>
 
     <script src="{% static 'js/operadores.js' %}" defer></script>
