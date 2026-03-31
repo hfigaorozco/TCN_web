@@ -35,9 +35,12 @@
                 <h2>{{ total_operadores }}</h2>
             </div>
 
+            
             <div class="filter-box">
-                <label for="filtro-operador">Operadores:</label>
-                <input type="text" id="filtro-operador" placeholder="Operador">
+                <form method="GET">
+                    <label for="filtro_operador">Operadores:</label>
+                    <input type="text" id="filtro_operador" placeholder="Operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
+                </form>
             </div>
         </div>
     </div>
@@ -84,44 +87,56 @@
     <dialog id="agregarOperador">
         <div class="dialog-content">
             <h2>Agregar Operador</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="agregar_operador">
+                <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+                <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+                <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10">
+                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
+                <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
 
-            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
-            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
-            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
-            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
-            <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
-            <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
-
-            <div class="dialog-actions">
-                <button class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
-                <button class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
-            </div>
+                <div class="dialog-actions">
+                    <button type="button" class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
+                    <button type="submit" class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
+                </div>
+            </form>
         </div>
     </dialog>
 
     <!-- DIALOG EDITAR OPERADOR -->
     <dialog id="editarOperador">
-        <div class="dialog-content">
-            <h2>Editar Operador</h2>
+        <form method="POST" id="form_editar_operador" class="form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="editar_operador">
+            <div class="dialog-content">
+                <h2>Editar Operador</h2>
+                <!-- <form method="POST" id="form_editar_operador" class="form"> -->
+                    
 
-            <select name="numero">
-                <option disabled selected>Seleccionar operador</option>
-                {% for operador in operadores %}
-                <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
-                {% endfor %}
-            </select>
+                    <select name="numero" id="operador">
+                        <option disabled selected>Seleccionar operador</option>
+                        {% for operador in operadores %}
 
-            <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
-            <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
-            <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
-            <input type="tel" name="telefono" placeholder="Celular" maxlength="10">
-            <input type="date" name="fechaNac" disabled>
+                        <option value="{{ operador.numero }}" data-nombre="{{ operador.nombre }}" data-apellPat="{{ operador.apellPat }}" data-apellMat="{{ operador.apellMat }}" data-telefono="{{ operador.telefono }}" data-fechaNac="{{ operador.fechaNac|date:'Y-m-d' }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
 
-            <div class="dialog-actions">
-                <button class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
-                <button class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
+                        {% endfor %}
+                    </select>
+
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15">
+                    <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" >
+                    <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" >
+                    <input type="tel" id="telefono" name="telefono" placeholder="Celular" maxlength="10" >
+                    <input type="date" id="fechaNac" name="fechaNac" readonly >
+
+                    <div class="dialog-actions">
+                        <button type="button" class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>
+                        <button type="submit" class="btn btn-action btn-primary" id="aceptarEditarOperador">Actualizar</button>
+                    </div>
+                <!-- </form> -->
             </div>
-        </div>
+        </form>
     </dialog>
 
     <script src="{% static 'js/operadores.js' %}" defer></script>

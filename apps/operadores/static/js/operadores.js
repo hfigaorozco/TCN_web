@@ -36,3 +36,16 @@ aceptarEditarOperador.addEventListener('click', () => {
 cancelarEditarOperador.addEventListener('click', () => {
     editarOperador.close();
 });
+
+
+document.getElementById('operador').addEventListener(
+    'change', 
+    function(){
+        const option = this.options[this.selectedIndex];
+        document.getElementById('nombre').value = option.dataset.nombre || '';
+        document.getElementById('apellPat').value = option.dataset.apellpat || '';
+        document.getElementById('apellMat').value = option.dataset.apellmat || '';
+        document.getElementById('telefono').value = option.dataset.telefono || '';
+        document.getElementById('fechaNac').value = option.dataset.fechanac || '';
+    }
+)
