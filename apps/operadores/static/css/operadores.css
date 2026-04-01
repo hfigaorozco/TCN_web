@@ -4,6 +4,7 @@ body{
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
 }
 
 /* ================= NAVBAR ================= */
@@ -290,7 +291,7 @@ dialog::backdrop{
 /* CONTENIDO INTERNO */
 
 .dialog-content{
-    padding: 40px 50px;
+    padding: 35px 45px;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -309,6 +310,13 @@ dialog::backdrop{
     font-weight: 600;
 }
 
+.dialog-content h3 {
+    margin: 0px ;
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+
 /* INPUTS LIMPIOS COMO EL SISTEMA */
 
 .dialog-content input{
@@ -317,9 +325,10 @@ dialog::backdrop{
     border-radius: 18px;
     padding: 16px 22px;
     font-size: 16px;
-    height: 55px;
+    height: 45px;
     box-sizing: border-box;
     transition: all 0.25s ease;
+    margin: 0px;
 }
 
 .dialog-content input:focus{
