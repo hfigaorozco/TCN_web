@@ -31,5 +31,6 @@ urlpatterns = [
         path('', include('apps.corridas.urls')),
         path('', include('apps.rutas.urls')),
         path('', include('apps.operadores.urls')),
+        path('', include('apps.boletos.urls')),
     ])),
 ]

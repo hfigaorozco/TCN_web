@@ -1,6 +1,9 @@
 from django.shortcuts import render
-
-# Create your views here.
+from apps.rutas.models import Ciudad
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'ciudades': Ciudad.objects.all(),
+    }
+    
+    return render(request, 'index.html', context)

@@ -525,3 +525,73 @@ body {
         gap: 25px;
     }
 }
+
+
+/* ================= DIÁLOGO SIN RESULTADOS ================= */
+
+#dialogo-sin-resultados {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    width: 420px;
+    max-width: 92%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dialogo-sin-resultados::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.dialog-sin-resultados-container {
+    background: white;
+    border-radius: 20px;
+    padding: 45px 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.dialog-sin-resultados-icono {
+    font-size: 48px;
+    margin: 0;
+}
+
+.dialog-sin-resultados-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.dialog-sin-resultados-texto {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dialog-sin-resultados-btn {
+    margin-top: 10px;
+    padding: 14px 32px;
+    border-radius: 25px;
+    border: none;
+    background: #FF8600;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-sin-resultados-btn:hover {
+    background-color: #cc6a00;
+    transform: translateY(-2px);
+}

@@ -170,6 +170,8 @@
     </div>
 </dialog>
 
+<!-- Reemplaza SOLO el diálogo de búsqueda y el bloque de scripts en index.html -->
+
 <!-- ================= DIÁLOGO BÚSQUEDA DE VIAJE ================= -->
 
 <dialog id="dialogo-buscar">
@@ -194,14 +196,17 @@
         </select>
 
         <label class="dialog-buscar-label">Fecha:</label>
-        <div class="dialog-buscar-fecha">
-            <input type="text" placeholder="DD" maxlength="2" autocomplete="off">
-            <input type="text" placeholder="MM" maxlength="2" autocomplete="off">
-            <input type="text" placeholder="YYYY" maxlength="4" autocomplete="off">
-        </div>
+        <input class="dialog-buscar-input"
+               type="date"
+               id="dialog-fecha"
+               autocomplete="off">
 
         <label class="dialog-buscar-label">Pasajeros:</label>
-        <input class="dialog-buscar-pasajeros" type="number" min="1" placeholder="Cantidad" autocomplete="off">
+        <input class="dialog-buscar-pasajeros"
+               type="number"
+               min="1"
+               placeholder="Cantidad"
+               autocomplete="off">
 
         <div class="dialog-buscar-btn-container">
             <button class="dialog-buscar-btn">Continuar</button>
@@ -216,10 +221,19 @@
 
 <!-- ================= JS ================= -->
 
-<script>
-    window.__urlLogin = "#";
-</script>
-<script src="{% static 'js/dashboard.js' %}"></script>
+    <script>
+        window.__urlLogin   = "#";
+        window.__urlBoletos = "{% url 'comprarboleto' %}";
 
-</body>
-</html>
+        // Restricción de fechas: hoy hasta +30 días
+        const inputFecha = document.getElementById('dialog-fecha');
+        const hoy = new Date();
+        const max = new Date();
+        max.setDate(hoy.getDate() + 30);
+
+        const toISO = d => d.toISOString().split('T')[0];
+        inputFecha.min = toISO(hoy);
+        inputFecha.max = toISO(max);
+    </script>
+    
+<script src="{% static 'js/dashboard.js' %}"></script>
