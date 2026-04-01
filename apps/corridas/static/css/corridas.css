@@ -481,15 +481,6 @@ dialog::backdrop {
 }
 
 /* ================= DIALOG EDITAR ================= */
-.dialog-editar select {
-    height: 3vh;
-    width: min-content;
-}
-
-.dialog-editar input {
-    height: 3vh;
-    width: 10vh;
-}
 
 /* ================= DIALOG ELIMINAR ================= */
 .dialog-eliminar {

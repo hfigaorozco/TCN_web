@@ -162,14 +162,16 @@
                 </div>
             </div>
 
-            <div>
+            <div class="cajitas">
+                <div>
                 <h3>Autobús</h3>
-                <select name="autobus">
-                    <option selected disabled>Autobús</option>
+                    <select name="autobus">
+                        <option selected disabled>Autobús</option>
                     {% for autobus in autobuses %}
-                    <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
+                        <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
                     {% endfor %}
-                </select>
+                    </select>
+                </div>
             </div>
 
             <div class="cajitas">
