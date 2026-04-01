@@ -12,11 +12,7 @@ def pagina_corridas(request):
     operadores = Operador.objects.all()
     autobuses = Autobus.objects.all()
     
-    context ={
-        'operadores': operadores,
-        'rutas': rutas,
-        'autobuses': autobuses,
-    }
+
     
     
     if request.method == 'POST' and 'action' in request.POST:
@@ -40,5 +36,26 @@ def pagina_corridas(request):
                 operador = operador_obj,
                 estado = estado_obj
             )
+    
+    corridas = Corrida.objects.all()
+    numero_corrida = request.GET.get('filtro_corrida', '')
+    origen = request.GET.get('filtro_origen', '')
+    destino = request.GET.get('filtro_destino', '')
+    
+    if numero_corrida:
+        corridas = corridas.filter(numero_icontains=numero_corrida)
+        
+    if origen and origen != 'todos':
+        corridas = corridas.filter(ruta__ciudadOrigen_icontains=origen)
+    
+    if destino and destino != 'todos':
+        corridas = corridas.filter(ruta__ciudadDestino_icontains=destino)
+        
+    context ={
+        'operadores': operadores,
+        'rutas': rutas,
+        'autobuses': autobuses,
+        'corridas': corridas,
+    }
     
     return render(request, 'corridas.html', context)
