@@ -301,15 +301,15 @@
                     <tr>
                         <td>{{ c.numero }}</td>
                         <td>{{ c.hora_salida }}</td>
-                        <td>{{ c.ruta.ciudadOrigen }}</td>
-                        <td>{{ c.ruta.ciudadDestino }}</td>
+                        <td>{{ c.ruta.ciudadOrigen.nombre }}</td>
+                        <td>{{ c.ruta.ciudadDestino.nombre }}</td>
                         <td>{{ c.autobus.numero }}</td>
                         <td>{{ c.boletos_vendidos }}</td>
                         <td>{{ c.lugaresDisp }}</td>
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="7">No hay boletos vendidos para esta fecha</td>
+                        <td colspan="7">No hay corridas</td>
                     </tr>
                     {% endfor %}
                 </table>
