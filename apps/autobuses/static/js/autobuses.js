@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Dialogos
+    // ================= DIÁLOGOS =================
 
     document.getElementById('abrirAgregar').addEventListener('click', () => {
         document.getElementById('dialogo-agregar-bus').showModal();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogo-agregar-modelo').showModal();
     });
 
-    // Filtros
+    // ================= FILTRO DE MODELOS POR MARCA =================
 
     const marcaSelect = document.getElementById('bus-marca');
     const modeloSelect = document.getElementById('bus-modelo');
@@ -28,9 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     marcaSelect.addEventListener('change', function () {
         const marcaSeleccionada = this.value;
-
         modeloSelect.innerHTML = '<option value="" disabled selected>Seleccionar modelo</option>';
-
         todasLasOpciones.forEach(option => {
             if (option.dataset.marca === marcaSeleccionada) {
                 modeloSelect.appendChild(option.cloneNode(true));
@@ -38,20 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ================= FILTROS DE TABLA =================
+
     const inputNumero = document.getElementById('numero_bus');
-    const selectTipo = document.getElementById('tipo_servicio');
+    const selectTipo  = document.getElementById('tipo_servicio');
 
     function filtrarTabla() {
-        const numeroBuscado = inputNumero.value.trim();
+        const numeroBuscado    = inputNumero.value.trim();
         const tipoSeleccionado = selectTipo.value;
         const filas = document.querySelectorAll('.content-box table tbody tr');
 
         filas.forEach(fila => {
             const celdaNumero = fila.cells[0]?.textContent.trim();
-            const tipoFila = fila.dataset.tipo;
+            const tipoFila    = fila.dataset.tipo;
 
             const coincideNumero = numeroBuscado === '' || celdaNumero.includes(numeroBuscado);
-            const coincideTipo = tipoSeleccionado === 'todos' || tipoFila === tipoSeleccionado;
+            const coincideTipo   = tipoSeleccionado === 'todos' || tipoFila === tipoSeleccionado;
 
             fila.style.display = (coincideNumero && coincideTipo) ? '' : 'none';
         });
@@ -60,13 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
     inputNumero.addEventListener('input', filtrarTabla);
     selectTipo.addEventListener('change', filtrarTabla);
 
-
     // ================= TOASTS =================
 
     const notificaciones = document.querySelector('.notificaciones');
 
     function createToast(type, icon, title, text) {
-        let newToast = document.createElement('div');
+        const newToast = document.createElement('div');
         newToast.innerHTML = `
             <div class="toast ${type}">
                 <i class="${icon}"></i>
@@ -80,10 +79,24 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { newToast.remove(); }, 3000);
     }
 
-    // ================= MOSTRAR ERROR DEL SERVIDOR =================
+    // ================= RESPUESTAS DEL SERVIDOR =================
+
+    const errorTipo = window.__errorTipo || null;
 
     if (window.__errorServidor) {
-        document.getElementById('dialogo-agregar-bus').showModal();
+        // Reabrir el diálogo que causó el error
+        const dialogosPorTipo = {
+            'agregar_autobus': 'dialogo-agregar-bus',
+            'baja_autobus':    'dialogo-eliminar-bus',
+            'agregar_marca':   'dialogo-agregar-marca',
+            'agregar_modelo':  'dialogo-agregar-modelo',
+        };
+
+        const idDialogo = dialogosPorTipo[errorTipo];
+        if (idDialogo) {
+            document.getElementById(idDialogo).showModal();
+        }
+
         createToast('error', 'fa-solid fa-exclamation', 'Error', window.__errorServidor);
     }
 

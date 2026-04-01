@@ -48,38 +48,38 @@ def generar_asientos(autobus_obj):
 
 def pagina_autobuses(request):
     error = None
+    error_tipo = None  
 
     if request.method == 'POST' and 'action' in request.POST:
+        action = request.POST['action']
 
-        if request.POST['action'] == 'agregar_autobus':
+        if action == 'agregar_autobus':
             try:
-                numero = request.POST.get('numero', '').strip()
-                matricula = request.POST.get('matricula', '').strip().upper()
+                numero      = request.POST.get('numero', '').strip()
+                matricula   = request.POST.get('matricula', '').strip().upper()
                 tipo_codigo = request.POST.get('tipoAutobus', '')
                 marca_clave = request.POST.get('marca', '')
-                modelo_clave = request.POST.get('modelo', '')
+                modelo_clave= request.POST.get('modelo', '')
 
-                # Validaciones
                 if not numero:
-                    error = 'El número del autobús es obligatorio.'
+                    error = 'El número del autobús es obligatorio'
                 elif not matricula:
-                    error = 'La matrícula es obligatoria.'
+                    error = 'La matrícula es obligatoria'
                 elif len(matricula) != 6:
-                    error = 'La matrícula debe tener exactamente 6 caracteres.'
+                    error = 'La matrícula debe tener exactamente 6 caracteres'
                 elif not tipo_codigo:
-                    error = 'El tipo de servicio es obligatorio.'
+                    error = 'El tipo de servicio es obligatorio'
                 elif not marca_clave:
-                    error = 'La marca es obligatoria.'
+                    error = 'La marca es obligatoria'
                 elif not modelo_clave:
-                    error = 'El modelo es obligatorio.'
+                    error = 'El modelo es obligatorio'
                 elif Autobus.objects.filter(numero=int(numero)).exists():
-                    error = f'Ya existe un autobús con el número {numero}.'
+                    error = f'Autobús número {numero} ya existe'
                 elif Autobus.objects.filter(matricula=matricula).exists():
-                    error = f'La matrícula {matricula} ya está registrada.'
+                    error = f'La matrícula {matricula} ya está registrada'
                 else:
                     asientos_por_tipo = {'PLUS': 44, 'PLAT': 36}
                     cant_asientos = asientos_por_tipo.get(tipo_codigo, 0)
-
                     wifi = request.POST.get('claveWIFI', '').strip()
                     clave_wifi = wifi.upper() if wifi else None
 
@@ -94,22 +94,97 @@ def pagina_autobuses(request):
                         modelo=Modelo.objects.get(clave=modelo_clave),
                     )
                     generar_asientos(autobus)
-
                     request.session['toast_exito'] = f'Autobús {numero} registrado correctamente.'
                     return redirect('autobuses')
 
             except IntegrityError:
-                error = 'Error de base de datos: verifica que los datos no estén duplicados.'
+                error = 'Error de base de datos: datos duplicados.'
             except Exception as e:
                 error = f'Error inesperado: {str(e)}'
 
-        elif request.POST['action'] == 'baja_autobus':
-            pass
+            error_tipo = 'agregar_autobus'
 
- 
+        elif action == 'baja_autobus':
+            try:
+                numero = request.POST.get('numero', '').strip()
+
+                if not numero:
+                    error = 'Debes seleccionar un autobús'
+                else:
+                    autobus = Autobus.objects.get(numero=int(numero))
+                    edo_baja = EdoAutobus.objects.get(codigo='INAC')
+                    autobus.estado = edo_baja
+                    autobus.save()
+                    request.session['toast_exito'] = f'Autobús {numero} dado de baja exitosamente'
+                    return redirect('autobuses')
+
+            except Autobus.DoesNotExist:
+                error = f'No se encontró el autobús {numero}'
+            except EdoAutobus.DoesNotExist:
+                error = 'No existe el estado en la base de datos'
+            except Exception as e:
+                error = f'Error: {str(e)}'
+
+            error_tipo = 'baja_autobus'
+
+        elif action == 'agregar_marca':
+            try:
+                codigo = request.POST.get('codigo', '').strip().upper()
+                nombre = request.POST.get('nombre', '').strip()
+
+                if not codigo:
+                    error = 'El código de la marca es obligatorio'
+                elif not nombre:
+                    error = 'El nombre de la marca es obligatorio'
+                elif Marca.objects.filter(clave=codigo).exists():
+                    error = f'Ya existe una marca con el código {codigo}'
+                else:
+                    Marca.objects.create(clave=codigo, nombre=nombre)
+                    request.session['toast_exito'] = f'Marca {nombre} registrada correctamente'
+                    return redirect('autobuses')
+
+            except IntegrityError:
+                error = 'Error de base de datos: código de marca duplicado.'
+            except Exception as e:
+                error = f'Error inesperado: {str(e)}'
+
+            error_tipo = 'agregar_marca'
+
+    
+        elif action == 'agregar_modelo':
+            try:
+                codigo      = request.POST.get('codigo', '').strip().upper()
+                nombre      = request.POST.get('nombre', '').strip()
+                marca_clave = request.POST.get('marca', '')
+
+                if not codigo:
+                    error = 'El código del modelo es obligatorio.'
+                elif not nombre:
+                    error = 'El nombre del modelo es obligatorio.'
+                elif not marca_clave:
+                    error = 'La marca es obligatoria.'
+                elif Modelo.objects.filter(clave=codigo).exists():
+                    error = f'Ya existe un modelo con el código {codigo}.'
+                else:
+                    Modelo.objects.create(
+                        clave=codigo,
+                        nombre=nombre,
+                        marca=Marca.objects.get(clave=marca_clave),
+                    )
+                    request.session['toast_exito'] = f'Modelo {nombre} registrado correctamente.'
+                    return redirect('autobuses')
+
+            except IntegrityError:
+                error = 'Error de base de datos: código de modelo duplicado.'
+            except Exception as e:
+                error = f'Error inesperado: {str(e)}'
+
+            error_tipo = 'agregar_modelo'
+
+    # Contexto
     toast_exito = request.session.pop('toast_exito', None)
-
     autobuses = Autobus.objects.filter(estado__codigo='ACTI')
+
     context = {
         'autobuses': autobuses,
         'marcas': Marca.objects.all(),
@@ -119,6 +194,7 @@ def pagina_autobuses(request):
         'total_disponibles': autobuses.filter(estado__descripcion='Disponible').count(),
         'total_en_ruta': autobuses.filter(estado__descripcion='En Ruta').count(),
         'error': error,
+        'error_tipo': error_tipo,
         'toast_exito': toast_exito,
     }
     return render(request, 'autobuses.html', context)
