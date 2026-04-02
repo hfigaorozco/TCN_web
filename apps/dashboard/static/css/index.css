@@ -7,7 +7,10 @@
 body{
     background: #f4f6fb;
     font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ================= NAVBAR ================= */
@@ -35,7 +38,7 @@ body{
 
 .menu-box{
     background: white;
-    padding: clamp(15px,2vw,25px) clamp(20px,3vw,50px);
+    padding: clamp(15px,2vw,30px) clamp(20px,3vw,50px);
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
 }
@@ -160,13 +163,13 @@ body{
 
 .title-row{
     width: 95%;
-    margin: -40px auto 15px auto;
+    margin: -55px auto 10px auto;
     display: flex;
     flex-wrap: wrap;
 }
 
 .title{
-    font-size: clamp(30px,4vw,48px);
+    font-size: clamp(30px,4vw,42px);
     font-weight: 600;
 }
 
@@ -174,17 +177,21 @@ body{
 
 .main-section{
     width: 95%;
-    margin: 50px auto 40px auto;
+    margin: 20px auto 15px auto;
     display: flex;
-    gap: 30px;
+    gap: 25px;
     align-items: stretch;
     flex-wrap: wrap;
+}
+
+.section-column, .content-box {
+    flex: 1;
+    min-width: 0; /* Evita que el contenido desborde el flex-item */
 }
 
 /* ================= CONTENT BOX ================= */
 
 .content-box{
-    flex: 1;
     min-height: 480px;
     background: white;
     border-radius: 24px;
@@ -192,6 +199,8 @@ body{
     padding: 40px 30px 30px 30px;
     position: relative;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-box:hover{
@@ -208,6 +217,40 @@ body{
     font-size: 14px;
     font-weight: 600;
     color: #666;
+}
+
+/* ================= SCROLL DE TABLAS ================= */
+
+.table-wrapper {
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Personalización de la barra de scroll */
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #2f6fed;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #2f6fed;
 }
 
 /* ================= TABLAS ================= */
@@ -255,6 +298,34 @@ body{
 .table tbody tr:hover{
     background: #eef2ff;
     transform: scale(1.01);
+}
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status.activo, .status.confirmado {
+    background: #e6fcf5;
+    color: #0ca678;
+}
+
+.status.espera, .status.programado {
+    background: #fff9db;
+    color: #f08c00;
+}
+
+.status.cancelado {
+    background: #fff5f5;
+    color: #fa5252;
+}
+
+.status.demorado {
+    background: #fff4e6;
+    color: #fd7e14;
 }
 
 .table thead th:first-child {
