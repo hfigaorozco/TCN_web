@@ -101,6 +101,10 @@ const abrirEliminar = document.getElementById('abrirEliminar');
 const aceptarEliminar = document.getElementById('aceptarEliminar');
 const cancelarEliminar= document.getElementById('cancelarEliminar');
 
+cancelarEliminar.addEventListener('click', e => {
+    eliminar.close()
+})
+
 document.querySelectorAll('.corrida-row').forEach(row => {
     row.addEventListener('click', () => {
         document.querySelectorAll('.corrida-row').forEach(r => r.classList.remove('selected'));
@@ -138,6 +142,19 @@ cerrarFechaCiudad.addEventListener('click', e => {
     fechaCiudad.close( );
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filtroCiudad = urlParams.get('filtro_ciudad');
+    const filtroFecha = urlParams.get('filtro_fecha');
+    
+    if (filtroCiudad || filtroFecha) {
+        if (fechaCiudad) {
+            console.log('Abriendo diálogo...');
+            fechaCiudad.showModal();
+        }
+    }
+});
+
 /* ================= BOTON Y DIALOGO VER BOLETOS VENDIDOS POR DIA ================= */
 const boletos = document.getElementById('boletos');
 const abrirBoletos = document.getElementById('abrirBoletos');
@@ -152,8 +169,15 @@ cerrarBoletos.addEventListener('click', e => {
 })
 
 
+document.addEventListener('DOMContentLoaded', function (){
+    const urlParames = new URLSearchParams(window.location.search);
+    const fecha = urlParames.get('fecha_boletos');
 
+    if (fecha) {
+        if (boletos) {
+            boletos.showModal()
+        }
+    }
+    
+});
 
-console.log('Fecha:', selectedRow.dataset.fechaSalida);
-console.log('Hora salida:', selectedRow.dataset.horaSalida);
-console.log('Hora llegada:', selectedRow.dataset.horaLlegada);

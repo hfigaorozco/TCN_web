@@ -59,7 +59,6 @@
                             {% endfor %}
                         </select>
                     </div>
-            
                     <div class="filter-box">
                         <h2>Destino</h2>
                         <select name="filtro_destino" onchange="this.form.submit()" id="selectDestino">
@@ -224,26 +223,28 @@
 
     <!-- DIÁLOGO CORRIDAS POR FECHA Y CIUDAD -->
     <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
-        <form>
+        <form method="GET">
             <div class="titulo-cajitas">
                 <h1>Corridas por fecha y ciudad</h1>
                 <div class="cajitas">
                     <div>
                         <h3>Fecha</h3>
-                        <input type="date" name="fecha">
+                        <input type="date" name="filtro_fecha" value="{{ request.GET.filtro_fecha }}">
                     </div>
                     <div>
                         <h3>Ciudad</h3>
-                        <select name="ciudad">
+                        <select name="filtro_ciudad">
                             <option selected disabled>Origen</option>
-                            <option value="todos">Todos</option>
+                            <option value="todos" {% if request.GET.filtro_ciudad == 'todos' %} selected {%endif%}>Todos</option>
                             {% for ciudad in ciudades %}
-                            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_ciudad == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
                             {% endfor %}
                         </select>
                     </div>
+                    <button type="submit" class="btn-aceptar" style="margin-top: 20px;">Buscar</button>
                 </div>
             </div>
+        </form>
             <div class="content-box">
                 <table class="tabla-fechaCiudad">
                     <tr bgcolor="#2f6fed">
@@ -254,7 +255,7 @@
                         <th width="15%">Matrícula</th>
                         <th width="30%">Operador</th>
                     </tr>
-                    {% for c in corridas_fecha_ciudad %}
+                    {% for c in corridas_ciudad_fecha %}
                     <tr>
                         <td>{{ c.hora_salida }}</td>
                         <td>{{ c.numero }}</td>
@@ -270,53 +271,54 @@
                     {% endfor %}
                 </table>
             </div>
-        </form>
+        
         <div class="cerrar-fechaCiudad">
             <button id="cerrarFechaCiudad" class="btn-cancelar">Cerrar</button>
         </div>
     </dialog>
 
     <!-- DIÁLOGO BOLETOS VENDIDOS EN UN DÍA -->
+
     <dialog id="boletos" class="dialog-fechaCiudad dialog-base">
-        <form>
+        <form method="GET">
             <div class="titulo-cajitas-boletos">
                 <h1>Boletos vendidos en un día</h1>
-                <div class="cajitas">
-                    <div>
-                        <h3>Fecha</h3>
-                        <input type="date" name="fecha">
-                    </div>
+                <div class="filtro-fecha-boletos">
+                    <h3>Fecha:</h3>
+                    <input type="date" name="fecha_boletos" id="fecha_boletos" value="{{ request.GET.fecha_boletos }}" onchange="this.form.submit()">
                 </div>
             </div>
-            <div class="content-box">
-                <table class="tabla-fechaCiudad">
-                    <tr bgcolor="#2f6fed" style="color: white;">
-                        <th width="11%">Corrida</th>
-                        <th width="11%">Salida</th>
-                        <th width="11%">Origen</th>
-                        <th width="11%">Destino</th>
-                        <th width="11%">Autobús</th>
-                        <th width="11%">Vendidos</th>
-                        <th width="12%">Disponibles</th>
-                    </tr>
-                    {% for c in corridas_boletos %}
-                    <tr>
-                        <td>{{ c.numero }}</td>
-                        <td>{{ c.hora_salida }}</td>
-                        <td>{{ c.ruta.ciudadOrigen.nombre }}</td>
-                        <td>{{ c.ruta.ciudadDestino.nombre }}</td>
-                        <td>{{ c.autobus.numero }}</td>
-                        <td>{{ c.boletos_vendidos }}</td>
-                        <td>{{ c.lugaresDisp }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="7">No hay corridas</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
         </form>
+    
+        <div class="content-box">
+            <table class="tabla-fechaCiudad">
+                <tr bgcolor="#2f6fed" style="color: white;">
+                    <th width="11%">Corrida</th>
+                    <th width="11%">Salida</th>
+                    <th width="11%">Origen</th>
+                    <th width="11%">Destino</th>
+                    <th width="11%">Autobús</th>
+                    <th width="11%">Vendidos</th>
+                    <th width="12%">Disponibles</th>
+                </tr>
+                {% for c in corridas_boletos %}
+                <tr>
+                    <td>{{ c.numero }}</td>
+                    <td>{{ c.hora_salida }}</td>
+                    <td>{{ c.ruta.ciudadOrigen.nombre }}</td>
+                    <td>{{ c.ruta.ciudadDestino.nombre }}</td>
+                    <td>{{ c.autobus.numero }}</td>
+                    <td>{{ c.boletos_vendidos }}</td>
+                    <td>{{ c.lugaresDisp }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No hay corridas</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    
         <div class="cerrar-fechaCiudad">
             <button id="cerrarBoletos" class="btn-cancelar">Cerrar</button>
         </div>

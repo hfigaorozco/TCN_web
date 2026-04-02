@@ -62,14 +62,36 @@ def pagina_corridas(request):
     destino = request.GET.get('filtro_destino', '')
     estados_corrida = EdoCorrida.objects.all()
     
-    if numero_corrida and origen == 'todos' and destino == 'todos':
-        corridas = corridas.filter(numero__icontains=numero_corrida)  
+    #Filtro de fecha y ciudad
+    ciudad = request.GET.get('filtro_ciudad', '')
+    fecha = request.GET.get('filtro_fecha', '')
+    corridas_ciudad_fecha = Corrida.objects.filter(estado_id='ACT')
+    
+    #Filtro de boletos vendidos en cierta fecha
+    corridas_boletos = Corrida.objects.all()
+    fecha_boletos = request.GET.get('fecha_boletos', '')
+    
+
     if numero_corrida:
         corridas = corridas.filter(numero__icontains=numero_corrida)  
     if origen and origen != 'todos':
         corridas = corridas.filter(ruta__ciudadOrigen__codigo=origen)
     if destino and destino != 'todos':
         corridas = corridas.filter(ruta__ciudadDestino__codigo=destino)
+    
+    #Filtro de fecha y ciudad
+    if ciudad and ciudad != 'todos':
+        corridas_ciudad_fecha = corridas_ciudad_fecha.filter(ruta__ciudadOrigen__codigo=ciudad)
+    if fecha:
+        corridas_ciudad_fecha = corridas_ciudad_fecha.filter(fecha_salida = fecha)
+    
+    #Filtro de boletos vendidos en cierta fecha
+    if fecha_boletos:
+        corridas_boletos = corridas_boletos.filter(fecha_salida__icontains=fecha_boletos)
+    
+    
+    
+    
         
     context ={
         'operadores': operadores,
@@ -77,7 +99,9 @@ def pagina_corridas(request):
         'autobuses': autobuses,
         'corridas': corridas,
         'ciudades': ciudades,
-        'estados_corrida': estados_corrida
+        'estados_corrida': estados_corrida,
+        'corridas_ciudad_fecha': corridas_ciudad_fecha,
+        'corridas_boletos': corridas_boletos
     }
     
     return render(request, 'corridas.html', context)

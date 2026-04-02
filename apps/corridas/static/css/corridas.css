@@ -382,7 +382,7 @@ dialog::backdrop {
 }
 
 .dialog-base h1 {
-    font-size: 22px;
+    font-size: 27px;
     font-weight: 700;
     font-style: italic;
     color: #111;
@@ -538,16 +538,19 @@ dialog::backdrop {
     height: max-content;
     padding: 7vh 0px 0px 19vh;
 }
-
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+/* ================= DIALOGO CORRIDAS POR FECHA Y CIUDAD ================= */
 .dialog-fechaCiudad {
     height: fit-content;
     width: fit-content;
     max-width: 92vw;
 }
 
+.dialog-fechaCiudad h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
 .titulo-cajitas {
-    gap: 12vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -558,11 +561,25 @@ dialog::backdrop {
 
 .titulo-cajitas-boletos {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 20px;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    gap: 20px;
     flex-wrap: wrap;
+}
+
+.filtro-fecha-boletos {
+    align-items: center;
+}
+
+.filtro-fecha-boletos label {
+    font-weight: bold;
+}
+
+.filtro-fecha-boletos input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .tabla-fechaCiudad {
@@ -575,16 +592,10 @@ dialog::backdrop {
 }
 
 .cerrar-fechaCiudad {
-    padding: 5vh 0px 0px 90%;
-    height: auto;
-}
-
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.titulo-cajitas-boletos {
-    gap: 48%;
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+    padding-top: 15px;
 }
 
 /* ================= TOAST ================= */
