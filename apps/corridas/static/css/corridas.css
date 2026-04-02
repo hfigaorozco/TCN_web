@@ -472,12 +472,12 @@ dialog::backdrop {
 /* ================= DIALOG AGREGAR ================= */
 .dialog-agregar select {
     height: 3.819vh;
-    width: min-content;
+    width: 100%;
 }
 
 .dialog-agregar input {
-    height: 3.0vh;
-    width: max-content;
+    height: 3.819vh;
+    width: 100%;
 }
 
 /* ================= DIALOG EDITAR ================= */
@@ -485,16 +485,17 @@ dialog::backdrop {
 /* ================= DIALOG ELIMINAR ================= */
 .dialog-eliminar {
     height: fit-content;
+    width: 300px;
 }
 
 .dialog-eliminar select {
     height: 3vh;
-    width: min-content;
+    width: 100%;
 }
 
 .dialog-eliminar input {
     height: 3vh;
-    width: 15vh;
+    width: 100%;
 }
 
 /* ================= BOTON ACEPTAR Y CANCELAR ================= */
@@ -700,4 +701,25 @@ dialog::backdrop {
     0%   { transform: translateX(100%); }
     40%  { transform: translateX(-5%); }
     100% { transform: translateX(0); }
+}
+
+
+
+/* ================= SELECCIÓN DE FILA ================= */
+
+.table tbody tr.selected {
+    background-color: #2f6fed !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.table tbody tr.selected td {
+    color: white !important;
+}
+
+
+
+/* ================= FORM DE FILTROS ================= */
+.form-filtros { 
+    display: flex;
 }

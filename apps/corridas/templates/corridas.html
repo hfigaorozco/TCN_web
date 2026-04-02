@@ -43,36 +43,34 @@
             </div>
 
             <div class="filter-boxes">
-                <div class="filter-box">
-                    <h2>Número</h2>
-                    <input type="number" min="0" placeholder="Número" id="filtro_corrida" value="{{ request.GET.filtro_corrida }}">
-                </div>
-
-                <div class="filter-box">
-                    <form method="GET">
+                <form class="form-filtros" method="GET">
+                    <div class="filter-box">
+                        <h2>Número</h2>
+                        <input type="number" min="0" placeholder="Número" id="numero_corrida" value="{{ request.GET.filtro_corrida }}" name="filtro_corrida">
+                    </div>
+            
+                    <div class="filter-box">
                         <h2>Origen</h2>
-                        <select name="filtro_origen" onchange="this.form.submit()">
+                        <select name="filtro_origen" onchange="this.form.submit()" id="selectOrigen">
                             <option selected disabled value="">Origen</option>
-                            <option value="todos">Todos</option>
+                            <option value="todos" {% if request.GET.filtro_origen == 'todos' %} selected {%endif%}>Todos</option>
                             {% for ciudad in ciudades %}
-                            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_origen == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
                             {% endfor %}
                         </select>
-                    </form>
-                </div>
-
-                <div class="filter-box">
-                    <form method="GET">
+                    </div>
+            
+                    <div class="filter-box">
                         <h2>Destino</h2>
-                            <select name="filtro_destino" onchange="this.form.submit()">
-                                <option selected disabled value="">Destino</option>
-                                <option value="todos">Todos</option>
-                                {% for ciudad in ciudades %}
-                                <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
-                                {% endfor %}
+                        <select name="filtro_destino" onchange="this.form.submit()" id="selectDestino">
+                            <option selected disabled value="">Destino</option>
+                            <option value="todos" {% if request.GET.filtro_destino == 'todos' %} selected {% endif %}>Todos</option>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_destino == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
+                            {% endfor %}
                         </select>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -144,16 +142,15 @@
 
     <!-- DIÁLOGO EDITAR CORRIDA -->
     <dialog id="editar" class="dialog-editar dialog-base">
-        <h1>Editar Corrida</h1>
-        <form>
+        <form method="POST" id="form_corrida">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="editar_corrida">
+            <input type="hidden" id="editar_corrida" name="corrida_numero">
+            <h1>Editar Corrida</h1>
             <div class="cajitas">
                 <div>
-                    <h3>Corrida</h3>
-                    <input type="number" name="numero" min="0" placeholder="Corrida a editar">
-                </div>
-                <div>
                     <h3>Operador</h3>
-                    <select name="operador">
+                    <select name="edit_operador" id="editarOperador">
                         <option selected disabled>Operador</option>
                         {% for operador in operadores %}
                         <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }} {{ operador.apellMat }}</option>
@@ -161,11 +158,11 @@
                     </select>
                 </div>
             </div>
-
+            
             <div class="cajitas">
                 <div>
-                <h3>Autobús</h3>
-                    <select name="autobus">
+                    <h3>Autobús</h3>
+                    <select name="edit_autobus" id="editarAutobus">
                         <option selected disabled>Autobús</option>
                     {% for autobus in autobuses %}
                         <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
@@ -177,15 +174,15 @@
             <div class="cajitas">
                 <div>
                     <h3>Fecha</h3>
-                    <input type="date" name="fecha_salida">
+                    <input type="date" name="edit_fecha_salida" id="editarFechaSalida">
                 </div>
                 <div>
                     <h3>Salida</h3>
-                    <input type="time" name="hora_salida">
+                    <input type="time" name="edit_hora_salida" id="editarHoraSalida">
                 </div>
                 <div>
                     <h3>Llegada</h3>
-                    <input type="time" name="hora_llegada">
+                    <input type="time" name="hora_llegada" id="editarHoraLlegada">
                 </div>
             </div>
             <div class="aceptar-cancelar">
@@ -198,31 +195,31 @@
     <!-- DIÁLOGO ELIMINAR CORRIDA -->
     <dialog id="eliminar" class="dialog-eliminar dialog-base">
         <h1>Eliminar Corrida</h1>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="estado_corrida_numero" id="estado_corrida_numero">
+            <input type="hidden" name="action" value="cambiar_estado_corrida">
             <div class="cajitas">
                 <div>
-                    <h3>Corrida</h3>
-                    <input type="number" name="numero" min="0" placeholder="Número de corrida">
-                </div>
-                <div>
                     <h3>Estado actual</h3>
-                    <input type="text" placeholder="Estado de corrida" readonly>
+                    <input type="text" placeholder="Estado de corrida" name="estado_actual" id="estado_actual" readonly>
                 </div>
             </div>
             <div>
-                <h3>Estado</h3>
-                <select name="estado">
+                <h3>Estado nuevo</h3>
+                <select name="baja_estado" id="estado">
                     <option selected disabled>Estado</option>
                     {% for estado in estados_corrida %}
                     <option value="{{ estado.codigo }}">{{ estado.descripcion }}</option>
                     {% endfor %}
                 </select>
             </div>
+        
+            <div class="aceptar-cancelar">
+                <button type="submit" id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
+                <button type="button" id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
+            </div>
         </form>
-        <div class="aceptar-cancelar">
-            <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
-            <button id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
-        </div>
     </dialog>
 
     <!-- DIÁLOGO CORRIDAS POR FECHA Y CIUDAD -->
@@ -336,37 +333,41 @@
         </div>
 
         <div class="content-box">
-            <table>
-                <tr bgcolor="#2f6fed">
-                    <th width="10%">#</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th>Distancia</th>
-                    <th>Salida</th>
-                    <th>Operador</th>
-                    <th>Autobús</th>
-                    <th>Matrícula</th>
-                    <th>Asientos</th>
-                    <th>Pasajeros</th>
-                </tr>
-                {% for corrida in corridas %}
-                <tr>
-                    <td>{{ corrida.numero }}</td>
-                    <td>{{ corrida.ruta.ciudadOrigen }}</td>
-                    <td>{{ corrida.ruta.ciudadDestino }}</td>
-                    <td>{{ corrida.ruta.distancia }}</td>
-                    <td>{{ corrida.fecha_salida }} {{ corrida.hora_salida }}</td>
-                    <td>{{ corrida.operador.nombre }} {{ corrida.operador.apellPat }} {{ corrida.operador.apellMat }}</td>
-                    <td>{{ corrida.autobus.numero }}</td>
-                    <td>{{ corrida.autobus.matricula }}</td>
-                    <td>{{ corrida.autobus.cantAsientos }}</td>
-                    <td>{{ corrida.pasajeros_count }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="10">No hay corridas registradas</td>
-                </tr>
-                {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr bgcolor="#2f6fed">
+                        <th width="10%">#</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Distancia</th>
+                        <th>Salida</th>
+                        <th>Operador</th>
+                        <th>Autobús</th>
+                        <th>Matrícula</th>
+                        <th>Asientos</th>
+                        <th>Pasajeros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for corrida in corridas %}
+                    <tr class="corrida-row" data-numero="{{ corrida.numero }}" data-operador="{{ corrida.operador.numero }}" data-autobus="{{ corrida.autobus.numero }}" data-fechaSalida="{{ corrida.fecha_salida|date:'Y-m-d' }}" data-horaSalida="{{ corrida.hora_salida|time:'H:i' }}" data-horaLlegada="{{ corrida.hora_llegada|time:'H:i'}}" data-estado="{{ corrida.estado.codigo }}">
+                        <td>{{ corrida.numero }}</td>
+                        <td>{{ corrida.ruta.ciudadOrigen }}</td>
+                        <td>{{ corrida.ruta.ciudadDestino }}</td>
+                        <td>{{ corrida.ruta.distancia }}</td>
+                        <td>{{ corrida.fecha_salida }} {{ corrida.hora_salida }}</td>
+                        <td>{{ corrida.operador.nombre }} {{ corrida.operador.apellPat }} {{ corrida.operador.apellMat }}</td>
+                        <td>{{ corrida.autobus.numero }}</td>
+                        <td>{{ corrida.autobus.matricula }}</td>
+                        <td>{{ corrida.autobus.cantAsientos }}</td>
+                        <td>{{ corrida.pasajeros_count }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="10">No hay corridas registradas</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>

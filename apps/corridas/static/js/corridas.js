@@ -52,19 +52,44 @@ const editar = document.getElementById('editar');
 const abrirEditar = document.getElementById('abrirEditar');
 const aceptarEditar = document.getElementById('aceptarEditar');
 const cancelarEditar= document.getElementById('cancelarEditar');
+let selectedRow = null;
 
-abrirEditar.addEventListener('click', e => {
-    editar.showModal( );
-})
+document.querySelectorAll('.corrida-row').forEach(row => {
+    row.addEventListener('click', () => {
+        document.querySelectorAll('.corrida-row').forEach(r => r.classList.remove('selected'));
+        row.classList.add('selected');
+        selectedRow = row;
+    });
+});
 
-aceptarEditar.addEventListener('click', e => {
-    editar.close( );
-    let toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.innerHTML = 'Operacion Exitosa';
-    toastBox.appendChild(toast);
+if (abrirEditar) {
+    abrirEditar.addEventListener('click', () => {
+        if (!selectedRow) {
+            // Usamos un Toast de error en lugar de alert
+            createToast("error", "fa-solid fa-circle-exclamation", "Atención", "Por favor, seleccione una corrida de la tabla para editar.");
+            return;
+        }
+        document.getElementById('editar_corrida').value = selectedRow.dataset.numero
+        document.getElementById('editarOperador').value = selectedRow.dataset.operador;
+        document.getElementById('editarAutobus').value = selectedRow.dataset.autobus;
+        document.getElementById('editarFechaSalida').value = selectedRow.dataset.fechasalida;
+        document.getElementById('editarHoraSalida').value = selectedRow.dataset.horasalida;
+        document.getElementById('editarHoraLlegada').value = selectedRow.dataset.horallegada;
+        editar.showModal();
+    });
+}
+if (cancelarEditar) {
+    cancelarEditar.addEventListener('click', () => editar.close());
+}
+
+// aceptarEditar.addEventListener('click', e => {
+//     editar.close( );
+//     let toast = document.createElement('div');
+//     toast.classList.add('toast');
+//     toast.innerHTML = 'Operacion Exitosa';
+//     toastBox.appendChild(toast);
     
-})
+// })
 
 cancelarEditar.addEventListener('click', e => {
     editar.close( );
@@ -76,17 +101,29 @@ const abrirEliminar = document.getElementById('abrirEliminar');
 const aceptarEliminar = document.getElementById('aceptarEliminar');
 const cancelarEliminar= document.getElementById('cancelarEliminar');
 
-abrirEliminar.addEventListener('click', e => {
-    eliminar.showModal( );
-})
+document.querySelectorAll('.corrida-row').forEach(row => {
+    row.addEventListener('click', () => {
+        document.querySelectorAll('.corrida-row').forEach(r => r.classList.remove('selected'));
+        row.classList.add('selected');
+        selectedRow = row;
+    });
+});
 
-aceptarEliminar.addEventListener('click', e => {
-    eliminar.close( );
-})
-
-cancelarEliminar.addEventListener('click', e => {
-    eliminar.close( );
-})
+if (abrirEliminar) {
+    abrirEliminar.addEventListener('click', () => {
+        if (!selectedRow) {
+            // Usamos un Toast de error en lugar de alert
+            createToast("error", "fa-solid fa-circle-exclamation", "Atención", "Por favor, seleccione una corrida de la tabla para eliminar.");
+            return;
+        }
+        document.getElementById('estado_corrida_numero').value = selectedRow.dataset.numero
+        document.getElementById('estado_actual').value = selectedRow.dataset.estado;
+        eliminar.showModal();
+    });
+}
+if (cancelarEliminar) {
+    cancelarEliminar.addEventListener('click', () => editar.close());
+}
 
 /* ================= BOTON Y DIALOGO VER POR FECHA Y CIUDAD ================= */
 const fechaCiudad = document.getElementById('fechaCiudad');
@@ -114,3 +151,9 @@ cerrarBoletos.addEventListener('click', e => {
     boletos.close( );
 })
 
+
+
+
+console.log('Fecha:', selectedRow.dataset.fechaSalida);
+console.log('Hora salida:', selectedRow.dataset.horaSalida);
+console.log('Hora llegada:', selectedRow.dataset.horaLlegada);
