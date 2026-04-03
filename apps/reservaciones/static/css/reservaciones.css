@@ -246,12 +246,17 @@ body {
     text-align: center;
 }
 
+/* FILAS SALTEADAS (Zebra Striping) */
+.content-box table tbody tr:nth-child(even) {
+    background: #f5f8ff; /* Color salteado suave */
+}
+
 .content-box table tbody tr {
     transition: background-color 0.3s ease;
 }
 
 .content-box table tbody tr:hover {
-    background-color: #eef3ff;
+    background-color: #eef3ff; /* Color al pasar el mouse */
     cursor: pointer;
 }
 

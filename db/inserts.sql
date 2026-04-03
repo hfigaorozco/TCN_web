@@ -11,6 +11,6 @@ INSERT INTO tipo_autobus VALUES
 ('PLAT', 'PLATINO');
 
 INSERT INTO tipo_pasajero VALUES
-('REGU', 'REGULAR', 0),
-('NINO', 'NIÑO', 50),
-('3DAD', '3RA EDAD', 50);
+('REGU', 'Regular', 0),
+('NINO', 'Niño', 50),
+('3DAD', '3ra Edad', 50);

@@ -3,36 +3,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtroNumero = document.getElementById('filtro-numero');
     const filtroPasajero = document.getElementById('filtro-pasajero');
 
-    // Función para actualizar la URL con los filtros
+    // --- CONFIGURACIÓN DE FECHA MÍNIMA (HOY) ---
+    const establecerFechaMinima = () => {
+        const hoy = new Date();
+        const anio = hoy.getFullYear();
+        // Los meses en JS empiezan en 0, por eso sumamos 1
+        const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoy.getDate()).padStart(2, '0');
+        
+        const fechaHoyFormateada = `${anio}-${mes}-${dia}`;
+        
+        // Establece el atributo min para bloquear visualmente días pasados
+        filtroFecha.setAttribute('min', fechaHoyFormateada);
+    };
+
+    // --- LÓGICA DE FILTRADO ---
     const aplicarFiltros = () => {
         const params = new URLSearchParams(window.location.search);
 
-        if (filtroFecha.value) params.set('fecha', filtroFecha.value);
-        else params.delete('fecha');
+        // Procesar Fecha
+        if (filtroFecha.value) {
+            params.set('fecha', filtroFecha.value);
+        } else {
+            params.delete('fecha');
+        }
 
-        if (filtroNumero.value) params.set('numero', filtroNumero.value);
-        else params.delete('numero');
+        // Procesar Número de Corrida
+        if (filtroNumero.value) {
+            params.set('numero', filtroNumero.value);
+        } else {
+            params.delete('numero');
+        }
 
-        if (filtroPasajero.value) params.set('pasajero', filtroPasajero.value);
-        else params.delete('pasajero');
+        // Procesar Nombre de Pasajero
+        if (filtroPasajero.value) {
+            params.set('pasajero', filtroPasajero.value);
+        } else {
+            params.delete('pasajero');
+        }
 
-        // Redirigir con los nuevos parámetros
+        // Redirigir a la URL construida
         window.location.href = `${window.location.pathname}?${params.toString()}`;
     };
 
-    // Escuchar el cambio en los inputs (puedes usar 'change' o 'input' con un debounce)
+    // --- EVENT LISTENERS ---
+    
+    // Ejecutar restricción de fecha al cargar
+    establecerFechaMinima();
+
+    // Cambio automático al seleccionar una fecha
     filtroFecha.addEventListener('change', aplicarFiltros);
     
-    // Para los campos de texto/número, es mejor esperar a que el usuario presione Enter
-    filtroNumero.addEventListener('keypress', (e) => {
+    // Filtros de texto/número: se activan al presionar Enter
+    // Se usa 'keydown' por ser el estándar actual recomendado
+    filtroNumero.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') aplicarFiltros();
     });
 
-    filtroPasajero.addEventListener('keypress', (e) => {
+    filtroPasajero.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') aplicarFiltros();
     });
 
-    // Mantener los valores en los inputs después de recargar
+    // --- PERSISTENCIA DE DATOS ---
+    // Mantiene los valores en los inputs después de que la página se recarga
     const urlParams = new URLSearchParams(window.location.search);
     filtroFecha.value = urlParams.get('fecha') || '';
     filtroNumero.value = urlParams.get('numero') || '';

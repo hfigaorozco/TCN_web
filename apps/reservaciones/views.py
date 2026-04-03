@@ -8,7 +8,12 @@ def pagina_reservaciones(request):
     numero_filtro = request.GET.get('numero')
     pasajero_filtro = request.GET.get('pasajero')
 
-    reservaciones = Reservacion.objects.select_related('pasajero', 'corrida__ruta').all()
+    hoy = timezone.now().date()
+
+    reservaciones = Reservacion.objects.select_related(
+        'pasajero', 
+        'corrida__ruta'
+    ).filter(fecha__gte=hoy)
 
     if fecha_filtro:
         reservaciones = reservaciones.filter(fecha=fecha_filtro)
@@ -22,10 +27,9 @@ def pagina_reservaciones(request):
             Q(pasajero__apellPat__icontains=pasajero_filtro)
         )
 
-    hoy = timezone.now().date()
-    total_activas = Reservacion.objects.filter(fechaLimPago__gte=hoy).count()
     total_hoy = Reservacion.objects.filter(fecha=hoy).count()
     total_futuras = Reservacion.objects.filter(fecha__gt=hoy).count()
+    total_activas = total_hoy + total_futuras
 
     context = {
         'reservaciones': reservaciones,
