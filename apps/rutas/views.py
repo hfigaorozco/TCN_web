@@ -65,11 +65,21 @@ def agregar_ruta(request):
             destino_id = request.POST['ciudadDestino']
             distancia = request.POST['distancia']
 
-            nuevo_codigo = f"{origen_id[:2]}{destino_id[:2]}1"
-            intento = 1
-            while Ruta.objects.filter(codigo=nuevo_codigo).exists() and intento < 10:
-                intento += 1
-                nuevo_codigo = f"{origen_id[:2]}{destino_id[:2]}{intento}"
+            if origen_id == destino_id:
+                messages.error(request, "El origen y destino no pueden ser la misma ciudad.")
+                return redirect('rutas')
+
+            nuevo_codigo = f"{origen_id}-{destino_id}"
+
+            if Ruta.objects.filter(
+                ciudadOrigen_id=origen_id,
+                ciudadDestino_id=destino_id
+            ).exists() or Ruta.objects.filter(
+                ciudadOrigen_id=destino_id,
+                ciudadDestino_id=origen_id
+            ).exists():
+                messages.error(request, "Ya existe una ruta entre estas ciudades.")
+                return redirect('rutas')
 
             Ruta.objects.create(
                 codigo=nuevo_codigo,
@@ -77,7 +87,9 @@ def agregar_ruta(request):
                 ciudadDestino_id=destino_id,
                 distancia=distancia
             )
-            messages.success(request, "Ruta agregada correctamente.")
+
+            messages.success(request, f"Ruta {nuevo_codigo} agregada correctamente.")
+
         except Exception as e:
             messages.error(request, f"Error al agregar ruta: {str(e)}")
 

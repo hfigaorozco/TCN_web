@@ -96,7 +96,7 @@ body {
 .cards {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -134,15 +134,16 @@ body {
 
 .filter-boxes {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     margin-left: auto;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .filter-box {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    
 }
 
 .filter-box h2 {

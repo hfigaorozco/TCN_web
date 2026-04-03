@@ -84,8 +84,8 @@
 .boleto-ruta {
   display: flex;
   justify-content: space-around;
-  background: var(--gris-fondo);
-  border: 1.5px solid var(--gris-borde);
+  background: #F5F5F0;
+  border: 2px solid #969090;
   border-radius: 10px;
   padding: 10px 16px;
   text-align: center;

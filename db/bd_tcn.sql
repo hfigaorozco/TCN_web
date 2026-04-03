@@ -65,7 +65,7 @@ CREATE TABLE pasajero (
     apellMat VARCHAR(20),
     edad INT NOT NULL,
     correoElect VARCHAR(40),
-    telefono VARCHAR(10) NOT NULL
+    telefono VARCHAR(10)
 );
 
 -- 9. TABLA MODELO

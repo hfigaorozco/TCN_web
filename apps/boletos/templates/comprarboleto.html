@@ -9,54 +9,42 @@
     <link rel="stylesheet" href="{% static 'css/comprarboleto.css' %}">
 </head>
 <body>
-
     <div class="main">
-
         <header class="encabezado">
             <h1 class="titulo">HORARIOS</h1>
         </header>
-
         <main>
-
             <section class="info" aria-label="Resumen de búsqueda">
-
-                <nav class="tarjeta_boton" aria-label="Navegación">
-                    <button class="btn_regresar" onclick="window.location.href='{% url 'index' %}'">
-                        <img src="{% static 'images/home.png' %}" alt="Ícono de inicio">
+                <nav class="tarjeta_boton">
+                    <button class="btn_regresar" onclick="window.history.back()">
+                        <img src="{% static 'images/home.png' %}" alt="Regresar">
                         Regresar
                     </button>
                 </nav>
-
-                <div class="tarjeta_ruta" role="region" aria-label="Ruta seleccionada">
+                <div class="tarjeta_ruta">
                     <div class="separacion1"></div>
                     <h2 class="label_ruta">Ruta:</h2>
                     <p class="dinamico_ruta">{{ origen_nombre }} - {{ destino_nombre }}</p>
                 </div>
-
-                <div class="tarjeta_fecha" role="region" aria-label="Fecha de viaje">
+                <div class="tarjeta_fecha">
                     <div class="separacion2"></div>
                     <h2 class="label_fecha">Fecha:</h2>
                     <p class="dinamico_fecha">{{ fecha }}</p>
                 </div>
-
-                <div class="tarjeta_pasajeros" role="region" aria-label="Número de pasajeros">
+                <div class="tarjeta_pasajeros">
                     <div class="separacion3"></div>
                     <h2 class="label_pasajeros">Pasajeros:</h2>
                     <p class="dinamico_pasajeros">{{ pasajeros }}</p>
                 </div>
-
             </section>
 
-            <section class="lista_corridas" aria-label="Corridas disponibles">
-
+            <section class="lista_corridas">
                 {% for corrida in corridas %}
-
                 {% if corrida.autobus.tipoAutobus.codigo == 'PLUS' %}
                 <article class="corrida corrida--plus">
                 {% else %}
                 <article class="corrida corrida--platino">
                 {% endif %}
-
                     <div class="izquierda">
                         <div class="bus">
                             <p>Autobús</p>
@@ -67,64 +55,48 @@
                             <p class="dinamico_lugares">{{ corrida.lugaresDisp }}</p>
                         </div>
                     </div>
-
                     <div class="origen">
-                        <p class="fecha">{{ corrida.fecha_salida }}</p>
+                        <p class="fecha">{{ corrida.fecha_salida|date:"d/m/Y" }}</p>
                         <p class="ciudad">{{ corrida.ruta.ciudadOrigen }}</p>
-                        <p class="hora">{{ corrida.hora_salida }}</p>
+                        <p class="hora">{{ corrida.hora_salida|time:"H:i" }}</p>
                     </div>
-
                     <div class="medio">
                         <p class="clase">{{ corrida.autobus.tipoAutobus.descripcion }}</p>
-                        <div class="barra" role="presentation"></div>
+                        <div class="barra"></div>
                         <div class="seccion_boton">
-                            <button class="btn_seleccionar">Seleccionar</button>
+                            <a href="{% url 'seleccionar_asiento' corrida.numero %}?pasajeros={{ pasajeros }}&origen={{ origen }}&destino={{ destino }}&fecha={{ fecha }}">
+                                <button class="btn_seleccionar">Seleccionar</button>
+                            </a>
                         </div>
                     </div>
-
                     <div class="destino">
-                        <p class="fecha_llegada">{{ corrida.fecha_llegada }}</p>
+                        <p class="fecha_llegada">{{ corrida.fecha_llegada|date:"d/m/Y" }}</p>
                         <p class="ciudad_destino">{{ corrida.ruta.ciudadDestino }}</p>
-                        <p class="hora_llegada">{{ corrida.hora_llegada }}</p>
+                        <p class="hora_llegada">{{ corrida.hora_llegada|time:"H:i" }}</p>
                     </div>
-
                     <div class="derecha">
                         <p class="label_precio">Precio</p>
                         <p class="precio">${{ corrida.tarifaBase }}</p>
                     </div>
-
                 </article>
-
-                {% empty %}
-                <!-- Lista vacía, el diálogo lo maneja JS -->
-                {% endfor %}
-
+                {% empty %}{% endfor %}
             </section>
-
         </main>
-
     </div>
 
-    <!-- DIÁLOGO SIN RESULTADOS -->
     <dialog id="dialogo-sin-resultados">
         <div class="dialog-sin-resultados-container">
+            <p class="dialog-sin-resultados-icono">🔍</p>
             <h2 class="dialog-sin-resultados-titulo">Sin horarios disponibles</h2>
-            <p class="dialog-sin-resultados-texto">
-                No encontramos corridas disponibles para la ruta, fecha y número de pasajeros seleccionados.
-            </p>
-            <button class="dialog-sin-resultados-btn" onclick="this.closest('dialog').close(); window.history.back();">
+            <p class="dialog-sin-resultados-texto">No encontramos corridas para la búsqueda indicada.</p>
+            <button class="dialog-sin-resultados-btn"
+                    onclick="this.closest('dialog').close(); window.history.back();">
                 Volver a buscar
             </button>
         </div>
     </dialog>
 
-    {% if sin_resultados %}
-    <script>
-        window.__sinResultados = true;
-    </script>
-    {% endif %}
-
+    {% if sin_resultados %}<script>window.__sinResultados = true;</script>{% endif %}
     <script src="{% static 'js/comprarboleto.js' %}"></script>
-
 </body>
 </html>

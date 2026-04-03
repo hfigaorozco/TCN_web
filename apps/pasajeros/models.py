@@ -27,7 +27,7 @@ class Pasajero(models.Model):
     apellMat = models.CharField(max_length=20, null=True, blank=True)
     edad = models.IntegerField()
     correoElect = models.EmailField(max_length=40, null=True, blank=True)
-    telefono = models.CharField(max_length=10)
+    telefono = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         db_table = 'pasajero' 
