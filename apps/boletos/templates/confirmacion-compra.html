@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="img/png" href="../statics/images/LOGO TCN azul.png">
     <title>Confirmación de compra | Transportes Cuervo Negro</title>
-    <link rel="stylesheet" href="../statics/css/confirmacion-compra.css">
+    <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/confirmacion-compra.css' %}">
 </head>
 <body>
 
@@ -25,37 +26,47 @@
 
                 <div class="resumen-item">
                     <span>Ruta:</span>
-                    <span>Tijuana - Hermosillo</span>
+                    <span>{{ corrida.ruta.ciudadOrigen }} - {{ corrida.ruta.ciudadDestino }}</span>
                 </div>
 
                 <div class="resumen-item">
                     <span>Fecha de salida:</span>
-                    <span>22/03/2026</span>
+                    <span>{{ corrida.fecha_salida|date:"d/m/Y" }}</span>
                 </div>
 
                 <div class="resumen-item">
                     <span>Hora:</span>
-                    <span>9:30 AM</span>
+                    <span>{{ corrida.hora_salida|time:"H:i" }}</span>
                 </div>
 
                 <div class="resumen-item">
                     <span>Servicio:</span>
-                    <span>PLUS</span>
+                    <span>{{ corrida.autobus.tipoAutobus.descripcion }}</span>
                 </div>
 
                 <div class="resumen-item">
                     <span>Autobús:</span>
-                    <span>164</span>
+                    <span>{{ corrida.autobus.numero }}</span>
                 </div>
 
                 <div class="resumen-item">
                     <span>Pasajeros:</span>
-                    <span>3</span>
+                    <span>{{ cant_pasajeros }}</span>
+                </div>
+
+                <div class="resumen-item">
+                    <span>Subtotal:</span>
+                    <span>${{ subtotal }}</span>
+                </div>
+
+                <div class="resumen-item">
+                    <span>IVA (16%):</span>
+                    <span>${{ iva }}</span>
                 </div>
 
                 <div class="resumen-item total">
                     <span>Total a pagar:</span>
-                    <span>$6450</span>
+                    <span>${{ total }}</span>
                 </div>
 
             </div>
@@ -63,18 +74,21 @@
         </div>
 
         <div class="botones">
-            <button class="btn-regresar" id="btn-inicio" onclick="window.location.href='index.html'">
-                <img src="../statics/images/home.png" alt="Logo home">
+            <button class="btn-regresar" onclick="window.history.back()">
+                <img src="{% static 'images/home.png' %}" alt="Regresar">
                 Regresar
             </button>
-            
-            <button type="submit" class="btn-continuar" id="btn-confirmarCompra" onclick="window.location.href='index.html'">
-                <img src="../statics/images/boletos.png" alt="Logo boletos">
-                Continuar
-            </button>
+
+            <form method="POST" action="{% url 'generar_boletos' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-continuar" id="btn-confirmarCompra">
+                    <img src="{% static 'images/boletos.png' %}" alt="Confirmar">
+                    Continuar
+                </button>
+            </form>
         </div>
 
     </div>
-    
+
 </body>
 </html>

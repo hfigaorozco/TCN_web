@@ -1,0 +1,196 @@
+:root {
+  --azul: #1565C0;
+  --azul-claro: #1E88E5;
+  --azul-texto: #1976D2;
+  --gris-fondo: #F5F7FA;
+  --gris-borde: #D0D7E3;
+  --naranja: #F57C00;
+  --blanco: #FFFFFF;
+  --radio: 14px;
+  --sombra: 0 8px 32px rgba(21, 101, 192, 0.18);
+}
+
+.boleto-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.boleto-card {
+  background: var(--blanco);
+  border: 2.5px solid var(--azul-claro);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  width: 360px;
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.boleto-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.boleto-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.boleto-nums {
+  flex: 1;
+  text-align: right;
+}
+
+.boleto-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.boleto-value {
+  font-size: 14px;
+  color: var(--azul-texto);
+  font-weight: 600;
+  margin: 0;
+}
+
+.boleto-divider {
+  border: none;
+  border-top: 1.5px solid var(--gris-borde);
+  margin: 4px 0;
+}
+
+.boleto-fechas {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.boleto-fecha-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.boleto-ruta {
+  display: flex;
+  justify-content: space-around;
+  background: #F5F5F0;
+  border: 2px solid #969090;
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.boleto-ruta-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.boleto-pasajero {
+  text-align: center;
+}
+
+.boleto-pasajero-nombre {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--azul-texto);
+  font-weight: 600;
+}
+
+.boleto-detalles {
+  display: flex;
+  gap: 12px;
+}
+
+.boleto-detalles-izq {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mt {
+  margin-top: 8px;
+}
+
+.boleto-detalles-der {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.boleto-precio-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boleto-monto {
+  font-weight: 600;
+}
+
+.boleto-total-box {
+  display: flex;
+  justify-content: space-between;
+  border: 1.5px solid var(--gris-borde);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-top: 4px;
+}
+
+.boleto-total-monto {
+  font-weight: 700;
+}
+
+.boleto-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-cerrar,
+.btn-reimprimir {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-cerrar {
+  background: var(--naranja);
+  color: white;
+}
+
+.btn-reimprimir {
+  background: var(--azul);
+  color: white;
+}
+
+.nav-btn {
+  background: var(--azul);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+@media print {
+  .boleto-backdrop {
+    background: none;
+  }
+  .nav-btn,
+  .boleto-acciones {
+    display: none;
+  }
+}

@@ -21,7 +21,7 @@ class Ciudad(models.Model):
 
 class Ruta(models.Model):
     codigo = models.CharField(
-        max_length=5,
+        max_length=7,
         primary_key=True,
         validators=[
             RegexValidator(

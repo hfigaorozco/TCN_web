@@ -4,7 +4,8 @@ body{
     background: #f4f6fb;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* ================= NAVBAR ================= */
