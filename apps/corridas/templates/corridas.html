@@ -77,7 +77,7 @@
 
     <!-- DIÁLOGO AGREGAR CORRIDA -->
     <dialog id="agregar" class="dialog-agregar dialog-base">
-        <form method="POST">
+        <form method="POST" id="form-agregar">
             {% csrf_token %}
             <input type="hidden" name="action" value="agregar_corrida"/>
             <h1>Agregar Corrida</h1>
@@ -85,8 +85,8 @@
                     <div class="cajitas">
                         <div>
                             <h3>Ruta</h3>
-                            <select name="ruta" class="ruta">
-                                <option selected disabled>Ruta</option>
+                            <select name="ruta" class="ruta" required>
+                                <option selected value="">Ruta</option>
                                 {% for ruta in rutas %}
                                 <option value="{{ ruta.codigo }}">{{ ruta.codigo }}</option>
                                 {% endfor %}
@@ -94,8 +94,8 @@
                         </div>
                         <div>
                             <h3>Operador</h3>
-                            <select name="operador">
-                                <option selected disabled>Operador</option>
+                            <select name="operador" required>
+                                <option selected value="">Operador</option>
                                 {% for operador in operadores %}
                                 <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
                                 {% endfor %}
@@ -105,26 +105,26 @@
                     <div class="cajitas">
                         <div>
                             <h3>Fecha</h3>
-                            <input type="date" name="fecha_salida">
+                            <input type="date" name="fecha_salida" required>
                         </div>
                         <div>
                             <h3>Salida</h3>
-                            <input type="time" width="118px" name="hora_salida">
+                            <input type="time" width="118px" name="hora_salida" required>
                         </div>
                         <div>
                             <h3>Llegada</h3>
-                            <input type="time" width="118px" name="hora_llegada">
+                            <input type="time" width="118px" name="hora_llegada" required>
                         </div>
                     </div>
                     <div class="cajitas">
                         <div>
                             <h3>Precio</h3>
-                            <input type="number" min="100" max="3000" placeholder="Precio (M.X.N)" name="tarifaBase">
+                            <input type="number" min="100" max="3000" placeholder="Precio (M.X.N)" name="tarifaBase" required>
                         </div>
                         <div>
                             <h3>Autobús</h3>
-                            <select name="autobus">
-                                <option selected disabled> Seleccionar autobús</option>
+                            <select name="autobus" required>
+                                <option selected value=""> Seleccionar autobús</option>
                                 {% for autobus in autobuses %}
                                 <option value="{{ autobus.numero }}">{{autobus.numero}} - {{autobus.marca.nombre}} {{ autobus.modelo.nombre }}</option>
                                 {% endfor %}
@@ -207,9 +207,8 @@
             <div>
                 <h3>Estado nuevo</h3>
                 <select name="baja_estado" id="estado">
-                    <option selected disabled>Estado</option>
                     {% for estado in estados_corrida %}
-                    <option value="{{ estado.codigo }}">{{ estado.descripcion }}</option>
+                    <option {% if estado.descripcion == 'ACTIVA' %} selected {% endif %} value="{{ estado.codigo }}">{{ estado.descripcion }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -223,7 +222,7 @@
 
     <!-- DIÁLOGO CORRIDAS POR FECHA Y CIUDAD -->
     <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
-        <form method="GET">
+        <form method="GET" id="form-fecha-ciudad">
             <div class="titulo-cajitas">
                 <h1>Corridas por fecha y ciudad</h1>
                 <div class="cajitas">
@@ -280,7 +279,7 @@
     <!-- DIÁLOGO BOLETOS VENDIDOS EN UN DÍA -->
 
     <dialog id="boletos" class="dialog-fechaCiudad dialog-base">
-        <form method="GET">
+        <form method="GET" id="form-boletos">
             <div class="titulo-cajitas-boletos">
                 <h1>Boletos vendidos en un día</h1>
                 <div class="filtro-fecha-boletos">
@@ -374,9 +373,31 @@
         </div>
     </div>
 
-    <div class="notificaciones"></div>
     <script src="{% static 'js/corridas.js' %}"></script>
+    <div class="notificaciones">
+        {% if messages %}
+        {% for m in messages %}
+        <script>
+            console.log("=== DEBUG TOAST ===");
+            console.log("1. tipoMensaje:", "{{ m.tags }}");
+            console.log("2. textoMensaje:", "{{ m|escapejs }}");
+            console.log("3. typeof crearTipoToast:", typeof crearTipoToast);
+            console.log("4. typeof createToast:", typeof createToast);
 
+            const tipoMensaje = "{{ m.tags }}";
+            const textoMensaje = "{{ m|escapejs }}";
+
+            if (typeof crearTipoToast === "function") {
+                console.log("5. Llamando a crearTipoToast...");
+                crearTipoToast(tipoMensaje, textoMensaje);
+            } else {
+                console.error("5. crearTipoToast NO es una función!");
+            }
+        </script>
+        {% endfor %}
+        {% else %}
+        <script>console.log("No hay mensajes en messages");</script>
+        {% endif %}
+    </div>
 </body>
-
 </html>

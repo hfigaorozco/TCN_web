@@ -1,17 +1,24 @@
 /* ================= BOTON Y DIALOGO AGREGAR ================= */
-let notificaciones = document.querySelector('.notificaciones')
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
 const cancelarAgregar = document.getElementById('cancelarAgregar');
 const agregar = document.getElementById('agregar')
 let toastBox = document.getElementById('toast-box')
+const formAgregar = document.getElementById('form-agregar')
 
 abrirAgregar.addEventListener('click', e => {
+    formAgregar.reset();
     agregar.showModal();
+})
+
+cancelarAgregar.addEventListener('click', e => {
+    formAgregar.reset();
+    agregar.close();
 })
 
 /* ================= FUNCION PARA CREAR TOAST ================= */
 function createToast(type, icon, title, text){
+    let notificaciones = document.querySelector('.notificaciones')
     let newToast = document.createElement('div');
     newToast.innerHTML =`
         <div class="toast ${type}">
@@ -23,27 +30,23 @@ function createToast(type, icon, title, text){
             <i class="fa-solid fa-x" onclick="(this.parentElement).remove() "></i>
         </div>`;
     notificaciones.appendChild(newToast);
-    newToast.setTimeout = setTimeout(()=>{newToast.remove();}, 3000);
+    newToast.setTimeout = setTimeout(()=>{
+        newToast.remove();
+    }, 3000);
 }
 
-/* ================= FUNCION PARA CREAR TOAST DE EXITO Y CERRAR DIALOG ================= */
-aceptarAgregar.onclick =  function(){
-    agregar.close()
-    let type = 'exito';
-    let icon = "fa-solid fa-check";
-    let title = 'Operación exitosa';
-    let text = 'El registro ha sido exitoso';
-    createToast(type, icon, title, text);
+/* ================= FUNCION PARA CREAR TOAST ================= */
+function crearTipoToast(tipoMensaje, textoMensaje){
+    const tipo = tipoMensaje === 'success' ? 'exito' : 'error';
+    const icono = tipoMensaje === 'success' ? "fa-solid fa-circle-check" : "fa-solid fa-circle-exclamation";
+    const titulo = tipoMensaje === 'success'? '¡Éxito!' : '¡Atención!'
+    createToast(tipo, icono, titulo, textoMensaje);
 }
 
 /* ================= FUNCION PARA CREAR TOAST DE ERROR Y CERRAR DIALOG ================= */
 cancelarAgregar.onclick = function(){
-    agregar.close()
-    let type = 'error';
-    let icon = "fa-solid fa-exclamation";
-    let title = 'Ocurrió un error';
-    let text = 'Hubo un error al hacer el registro';
-    createToast(type, icon, title, text);
+    formAgregar.reset();
+    agregar.close();
 }
 
 
@@ -133,13 +136,29 @@ if (cancelarEliminar) {
 const fechaCiudad = document.getElementById('fechaCiudad');
 const abrirFechaCiudad = document.getElementById('abrirFechaCiudad');
 const cerrarFechaCiudad = document.getElementById('cerrarFechaCiudad');
+const formFechaCiudad = document.getElementById('form-fecha-ciudad')
 
 abrirFechaCiudad.addEventListener('click', e => {
-    fechaCiudad.showModal( );
+    limpiarFormFechaCiudad();
+    fechaCiudad.showModal();
 })
 
+function limpiarFormFechaCiudad () {
+    const fechaInput = formFechaCiudad.querySelector('input[name="filtro_fecha"]');
+    if (fechaInput) {
+        fechaInput.value = '';
+    }
+
+    const selectCiudad = formFechaCiudad.querySelector('select[name="filtro_ciudad"]')
+    if (selectCiudad) {
+        selectCiudad.selectedIndex = '0';
+    }
+}
+
 cerrarFechaCiudad.addEventListener('click', e => {
-    fechaCiudad.close( );
+    limpiarFormFechaCiudad();
+    fechaCiudad.close();
+    window.location.href = window.location.pathname;
 })
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -159,13 +178,25 @@ document.addEventListener('DOMContentLoaded', function() {
 const boletos = document.getElementById('boletos');
 const abrirBoletos = document.getElementById('abrirBoletos');
 const cerrarBoletos = document.getElementById('cerrarBoletos');
+const formBoletos = document.getElementById('form-boletos')
+
+function limpiarFormBoletos() {
+    fechaBoletos = formBoletos.querySelector('input[name=fecha_boletos]')
+
+    if (fechaBoletos) {
+        fechaBoletos.value = "";
+    }
+}
 
 abrirBoletos.addEventListener('click', e => {
-    boletos.showModal( );
+    limpiarFormBoletos();
+    boletos.showModal();
 })
 
 cerrarBoletos.addEventListener('click', e => {
-    boletos.close( );
+    limpiarFormBoletos();
+    boletos.close();
+    window.location.href = window.location.pathname;
 })
 
 
