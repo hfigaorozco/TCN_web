@@ -289,3 +289,21 @@ body {
         white-space: nowrap;
     }
 }
+
+/* ... (manten tus estilos anteriores) ... */
+
+/* ESTILO PARA FILA SELECCIONADA */
+.fila-reserva.selected-row {
+    background-color: #2f6fed !important;
+    color: white !important;
+}
+
+.fila-reserva.selected-row td {
+    color: white !important;
+}
+
+/* Efecto visual al pasar el mouse por filas no seleccionadas */
+.fila-reserva:not(.selected-row):hover {
+    background-color: #eef3ff;
+    cursor: pointer;
+}

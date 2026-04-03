@@ -41,10 +41,6 @@
             <span class="info-label">Servicio:</span>
             <span class="info-valor">{{ corrida.autobus.tipoAutobus.descripcion }}</span>
         </div>
-        <div class="tarjeta-info">
-            <span class="info-label">Selecciona:</span>
-            <span class="info-valor" id="contador-asientos">0 / {{ pasajeros }}</span>
-        </div>
     </section>
 
     <section class="leyenda">
@@ -144,16 +140,6 @@
                 <label>Edad:</label>
                 <input type="number" id="edadPasajero" placeholder="Edad"
                        min="1" max="120" required>
-            </div>
-            <br>
-            <div class="dialog-pasajero-group">
-                <label>Tipo de pasajero:</label>
-                <select id="tipoPasajero" required>
-                    <option value="" disabled selected>Seleccionar tipo</option>
-                    {% for tipo in tipos_pasajero %}
-                    <option value="{{ tipo.codigo }}">{{ tipo.descripcion }} ({{ tipo.porcentaje_desc }}% desc.)</option>
-                    {% endfor %}
-                </select>
             </div>
             <br>
             <button type="submit" class="dialog-btn-continuar">

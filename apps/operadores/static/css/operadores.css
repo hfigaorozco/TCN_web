@@ -276,7 +276,7 @@ dialog{
     overflow: hidden;
 
     position: fixed;
-    top: 80px;
+    top: 1%;
     left: 50%;
     transform: translateX(-50%);
 }

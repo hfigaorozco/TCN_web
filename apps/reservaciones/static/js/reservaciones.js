@@ -2,72 +2,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtroFecha = document.getElementById('filtro-fecha');
     const filtroNumero = document.getElementById('filtro-numero');
     const filtroPasajero = document.getElementById('filtro-pasajero');
+    const btnMostrarBoleto = document.getElementById('mostrarBoleto');
+    const tabla = document.getElementById('tabla-reservaciones'); // Asegúrate que el <table> tenga este ID
+    
+    let reservacionSeleccionadaId = null;
 
-    // --- CONFIGURACIÓN DE FECHA MÍNIMA (HOY) ---
-    const establecerFechaMinima = () => {
-        const hoy = new Date();
-        const anio = hoy.getFullYear();
-        // Los meses en JS empiezan en 0, por eso sumamos 1
-        const mes = String(hoy.getMonth() + 1).padStart(2, '0');
-        const dia = String(hoy.getDate()).padStart(2, '0');
-        
-        const fechaHoyFormateada = `${anio}-${mes}-${dia}`;
-        
-        // Establece el atributo min para bloquear visualmente días pasados
-        filtroFecha.setAttribute('min', fechaHoyFormateada);
-    };
+    // --- 1. SELECCIÓN DE FILA ---
+    if (tabla) {
+        tabla.addEventListener('click', (e) => {
+            // Buscamos la fila (TR) más cercana al clic
+            const fila = e.target.closest('.fila-reserva');
+            
+            if (fila) {
+                // Quitar clase de selección a todas las demás
+                document.querySelectorAll('.fila-reserva').forEach(f => f.classList.remove('selected-row'));
+                
+                // Seleccionar la actual
+                fila.classList.add('selected-row');
+                reservacionSeleccionadaId = fila.getAttribute('data-id');
+                console.log("Seleccionado ID:", reservacionSeleccionadaId);
+            }
+        });
+    }
 
-    // --- LÓGICA DE FILTRADO ---
+    // --- 2. ACCIÓN DEL BOTÓN ---
+    if (btnMostrarBoleto) {
+        btnMostrarBoleto.addEventListener('click', () => {
+            if (reservacionSeleccionadaId) {
+                // USAMOS LA RUTA RELATIVA PARA EVITAR ERRORES DE PREFIJOS
+                // Esto redirigirá a http://localhost:8000/transportes-cuervo-negro/ver-boletos/ID/
+                window.location.href = `../ver-boletos/${reservacionSeleccionadaId}/`;
+            } else {
+                alert('Por favor, selecciona una reservación de la tabla primero.');
+            }
+        });
+    }
+
+    // --- 3. LÓGICA DE FILTRADO (Tu código original mejorado) ---
     const aplicarFiltros = () => {
         const params = new URLSearchParams(window.location.search);
-
-        // Procesar Fecha
-        if (filtroFecha.value) {
-            params.set('fecha', filtroFecha.value);
-        } else {
-            params.delete('fecha');
-        }
-
-        // Procesar Número de Corrida
-        if (filtroNumero.value) {
-            params.set('numero', filtroNumero.value);
-        } else {
-            params.delete('numero');
-        }
-
-        // Procesar Nombre de Pasajero
-        if (filtroPasajero.value) {
-            params.set('pasajero', filtroPasajero.value);
-        } else {
-            params.delete('pasajero');
-        }
-
-        // Redirigir a la URL construida
+        if (filtroFecha.value) params.set('fecha', filtroFecha.value); else params.delete('fecha');
+        if (filtroNumero.value) params.set('numero', filtroNumero.value); else params.delete('numero');
+        if (filtroPasajero.value) params.set('pasajero', filtroPasajero.value); else params.delete('pasajero');
         window.location.href = `${window.location.pathname}?${params.toString()}`;
     };
 
-    // --- EVENT LISTENERS ---
-    
-    // Ejecutar restricción de fecha al cargar
-    establecerFechaMinima();
-
-    // Cambio automático al seleccionar una fecha
-    filtroFecha.addEventListener('change', aplicarFiltros);
-    
-    // Filtros de texto/número: se activan al presionar Enter
-    // Se usa 'keydown' por ser el estándar actual recomendado
-    filtroNumero.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') aplicarFiltros();
+    // Listeners para filtros
+    if (filtroFecha) filtroFecha.addEventListener('change', aplicarFiltros);
+    [filtroNumero, filtroPasajero].forEach(input => {
+        input?.addEventListener('keydown', (e) => { if (e.key === 'Enter') aplicarFiltros(); });
     });
 
-    filtroPasajero.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') aplicarFiltros();
-    });
-
-    // --- PERSISTENCIA DE DATOS ---
-    // Mantiene los valores en los inputs después de que la página se recarga
+    // Persistencia
     const urlParams = new URLSearchParams(window.location.search);
-    filtroFecha.value = urlParams.get('fecha') || '';
-    filtroNumero.value = urlParams.get('numero') || '';
-    filtroPasajero.value = urlParams.get('pasajero') || '';
+    if (filtroFecha) filtroFecha.value = urlParams.get('fecha') || '';
+    if (filtroNumero) filtroNumero.value = urlParams.get('numero') || '';
+    if (filtroPasajero) filtroPasajero.value = urlParams.get('pasajero') || '';
 });

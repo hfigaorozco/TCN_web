@@ -10,6 +10,10 @@
   --sombra: 0 8px 32px rgba(21, 101, 192, 0.18);
 }
 
+body {
+  margin: 0;
+}
+
 .boleto-backdrop {
   display: flex;
   align-items: center;
@@ -152,6 +156,10 @@
   font-weight: 600;     
   font-size: 17px;      
   color: #1565C0;       
+}
+
+#boleto-desc {
+  font-size: 15px;
 }
 
 .boleto-total-box {

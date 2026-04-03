@@ -2,6 +2,7 @@ import json
 from datetime import date, timedelta
 
 from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Boleto
 from apps.corridas.models import Corrida, CorridaAsiento
@@ -196,6 +197,101 @@ def generar_boletos(request):
     cant           = len(pasajeros_data)
     boletos_generados = []
 
+    # ── Crear todos los objetos Pasajero primero ──────────────────────────────
+    pasajeros_objs = []
+    for p in pasajeros_data:
+        nombre_parts = p['nombre'].strip().split()
+        nombre       = nombre_parts[0] if nombre_parts else p['nombre']
+        apellidos    = p['apellidos'].strip().split()
+        apell_pat    = apellidos[0] if apellidos else ''
+        apell_mat    = apellidos[1] if len(apellidos) > 1 else ''
+
+        pasajero_obj = Pasajero.objects.create(
+            nombre   = nombre,
+            apellPat = apell_pat,
+            apellMat = apell_mat,
+            edad     = int(p['edad']),
+        )
+        pasajeros_objs.append(pasajero_obj)
+
+    # ── Una sola Reservacion ligada al primer pasajero ────────────────────────
+    reservacion = Reservacion.objects.create(
+        fecha         = hoy,
+        fechaLimPago  = fecha_lim,
+        cantPasajeros = cant,
+        subtotal      = compra['subtotal'],
+        IVA           = compra['iva'],
+        total         = compra['total'],
+        pasajero      = pasajeros_objs[0],   # primer pasajero
+        corrida       = corrida,
+    )
+
+    # ── Boleto + AsientoReservacion por cada pasajero ─────────────────────────
+    for p, pasajero_obj in zip(pasajeros_data, pasajeros_objs):
+        tipo_obj    = TipoPasajero.objects.get(codigo=p['tipo_pasajero'])
+        asiento_obj = Asiento.objects.get(
+            numero  = int(p['asiento']),
+            autobus = corrida.autobus,
+        )
+
+        AsientoReservacion.objects.create(
+            asiento     = asiento_obj,
+            reservacion = reservacion,
+        )
+
+        boleto = Boleto.objects.create(
+            precio       = p['precio'],
+            asiento      = asiento_obj,
+            pasajero     = pasajero_obj,
+            tipoPasajero = tipo_obj,
+            corrida      = corrida,
+        )
+
+        CorridaAsiento.objects.filter(
+            corrida = corrida,
+            asiento = asiento_obj,
+        ).update(estado=CorridaAsiento.OCUPADO)
+
+        boletos_generados.append({
+            'boleto':      boleto,
+            'reservacion': reservacion,
+            'pasajero':    pasajero_obj,
+            'tipo':        tipo_obj,
+            'descuento':   round(corrida.tarifaBase * (tipo_obj.porcentaje_desc / 100), 2),
+        })
+
+    # ── Actualizar lugares disponibles ────────────────────────────────────────
+    corrida.lugaresDisp -= cant
+    corrida.save()
+
+    del request.session['compra_pendiente']
+
+    context = {
+        'corrida':           corrida,
+        'boletos_generados': boletos_generados,
+        'total_general':     compra['total'],
+    }
+    return render(request, 'boleto.html', context)
+    if request.method != 'POST':
+        return redirect('index')
+
+    compra = request.session.get('compra_pendiente')
+    if not compra:
+        return redirect('index')
+
+    corrida = Corrida.objects.select_related(
+        'autobus__tipoAutobus',
+        'ruta__ciudadOrigen',
+        'ruta__ciudadDestino',
+    ).get(numero=compra['corrida_id'])
+
+    hoy            = date.today()
+    fecha_lim      = hoy + timedelta(days=3)
+    IVA_RATE       = 0.16
+    pasajeros_data = compra['pasajeros_data']
+    cant           = len(pasajeros_data)
+    boletos_generados = []
+
     for p in pasajeros_data:
         # Separar nombre y apellidos
         nombre_parts = p['nombre'].strip().split()
@@ -263,10 +359,89 @@ def generar_boletos(request):
     corrida.save()
 
     del request.session['compra_pendiente']
+    
 
     context = {
         'corrida':           corrida,
         'boletos_generados': boletos_generados,
         'total_general':     compra['total'],
     }
+    return render(request, 'boleto.html', context)
+
+
+# ── 5. VER BOLETOS EXISTENTES (DESDE RESERVACIONES) ───────────────────────────
+
+def ver_boletos(request, reserva_id):
+    reservacion = get_object_or_404(
+        Reservacion.objects.select_related(
+            'pasajero',
+            'corrida__ruta__ciudadOrigen',
+            'corrida__ruta__ciudadDestino',
+            'corrida__autobus__tipoAutobus',
+        ),
+        numero=reserva_id
+    )
+
+    asientos_reservacion = AsientoReservacion.objects.filter(
+        reservacion=reservacion
+    ).values_list('asiento', flat=True)
+
+    boletos = Boleto.objects.filter(
+        corrida=reservacion.corrida,
+        asiento__in=asientos_reservacion,
+    ).select_related('asiento', 'pasajero', 'tipoPasajero')
+
+    boletos_data = []
+    for b in boletos:
+        tarifa_base     = reservacion.corrida.tarifaBase
+        desc_porcentaje = b.tipoPasajero.porcentaje_desc
+        monto_descuento = round(tarifa_base * (desc_porcentaje / 100), 2)
+
+        boletos_data.append({
+            'boleto':      b,
+            'reservacion': reservacion,
+            'pasajero':    b.pasajero,
+            'tipo':        b.tipoPasajero,
+            'descuento':   monto_descuento,
+        })
+
+    context = {
+        'corrida':           reservacion.corrida,
+        'boletos_generados': boletos_data,
+        'total_general':     reservacion.total,
+        'es_consulta':       True,
+    }
+
+    return render(request, 'boleto.html', context)
+    reservacion = get_object_or_404(
+        Reservacion.objects.select_related('pasajero', 'corrida'), 
+        id=reserva_id
+    )
+    
+    boletos = Boleto.objects.filter(
+        corrida=reservacion.corrida,
+        pasajero=reservacion.pasajero
+    ).select_related('asiento', 'pasajero', 'tipoPasajero')
+
+    boletos_data = []
+    for b in boletos:
+        tarifa_base = reservacion.corrida.tarifaBase
+        desc_porcentaje = b.tipoPasajero.porcentaje_desc
+        monto_descuento = round(tarifa_base * (desc_porcentaje / 100), 2)
+        
+        boletos_data.append({
+            'boleto': b,
+            'reservacion': reservacion,
+            'pasajero': b.pasajero,
+            'tipo': b.tipoPasajero,
+            'descuento': monto_descuento,
+        })
+
+    context = {
+        'corrida': reservacion.corrida,
+        'boletos_generados': boletos_data,
+        'total_general': reservacion.total,
+        'es_consulta': True 
+    }
+    
     return render(request, 'boleto.html', context)

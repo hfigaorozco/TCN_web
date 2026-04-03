@@ -80,8 +80,8 @@
                     <span class="boleto-monto">${{ corrida.tarifaBase }}</span>
                 </div>
                 <div class="boleto-precio-row">
-                    <span class="boleto-label">Descuento:</span>
-                    <span class="boleto-monto">{{ item.tipo.porcentaje_desc }}% (-${{ item.descuento }})</span>
+                    <span class="boleto-label" id="boleto-desc">Descuento:</span>
+                    <span class="boleto-monto" id="boleto-desc">{{ item.tipo.porcentaje_desc }}% (-${{ item.descuento }})</span>
                 </div>
                 <div class="boleto-total-box">
                     <span class="boleto-label">Total boleto:</span>
@@ -113,7 +113,7 @@
     function mostrar(n) {
         document.getElementById(`boleto-${actual}`).style.display = 'none';
         actual = n;
-        document.getElementById(`boleto-${actual}`).style.display = '';
+        document.getElementById(`boleto-${actual}`).style.display = 'flex';
     }
 
     document.getElementById('btn-anterior').addEventListener('click', () => {
