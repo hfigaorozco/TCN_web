@@ -25,9 +25,9 @@ def index(request):
         rows = cursor.fetchall()
         for row in rows:
             pasajeros_data.append({
-                'asiento': 'A1',       # Valor temporal
+                'asiento': 'A1',
                 'nombre': f"{row[0]} {row[1]}",
-                'tipo': 'Adulto',      # Valor temporal
+                'tipo': 'Adulto',
                 'estado': 'confirmado'
             })
 
@@ -56,4 +56,5 @@ def index(request):
         'ciudades': Ciudad.objects.all(),
         'detalle': detalle,
     }
+
     return render(request, 'index.html', context)
