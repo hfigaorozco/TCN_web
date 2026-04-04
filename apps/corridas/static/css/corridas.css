@@ -431,7 +431,7 @@ dialog::backdrop {
     flex-wrap: wrap;
 }
 
-.cajitas>div {
+.cajitas > div {
     flex: 1;
     min-width: 120px;
 }
@@ -540,7 +540,6 @@ dialog::backdrop {
     height: max-content;
     padding: 7vh 0px 0px 19vh;
 }
-
 /* ================= DIALOGO CORRIDAS POR FECHA Y CIUDAD ================= */
 .dialog-fechaCiudad {
     height: fit-content;
@@ -709,17 +708,9 @@ dialog::backdrop {
 
 
 @keyframes show {
-    0% {
-        transform: translateX(100%);
-    }
-
-    40% {
-        transform: translateX(-5%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+    0%   { transform: translateX(100%); }
+    40%  { transform: translateX(-5%); }
+    100% { transform: translateX(0); }
 }
 
 
@@ -739,6 +730,6 @@ dialog::backdrop {
 
 
 /* ================= FORM DE FILTROS ================= */
-.form-filtros {
+.form-filtros { 
     display: flex;
 }
