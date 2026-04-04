@@ -39,7 +39,7 @@
             <div class="filter-box">
                 <form method="GET">
                     <label for="filtro_operador">Operadores:</label>
-                    <input type="text" id="filtro_operador" placeholder="Operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
+                    <input type="text" id="filtro_operador" placeholder="Número de operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
                 </form>
             </div>
         </div>
@@ -113,7 +113,7 @@
 
     <!-- DIALOG EDITAR OPERADOR -->
     <dialog id="editarOperador">
-        <form method="POST" id="form_editar_operador" class="form">
+        <form method="POST" id="form_editar_operador">
         {% csrf_token %}
         <input type="hidden" name="action" value="editar_operador">
             <div class="dialog-content">

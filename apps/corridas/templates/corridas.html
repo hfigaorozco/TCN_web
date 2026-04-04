@@ -378,6 +378,12 @@
         {% if messages %}
         {% for m in messages %}
         <script>
+            console.log("=== DEBUG TOAST ===");
+            console.log("1. tipoMensaje:", "{{ m.tags }}");
+            console.log("2. textoMensaje:", "{{ m|escapejs }}");
+            console.log("3. typeof crearTipoToast:", typeof crearTipoToast);
+            console.log("4. typeof createToast:", typeof createToast);
+
             const tipoMensaje = "{{ m.tags }}";
             const textoMensaje = "{{ m|escapejs }}";
 
