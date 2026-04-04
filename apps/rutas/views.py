@@ -69,16 +69,11 @@ def agregar_ruta(request):
                 messages.error(request, "El origen y destino no pueden ser la misma ciudad.")
                 return redirect('rutas')
 
+            # Formato: ORIGEN-DESTINO (Ej: MEX-GDL)
             nuevo_codigo = f"{origen_id}-{destino_id}"
 
-            if Ruta.objects.filter(
-                ciudadOrigen_id=origen_id,
-                ciudadDestino_id=destino_id
-            ).exists() or Ruta.objects.filter(
-                ciudadOrigen_id=destino_id,
-                ciudadDestino_id=origen_id
-            ).exists():
-                messages.error(request, "Ya existe una ruta entre estas ciudades.")
+            if Ruta.objects.filter(codigo=nuevo_codigo).exists():
+                messages.error(request, f"La ruta {nuevo_codigo} ya existe.")
                 return redirect('rutas')
 
             Ruta.objects.create(
