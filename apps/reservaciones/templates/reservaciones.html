@@ -65,7 +65,7 @@
             <div class="filter-boxes">
                 <div class="filter-box filter-box--mediano">
                     <h2>Fecha</h2>
-                    <input type="date" id="filtro-fecha">
+                    <input type="date" id="filtro-fecha" min="{% now 'Y-m-d' %}">
                 </div>
                 <div class="filter-box filter-box--corto">
                     <h2>Número:</h2>
