@@ -9,9 +9,9 @@ abrirAgregarOperador.addEventListener('click', () => {
     agregarOperador.showModal();
 });
 
-aceptarAgregarOperador.addEventListener('click', () => {
-    agregarOperador.close();
-});
+// aceptarAgregarOperador.addEventListener('click', () => {
+//     agregarOperador.close();
+// });
 
 cancelarAgregarOperador.addEventListener('click', () => {
     agregarOperador.close();

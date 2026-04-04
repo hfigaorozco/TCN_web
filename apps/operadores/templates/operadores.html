@@ -91,17 +91,17 @@
             <div class="dialog-content">
                 <h2>Agregar Operador</h2>
                 <h3>Nombre</h3>
-                <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+                <input type="text" name="nombre" placeholder="Nombre"  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" maxlength="15" required>
                 <h3>Primer Apellido</h3>
-                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" required>
                 <h3>Segundo Apellido</h3>
-                <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+                <input type="text" name="apellMat" placeholder="Segundo Apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" maxlength="15" required>
                 <h3>Teléfono</h3>
-                <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10">
+                <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10" required>
                 <h3>Fecha de nacimiento</h3>
-                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">                    
+                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento" required>                    
                 <h3>Fecha de contrato</h3>
-                <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
+                <input type="date" name="fechaContrato" placeholder="Fecha de contrato" required>
 
                 <div class="dialog-actions">
                     <button type="button" class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
