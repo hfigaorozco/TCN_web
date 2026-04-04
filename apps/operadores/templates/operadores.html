@@ -152,6 +152,7 @@
         <script>
             const tipoMensaje = "{{ m.tags }}";
             const textoMensaje = "{{ m|escapejs }}";
+            crearTipoToast(tipoMensaje, textoMensaje)
         </script>
         {% endfor %}
         {% else %}
