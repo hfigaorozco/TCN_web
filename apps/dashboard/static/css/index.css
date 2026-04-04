@@ -7,10 +7,8 @@
 body{
     background: #f4f6fb;
     font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    overflow-x: hidden;
+    
 }
 
 /* ================= NAVBAR ================= */
