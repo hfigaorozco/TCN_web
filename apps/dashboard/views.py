@@ -3,11 +3,9 @@ from django.db import connection
 from apps.corridas.models import Corrida
 from apps.rutas.models import Ciudad
 
-
 def index(request):
     # Fetch corridas
     corridas_list = Corrida.objects.all().order_by('fecha_salida', 'hora_salida')[:10]
-
     corridas_data = []
     for c in corridas_list:
         corridas_data.append({
@@ -38,7 +36,6 @@ def index(request):
         total_asientos = c.autobus.cantAsientos
         ocupados = total_asientos - c.lugaresDisp
         porcentaje = int((ocupados / total_asientos) * 100) if total_asientos > 0 else 0
-
         detalle = {
             'autobus': c.autobus.numero,
             'tipo': c.autobus.tipoAutobus.descripcion,
