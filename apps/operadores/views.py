@@ -36,6 +36,7 @@ def pagina_operadores(request):
     
     operadores = Operador.objects.all()
     numero_operador = request.GET.get('filtro_operador', '')
+    total_operadores = Operador.objects.all().count()
     
     if numero_operador:
         operadores = operadores.filter(numero__icontains=numero_operador) 
@@ -50,6 +51,7 @@ def pagina_operadores(request):
     context = {
         'operadores': operadores,
         'operador_seleccionado': operador_seleccionado,
+        'total_operadores': total_operadores,
     }
     
     return render(request, 'operadores.html', context)
