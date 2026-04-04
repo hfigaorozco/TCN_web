@@ -1,0 +1,562 @@
+/* ================= BASE ================= */
+
+body{
+    background: #f4f6fb;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+
+.top-nav{
+    width: 95%;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo-box{
+    background: white;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+}
+
+.logo-box img{
+    height: clamp(50px, 6vw, 80px);
+}
+
+.menu-box{
+    background: white;
+    padding: clamp(15px, 2vw, 30px) clamp(20px, 3vw, 50px);
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.08);
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    gap: 45px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: #9a9a9a;
+    font-size: clamp(14px, 1.2vw, 20px);
+    font-weight: 600;
+    padding: 20px 22px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.menu li.activea a{
+    background: #2f6fed;
+    color: white;
+}
+
+.menu li a:hover{
+    background: #e8eefc;
+    color: #2f6fed;
+}
+
+/* ================= CONTENEDOR ================= */
+
+.container{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.title{
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 30px 0;
+    font-weight: 600;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+    min-width: 180px;
+    text-align: center;
+}
+
+.card span{
+    color: #555;
+    font-size: 14px;
+}
+
+.card h2{
+    margin: 5px 0 0;
+    font-size: 32px;
+}
+
+.active-card{
+    background: #2f6fed;
+}
+
+.active-card span,
+.active-card h2{
+    color: white;
+}
+
+/* ================= FILTROS ================= */
+
+.filter-box{
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.filter-group{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-group label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.filter-group input,
+.filter-group select{
+    padding: 18px 22px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    font-size: 16px;
+    height: 55px;
+    min-width: 200px;
+    transition: 0.25s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus{
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47,111,237,0.15);
+    outline: none;
+}
+
+/* ================= MAIN SECTION ================= */
+
+.main-section{
+    width: 95%;
+    margin: 40px auto;
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.side-btn{
+    width: 80px;
+    height: 60px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+    border: none;
+}
+
+.side-btn:hover{
+    background-color: #2f6fed;
+}
+
+/* ICONOS DESDE TU CARPETA */
+
+.agregar{
+    background-image: url("../images/agregar.png");
+}
+
+.agregar:hover{
+    background-image: url("../images/agregarHover.png");
+}
+
+.editar{
+    background-image: url("../images/editar.png");
+}
+
+.editar:hover{
+    background-image: url("../images/editarHover.png");
+}
+
+.fechaCiudad{
+    background-image: url("../images/ciudad.png");
+}
+
+.fechaCiudad:hover{
+    background-image: url("../images/ciudadHover.png");
+}
+
+/* ================= CONTENT BOX ================= */
+
+.content-box{
+    flex: 1;
+    min-height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-wrapper{
+    flex: 1;
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+
+/* ================= TABLA ================= */
+
+.table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+    font-size: clamp(16px, 1.2vw, 20px);
+}
+
+.table thead{
+    background: #2f6fed;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table th,
+.table td{
+    padding: 18px;
+}
+
+.table tbody tr{
+    border-bottom: 1px solid #e5e7eb;
+    background: white; /* Forzamos fondo blanco en todas las filas */
+}
+
+.table tbody tr:nth-child(even){
+    background: white; /* Quitamos el azul tenue de las filas pares */
+}
+
+.table tbody tr:hover{
+    background: #e8f0ff;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/* ================= DIALOG BASE ================= */
+
+dialog::backdrop {
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(6px);
+}
+
+.dialog-base {
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 35px; /* Aumentamos un poco el padding interno */
+    width: 500px;  /* Ancho fijo para que se vea más cuadrado */
+    height: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dialog-base h1 {
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    color: #111;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dialog-base h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.dialog-base select,
+.dialog-base input {
+    height: 38px;
+    padding: 0 12px;
+    border: 2px solid #1061C4;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    background: #ffffff;
+    outline: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.dialog-base select:focus,
+.dialog-base input:focus {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+    outline: none;
+}
+
+/* ================= CAJITAS (grupos de campos) ================= */
+
+.cajitas {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.cajitas > div {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ================= BOTONES ACEPTAR / CANCELAR ================= */
+
+.aceptar-cancelar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-aceptar {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background: #2f6fed;
+    color: white;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-aceptar:hover {
+    background: #1a4db5;
+    transform: translateY(-2px);
+}
+
+.btn-cancelar {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    border: 2px solid #FF8600;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    background: white;
+    color: #FF8600;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cancelar:hover {
+    background: #FF8600;
+    color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px){
+
+    .top-nav{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-box{
+        width: 100%;
+    }
+
+    .filter-box input{
+        width: 100%;
+    }
+
+    .main-section{
+        flex-direction: column;
+    }
+
+    .sidebar{
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    dialog{
+        width: 95%;
+        top: 40px;
+    }
+}
+
+/* ================= SELECCIÓN DE FILA ================= */
+
+.table tbody tr.selected {
+    background-color: #2f6fed !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.table tbody tr.selected td {
+    color: white !important;
+}
+
+/* ================= TOAST (NOTIFICACIONES) ================= */
+
+.notificaciones {
+    position: fixed;
+    bottom: 2vh;
+    right: 3vh;
+    z-index: 1000;
+}
+
+.toast {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 12px 14px 12px;
+    color: black;
+    margin-bottom: 10px;
+    width: 320px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    border: #2f6fed 2px solid;
+    border-radius: 20px;
+    --color: #2f6fed;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    animation: showToast 0.3s ease 1 forwards;
+}
+
+.toast .content {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    line-height: 1.2;
+}
+
+.toast i {
+    color: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    height: 100%;
+    width: 100%;
+}
+
+.toast .title {
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.toast span {
+    font-size: 1.6vh;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #666;
+}
+
+.toast::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color);
+    width: 100%;
+    height: 3px;
+    content: '';
+    box-shadow: 0 0 8px var(--color);
+    animation: timeOut 4s linear 1 forwards;
+}
+
+@keyframes timeOut {
+    to { width: 0; }
+}
+
+@keyframes showToast {
+    0%   { transform: translateX(100%); opacity: 0; }
+    40%  { transform: translateX(-5%); opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.toast.error {
+    --color: #FF8600;
+    border-color: #FF8600;
+}
+
+.toast.exito {
+    --color: #2f6fed;
+    border-color: #2f6fed;
+}
