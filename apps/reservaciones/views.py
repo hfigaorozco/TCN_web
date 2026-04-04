@@ -6,18 +6,20 @@ from .models import Reservacion, AsientoReservacion
 
 
 def pagina_reservaciones(request):
-    fecha_filtro   = request.GET.get('fecha')
-    numero_filtro  = request.GET.get('numero')
+    hoy = timezone.localdate()
+
+    fecha_filtro    = request.GET.get('fecha')
+    numero_filtro   = request.GET.get('numero')
     pasajero_filtro = request.GET.get('pasajero')
 
     reservaciones = Reservacion.objects.select_related(
         'pasajero',
         'corrida__ruta__ciudadOrigen',
         'corrida__ruta__ciudadDestino',
-    ).order_by('-fecha')
+    ).filter(corrida__fecha_salida__gte=hoy).order_by('corrida__fecha_salida')
 
     if fecha_filtro:
-        reservaciones = reservaciones.filter(fecha=fecha_filtro)
+        reservaciones = reservaciones.filter(corrida__fecha_salida=fecha_filtro)
 
     if numero_filtro:
         reservaciones = reservaciones.filter(numero=numero_filtro)
@@ -28,9 +30,8 @@ def pagina_reservaciones(request):
             Q(pasajero__apellPat__icontains=pasajero_filtro)
         )
 
-    hoy = timezone.localdate()
     total_hoy     = Reservacion.objects.filter(fecha=hoy).count()
-    total_futuras = Reservacion.objects.filter(corrida__fecha_salida__gt=hoy).count()  
+    total_futuras = Reservacion.objects.filter(corrida__fecha_salida__gt=hoy).count()
     total_activas = total_hoy + total_futuras
 
     context = {
@@ -38,6 +39,7 @@ def pagina_reservaciones(request):
         'total_activas': total_activas,
         'total_hoy':     total_hoy,
         'total_futuras': total_futuras,
+        'fecha_filtro':  fecha_filtro or str(hoy),
     }
 
     return render(request, 'reservaciones.html', context)
