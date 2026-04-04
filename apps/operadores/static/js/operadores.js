@@ -49,3 +49,31 @@ document.getElementById('operador').addEventListener(
         document.getElementById('fechaNac').value = option.dataset.fechanac || '';
     }
 )
+
+
+/* ================= FUNCION PARA CREAR TOAST ================= */
+function createToast(type, icon, title, text){
+    let notificaciones = document.querySelector('.notificaciones')
+    let newToast = document.createElement('div');
+    newToast.innerHTML =`
+        <div class="toast ${type}">
+            <i class="${icon}"></i>
+            <div class="content">
+                <div class="title">${title}</div>
+                <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-x" onclick="(this.parentElement).remove() "></i>
+        </div>`;
+    notificaciones.appendChild(newToast);
+    newToast.setTimeout = setTimeout(()=>{
+        newToast.remove();
+    }, 3000);
+}
+
+/* ================= FUNCION PARA CREAR TOAST ================= */
+function crearTipoToast(tipoMensaje, textoMensaje){
+    const tipo = tipoMensaje === 'success' ? 'exito' : 'error';
+    const icono = tipoMensaje === 'success' ? "fa-solid fa-circle-check" : "fa-solid fa-circle-exclamation";
+    const titulo = tipoMensaje === 'success'? '¡Éxito!' : '¡Atención!'
+    createToast(tipo, icono, titulo, textoMensaje);
+}
