@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Operador
 from django.contrib import messages
+from django.db import IntegrityError
 
 # Create your views here.
 
@@ -19,6 +20,8 @@ def pagina_operadores(request):
                     fechaContrato = request.POST['fechaContrato'],
                 )
                 messages.success(request, f"Operador {nuevo_operador.numero} registrado exitosamente.")
+            except IntegrityError as e:
+                messages.error(request, f"Ya existe un operador con el número telefónico ingresado")
             except Exception as e:
                 messages.error(request, f"Error al registrar operador: {str(e)}")
             return redirect('operadores')
@@ -32,6 +35,8 @@ def pagina_operadores(request):
                 operador.telefono = request.POST['telefono']
                 operador.save()
                 messages.success(request, f"Operador {operador.numero} actualizado exitosamente.")
+            except IntegrityError as e:
+                messages.error(request, f"Ya existe un operador con el número telefónico ingresado")
             except Exception as e:
                 messages.error(request, f"Error al actualizar operador: {str(e)}")
             return redirect('operadores')
