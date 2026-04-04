@@ -39,7 +39,7 @@
             <div class="filter-box">
                 <form method="GET">
                     <label for="filtro_operador">Operadores:</label>
-                    <input type="text" id="filtro_operador" placeholder="Número de operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
+                    <input type="number" id="filtro_operador" placeholder="Número de operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
                 </form>
             </div>
         </div>
@@ -91,13 +91,13 @@
             <div class="dialog-content">
                 <h2>Agregar Operador</h2>
                 <h3>Nombre</h3>
-                <input type="text" name="nombre" placeholder="Nombre"  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" maxlength="15" required>
+                <input type="text" name="nombre" placeholder="Nombre"  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15" required>
                 <h3>Primer Apellido</h3>
-                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" required>
+                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
                 <h3>Segundo Apellido</h3>
-                <input type="text" name="apellMat" placeholder="Segundo Apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ]+" title="Solo se permite texto" maxlength="15" required>
+                <input type="text" name="apellMat" placeholder="Segundo Apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15">
                 <h3>Teléfono</h3>
-                <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" pattern="[0-9]{10}" title="Introduzca 10 números enteros" required>
                 <h3>Fecha de nacimiento</h3>
                 <input type="date" name="fechaNac" placeholder="Fecha de nacimiento" required>                    
                 <h3>Fecha de contrato</h3>
@@ -130,10 +130,10 @@
                         {% endfor %}
                     </select>
 
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15">
-                    <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" >
-                    <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" >
-                    <input type="tel" id="telefono" name="telefono" placeholder="Celular" maxlength="10" >
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
+                    <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
+                    <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto">
+                    <input type="tel" id="telefono" name="telefono" maxlength="10" placeholder="Celular"  pattern="[0-9]{10}" title="Introduzca 10 números enteros">
                     <input type="date" id="fechaNac" name="fechaNac" readonly >
 
                     <div class="dialog-actions">
