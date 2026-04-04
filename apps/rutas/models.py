@@ -25,8 +25,8 @@ class Ruta(models.Model):
         primary_key=True,
         validators=[
             RegexValidator(
-                r'^[A-Z0-9]{1,5}$',
-                'Solo letras mayúsculas y números'
+                r'^[A-Z0-9-]{1,7}$',
+                'Solo letras mayúsculas, números y guiones'
             )
         ]
     )

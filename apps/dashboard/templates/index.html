@@ -64,6 +64,7 @@
         <div class="card-title">Corridas</div>
         <div style="position: absolute; top: -18px; right: 30px">
           <select
+            id="filter-mes"
             style="
               padding: 6px 12px;
               border-radius: 10px;
@@ -77,10 +78,10 @@
               min-width: 180px;
             "
           >
-            <option selected disabled>Filtrar fecha</option>
-            <option>Hoy</option>
-            <option>Mañana</option>
-            <option>22-01-2026</option>
+            <option selected value="todos">Todos los meses</option>
+            {% for mes in meses_filtro %}
+            <option value="{{ mes.valor }}">{{ mes.nombre }}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="table-wrapper">
@@ -96,12 +97,12 @@
             </thead>
             <tbody>
               {% for corrida in corridas %}
-              <tr>
+              <tr class="corrida-row" data-id="{{ corrida.id }}" data-fecha="{{ corrida.fecha }}" style="cursor: pointer;">
                 <td>{{ corrida.hora }}</td>
                 <td>{{ corrida.origen }}</td>
                 <td>{{ corrida.destino }}</td>
                 <td>
-                  <span class="status {{ corrida.estado }}"
+                  <span class="status {{ corrida.estado_clase }}"
                     >{{ corrida.estado }}</span
                   >
                 </td>
@@ -130,7 +131,7 @@
                 <th>Estado</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="pasajeros-body">
               {% for pasajero in pasajeros %}
               <tr>
                 <td>{{ pasajero.asiento }}</td>
@@ -154,6 +155,7 @@
 
       <!-- DETALLES DE CORRIDA -->
       <div
+        id="detalle-corrida-box"
         class="content-box detail-box"
         style="
           flex: 1 1 100%;
@@ -348,6 +350,7 @@
     <script>
       window.__urlLogin = "#";
       window.__urlBoletos = "{% url 'comprarboleto' %}";
+      window.__urlGetCorridaDetails = "/transportes-cuervo-negro/dashboard/corrida/";
 
       // Restricción de fechas: hoy hasta +30 días
       const inputFecha = document.getElementById("dialog-fecha");
