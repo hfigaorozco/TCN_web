@@ -273,8 +273,8 @@ body{
 }
 
 .table tbody tr{
-    background: #f9fafe;
-    transition: 0.3s;
+    background: white;
+    transition: 0.2s;
     border-radius: 12px;
 }
 
@@ -282,6 +282,7 @@ body{
     padding: 14px 18px;
     font-size: 14px;
     color: #555;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .table tbody tr td:first-child{
@@ -293,8 +294,12 @@ body{
 }
 
 .table tbody tr:hover{
-    background: #eef2ff;
-    transform: scale(1.01);
+    background: #f8f9ff;
+}
+
+.table tbody tr.selected-row {
+    background: #eef3ff;
+    border-left: 4px solid #2f6fed;
 }
 
 .table thead th:first-child{
@@ -315,24 +320,29 @@ body{
     text-transform: capitalize;
 }
 
-.status.activo, .status.confirmado{
+.status.confirmado{
     background: #e6fcf5;
     color: #0ca678;
 }
 
-.status.espera, .status.programado{
+.status.pendiente{
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.status.proxima{
     background: #fff9db;
     color: #f08c00;
 }
 
-.status.cancelado{
-    background: #fff5f5;
-    color: #fa5252;
+.status.en-curso{
+    background: #e7f5ff;
+    color: #1c7ed6;
 }
 
-.status.demorado{
-    background: #fff4e6;
-    color: #fd7e14;
+.status.finalizada{
+    background: #ebfbee;
+    color: #2b8a3e;
 }
 
 /* ================= RESPONSIVE ================= */

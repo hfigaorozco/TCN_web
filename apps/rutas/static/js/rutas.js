@@ -104,8 +104,8 @@ document.querySelectorAll('.ciudad-row').forEach(row => {
         if (btnEditarCiudad) btnEditarCiudad.style.display = "block";
         if (btnGuardarCiudad) btnGuardarCiudad.style.display = "none";
 
-        document.querySelectorAll('.ciudad-row').forEach(r => r.style.background = "");
-        row.style.background = "#eef3ff";
+        document.querySelectorAll('.ciudad-row').forEach(r => r.classList.remove('selected'));
+        row.classList.add('selected');
     });
 });
 
