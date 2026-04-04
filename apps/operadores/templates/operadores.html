@@ -39,7 +39,7 @@
             <div class="filter-box">
                 <form method="GET">
                     <label for="filtro_operador">Operadores:</label>
-                    <input type="text" id="filtro_operador" placeholder="Operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
+                    <input type="text" id="filtro_operador" placeholder="Número de operador" name="filtro_operador" value="{{ request.GET.filtro_operador }}">
                 </form>
             </div>
         </div>
@@ -85,29 +85,35 @@
 
     <!-- DIALOG AGREGAR OPERADOR -->
     <dialog id="agregarOperador">
-        <div class="dialog-content">
-            <h2>Agregar Operador</h2>
-            <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="agregar_operador">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="agregar_operador">
+            <div class="dialog-content">
+                <h2>Agregar Operador</h2>
+                <h3>Nombre</h3>
                 <input type="text" name="nombre" placeholder="Nombre" maxlength="15">
+                <h3>Primer Apellido</h3>
                 <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15">
+                <h3>Segundo Apellido</h3>
                 <input type="text" name="apellMat" placeholder="Segundo Apellido" maxlength="15">
+                <h3>Teléfono</h3>
                 <input type="tel" name="telefono" placeholder="Teléfono" maxlength="10">
-                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">
+                <h3>Fecha de nacimiento</h3>
+                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento">                    
+                <h3>Fecha de contrato</h3>
                 <input type="date" name="fechaContrato" placeholder="Fecha de contrato">
 
                 <div class="dialog-actions">
                     <button type="button" class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
                     <button type="submit" class="btn btn-action btn-primary" id="aceptarAgregarOperador">Guardar</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </dialog>
 
     <!-- DIALOG EDITAR OPERADOR -->
     <dialog id="editarOperador">
-        <form method="POST" id="form_editar_operador" class="form">
+        <form method="POST" id="form_editar_operador">
         {% csrf_token %}
         <input type="hidden" name="action" value="editar_operador">
             <div class="dialog-content">

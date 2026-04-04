@@ -83,7 +83,7 @@ body {
     border-radius: 15px;
     outline: 2px solid #c9ced4;
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
-    gap: 12px;
+    gap: 5px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -524,4 +524,69 @@ body {
     .lista_corridas {
         gap: 25px;
     }
+}
+
+
+/* ================= DIÁLOGO SIN RESULTADOS ================= */
+
+#dialogo-sin-resultados {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    width: 480px;
+    max-width: 92%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+#dialogo-sin-resultados::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.dialog-sin-resultados-container {
+    background: white;
+    border-radius: 20px;
+    padding: 45px 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.dialog-sin-resultados-titulo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.dialog-sin-resultados-texto {
+    font-size: 20px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dialog-sin-resultados-btn {
+    margin-top: 10px;
+    padding: 14px 32px;
+    border-radius: 25px;
+    border: none;
+    background: #FF8600;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dialog-sin-resultados-btn:hover {
+    background-color: #cc6a00;
+    transform: translateY(-2px);
 }

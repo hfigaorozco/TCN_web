@@ -7,6 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
     <link rel="stylesheet" href="{% static 'css/reservaciones.css' %}">
+    <style>
+        /* Estilos críticos para que funcione la selección visual */
+        .fila-reserva {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .fila-reserva:hover {
+            background-color: #f0f4ff !important;
+        }
+        .fila-reserva.selected-row {
+            background-color: #2f6fed !important;
+            color: white !important;
+        }
+        .fila-reserva.selected-row td {
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -48,29 +65,27 @@
             <div class="filter-boxes">
                 <div class="filter-box filter-box--mediano">
                     <h2>Fecha</h2>
-                    <input type="date" id="filtro-fecha">
+                    <input type="date" id="filtro-fecha" min="{% now 'Y-m-d' %}">
                 </div>
                 <div class="filter-box filter-box--corto">
-                    <h2>Número</h2>
-                    <input type="number" id="filtro-numero" placeholder="Reservación" min="1">
+                    <h2>Número:</h2>
+                    <input type="number" id="filtro-numero" placeholder="No. de Reservación">
                 </div>
                 <div class="filter-box">
-                    <h2>Pasajero</h2>
+                    <h2>Pasajero:</h2>
                     <input type="text" id="filtro-pasajero" placeholder="Nombre de pasajero">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN PRINCIPAL -->
     <div class="main-section">
-
         <div class="sidebar">
-            <button class="side-btn mostrar" id="mostrarBoleto"></button>
+            <button class="side-btn mostrar" id="mostrarBoleto" title="Mostrar Boletos"></button>
         </div>
 
         <div class="content-box">
-            <table>
+            <table id="tabla-reservaciones">
                 <thead>
                     <tr>
                         <th>Fecha</th>
@@ -86,16 +101,16 @@
                 </thead>
                 <tbody>
                     {% for reservacion in reservaciones %}
-                    <tr>
-                        <td>{{ reservacion.fecha }}</td>
+                    <tr class="fila-reserva" data-id="{{ reservacion.numero }}">
+                        <td>{{ reservacion.fecha|date:"d/m/Y" }}</td>
                         <td>{{ reservacion.corrida.numero }}</td>
                         <td>{{ reservacion.pasajero.nombre }} {{ reservacion.pasajero.apellPat }}</td>
-                        <td>{{ reservacion.corrida.ruta.ciudadOrigen }}</td>
-                        <td>{{ reservacion.corrida.ruta.ciudadDestino }}</td>
-                        <td>{{ reservacion.corrida.fecha_salida }} {{ reservacion.corrida.hora_salida }}</td>
-                        <td>{{ reservacion.corrida.fecha_llegada }} {{ reservacion.corrida.hora_llegada }}</td>
+                        <td>{{ reservacion.corrida.ruta.ciudadOrigen.nombre }}</td>
+                        <td>{{ reservacion.corrida.ruta.ciudadDestino.nombre }}</td>
+                        <td>{{ reservacion.corrida.fecha_salida }} {{ reservacion.corrida.hora_salida|time:"H:i" }}</td>
+                        <td>{{ reservacion.corrida.fecha_llegada }} {{ reservacion.corrida.hora_llegada|time:"H:i" }}</td>
                         <td>{{ reservacion.cantPasajeros }}</td>
-                        <td>{{ reservacion.fechaLimPago }}</td>
+                        <td>{{ reservacion.fechaLimPago|date:"d/m/Y" }}</td>
                     </tr>
                     {% empty %}
                     <tr>
@@ -105,8 +120,8 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 
+    <script src="{% static 'js/reservaciones.js' %}?v={% now 'U' %}"></script>
 </body>
 </html>

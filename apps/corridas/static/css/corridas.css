@@ -278,11 +278,13 @@ body {
 .content-box {
     flex: 1;
     min-height: 500px;
+    max-height: 510px;
     background: white;
     border-radius: 24px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
     padding: 30px;
     overflow-x: auto;
+    overflow-y: auto;
 }
 
 .content-box table {
@@ -382,7 +384,7 @@ dialog::backdrop {
 }
 
 .dialog-base h1 {
-    font-size: 22px;
+    font-size: 27px;
     font-weight: 700;
     font-style: italic;
     color: #111;
@@ -429,7 +431,7 @@ dialog::backdrop {
     flex-wrap: wrap;
 }
 
-.cajitas > div {
+.cajitas>div {
     flex: 1;
     min-width: 120px;
 }
@@ -472,37 +474,30 @@ dialog::backdrop {
 /* ================= DIALOG AGREGAR ================= */
 .dialog-agregar select {
     height: 3.819vh;
+    width: 100%;
 }
 
 .dialog-agregar input {
-    height: 3.0vh;
-    width: 10vh;
+    height: 3.819vh;
+    width: 100%;
 }
 
 /* ================= DIALOG EDITAR ================= */
-.dialog-editar select {
-    height: 3vh;
-    width: min-content;
-}
-
-.dialog-editar input {
-    height: 3vh;
-    width: 10vh;
-}
 
 /* ================= DIALOG ELIMINAR ================= */
 .dialog-eliminar {
     height: fit-content;
+    width: 300px;
 }
 
 .dialog-eliminar select {
     height: 3vh;
-    width: min-content;
+    width: 100%;
 }
 
 .dialog-eliminar input {
     height: 3vh;
-    width: 15vh;
+    width: 100%;
 }
 
 /* ================= BOTON ACEPTAR Y CANCELAR ================= */
@@ -546,15 +541,19 @@ dialog::backdrop {
     padding: 7vh 0px 0px 19vh;
 }
 
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
+/* ================= DIALOGO CORRIDAS POR FECHA Y CIUDAD ================= */
 .dialog-fechaCiudad {
     height: fit-content;
     width: fit-content;
     max-width: 92vw;
 }
 
+.dialog-fechaCiudad h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
 .titulo-cajitas {
-    gap: 12vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -565,11 +564,25 @@ dialog::backdrop {
 
 .titulo-cajitas-boletos {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 20px;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    gap: 20px;
     flex-wrap: wrap;
+}
+
+.filtro-fecha-boletos {
+    align-items: center;
+}
+
+.filtro-fecha-boletos label {
+    font-weight: bold;
+}
+
+.filtro-fecha-boletos input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .tabla-fechaCiudad {
@@ -582,16 +595,10 @@ dialog::backdrop {
 }
 
 .cerrar-fechaCiudad {
-    padding: 5vh 0px 0px 90%;
-    height: auto;
-}
-
-/* ================= DIALOGO PARA VER CORRIDAS POR FECHA Y CIUDAD ================= */
-.titulo-cajitas-boletos {
-    gap: 48%;
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+    padding-top: 15px;
 }
 
 /* ================= TOAST ================= */
@@ -700,12 +707,38 @@ dialog::backdrop {
     color: #FF8600;
 }
 
-@keyframes timeOut {
-    to { width: 0; }
-}
 
 @keyframes show {
-    0%   { transform: translateX(100%); }
-    40%  { transform: translateX(-5%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
+/* ================= SELECCIÓN DE FILA ================= */
+
+.table tbody tr.selected {
+    background-color: #2f6fed !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.table tbody tr.selected td {
+    color: white !important;
+}
+
+
+
+/* ================= FORM DE FILTROS ================= */
+.form-filtros {
+    display: flex;
 }

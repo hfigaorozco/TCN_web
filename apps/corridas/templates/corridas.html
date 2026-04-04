@@ -43,32 +43,33 @@
             </div>
 
             <div class="filter-boxes">
-                <div class="filter-box">
-                    <h2>Número</h2>
-                    <input type="number" min="0" placeholder="Número">
-                </div>
-
-                <div class="filter-box">
-                    <h2>Origen</h2>
-                    <select>
-                        <option selected disabled>Origen</option>
-                        <option value="todos">Todos</option>
-                        {% for ciudad in ciudades %}
-                        <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div class="filter-box">
-                    <h2>Destino</h2>
-                    <select>
-                        <option selected disabled>Destino</option>
-                        <option value="todos">Todos</option>
-                        {% for ciudad in ciudades %}
-                        <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                <form class="form-filtros" method="GET">
+                    <div class="filter-box">
+                        <h2>Número</h2>
+                        <input type="number" min="0" placeholder="Número" id="numero_corrida" value="{{ request.GET.filtro_corrida }}" name="filtro_corrida">
+                    </div>
+            
+                    <div class="filter-box">
+                        <h2>Origen</h2>
+                        <select name="filtro_origen" onchange="this.form.submit()" id="selectOrigen">
+                            <option selected disabled value="">Origen</option>
+                            <option value="todos" {% if request.GET.filtro_origen == 'todos' %} selected {%endif%}>Todos</option>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_origen == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter-box">
+                        <h2>Destino</h2>
+                        <select name="filtro_destino" onchange="this.form.submit()" id="selectDestino">
+                            <option selected disabled value="">Destino</option>
+                            <option value="todos" {% if request.GET.filtro_destino == 'todos' %} selected {% endif %}>Todos</option>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_destino == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -76,110 +77,79 @@
 
     <!-- DIÁLOGO AGREGAR CORRIDA -->
     <dialog id="agregar" class="dialog-agregar dialog-base">
-        <h1>Agregar Corrida</h1>
-        <form>
-            <div>
-                <div class="cajitas">
-                    <div>
-                        <h3>Ruta</h3>
-                        <select name="ruta" class="ruta">
-                            <option selected disabled>Ruta</option>
-                            {% for ruta in rutas %}
-                            <option value="{{ ruta.codigo }}">{{ ruta.codigo }}</option>
-                            {% endfor %}
-                        </select>
+        <form method="POST" id="form-agregar">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="agregar_corrida"/>
+            <h1>Agregar Corrida</h1>
+                <div>
+                    <div class="cajitas">
+                        <div>
+                            <h3>Ruta</h3>
+                            <select name="ruta" class="ruta" required>
+                                <option selected value="">Ruta</option>
+                                {% for ruta in rutas %}
+                                <option value="{{ ruta.codigo }}">{{ ruta.codigo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Operador</h3>
+                            <select name="operador" required>
+                                <option selected value="">Operador</option>
+                                {% for operador in operadores %}
+                                <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Operador</h3>
-                        <select name="operador">
-                            <option selected disabled>Operador</option>
-                            <option>1 - Héctor Armando Figueroa Orozco</option>
-                            <option>2 - Juan Manuel Hernández Martínez</option>
-                            <option>3 - Leonardo Ivan Valdez Galán</option>
-                        </select>
+                    <div class="cajitas">
+                        <div>
+                            <h3>Fecha</h3>
+                            <input type="date" name="fecha_salida" required>
+                        </div>
+                        <div>
+                            <h3>Salida</h3>
+                            <input type="time" width="118px" name="hora_salida" required>
+                        </div>
+                        <div>
+                            <h3>Llegada</h3>
+                            <input type="time" width="118px" name="hora_llegada" required>
+                        </div>
                     </div>
-
-                </div>
-                <div class="cajitas">
-                    <div>
-                        <h3>Fecha</h3>
-                        <input type="date">
-                    </div>
-                    <div>
-                        <h3>Salida</h3>
-                        <input type="time" width="118px">
-                    </div>
-                    <div>
-                        <h3>Llegada</h3>
-                        <input type="time" width="118px">
-                    </div>
-                </div>
-                <div class="cajitas">
-                    <div>
-                        <h3>Precio</h3>
-                        <input type="number" min="100" max="3000" placeholder="Precio (M.X.N.)">
-                    </div>
-                    <div>
-                        <h3>Autobús</h3>
-                        <select>
-                            <option selected disabled>Autobús</option>
-                            <option>106 - IRIZA IRIZ6 (ERT56T)</option>
-                            <option>118 - IRIZA IRIZ6 (BC09IJ)</option>
-                            <option>130 - IRIZA IRIZ6 (DE29XU)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="cajitas">
-                    <div>
-                        <h3>Fecha salida</h3>
-                        <input type="date" name="fecha_salida">
-                    </div>
-                    <div>
-                        <h3>Salida</h3>
-                        <input type="time" name="hora_salida">
-                    </div>
-                    <div>
-                        <h3>Llegada</h3>
-                        <input type="time" name="hora_llegada">
+                    <div class="cajitas">
+                        <div>
+                            <h3>Precio</h3>
+                            <input type="number" min="100" max="3000" placeholder="Precio (M.X.N)" name="tarifaBase" required>
+                        </div>
+                        <div>
+                            <h3>Autobús</h3>
+                            <select name="autobus" required>
+                                <option selected value=""> Seleccionar autobús</option>
+                                {% for autobus in autobuses %}
+                                <option value="{{ autobus.numero }}">{{autobus.numero}} - {{autobus.marca.nombre}} {{ autobus.modelo.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
                 </div>
-
-                <div class="cajitas">
-                    <div>
-                        <h3>Precio</h3>
-                        <input type="number" name="tarifaBase" min="100" max="3000" placeholder="Precio (M.X.N.)">
-                    </div>
-                    <div>
-                        <h3>Autobús</h3>
-                        <select name="autobus">
-                            <option selected disabled>Autobús</option>
-                            {% for autobus in autobuses %}
-                            <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
+            <div class="aceptar-cancelar">
+                <button type="submit" id="aceptarAgregar" class="btn-aceptar">Aceptar</button>
+                <button type="button" id="cancelarAgregar" class="btn-cancelar">Cancelar</button>
             </div>
         </form>
-        <div class="aceptar-cancelar">
-            <button id="aceptarAgregar" class="btn-aceptar">Aceptar</button>
-            <button id="cancelarAgregar" class="btn-cancelar">Cancelar</button>
-        </div>
     </dialog>
 
     <!-- DIÁLOGO EDITAR CORRIDA -->
     <dialog id="editar" class="dialog-editar dialog-base">
-        <h1>Editar Corrida</h1>
-        <form>
+        <form method="POST" id="form_corrida">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="editar_corrida">
+            <input type="hidden" id="editar_corrida" name="corrida_numero">
+            <h1>Editar Corrida</h1>
             <div class="cajitas">
                 <div>
-                    <h3>Corrida</h3>
-                    <input type="number" name="numero" min="0" placeholder="Corrida a editar">
-                </div>
-                <div>
                     <h3>Operador</h3>
-                    <select name="operador">
+                    <select name="edit_operador" id="editarOperador">
                         <option selected disabled>Operador</option>
                         {% for operador in operadores %}
                         <option value="{{ operador.numero }}">{{ operador.numero }} - {{ operador.nombre }} {{ operador.apellPat }} {{ operador.apellMat }}</option>
@@ -187,90 +157,93 @@
                     </select>
                 </div>
             </div>
-
-            <div>
-                <h3>Autobús</h3>
-                <select name="autobus">
-                    <option selected disabled>Autobús</option>
+            
+            <div class="cajitas">
+                <div>
+                    <h3>Autobús</h3>
+                    <select name="edit_autobus" id="editarAutobus">
+                        <option selected disabled>Autobús</option>
                     {% for autobus in autobuses %}
-                    <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
+                        <option value="{{ autobus.numero }}">{{ autobus.numero }} - {{ autobus.marca }} {{ autobus.modelo }} ({{ autobus.matricula }})</option>
                     {% endfor %}
-                </select>
+                    </select>
+                </div>
             </div>
 
             <div class="cajitas">
                 <div>
                     <h3>Fecha</h3>
-                    <input type="date" name="fecha_salida">
+                    <input type="date" name="edit_fecha_salida" id="editarFechaSalida">
                 </div>
                 <div>
                     <h3>Salida</h3>
-                    <input type="time" name="hora_salida">
+                    <input type="time" name="edit_hora_salida" id="editarHoraSalida">
                 </div>
                 <div>
                     <h3>Llegada</h3>
-                    <input type="time" name="hora_llegada">
+                    <input type="time" name="hora_llegada" id="editarHoraLlegada">
                 </div>
             </div>
+            <div class="aceptar-cancelar">
+                <button type="submit" id="aceptarEditar" class="btn-aceptar">Aceptar</button>
+                <button type="button" id="cancelarEditar" class="btn-cancelar">Cancelar</button>
+            </div>
         </form>
-        <div class="aceptar-cancelar">
-            <button id="aceptarEditar" class="btn-aceptar">Aceptar</button>
-            <button id="cancelarEditar" class="btn-cancelar">Cancelar</button>
-        </div>
     </dialog>
 
     <!-- DIÁLOGO ELIMINAR CORRIDA -->
     <dialog id="eliminar" class="dialog-eliminar dialog-base">
         <h1>Eliminar Corrida</h1>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="estado_corrida_numero" id="estado_corrida_numero">
+            <input type="hidden" name="action" value="cambiar_estado_corrida">
             <div class="cajitas">
                 <div>
-                    <h3>Corrida</h3>
-                    <input type="number" name="numero" min="0" placeholder="Número de corrida">
-                </div>
-                <div>
                     <h3>Estado actual</h3>
-                    <input type="text" placeholder="Estado de corrida" readonly>
+                    <input type="text" placeholder="Estado de corrida" name="estado_actual" id="estado_actual" readonly>
                 </div>
             </div>
             <div>
-                <h3>Estado</h3>
-                <select name="estado">
-                    <option selected disabled>Estado</option>
+                <h3>Estado nuevo</h3>
+                <select name="baja_estado" id="estado">
                     {% for estado in estados_corrida %}
-                    <option value="{{ estado.codigo }}">{{ estado.descripcion }}</option>
+                    <option {% if estado.descripcion == 'ACTIVA' %} selected {% endif %} value="{{ estado.codigo }}">{{ estado.descripcion }}</option>
                     {% endfor %}
                 </select>
             </div>
+        
+            <div class="aceptar-cancelar">
+                <button type="submit" id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
+                <button type="button" id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
+            </div>
         </form>
-        <div class="aceptar-cancelar">
-            <button id="aceptarEliminar" class="btn-aceptar">Aceptar</button>
-            <button id="cancelarEliminar" class="btn-cancelar">Cancelar</button>
-        </div>
     </dialog>
 
     <!-- DIÁLOGO CORRIDAS POR FECHA Y CIUDAD -->
     <dialog id="fechaCiudad" class="dialog-fechaCiudad dialog-base">
-        <form>
+        <form method="GET" id="form-fecha-ciudad">
             <div class="titulo-cajitas">
                 <h1>Corridas por fecha y ciudad</h1>
                 <div class="cajitas">
                     <div>
                         <h3>Fecha</h3>
-                        <input type="date" name="fecha">
+                        <input type="date" name="filtro_fecha" value="{{ request.GET.filtro_fecha }}">
                     </div>
                     <div>
                         <h3>Ciudad</h3>
-                        <select name="ciudad">
+                        <select name="filtro_ciudad">
                             <option selected disabled>Origen</option>
-                            <option value="todos">Todos</option>
+                            <option value="todos" {% if request.GET.filtro_ciudad == 'todos' %} selected {%endif%}>Todos</option>
                             {% for ciudad in ciudades %}
-                            <option value="{{ ciudad.codigo }}">{{ ciudad.nombre }}</option>
+                            <option value="{{ ciudad.codigo }}" {% if request.GET.filtro_ciudad == ciudad.codigo %} selected {% endif %}>{{ ciudad.nombre }}</option>
                             {% endfor %}
                         </select>
                     </div>
+                    <button type="submit" class="btn-aceptar" style="margin-top: 20px;">Buscar</button>
                 </div>
             </div>
+        </form>
             <div class="content-box">
                 <table class="tabla-fechaCiudad">
                     <tr bgcolor="#2f6fed">
@@ -281,7 +254,7 @@
                         <th width="15%">Matrícula</th>
                         <th width="30%">Operador</th>
                     </tr>
-                    {% for c in corridas_fecha_ciudad %}
+                    {% for c in corridas_ciudad_fecha %}
                     <tr>
                         <td>{{ c.hora_salida }}</td>
                         <td>{{ c.numero }}</td>
@@ -297,53 +270,54 @@
                     {% endfor %}
                 </table>
             </div>
-        </form>
+        
         <div class="cerrar-fechaCiudad">
             <button id="cerrarFechaCiudad" class="btn-cancelar">Cerrar</button>
         </div>
     </dialog>
 
     <!-- DIÁLOGO BOLETOS VENDIDOS EN UN DÍA -->
+
     <dialog id="boletos" class="dialog-fechaCiudad dialog-base">
-        <form>
+        <form method="GET" id="form-boletos">
             <div class="titulo-cajitas-boletos">
                 <h1>Boletos vendidos en un día</h1>
-                <div class="cajitas">
-                    <div>
-                        <h3>Fecha</h3>
-                        <input type="date" name="fecha">
-                    </div>
+                <div class="filtro-fecha-boletos">
+                    <h3>Fecha:</h3>
+                    <input type="date" name="fecha_boletos" id="fecha_boletos" value="{{ request.GET.fecha_boletos }}" onchange="this.form.submit()">
                 </div>
             </div>
-            <div class="content-box">
-                <table class="tabla-fechaCiudad">
-                    <tr bgcolor="#2f6fed" style="color: white;">
-                        <th width="11%">Corrida</th>
-                        <th width="11%">Salida</th>
-                        <th width="11%">Origen</th>
-                        <th width="11%">Destino</th>
-                        <th width="11%">Autobús</th>
-                        <th width="11%">Vendidos</th>
-                        <th width="12%">Disponibles</th>
-                    </tr>
-                    {% for c in corridas_boletos %}
-                    <tr>
-                        <td>{{ c.numero }}</td>
-                        <td>{{ c.hora_salida }}</td>
-                        <td>{{ c.ruta.ciudadOrigen }}</td>
-                        <td>{{ c.ruta.ciudadDestino }}</td>
-                        <td>{{ c.autobus.numero }}</td>
-                        <td>{{ c.boletos_vendidos }}</td>
-                        <td>{{ c.lugaresDisp }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="7">No hay boletos vendidos para esta fecha</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
         </form>
+    
+        <div class="content-box">
+            <table class="tabla-fechaCiudad">
+                <tr bgcolor="#2f6fed" style="color: white;">
+                    <th width="11%">Corrida</th>
+                    <th width="11%">Salida</th>
+                    <th width="11%">Origen</th>
+                    <th width="11%">Destino</th>
+                    <th width="11%">Autobús</th>
+                    <th width="11%">Vendidos</th>
+                    <th width="12%">Disponibles</th>
+                </tr>
+                {% for c in corridas_boletos %}
+                <tr>
+                    <td>{{ c.numero }}</td>
+                    <td>{{ c.hora_salida }}</td>
+                    <td>{{ c.ruta.ciudadOrigen.nombre }}</td>
+                    <td>{{ c.ruta.ciudadDestino.nombre }}</td>
+                    <td>{{ c.autobus.numero }}</td>
+                    <td>{{ c.boletos_vendidos }}</td>
+                    <td>{{ c.lugaresDisp }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No hay corridas</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    
         <div class="cerrar-fechaCiudad">
             <button id="cerrarBoletos" class="btn-cancelar">Cerrar</button>
         </div>
@@ -360,44 +334,70 @@
         </div>
 
         <div class="content-box">
-            <table>
-                <tr bgcolor="#2f6fed">
-                    <th width="10%">#</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th>Distancia</th>
-                    <th>Salida</th>
-                    <th>Operador</th>
-                    <th>Autobús</th>
-                    <th>Matrícula</th>
-                    <th>Asientos</th>
-                    <th>Pasajeros</th>
-                </tr>
-                {% for corrida in corridas %}
-                <tr>
-                    <td>{{ corrida.numero }}</td>
-                    <td>{{ corrida.ruta.ciudadOrigen }}</td>
-                    <td>{{ corrida.ruta.ciudadDestino }}</td>
-                    <td>{{ corrida.ruta.distancia }}</td>
-                    <td>{{ corrida.fecha_salida }} {{ corrida.hora_salida }}</td>
-                    <td>{{ corrida.operador.nombre }} {{ corrida.operador.apellPat }} {{ corrida.operador.apellMat }}</td>
-                    <td>{{ corrida.autobus.numero }}</td>
-                    <td>{{ corrida.autobus.matricula }}</td>
-                    <td>{{ corrida.autobus.cantAsientos }}</td>
-                    <td>{{ corrida.pasajeros_count }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="10">No hay corridas registradas</td>
-                </tr>
-                {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr bgcolor="#2f6fed">
+                        <th width="10%">#</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Distancia</th>
+                        <th>Salida</th>
+                        <th>Operador</th>
+                        <th>Autobús</th>
+                        <th>Matrícula</th>
+                        <th>Asientos</th>
+                        <th>Pasajeros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for corrida in corridas %}
+                    <tr class="corrida-row" data-numero="{{ corrida.numero }}" data-operador="{{ corrida.operador.numero }}" data-autobus="{{ corrida.autobus.numero }}" data-fechaSalida="{{ corrida.fecha_salida|date:'Y-m-d' }}" data-horaSalida="{{ corrida.hora_salida|time:'H:i' }}" data-horaLlegada="{{ corrida.hora_llegada|time:'H:i'}}" data-estado="{{ corrida.estado.codigo }}">
+                        <td>{{ corrida.numero }}</td>
+                        <td>{{ corrida.ruta.ciudadOrigen }}</td>
+                        <td>{{ corrida.ruta.ciudadDestino }}</td>
+                        <td>{{ corrida.ruta.distancia }}</td>
+                        <td>{{ corrida.fecha_salida }} {{ corrida.hora_salida }}</td>
+                        <td>{{ corrida.operador.nombre }} {{ corrida.operador.apellPat }} {{ corrida.operador.apellMat }}</td>
+                        <td>{{ corrida.autobus.numero }}</td>
+                        <td>{{ corrida.autobus.matricula }}</td>
+                        <td>{{ corrida.autobus.cantAsientos }}</td>
+                        <td>{{ corrida.pasajeros_count }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="10">No hay corridas registradas</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
 
-    <div class="notificaciones"></div>
     <script src="{% static 'js/corridas.js' %}"></script>
+    <div class="notificaciones">
+        {% if messages %}
+        {% for m in messages %}
+        <script>
+            console.log("=== DEBUG TOAST ===");
+            console.log("1. tipoMensaje:", "{{ m.tags }}");
+            console.log("2. textoMensaje:", "{{ m|escapejs }}");
+            console.log("3. typeof crearTipoToast:", typeof crearTipoToast);
+            console.log("4. typeof createToast:", typeof createToast);
 
+            const tipoMensaje = "{{ m.tags }}";
+            const textoMensaje = "{{ m|escapejs }}";
+
+            if (typeof crearTipoToast === "function") {
+                console.log("5. Llamando a crearTipoToast...");
+                crearTipoToast(tipoMensaje, textoMensaje);
+            } else {
+                console.error("5. crearTipoToast NO es una función!");
+            }
+        </script>
+        {% endfor %}
+        {% else %}
+        <script>console.log("No hay mensajes en messages");</script>
+        {% endif %}
+    </div>
 </body>
-
 </html>

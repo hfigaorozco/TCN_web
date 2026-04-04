@@ -96,7 +96,7 @@ body {
 .cards {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -134,15 +134,16 @@ body {
 
 .filter-boxes {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     margin-left: auto;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .filter-box {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    
 }
 
 .filter-box h2 {
@@ -245,12 +246,17 @@ body {
     text-align: center;
 }
 
+/* FILAS SALTEADAS (Zebra Striping) */
+.content-box table tbody tr:nth-child(even) {
+    background: #f5f8ff; /* Color salteado suave */
+}
+
 .content-box table tbody tr {
     transition: background-color 0.3s ease;
 }
 
 .content-box table tbody tr:hover {
-    background-color: #eef3ff;
+    background-color: #eef3ff; /* Color al pasar el mouse */
     cursor: pointer;
 }
 
@@ -282,4 +288,22 @@ body {
         overflow-x: auto;
         white-space: nowrap;
     }
+}
+
+/* ... (manten tus estilos anteriores) ... */
+
+/* ESTILO PARA FILA SELECCIONADA */
+.fila-reserva.selected-row {
+    background-color: #2f6fed !important;
+    color: white !important;
+}
+
+.fila-reserva.selected-row td {
+    color: white !important;
+}
+
+/* Efecto visual al pasar el mouse por filas no seleccionadas */
+.fila-reserva:not(.selected-row):hover {
+    background-color: #eef3ff;
+    cursor: pointer;
 }

@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletos | Transportes Cuervo Negro</title>
+    <link rel="icon" type="image/png" href="{% static 'images/LOGO TCN azul.png' %}">
+    <link rel="stylesheet" href="{% static 'css/boleto.css' %}">
+</head>
+<body>
+
+<div class="boleto-backdrop">
+
+    <button class="nav-btn nav-btn--left" id="btn-anterior" title="Anterior">&#8592;</button>
+
+    {% for item in boletos_generados %}
+    <div class="boleto-card" id="boleto-{{ forloop.counter }}"
+         style="{% if not forloop.first %}display:none{% endif %}">
+
+        <div class="boleto-header">
+            <img src="{% static 'images/Logo TCN azul.png' %}" alt="Logo TCN" class="boleto-logo">
+            <div class="boleto-nums">
+                <p class="boleto-label">No. Reservación:</p>
+                <p class="boleto-value">{{ item.reservacion.numero }}</p>
+                <p class="boleto-label">No. Boleto:</p>
+                <p class="boleto-value">{{ item.boleto.numero }}</p>
+            </div>
+        </div>
+
+        <hr class="boleto-divider">
+
+        <div class="boleto-fechas">
+            <div class="boleto-fecha-col">
+                <p class="boleto-label">Salida:</p>
+                <p class="boleto-value">{{ corrida.fecha_salida|date:"d/m/Y" }}</p>
+                <p class="boleto-value">{{ corrida.hora_salida|time:"H:i" }}</p>
+            </div>
+            <div class="boleto-fecha-col">
+                <p class="boleto-label">Llegada:</p>
+                <p class="boleto-value">{{ corrida.fecha_llegada|date:"d/m/Y" }}</p>
+                <p class="boleto-value">{{ corrida.hora_llegada|time:"H:i" }}</p>
+            </div>
+        </div>
+
+        <div class="boleto-ruta">
+            <div class="boleto-ruta-col">
+                <p class="boleto-label">Origen:</p>
+                <p class="boleto-value" id="ruta-ciudad">{{ corrida.ruta.ciudadOrigen.nombre }}</p>
+            </div>
+            <div class="boleto-ruta-col">
+                <p class="boleto-label">Destino:</p>
+                <p class="boleto-value" id="ruta-ciudad">{{ corrida.ruta.ciudadDestino.nombre }}</p>
+            </div>
+        </div>
+
+        <div class="boleto-pasajero">
+            <p class="boleto-label">Pasajero:</p>
+            <p class="boleto-pasajero-nombre">
+                {{ item.pasajero.nombre }}
+                {{ item.pasajero.apellPat }}
+                {{ item.pasajero.apellMat }}
+            </p>
+        </div>
+
+        <hr class="boleto-divider">
+
+        <div class="boleto-detalles">
+            <div class="boleto-detalles-izq">
+                <p class="boleto-label">No. Asiento:</p>
+                <p class="boleto-value">{{ item.boleto.asiento.numero }}</p>
+                <p class="boleto-label mt">Autobús:</p>
+                <p class="boleto-value">{{ corrida.autobus.numero }}</p>
+                <p class="boleto-label mt">Tipo pasajero:</p>
+                <p class="boleto-value">{{ item.tipo.descripcion }}</p>
+            </div>
+            <div class="boleto-detalles-der">
+                <div class="boleto-precio-row">
+                    <span class="boleto-label">Precio boleto:</span>
+                    <span class="boleto-monto">${{ corrida.tarifaBase }}</span>
+                </div>
+                <div class="boleto-precio-row">
+                    <span class="boleto-label" id="boleto-desc">Descuento:</span>
+                    <span class="boleto-monto" id="boleto-desc">{{ item.tipo.porcentaje_desc }}% (-${{ item.descuento }})</span>
+                </div>
+                <div class="boleto-total-box">
+                    <span class="boleto-label">Total boleto:</span>
+                    <span class="boleto-total-monto">${{ item.boleto.precio }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="boleto-acciones">
+            <button class="btn-cerrar" onclick="window.location.href='{% url 'index' %}'">
+                ✕ Cerrar
+            </button>
+            <button class="btn-reimprimir" onclick="window.print()">
+                🖨 Imprimir
+            </button>
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <button class="nav-btn nav-btn--right" id="btn-siguiente" title="Siguiente">&#8594;</button>
+
+</div>
+
+<script>
+    const totalBoletos = {{ boletos_generados|length }};
+    let actual = 1;
+
+    function mostrar(n) {
+        document.getElementById(`boleto-${actual}`).style.display = 'none';
+        actual = n;
+        document.getElementById(`boleto-${actual}`).style.display = 'flex';
+    }
+
+    document.getElementById('btn-anterior').addEventListener('click', () => {
+        if (actual > 1) mostrar(actual - 1);
+    });
+
+    document.getElementById('btn-siguiente').addEventListener('click', () => {
+        if (actual < totalBoletos) mostrar(actual + 1);
+    });
+</script>
+
+</body>
+</html>

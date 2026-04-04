@@ -1,16 +1,16 @@
 INSERT INTO edo_autobus VALUES
-('ACTI', 'ACTIVO'),
-('INAC', 'INACTIVO');
+('ACTI', 'Activo'),
+('INAC', 'Inactivo');
 
 INSERT INTO edo_corrida VALUES
-('ACT', 'ACTIVA'),
-('INA', 'INACTIVA');
+('ACT', 'Activa'),
+('INA', 'Inactiva');
 
 INSERT INTO tipo_autobus VALUES
-('PLUS', 'PLUS'),
-('PLAT', 'PLATINO');
+('PLUS', 'Plus'),
+('PLAT', 'Platino');
 
 INSERT INTO tipo_pasajero VALUES
-('REGU', 'REGULAR', 0),
-('NINO', 'NIÑO', 50),
-('3DAD', '3RA EDAD', 50);
+('REGU', 'Regular', 0),
+('NINO', 'Niño', 50),
+('3DAD', '3ra Edad', 50);
