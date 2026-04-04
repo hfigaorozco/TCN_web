@@ -10,7 +10,7 @@ def pagina_operadores(request):
         
         if request.POST['action'] == 'agregar_operador':
             try:
-                Operador.objects.create(
+                nuevo_operador = Operador.objects.create(
                     nombre = request.POST['nombre'],
                     apellPat = request.POST['apellPat'],
                     apellMat = request.POST['apellMat'],
@@ -18,6 +18,7 @@ def pagina_operadores(request):
                     telefono = request.POST['telefono'],
                     fechaContrato = request.POST['fechaContrato'],
                 )
+                messages.success(request, f"Operador {nuevo_operador.numero} registrado exitosamente.")
             except Exception as e:
                 messages.error(request, f"Error al registrar operador: {str(e)}")
             return redirect('operadores')
@@ -30,6 +31,7 @@ def pagina_operadores(request):
                 operador.apellMat = request.POST['apellMat']
                 operador.telefono = request.POST['telefono']
                 operador.save()
+                messages.success(request, f"Operador {operador.numero} actualizado exitosamente.")
             except Exception as e:
                 messages.error(request, f"Error al actualizar operador: {str(e)}")
             return redirect('operadores')
