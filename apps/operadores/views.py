@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Operador
+from django.contrib import messages
 
 # Create your views here.
 
@@ -8,24 +9,29 @@ def pagina_operadores(request):
     if request.method == 'POST' and 'action' in request.POST:
         
         if request.POST['action'] == 'agregar_operador':
-            
-            Operador.objects.create(
-                nombre = request.POST['nombre'],
-                apellPat = request.POST['apellPat'],
-                apellMat = request.POST['apellMat'],
-                fechaNac = request.POST['fechaNac'],
-                telefono = request.POST['telefono'],
-                fechaContrato = request.POST['fechaContrato'],
-            )
+            try:
+                Operador.objects.create(
+                    nombre = request.POST['nombre'],
+                    apellPat = request.POST['apellPat'],
+                    apellMat = request.POST['apellMat'],
+                    fechaNac = request.POST['fechaNac'],
+                    telefono = request.POST['telefono'],
+                    fechaContrato = request.POST['fechaContrato'],
+                )
+            except Exception as e:
+                messages.error(request, f"Error al registrar operador: {str(e)}")
             return redirect('operadores')
         
         elif request.POST['action'] == 'editar_operador':
-            operador = Operador.objects.get(numero=request.POST['numero'])
-            operador.nombre = request.POST['nombre']
-            operador.apellPat = request.POST['apellPat']
-            operador.apellMat = request.POST['apellMat']
-            operador.telefono = request.POST['telefono']
-            operador.save()
+            try:
+                operador = Operador.objects.get(numero=request.POST['numero'])
+                operador.nombre = request.POST['nombre']
+                operador.apellPat = request.POST['apellPat']
+                operador.apellMat = request.POST['apellMat']
+                operador.telefono = request.POST['telefono']
+                operador.save()
+            except Exception as e:
+                messages.error(request, f"Error al actualizar operador: {str(e)}")
             return redirect('operadores')
     
     operadores = Operador.objects.all()
