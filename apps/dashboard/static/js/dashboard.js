@@ -10,23 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialogoContra   = document.getElementById('dialogo-contrasena');
     const dialogoBusqueda = document.getElementById('dialogo-buscar');
 
-    // Abrir diálogo de perfil
     btnUsuario.addEventListener('click', () => {
         dialogoUsuario.showModal();
     });
 
-    // Abrir diálogo de modificar contraseña
     btnModificarContra.addEventListener('click', () => {
         dialogoUsuario.close();
         dialogoContra.showModal();
     });
 
-    // Abrir diálogo de búsqueda de viaje
     btnVenderBoletos.addEventListener('click', () => {
         dialogoBusqueda.showModal();
     });
-
-    // Botón Continuar — validar y navegar
+                                                            
     btnContinuar.addEventListener('click', () => {
         const selects   = dialogoBusqueda.querySelectorAll('select');
         const fecha     = dialogoBusqueda.querySelector('input[type="date"]');
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = `${window.__urlBoletos}?${params.toString()}`;
     });
 
-    // --- NUEVO: Manejo de clic en filas de corrida ---
     const corridaRows = document.querySelectorAll('.corrida-row');
     const pasajerosBody = document.getElementById('pasajeros-body');
     const detalleBox = document.getElementById('detalle-corrida-box');
@@ -62,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Filtrado de meses
     if (filterMes) {
         filterMes.addEventListener('change', () => {
-            const selectedMes = filterMes.value; // Formato YYYY-MM o "todos"
+            const selectedMes = filterMes.value; // Formato YYYY-MM 
             console.log('Filtrando por mes:', selectedMes);
             
             let firstVisible = null;
@@ -98,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Resaltar la primera fila por defecto si existe
     if (corridaRows.length > 0) {
         corridaRows[0].classList.add('selected-row');
     }
@@ -118,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Datos recibidos:', data); // Debugging
+                    console.log('Datos recibidos:', data);
                     updatePasajerosTable(data.pasajeros);
                     updateDetalleCorrida(data.detalle);
                 })
@@ -188,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* ================= FUNCION PARA CREAR TOAST ================= */
+/* Toasts */
 function createToast(type, icon, title, text) {
     const notificaciones = document.querySelector('.notificaciones');
     const newToast = document.createElement('div');

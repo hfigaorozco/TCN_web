@@ -1,4 +1,4 @@
-/* ================= FUNCION PARA CREAR TOAST ================= */
+// Toasts
 function createToast(type, icon, title, text){
     const notificaciones = document.getElementById('notificaciones');
     if (!notificaciones) return;
@@ -21,7 +21,7 @@ function createToast(type, icon, title, text){
     }, 4000);
 }
 
-/* ================= AGREGAR RUTA ================= */
+// AGREGAR UNA RUTAA
 const agregarRuta = document.getElementById('agregarRuta');
 const abrirAgregar = document.getElementById('abrirAgregar');
 const cancelarAgregarRuta = document.getElementById('cancelarAgregarRuta');
@@ -33,7 +33,7 @@ if (cancelarAgregarRuta) {
     cancelarAgregarRuta.addEventListener('click', () => agregarRuta.close());
 }
 
-/* ================= EDITAR RUTA ================= */
+// EDITAR UNA RUTA
 const editarRuta = document.getElementById('editarRuta');
 const abrirEditar = document.getElementById('abrirEditar');
 const cancelarEditarRuta = document.getElementById('cancelarEditarRuta');
@@ -50,7 +50,7 @@ document.querySelectorAll('.ruta-row').forEach(row => {
 if (abrirEditar) {
     abrirEditar.addEventListener('click', () => {
         if (!selectedRow) {
-            // Usamos un Toast de error en lugar de alert
+            // usar Toast de error en lugar de alert
             createToast("error", "fa-solid fa-circle-exclamation", "Atención", "Por favor, seleccione una ruta de la tabla para editar.");
             return;
         }
@@ -65,7 +65,7 @@ if (cancelarEditarRuta) {
     cancelarEditarRuta.addEventListener('click', () => editarRuta.close());
 }
 
-/* ================= ADMINISTRAR CIUDAD ================= */
+// Funciones de ciudades
 const agregarCiudad = document.getElementById('agregarCiudad');
 const abrirCiudad = document.getElementById('abrirCiudad');
 const cancelarCiudad = document.getElementById('cancelarCiudad');
@@ -94,7 +94,6 @@ if (cancelarCiudad) {
     });
 }
 
-// Seleccionar ciudad de la tabla dentro del diálogo
 document.querySelectorAll('.ciudad-row').forEach(row => {
     row.addEventListener('click', () => {
         if (inputCodigoCiudad) inputCodigoCiudad.value = row.dataset.codigo;
@@ -118,7 +117,6 @@ if (btnEditarCiudad) {
     });
 }
 
-/* ================= FILTROS EN TIEMPO REAL ================= */
 function filtrarRutas() {
     const selectOrigen = document.getElementById('origen');
     const selectDestino = document.getElementById('destino');
