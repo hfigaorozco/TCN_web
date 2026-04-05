@@ -141,3 +141,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# AYUDA PARA EL INICIO DE SESION
+AUTH_USER_MODEL = 'login.Usuario'
+LOGIN_URL = '/transportes-cuervo-negro/inicio-de-sesion/'

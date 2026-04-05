@@ -6,8 +6,9 @@ from .models import Corrida, EdoCorrida, CorridaAsiento
 from apps.autobuses.models import Autobus, Asiento
 from apps.rutas.models import Ruta, Ciudad
 from apps.operadores.models import Operador
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def pagina_corridas(request):
     #  CONSULTAS BASE 
     rutas = Ruta.objects.all()
@@ -75,11 +76,11 @@ def pagina_corridas(request):
         #  EDITAR CORRIDA 
         elif request.POST['action'] == 'editar_corrida':
             try:
-                corrida            = Corrida.objects.get(numero=request.POST['corrida_numero'])
-                corrida.operador_id  = request.POST['edit_operador']
-                corrida.autobus_id   = request.POST['edit_autobus']
+                corrida = Corrida.objects.get(numero=request.POST['corrida_numero'])
+                corrida.operador_id = request.POST['edit_operador']
+                corrida.autobus_id = request.POST['edit_autobus']
                 corrida.fecha_salida = request.POST['edit_fecha_salida']
-                corrida.hora_salida  = request.POST['edit_hora_salida']
+                corrida.hora_salida = request.POST['edit_hora_salida']
                 corrida.hora_llegada = request.POST['hora_llegada']
                 corrida.fecha_llegada = request.POST['edit_fecha_salida']
                 corrida.save()
@@ -91,7 +92,7 @@ def pagina_corridas(request):
         #  CAMBIAR ESTADO 
         elif request.POST['action'] == 'cambiar_estado_corrida':
             try:
-                corrida          = Corrida.objects.get(numero=request.POST['estado_corrida_numero'])
+                corrida = Corrida.objects.get(numero=request.POST['estado_corrida_numero'])
                 corrida.estado_id = request.POST['baja_estado']
                 corrida.save()
                 messages.success(request, f"Corrida {corrida.numero} actualizada exitosamente.")
@@ -106,11 +107,14 @@ def pagina_corridas(request):
         'autobus',
         'operador',
         'estado',
-    ).filter(fecha_salida__gte=timezone.localdate())
+    ).filter(
+        fecha_salida__gte=timezone.localdate(),
+        estado__codigo='ACT'
+    )   
 
     numero_corrida = request.GET.get('filtro_corrida', '')
-    origen         = request.GET.get('filtro_origen', '')
-    destino        = request.GET.get('filtro_destino', '')
+    origen = request.GET.get('filtro_origen', '')
+    destino = request.GET.get('filtro_destino', '')
 
     if numero_corrida:
         corridas = corridas.filter(numero__icontains=numero_corrida)

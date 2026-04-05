@@ -35,10 +35,12 @@
             <ul class="menu">
                 <li><a href="{% url 'index' %}">Inicio</a></li>
                 <li class="activea"><a href="#">Reservaciones</a></li>
+                {% if request.user.rol == 'admin' %}
                 <li><a href="{% url 'corridas' %}">Corridas</a></li>
                 <li><a href="{% url 'rutas' %}">Rutas</a></li>
                 <li><a href="{% url 'operadores' %}">Operadores</a></li>
                 <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

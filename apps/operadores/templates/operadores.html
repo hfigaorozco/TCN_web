@@ -91,17 +91,17 @@
             <div class="dialog-content">
                 <h2>Agregar Operador</h2>
                 <h3>Nombre</h3>
-                <input type="text" name="nombre" placeholder="Nombre"  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15" required>
+                <input type="text" name="nombre" autocomplete="off" placeholder="Nombre"  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15" required>
                 <h3>Primer Apellido</h3>
-                <input type="text" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
+                <input type="text" name="apellPat" autocomplete="off" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
                 <h3>Segundo Apellido</h3>
-                <input type="text" name="apellMat" placeholder="Segundo Apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15">
+                <input type="text" name="apellMat" autocomplete="off" placeholder="Segundo Apellido" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" maxlength="15">
                 <h3>Teléfono</h3>
-                <input type="tel" name="telefono" placeholder="Teléfono" pattern="[0-9]{10}" title="Introduzca 10 números enteros" required>
+                <input type="tel" name="telefono" autocomplete="off" placeholder="Teléfono" pattern="[0-9]{10}" title="Introduzca 10 números enteros" required>
                 <h3>Fecha de nacimiento</h3>
-                <input type="date" name="fechaNac" placeholder="Fecha de nacimiento" required>                    
+                <input type="date" name="fechaNac" autocomplete="off" placeholder="Fecha de nacimiento" required>                    
                 <h3>Fecha de contrato</h3>
-                <input type="date" name="fechaContrato" placeholder="Fecha de contrato" required>
+                <input type="date" name="fechaContrato" autocomplete="off" placeholder="Fecha de contrato" required>
 
                 <div class="dialog-actions">
                     <button type="button" class="btn btn-action btn-secondary" id="cancelarAgregarOperador">Cancelar</button>
@@ -130,11 +130,11 @@
                         {% endfor %}
                     </select>
 
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
-                    <input type="text" id="apellPat" name="apellPat" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
-                    <input type="text" id="apellMat" name="apellMat" placeholder="Segundo Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto">
-                    <input type="tel" id="telefono" name="telefono" maxlength="10" placeholder="Celular"  pattern="[0-9]{10}" title="Introduzca 10 números enteros">
-                    <input type="date" id="fechaNac" name="fechaNac" readonly >
+                    <input type="text" name="nombre" id="nombre" autocomplete="off" placeholder="Nombre" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
+                    <input type="text" id="apellPat" name="apellPat" autocomplete="off" placeholder="Primer Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto" required>
+                    <input type="text" id="apellMat" name="apellMat" autocomplete="off" placeholder="Segundo Apellido" maxlength="15" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" title="Solo se permite texto">
+                    <input type="tel" id="telefono" name="telefono" autocomplete="off" maxlength="10" placeholder="Celular"  pattern="[0-9]{10}" title="Introduzca 10 números enteros">
+                    <input type="date" id="fechaNac" autocomplete="off" name="fechaNac" readonly >
 
                     <div class="dialog-actions">
                         <button type="button" class="btn btn-action btn-secondary" id="cancelarEditarOperador">Cancelar</button>

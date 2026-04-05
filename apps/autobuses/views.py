@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db import IntegrityError, models
 from django.utils import timezone
 from .models import Autobus, Marca, Modelo, TipoAutobus, EdoAutobus, Asiento
-
+from django.contrib.auth.decorators import login_required
 
 def generar_asientos(autobus_obj):
     tipo = autobus_obj.tipoAutobus_id
@@ -46,7 +46,7 @@ def generar_asientos(autobus_obj):
             autobus=autobus_obj,
         )
 
-
+@login_required
 def pagina_autobuses(request):
     error = None
     error_tipo = None

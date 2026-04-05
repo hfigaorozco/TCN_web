@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" maxlength="40" placeholder="Ingresa tu correo electrónico" required>
+                    <input type="email" id="email" autocomplete="off" name="email" maxlength="40" placeholder="Ingresa tu correo electrónico" required>
                 </div>
 
                 <div class="form-group">
@@ -46,6 +46,12 @@
                 <button type="submit" class="btn-primary">
                     Iniciar sesión
                 </button>
+
+                {% if error %}
+                <div class="error-msg" role="alert">
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
 
             </form>
 

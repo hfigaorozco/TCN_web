@@ -31,6 +31,12 @@
                 <p>Los roles de cada usuario definen las opciones del sistema con las que tendrá permitido interactuar.</p>
             </div>
 
+            {% if error %}
+            <div class="aviso aviso--error" role="alert">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
             <form method="post" novalidate>
                 {% csrf_token %}
 
@@ -56,7 +62,7 @@
                         <select id="rol" name="rol" required>
                             <option value="" disabled selected>Seleccionar</option>
                             <option value="admin">Administrador</option>
-                            <option value="operador">Taquillero</option>
+                            <option value="taquillero">Taquillero</option>
                         </select>
                     </div>
 
