@@ -380,17 +380,9 @@
         <script>
             const tipoMensaje = "{{ m.tags }}";
             const textoMensaje = "{{ m|escapejs }}";
-
-            if (typeof crearTipoToast === "function") {
-                console.log("5. Llamando a crearTipoToast...");
-                crearTipoToast(tipoMensaje, textoMensaje);
-            } else {
-                console.error("5. crearTipoToast NO es una función!");
-            }
+            crearTipoToast(tipoMensaje,textoMensaje)
         </script>
         {% endfor %}
-        {% else %}
-        <script>console.log("No hay mensajes en messages");</script>
         {% endif %}
     </div>
 </body>

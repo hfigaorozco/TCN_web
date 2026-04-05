@@ -1,8 +1,6 @@
-// ── AUTOBUSES.JS ──
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ================= DIÁLOGOS =================
+    // Abrir los dialogos
 
     document.getElementById('abrirAgregar').addEventListener('click', () => {
         document.getElementById('dialogo-agregar-bus').showModal();
@@ -20,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogo-agregar-modelo').showModal();
     });
 
-    // ================= FILTRO DE MODELOS POR MARCA =================
+    // Filtros de modelo por marca
 
     const marcaSelect = document.getElementById('bus-marca');
     const modeloSelect = document.getElementById('bus-modelo');
@@ -36,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ================= FILTROS DE TABLA =================
+    // Filtros de la tabla
 
     const inputNumero = document.getElementById('numero_bus');
     const selectTipo  = document.getElementById('tipo_servicio');
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputNumero.addEventListener('input', filtrarTabla);
     selectTipo.addEventListener('change', filtrarTabla);
 
-    // ================= TOASTS =================
+    // Toasts
 
     const notificaciones = document.querySelector('.notificaciones');
 
@@ -79,12 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { newToast.remove(); }, 3000);
     }
 
-    // ================= RESPUESTAS DEL SERVIDOR =================
 
     const errorTipo = window.__errorTipo || null;
 
     if (window.__errorServidor) {
-        // Reabrir el diálogo que causó el error
+        // Reabrir el diálogo que causo el error
         const dialogosPorTipo = {
             'agregar_autobus': 'dialogo-agregar-bus',
             'baja_autobus':    'dialogo-eliminar-bus',

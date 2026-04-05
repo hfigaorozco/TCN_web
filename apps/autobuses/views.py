@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.db import IntegrityError
+from django.db import IntegrityError, models
+from django.utils import timezone
 from .models import Autobus, Marca, Modelo, TipoAutobus, EdoAutobus, Asiento
 
 
@@ -48,18 +49,18 @@ def generar_asientos(autobus_obj):
 
 def pagina_autobuses(request):
     error = None
-    error_tipo = None  
+    error_tipo = None
 
     if request.method == 'POST' and 'action' in request.POST:
         action = request.POST['action']
 
         if action == 'agregar_autobus':
             try:
-                numero      = request.POST.get('numero', '').strip()
-                matricula   = request.POST.get('matricula', '').strip().upper()
+                numero = request.POST.get('numero', '').strip()
+                matricula = request.POST.get('matricula', '').strip().upper()
                 tipo_codigo = request.POST.get('tipoAutobus', '')
                 marca_clave = request.POST.get('marca', '')
-                modelo_clave= request.POST.get('modelo', '')
+                modelo_clave = request.POST.get('modelo', '')
 
                 if not numero:
                     error = 'El número del autobús es obligatorio'
@@ -150,11 +151,10 @@ def pagina_autobuses(request):
 
             error_tipo = 'agregar_marca'
 
-    
         elif action == 'agregar_modelo':
             try:
-                codigo      = request.POST.get('codigo', '').strip().upper()
-                nombre      = request.POST.get('nombre', '').strip()
+                codigo = request.POST.get('codigo', '').strip().upper()
+                nombre = request.POST.get('nombre', '').strip()
                 marca_clave = request.POST.get('marca', '')
 
                 if not codigo:
@@ -181,20 +181,51 @@ def pagina_autobuses(request):
 
             error_tipo = 'agregar_modelo'
 
-    # Contexto
     toast_exito = request.session.pop('toast_exito', None)
-    autobuses = Autobus.objects.filter(estado__codigo='ACTI')
+    autobuses   = Autobus.objects.filter(estado__codigo='ACTI')
+
+    # autobuses en ruta
+    ahora        = timezone.localtime()
+    hora_actual  = ahora.time()
+    fecha_actual = ahora.date()
+
+    en_ruta_normal = autobuses.filter(
+        corridas__estado__codigo='ACT',
+        corridas__fecha_salida=fecha_actual,
+        corridas__hora_salida__lte=hora_actual,
+        corridas__hora_llegada__gte=hora_actual,
+    ).exclude(
+        corridas__hora_llegada__lt=models.F('corridas__hora_salida')
+    )
+
+    en_ruta_cruce_ida = autobuses.filter(
+        corridas__estado__codigo='ACT',
+        corridas__fecha_salida=fecha_actual,
+        corridas__hora_salida__lte=hora_actual,
+        corridas__hora_llegada__lt=models.F('corridas__hora_salida'),
+    )
+
+    en_ruta_cruce_vuelta = autobuses.filter(
+        corridas__estado__codigo='ACT',
+        corridas__fecha_llegada=fecha_actual,
+        corridas__hora_llegada__gte=hora_actual,
+        corridas__hora_llegada__lt=models.F('corridas__hora_salida'),
+    )
+
+    autobuses_en_ruta = (
+        en_ruta_normal | en_ruta_cruce_ida | en_ruta_cruce_vuelta
+    ).distinct()
 
     context = {
-        'autobuses': autobuses,
-        'marcas': Marca.objects.all(),
-        'modelos': Modelo.objects.all(),
-        'tipos_autobus': TipoAutobus.objects.all(),
-        'total_activos': autobuses.count(),
-        'total_disponibles': autobuses.filter(estado__descripcion='Disponible').count(),
-        'total_en_ruta': autobuses.filter(estado__descripcion='En Ruta').count(),
-        'error': error,
-        'error_tipo': error_tipo,
-        'toast_exito': toast_exito,
+        'autobuses':         autobuses,
+        'marcas':            Marca.objects.all(),
+        'modelos':           Modelo.objects.all(),
+        'tipos_autobus':     TipoAutobus.objects.all(),
+        'total_activos':     autobuses.count(),
+        'total_disponibles': autobuses.exclude(pk__in=autobuses_en_ruta).count(),
+        'total_en_ruta':     autobuses_en_ruta.count(),
+        'error':             error,
+        'error_tipo':        error_tipo,
+        'toast_exito':       toast_exito,
     }
     return render(request, 'autobuses.html', context)

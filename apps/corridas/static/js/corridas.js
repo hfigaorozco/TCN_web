@@ -1,4 +1,3 @@
-/* ================= BOTON Y DIALOGO AGREGAR ================= */
 const abrirAgregar = document.getElementById('abrirAgregar');
 const aceptarAgregar = document.getElementById('aceptarAgregar');
 const cancelarAgregar = document.getElementById('cancelarAgregar');
@@ -16,7 +15,7 @@ cancelarAgregar.addEventListener('click', e => {
     agregar.close();
 })
 
-/* ================= FUNCION PARA CREAR TOAST ================= */
+// Toast
 function createToast(type, icon, title, text){
     let notificaciones = document.querySelector('.notificaciones')
     let newToast = document.createElement('div');
@@ -35,7 +34,6 @@ function createToast(type, icon, title, text){
     }, 3000);
 }
 
-/* ================= FUNCION PARA CREAR TOAST ================= */
 function crearTipoToast(tipoMensaje, textoMensaje){
     const tipo = tipoMensaje === 'success' ? 'exito' : 'error';
     const icono = tipoMensaje === 'success' ? "fa-solid fa-circle-check" : "fa-solid fa-circle-exclamation";
@@ -43,14 +41,11 @@ function crearTipoToast(tipoMensaje, textoMensaje){
     createToast(tipo, icono, titulo, textoMensaje);
 }
 
-/* ================= FUNCION PARA CREAR TOAST DE ERROR Y CERRAR DIALOG ================= */
 cancelarAgregar.onclick = function(){
     formAgregar.reset();
     agregar.close();
 }
 
-
-/* ================= BOTON Y DIALOGO EDITAR ================= */
 const editar = document.getElementById('editar');
 const abrirEditar = document.getElementById('abrirEditar');
 const aceptarEditar = document.getElementById('aceptarEditar');
@@ -68,7 +63,7 @@ document.querySelectorAll('.corrida-row').forEach(row => {
 if (abrirEditar) {
     abrirEditar.addEventListener('click', () => {
         if (!selectedRow) {
-            // Usamos un Toast de error en lugar de alert
+            // Toast de error en lugar de alert
             createToast("error", "fa-solid fa-circle-exclamation", "Atención", "Por favor, seleccione una corrida de la tabla para editar.");
             return;
         }
@@ -85,20 +80,11 @@ if (cancelarEditar) {
     cancelarEditar.addEventListener('click', () => editar.close());
 }
 
-// aceptarEditar.addEventListener('click', e => {
-//     editar.close( );
-//     let toast = document.createElement('div');
-//     toast.classList.add('toast');
-//     toast.innerHTML = 'Operacion Exitosa';
-//     toastBox.appendChild(toast);
-    
-// })
-
 cancelarEditar.addEventListener('click', e => {
     editar.close( );
 })
 
-/* ================= BOTON Y DIALOGO ELIMINAR ================= */
+
 const eliminar = document.getElementById('eliminar');
 const abrirEliminar = document.getElementById('abrirEliminar');
 const aceptarEliminar = document.getElementById('aceptarEliminar');
@@ -119,7 +105,7 @@ document.querySelectorAll('.corrida-row').forEach(row => {
 if (abrirEliminar) {
     abrirEliminar.addEventListener('click', () => {
         if (!selectedRow) {
-            // Usamos un Toast de error en lugar de alert
+            // Toast de error en lugar de alert
             createToast("error", "fa-solid fa-circle-exclamation", "Atención", "Por favor, seleccione una corrida de la tabla para eliminar.");
             return;
         }
@@ -132,7 +118,6 @@ if (cancelarEliminar) {
     cancelarEliminar.addEventListener('click', () => editar.close());
 }
 
-/* ================= BOTON Y DIALOGO VER POR FECHA Y CIUDAD ================= */
 const fechaCiudad = document.getElementById('fechaCiudad');
 const abrirFechaCiudad = document.getElementById('abrirFechaCiudad');
 const cerrarFechaCiudad = document.getElementById('cerrarFechaCiudad');
@@ -174,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/* ================= BOTON Y DIALOGO VER BOLETOS VENDIDOS POR DIA ================= */
 const boletos = document.getElementById('boletos');
 const abrirBoletos = document.getElementById('abrirBoletos');
 const cerrarBoletos = document.getElementById('cerrarBoletos');

@@ -216,10 +216,13 @@ body{
 .content-box{
     flex: 1;
     min-height: 500px;
+    max-height: 510px;
     background: white;
     border-radius: 20px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
     padding: 30px;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 /* ================= TABLA ================= */
@@ -418,5 +421,129 @@ dialog::backdrop{
     dialog{
         width: 95%;
         top: 40px;
+    }
+}
+
+
+
+
+/* ================= TOAST ================= */
+
+/* ================= TOAST PRUEBA ================= */
+.notificaciones {
+    position: fixed;
+    bottom: 2vh;
+    right: 3vh;
+}
+
+.toast {
+    overflow: hidden;
+    position: relative;
+    padding: 10px 12px 14px 12px;
+    color: black;
+    margin-bottom: 10px;
+    width: 320px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    border: #2f6fed 2px solid;
+    border-radius: 20px;
+    --color: #2f6fed;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    animation: show 00.3s ease 1 forwards;
+}
+
+.toast.content {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    line-height: 1.2;
+}
+
+.toast i {
+    color: #2f6fed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    height: 100%;
+    width: 100%;
+}
+
+.toast .title {
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0;
+}
+
+.toast span {
+    font-size: 1.6vh;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.toast span,
+.toast i:nth-child(3) {
+    color: black;
+    opacity: 0.6;
+}
+
+.toast::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color);
+    width: 100%;
+    height: 3px;
+    content: '';
+    box-shadow: 0 0 8px var(--color);
+    animation: timeOut 3s linear 1 forwards;
+}
+
+@keyframes timeOut {
+    to {
+        width: 0;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.toast.error {
+    --color: #FF8600;
+    border-color: #FF8600;
+}
+
+.toast.error i {
+    color: #FF8600;
+}
+
+
+@keyframes show {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
