@@ -78,9 +78,9 @@
               min-width: 180px;
             "
           >
-            <option selected value="todos">Todos los meses</option>
-            {% for mes in meses_filtro %}
-            <option value="{{ mes.valor }}">{{ mes.nombre }}</option>
+            <option selected value="todos">Todas las fechas</option>
+            {% for dia in dias_filtro %}
+              <option value="{{ dia.valor }}">{{ dia.nombre }}</option>
             {% endfor %}
           </select>
         </div>

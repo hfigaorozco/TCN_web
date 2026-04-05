@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let visible = false;
                 if (selectedMes === 'todos') {
                     visible = true;
-                } else if (rowFecha && rowFecha.startsWith(selectedMes)) {
+                } else if (rowFecha && rowFecha === selectedMes) {
                     visible = true;
                 }
 
