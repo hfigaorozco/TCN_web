@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const estadoAsientos  = window.__estadoAsientos;
     const dialogo         = document.getElementById('dialogo-pasajero');
     const formPasajero    = document.getElementById('form-pasajero');
-    // ← se eliminan: contador, pasajeroActual, asientoActual, btnTexto
     const pasajeroActual  = document.getElementById('pasajero-actual');
     const asientoActual   = document.getElementById('asiento-actual');
     const btnTexto        = document.getElementById('btn-texto-continuar');
@@ -12,14 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let seleccionados  = [];
     let asientoEnCurso = null;
 
-    // ── Calcula tipo de pasajero según edad ───────────────────────────────────
     function calcularTipo(edad) {
         if (edad <= 12)  return 'NINO';
         if (edad >= 60)  return '3DAD';
         return 'REGU';
     }
 
-    // ── Aplicar estado inicial ────────────────────────────────────────────────
     document.querySelectorAll('.asiento').forEach(btn => {
         const num    = parseInt(btn.dataset.asiento);
         const estado = estadoAsientos[num];
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ── Clic en asiento ───────────────────────────────────────────────────────
     document.querySelectorAll('.asiento').forEach(btn => {
         btn.addEventListener('click', () => {
             if (btn.disabled) return;
@@ -64,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ── Submit del diálogo ────────────────────────────────────────────────────
     formPasajero.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -77,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ← tipo se calcula automáticamente, ya no viene del select
         const tipo = calcularTipo(edad);
 
         seleccionados.push({

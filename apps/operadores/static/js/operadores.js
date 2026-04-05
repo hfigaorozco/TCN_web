@@ -1,4 +1,4 @@
-/* ================= AGREGAR OPERADOR ================= */
+// Agregar operador
 
 const agregarOperador = document.getElementById('agregarOperador');
 const abrirAgregarOperador = document.getElementById('abrirAgregarOperador');
@@ -9,16 +9,12 @@ abrirAgregarOperador.addEventListener('click', () => {
     agregarOperador.showModal();
 });
 
-// aceptarAgregarOperador.addEventListener('click', () => {
-//     agregarOperador.close();
-// });
-
 cancelarAgregarOperador.addEventListener('click', () => {
     agregarOperador.close();
 });
 
 
-/* ================= EDITAR OPERADOR ================= */
+// Editar operador
 
 const editarOperador = document.getElementById('editarOperador');
 const abrirEditarOperador = document.getElementById('abrirEditarOperador');
@@ -51,7 +47,7 @@ document.getElementById('operador').addEventListener(
 )
 
 
-/* ================= FUNCION PARA CREAR TOAST ================= */
+// Toasts
 function createToast(type, icon, title, text){
     let notificaciones = document.querySelector('.notificaciones')
     let newToast = document.createElement('div');
@@ -70,7 +66,6 @@ function createToast(type, icon, title, text){
     }, 3000);
 }
 
-/* ================= FUNCION PARA CREAR TOAST ================= */
 function crearTipoToast(tipoMensaje, textoMensaje){
     const tipo = tipoMensaje === 'success' ? 'exito' : 'error';
     const icono = tipoMensaje === 'success' ? "fa-solid fa-circle-check" : "fa-solid fa-circle-exclamation";
