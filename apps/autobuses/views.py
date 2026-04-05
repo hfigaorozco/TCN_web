@@ -56,10 +56,10 @@ def pagina_autobuses(request):
 
         if action == 'agregar_autobus':
             try:
-                numero       = request.POST.get('numero', '').strip()
-                matricula    = request.POST.get('matricula', '').strip().upper()
-                tipo_codigo  = request.POST.get('tipoAutobus', '')
-                marca_clave  = request.POST.get('marca', '')
+                numero = request.POST.get('numero', '').strip()
+                matricula = request.POST.get('matricula', '').strip().upper()
+                tipo_codigo = request.POST.get('tipoAutobus', '')
+                marca_clave = request.POST.get('marca', '')
                 modelo_clave = request.POST.get('modelo', '')
 
                 if not numero:
@@ -153,8 +153,8 @@ def pagina_autobuses(request):
 
         elif action == 'agregar_modelo':
             try:
-                codigo      = request.POST.get('codigo', '').strip().upper()
-                nombre      = request.POST.get('nombre', '').strip()
+                codigo = request.POST.get('codigo', '').strip().upper()
+                nombre = request.POST.get('nombre', '').strip()
                 marca_clave = request.POST.get('marca', '')
 
                 if not codigo:
@@ -181,17 +181,14 @@ def pagina_autobuses(request):
 
             error_tipo = 'agregar_modelo'
 
-    # ========== CONTEXTO ==========
     toast_exito = request.session.pop('toast_exito', None)
     autobuses   = Autobus.objects.filter(estado__codigo='ACTI')
 
-    # --- Lógica de autobuses en ruta ---
+    # autobuses en ruta
     ahora        = timezone.localtime()
     hora_actual  = ahora.time()
     fecha_actual = ahora.date()
 
-    # Caso 1: corrida normal (no cruza medianoche)
-    #   fecha_salida = hoy, hora_salida <= ahora <= hora_llegada, hora_llegada >= hora_salida
     en_ruta_normal = autobuses.filter(
         corridas__estado__codigo='ACT',
         corridas__fecha_salida=fecha_actual,
@@ -201,8 +198,6 @@ def pagina_autobuses(request):
         corridas__hora_llegada__lt=models.F('corridas__hora_salida')
     )
 
-    # Caso 2: corrida que cruza medianoche — primera parte (aún es el día de salida)
-    #   fecha_salida = hoy, hora_salida <= ahora, hora_llegada < hora_salida
     en_ruta_cruce_ida = autobuses.filter(
         corridas__estado__codigo='ACT',
         corridas__fecha_salida=fecha_actual,
@@ -210,8 +205,6 @@ def pagina_autobuses(request):
         corridas__hora_llegada__lt=models.F('corridas__hora_salida'),
     )
 
-    # Caso 3: corrida que cruzó medianoche — segunda parte (ya es el día de llegada)
-    #   fecha_llegada = hoy, hora_llegada >= ahora, hora_llegada < hora_salida
     en_ruta_cruce_vuelta = autobuses.filter(
         corridas__estado__codigo='ACT',
         corridas__fecha_llegada=fecha_actual,

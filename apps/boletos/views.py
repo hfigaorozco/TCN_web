@@ -11,19 +11,19 @@ from apps.rutas.models import Ciudad
 from apps.pasajeros.models import Pasajero, TipoPasajero
 
 
-# ── 1. BUSCAR CORRIDAS ────────────────────────────────────────────────────────
+# BUSCAR CORRIDAS 
 
 def buscar_corridas(request):
-    corridas       = []
+    corridas = []
     sin_resultados = False
-    ciudades       = Ciudad.objects.all()
+    ciudades = Ciudad.objects.all()
 
-    origen    = request.GET.get('origen', '')
-    destino   = request.GET.get('destino', '')
-    fecha     = request.GET.get('fecha', '')
+    origen = request.GET.get('origen', '')
+    destino = request.GET.get('destino', '')
+    fecha = request.GET.get('fecha', '')
     pasajeros = request.GET.get('pasajeros', '')
 
-    origen_nombre  = ''
+    origen_nombre = ''
     destino_nombre = ''
 
     if origen:
@@ -60,20 +60,20 @@ def buscar_corridas(request):
             sin_resultados = True
 
     context = {
-        'corridas':       corridas,
-        'ciudades':       ciudades,
+        'corridas': corridas,
+        'ciudades': ciudades,
         'sin_resultados': sin_resultados,
-        'origen':         origen,
-        'destino':        destino,
-        'origen_nombre':  origen_nombre,
+        'origen': origen,
+        'destino': destino,
+        'origen_nombre': origen_nombre,
         'destino_nombre': destino_nombre,
-        'fecha':          fecha,
-        'pasajeros':      pasajeros,
+        'fecha': fecha,
+        'pasajeros': pasajeros,
     }
     return render(request, 'comprarboleto.html', context)
 
 
-# ── 2. MAPA DE ASIENTOS ───────────────────────────────────────────────────────
+# Mapa de los asientos de cada autobus
 
 def seleccionar_asiento(request, corrida_id):
     corrida = Corrida.objects.select_related(
@@ -83,9 +83,9 @@ def seleccionar_asiento(request, corrida_id):
     ).get(numero=corrida_id)
 
     pasajeros = int(request.GET.get('pasajeros', 1))
-    origen    = request.GET.get('origen', '')
-    destino   = request.GET.get('destino', '')
-    fecha     = request.GET.get('fecha', '')
+    origen = request.GET.get('origen', '')
+    destino = request.GET.get('destino', '')
+    fecha = request.GET.get('fecha', '')
 
     corrida_asientos = CorridaAsiento.objects.filter(
         corrida=corrida
@@ -97,7 +97,7 @@ def seleccionar_asiento(request, corrida_id):
     }
 
     tipos_pasajero = TipoPasajero.objects.all()
-    tipo_bus       = corrida.autobus.tipoAutobus.codigo
+    tipo_bus = corrida.autobus.tipoAutobus.codigo
 
     template = (
         'seleccion-asiento-plus.html'
@@ -106,25 +106,25 @@ def seleccionar_asiento(request, corrida_id):
     )
 
     context = {
-        'corrida':         corrida,
-        'pasajeros':       pasajeros,
+        'corrida': corrida,
+        'pasajeros': pasajeros,
         'estado_asientos': json.dumps(estado_asientos),
-        'tipos_pasajero':  tipos_pasajero,
-        'origen':          origen,
-        'destino':         destino,
-        'fecha':           fecha,
+        'tipos_pasajero': tipos_pasajero,
+        'origen': origen,
+        'destino': destino,
+        'fecha': fecha,
     }
     return render(request, template, context)
 
 
-# ── 3. CONFIRMACIÓN ───────────────────────────────────────────────────────────
+# Confirmacion de la compra
 
 def confirmacion_compra(request):
     if request.method == 'POST':
-        corrida_id     = request.POST.get('corrida_id')
+        corrida_id = request.POST.get('corrida_id')
         pasajeros_json = request.POST.get('pasajeros_data')
-        origen         = request.POST.get('origen', '')
-        destino        = request.POST.get('destino', '')
+        origen = request.POST.get('origen', '')
+        destino = request.POST.get('destino', '')
 
         corrida = Corrida.objects.select_related(
             'autobus__tipoAutobus',
@@ -138,33 +138,33 @@ def confirmacion_compra(request):
         subtotal = 0
 
         for p in pasajeros_data:
-            tipo      = TipoPasajero.objects.get(codigo=p['tipo_pasajero'])
+            tipo = TipoPasajero.objects.get(codigo=p['tipo_pasajero'])
             descuento = corrida.tarifaBase * (tipo.porcentaje_desc / 100)
-            precio    = corrida.tarifaBase - descuento
-            p['precio']           = round(precio, 2)
+            precio = corrida.tarifaBase - descuento
+            p['precio'] = round(precio, 2)
             p['tipo_descripcion'] = tipo.descripcion
-            p['descuento']        = round(descuento, 2)
-            subtotal             += precio
+            p['descuento'] = round(descuento, 2)
+            subtotal += precio
 
-        iva   = round(subtotal * IVA_RATE, 2)
+        iva = round(subtotal * IVA_RATE, 2)
         total = round(subtotal + iva, 2)
 
         request.session['compra_pendiente'] = {
-            'corrida_id':     corrida_id,
+            'corrida_id': corrida_id,
             'pasajeros_data': pasajeros_data,
-            'subtotal':       round(subtotal, 2),
-            'iva':            iva,
-            'total':          total,
-            'origen':         origen,
-            'destino':        destino,
+            'subtotal': round(subtotal, 2),
+            'iva': iva,
+            'total': total,
+            'origen': origen,
+            'destino': destino,
         }
 
         context = {
-            'corrida':        corrida,
+            'corrida': corrida,
             'pasajeros_data': pasajeros_data,
-            'subtotal':       round(subtotal, 2),
-            'iva':            iva,
-            'total':          total,
+            'subtotal': round(subtotal, 2),
+            'iva': iva,
+            'total': total,
             'cant_pasajeros': len(pasajeros_data),
         }
         return render(request, 'confirmacion-compra.html', context)
@@ -172,7 +172,7 @@ def confirmacion_compra(request):
     return redirect('index')
 
 
-# ── 4. GENERAR BOLETOS ────────────────────────────────────────────────────────
+# Generar los boletos
 
 def generar_boletos(request):
     if request.method != 'POST':
@@ -188,58 +188,58 @@ def generar_boletos(request):
         'ruta__ciudadDestino',
     ).get(numero=compra['corrida_id'])
 
-    hoy            = date.today()
-    fecha_lim      = corrida.fecha_salida
-    IVA_RATE       = 0.16
+    hoy = date.today()
+    fecha_lim = corrida.fecha_salida
+    IVA_RATE = 0.16
     pasajeros_data = compra['pasajeros_data']
-    cant           = len(pasajeros_data)
+    cant = len(pasajeros_data)
     boletos_generados = []
 
     pasajeros_objs = []
     for p in pasajeros_data:
         nombre_parts = p['nombre'].strip().split()
-        nombre       = nombre_parts[0] if nombre_parts else p['nombre']
-        apellidos    = p['apellidos'].strip().split()
-        apell_pat    = apellidos[0] if apellidos else ''
-        apell_mat    = apellidos[1] if len(apellidos) > 1 else ''
+        nombre = nombre_parts[0] if nombre_parts else p['nombre']
+        apellidos = p['apellidos'].strip().split()
+        apell_pat = apellidos[0] if apellidos else ''
+        apell_mat = apellidos[1] if len(apellidos) > 1 else ''
 
         pasajero_obj = Pasajero.objects.create(
-            nombre   = nombre,
+            nombre = nombre,
             apellPat = apell_pat,
             apellMat = apell_mat,
-            edad     = int(p['edad']),
+            edad = int(p['edad']),
         )
         pasajeros_objs.append(pasajero_obj)
 
     reservacion = Reservacion.objects.create(
-        fecha         = hoy,
-        fechaLimPago  = fecha_lim,
+        fecha = hoy,
+        fechaLimPago = fecha_lim,
         cantPasajeros = cant,
-        subtotal      = compra['subtotal'],
-        IVA           = compra['iva'],
-        total         = compra['total'],
-        pasajero      = pasajeros_objs[0],
-        corrida       = corrida,
+        subtotal = compra['subtotal'],
+        IVA = compra['iva'],
+        total = compra['total'],
+        pasajero = pasajeros_objs[0],
+        corrida = corrida,
     )
 
     for p, pasajero_obj in zip(pasajeros_data, pasajeros_objs):
-        tipo_obj    = TipoPasajero.objects.get(codigo=p['tipo_pasajero'])
+        tipo_obj = TipoPasajero.objects.get(codigo=p['tipo_pasajero'])
         asiento_obj = Asiento.objects.get(
-            numero  = int(p['asiento']),
+            numero = int(p['asiento']),
             autobus = corrida.autobus,
         )
 
         AsientoReservacion.objects.create(
-            asiento     = asiento_obj,
+            asiento = asiento_obj,
             reservacion = reservacion,
         )
 
         boleto = Boleto.objects.create(
-            precio       = p['precio'],
-            asiento      = asiento_obj,
-            pasajero     = pasajero_obj,
+            precio = p['precio'],
+            asiento = asiento_obj,
+            pasajero = pasajero_obj,
             tipoPasajero = tipo_obj,
-            corrida      = corrida,
+            corrida = corrida,
         )
 
         CorridaAsiento.objects.filter(
@@ -248,14 +248,14 @@ def generar_boletos(request):
         ).update(estado=CorridaAsiento.OCUPADO)
 
         boletos_generados.append({
-            'boleto':      boleto,
+            'boleto': boleto,
             'reservacion': reservacion,
-            'pasajero':    pasajero_obj,
-            'tipo':        tipo_obj,
-            'descuento':   round(corrida.tarifaBase * (tipo_obj.porcentaje_desc / 100), 2),
+            'pasajero': pasajero_obj,
+            'tipo': tipo_obj,
+            'descuento': round(corrida.tarifaBase*(tipo_obj.porcentaje_desc/100), 2),
         })
 
-    corrida.lugaresDisp -= cant
+    corrida.lugaresDisp-=cant
     corrida.save()
 
     del request.session['compra_pendiente']
@@ -268,7 +268,7 @@ def generar_boletos(request):
     return render(request, 'boleto.html', context)
 
 
-# ── 5. VER BOLETOS EXISTENTES (DESDE RESERVACIONES) ───────────────────────────
+# Ver boletos desde modulo de reservaciones
 
 def ver_boletos(request, reserva_id):
     reservacion = get_object_or_404(
@@ -292,23 +292,23 @@ def ver_boletos(request, reserva_id):
 
     boletos_data = []
     for b in boletos:
-        tarifa_base     = reservacion.corrida.tarifaBase
+        tarifa_base = reservacion.corrida.tarifaBase
         desc_porcentaje = b.tipoPasajero.porcentaje_desc
         monto_descuento = round(tarifa_base * (desc_porcentaje / 100), 2)
 
         boletos_data.append({
-            'boleto':      b,
+            'boleto': b,
             'reservacion': reservacion,
-            'pasajero':    b.pasajero,
-            'tipo':        b.tipoPasajero,
-            'descuento':   monto_descuento,
+            'pasajero': b.pasajero,
+            'tipo': b.tipoPasajero,
+            'descuento': monto_descuento,
         })
 
     context = {
-        'corrida':           reservacion.corrida,
+        'corrida': reservacion.corrida,
         'boletos_generados': boletos_data,
-        'total_general':     reservacion.total,
-        'es_consulta':       True,
+        'total_general': reservacion.total,
+        'es_consulta': True,
     }
 
     return render(request, 'boleto.html', context)

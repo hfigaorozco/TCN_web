@@ -9,17 +9,17 @@ from apps.operadores.models import Operador
 
 
 def pagina_corridas(request):
-    # ========== CONSULTAS BASE ==========
+    #  CONSULTAS BASE 
     rutas = Ruta.objects.all()
     operadores = Operador.objects.all()
     autobuses = Autobus.objects.filter(estado__codigo='ACTI')
     ciudades = Ciudad.objects.all()
     estados_corrida = EdoCorrida.objects.all()
 
-    # ========== PROCESAR POST ==========
+    #  PROCESAR POST 
     if request.method == 'POST' and 'action' in request.POST:
 
-        # ---------- AGREGAR CORRIDA ----------
+        #  AGREGAR CORRIDA 
         if request.POST['action'] == 'agregar_corrida':
             try:
                 estado_obj   = EdoCorrida.objects.get(codigo='ACT')
@@ -72,7 +72,7 @@ def pagina_corridas(request):
 
             return redirect('corridas')
 
-        # ---------- EDITAR CORRIDA ----------
+        #  EDITAR CORRIDA 
         elif request.POST['action'] == 'editar_corrida':
             try:
                 corrida            = Corrida.objects.get(numero=request.POST['corrida_numero'])
@@ -88,7 +88,7 @@ def pagina_corridas(request):
                 messages.error(request, f"Error al actualizar corrida: {str(e)}")
             return redirect('corridas')
 
-        # ---------- CAMBIAR ESTADO ----------
+        #  CAMBIAR ESTADO 
         elif request.POST['action'] == 'cambiar_estado_corrida':
             try:
                 corrida          = Corrida.objects.get(numero=request.POST['estado_corrida_numero'])
@@ -99,7 +99,7 @@ def pagina_corridas(request):
                 messages.error(request, f"Error al cambiar estado: {str(e)}")
             return redirect('corridas')
 
-    # ========== CONSULTAS GET ==========
+    #  CONSULTAS GET 
     corridas = Corrida.objects.select_related(
         'ruta__ciudadOrigen',
         'ruta__ciudadDestino',
@@ -140,7 +140,7 @@ def pagina_corridas(request):
     if fecha_boletos:
         corridas_boletos = corridas_boletos.filter(fecha_salida=fecha_boletos)
 
-    # ========== CONTEXTO ==========
+    #  CONTEXTO 
     context = {
         'operadores':           operadores,
         'rutas':                rutas,
