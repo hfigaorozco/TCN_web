@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Operador
 from django.contrib import messages
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
+@login_required
 def pagina_operadores(request):
     
     if request.method == 'POST' and 'action' in request.POST:

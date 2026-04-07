@@ -3,8 +3,9 @@ from django.utils import timezone
 from django.db.models import Q
 from apps.boletos.models import Boleto
 from .models import Reservacion, AsientoReservacion
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def pagina_reservaciones(request):
     hoy = timezone.localdate()
 
@@ -44,7 +45,7 @@ def pagina_reservaciones(request):
 
     return render(request, 'reservaciones.html', context)
 
-
+@login_required
 def ver_boletos_reserva(request, reserva_id):
     reservacion = get_object_or_404(
         Reservacion.objects.select_related(

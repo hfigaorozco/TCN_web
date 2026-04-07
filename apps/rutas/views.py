@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Ruta, Ciudad
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def rutas_view(request):
     rutas = Ruta.objects.all()
     ciudades = Ciudad.objects.all()
@@ -16,6 +17,7 @@ def rutas_view(request):
 
     return render(request, 'rutas.html', context)
 
+@login_required
 def agregar_ciudad(request):
     if request.method == 'POST':
         try:
@@ -32,7 +34,7 @@ def agregar_ciudad(request):
 
     return redirect('rutas')
 
-
+@login_required
 def editar_ciudad(request):
     if request.method == 'POST':
         try:
@@ -57,7 +59,7 @@ def editar_ciudad(request):
 
     return redirect('rutas')
 
-
+@login_required
 def agregar_ruta(request):
     if request.method == 'POST':
         try:
@@ -90,7 +92,7 @@ def agregar_ruta(request):
 
     return redirect('rutas')
 
-
+@login_required
 def editar_ruta(request):
     if request.method == 'POST':
         try:

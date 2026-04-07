@@ -327,7 +327,7 @@ body{
 
 .status.pendiente{
     background: #f1f3f5;
-    color: #495057;
+    color: #f08c00;
 }
 
 .status.proxima{
@@ -343,6 +343,11 @@ body{
 .status.finalizada{
     background: #ebfbee;
     color: #2b8a3e;
+}
+
+.status.cancelada {
+    background: #ffd0d0;
+    color: #ff0000;
 }
 
 /* ================= RESPONSIVE ================= */

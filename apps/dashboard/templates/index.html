@@ -5,19 +5,11 @@
     <meta charset="UTF-8" />
     <title>Dashboard | Transportes Cuervo Negro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="{% static 'images/logo_tcn_azul.png' %}"
-    />
+    <link rel="icon" type="image/png" href="{% static 'images/logo_tcn_azul.png' %}" />
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   </head>
   <body>
-    <!-- ================= NAVBAR ================= -->
 
     <div class="top-nav">
       <div class="logo-box">
@@ -27,39 +19,34 @@
         <ul class="menu">
           <li class="activea"><a href="{% url 'index' %}">Inicio</a></li>
           <li><a href="{% url 'reservaciones' %}">Reservaciones</a></li>
+          {% if request.user.rol == 'admin' %}
           <li><a href="{% url 'corridas' %}">Corridas</a></li>
           <li><a href="{% url 'rutas' %}">Rutas</a></li>
           <li><a href="{% url 'operadores' %}">Operadores</a></li>
           <li><a href="{% url 'autobuses' %}">Autobuses</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
 
-    <!-- ================= BOTONES ================= -->
-
     <div class="action-bar">
-      <button
-        class="primary-btn"
-        onclick="window.location.href='{% url 'registro' %}'"
-      >
+      {% if request.user.rol == 'admin' %}
+      <button class="primary-btn" onclick="window.location.href='{% url 'registro' %}'">
         Registro de cuentas
       </button>
+      {% endif %}
       <button class="primary-btn" id="btn-venderBoletos">Vender boletos</button>
       <button id="btn-usuario" class="icon-btn">
         <img src="{% static 'images/usuario blanco.png' %}" alt="Usuario" />
       </button>
     </div>
 
-    <!-- ================= TÍTULO ================= -->
-
     <div class="title-row">
       <h1 class="title">Dashboard</h1>
     </div>
 
-    <!-- ================= CONTENIDO ================= -->
-
     <div class="main-section">
-      <!-- TABLA CORRIDAS -->
+
       <div class="content-box">
         <div class="card-title">Corridas</div>
         <div style="position: absolute; top: -18px; right: 30px">
@@ -102,9 +89,7 @@
                 <td>{{ corrida.origen }}</td>
                 <td>{{ corrida.destino }}</td>
                 <td>
-                  <span class="status {{ corrida.estado_clase }}"
-                    >{{ corrida.estado }}</span
-                  >
+                  <span class="status {{ corrida.estado_clase }}">{{ corrida.estado }}</span>
                 </td>
                 <td>{{ corrida.autobus }}</td>
               </tr>
@@ -118,7 +103,6 @@
         </div>
       </div>
 
-      <!-- TABLA PASAJEROS -->
       <div class="content-box">
         <div class="card-title">Pasajeros</div>
         <div class="table-wrapper">
@@ -138,9 +122,7 @@
                 <td>{{ pasajero.nombre }}</td>
                 <td>{{ pasajero.tipo }}</td>
                 <td>
-                  <span class="status {{ pasajero.estado }}"
-                    >{{ pasajero.estado }}</span
-                  >
+                  <span class="status {{ pasajero.estado }}">{{ pasajero.estado }}</span>
                 </td>
               </tr>
               {% empty %}
@@ -153,16 +135,10 @@
         </div>
       </div>
 
-      <!-- DETALLES DE CORRIDA -->
       <div
         id="detalle-corrida-box"
         class="content-box detail-box"
-        style="
-          flex: 1 1 100%;
-          min-height: auto;
-          padding-bottom: 30px;
-          margin-top: 10px;
-        "
+        style="flex: 1 1 100%; min-height: auto; padding-bottom: 30px; margin-top: 10px;"
       >
         <div class="card-title">Detalles de la Corrida</div>
 
@@ -170,12 +146,7 @@
         <div class="detail-content">
           <div
             class="detail-info-grid"
-            style="
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-              gap: 15px;
-              margin-top: 10px;
-            "
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;"
           >
             <p>
               <strong><i class="fa-solid fa-bus"></i> Autobús:</strong>
@@ -195,34 +166,23 @@
             </p>
             <p>
               <strong><i class="fa-solid fa-users"></i> Capacidad:</strong>
-              <span
-                >{{ detalle.ocupados }} / {{ detalle.capacidad }} asientos</span
-              >
+              <span>{{ detalle.ocupados }} / {{ detalle.capacidad }} asientos</span>
             </p>
           </div>
           <div class="progress-container" style="margin-top: 20px">
-            <label style="font-weight: 600; color: #555; font-size: 13px"
-              >Ocupación del autobús</label
-            >
+            <label style="font-weight: 600; color: #555; font-size: 13px">Ocupación del autobús</label>
             <div
               class="progress-bar"
-              style="
-                width: 100%;
-                height: 10px;
-                background: #eee;
-                border-radius: 20px;
-                margin: 8px 0;
-                overflow: hidden;
-              "
+              style="width: 100%; height: 10px; background: #eee; border-radius: 20px; margin: 8px 0; overflow: hidden;"
             >
               <div
                 class="progress"
                 style="width: {{ detalle.porcentaje }}%; height: 100%; background: #2f6fed; transition: 0.5s;"
               ></div>
             </div>
-            <span class="progress-text" style="font-size: 12px; color: #666"
-              >{{ detalle.porcentaje }}% de capacidad completada</span
-            >
+            <span class="progress-text" style="font-size: 12px; color: #666">
+              {{ detalle.porcentaje }}% de capacidad completada
+            </span>
           </div>
         </div>
         {% else %}
@@ -233,20 +193,15 @@
         </div>
         {% endif %}
       </div>
-    </div>
 
-    <!-- ================= DIÁLOGO PERFIL ================= -->
+    </div>
 
     <dialog id="dialogo-perfil">
       <div class="dialog-container">
         <div class="dialog-superior">
           <h1 class="dialog-titulo">Perfil</h1>
-          <img
-            src="{% static 'images/usuario.png' %}"
-            class="dialog-avatar"
-            alt="Avatar"
-          />
-          <p class="dialog-nombre">{{ user.username }}</p>
+          <img src="{% static 'images/usuario.png' %}" class="dialog-avatar" alt="Avatar" />
+          <p class="dialog-nombre">{{ user.nombre }}</p>
         </div>
         <div class="dialog-info">
           <div class="dialog-info-fila">
@@ -259,44 +214,26 @@
           </div>
         </div>
         <div class="dialog-buttons">
-          <button class="dialog-btn--azul" id="btn-cambiar-contra">
-            Modificar contraseña
-          </button>
-          <button class="dialog-btn--naranja" id="btn-salir">
-            Cerrar sesión
-          </button>
+          <button class="dialog-btn--azul" id="btn-cambiar-contra">Modificar contraseña</button>
+          <button class="dialog-btn--naranja" id="btn-salir">Cerrar sesión</button>
         </div>
       </div>
     </dialog>
-
-    <!-- ================= DIÁLOGO CAMBIO DE CONTRASEÑA ================= -->
 
     <dialog id="dialogo-contrasena">
       <div class="dialog-contra-container">
         <h1 class="dialog-contra-titulo">Cambio de contraseña</h1>
         <div class="dialog-contra-group">
           <label>Contraseña actual:</label>
-          <input
-            type="password"
-            placeholder="Ingrese la contraseña"
-            autocomplete="new-password"
-          />
+          <input type="password" placeholder="Ingrese la contraseña" name="password_actual" autocomplete="new-password" />
         </div>
         <div class="dialog-contra-group">
           <label>Nueva contraseña:</label>
-          <input
-            type="password"
-            placeholder="De 8 a 32 caracteres"
-            minlength="8"
-            maxlength="32"
-            autocomplete="new-password"
-          />
+          <input type="password" placeholder="De 8 a 32 caracteres" name="password_nueva" minlength="8" maxlength="32" autocomplete="new-password" />
         </div>
-        <button class="dialog-contra-btn">Guardar cambios</button>
+        <button class="dialog-contra-btn" id="btn-guardar-contra">Guardar cambios</button>
       </div>
     </dialog>
-
-    <!-- ================= DIÁLOGO BÚSQUEDA DE VIAJE ================= -->
 
     <dialog id="dialogo-buscar">
       <div class="dialog-buscar-container">
@@ -319,21 +256,10 @@
         </select>
 
         <label class="dialog-buscar-label">Fecha:</label>
-        <input
-          class="dialog-buscar-input"
-          type="date"
-          id="dialog-fecha"
-          autocomplete="off"
-        />
+        <input class="dialog-buscar-input" type="date" id="dialog-fecha" autocomplete="off" />
 
         <label class="dialog-buscar-label">Pasajeros:</label>
-        <input
-          class="dialog-buscar-pasajeros"
-          type="number"
-          min="1"
-          placeholder="Cantidad"
-          autocomplete="off"
-        />
+        <input class="dialog-buscar-pasajeros" type="number" min="1" placeholder="Cantidad" autocomplete="off" />
 
         <div class="dialog-buscar-btn-container">
           <button class="dialog-buscar-btn">Continuar</button>
@@ -341,18 +267,13 @@
       </div>
     </dialog>
 
-    <!-- ================= NOTIFICACIONES ================= -->
-
     <div class="notificaciones"></div>
 
-    <!-- ================= JS ================= -->
-
     <script>
-      window.__urlLogin = "#";
       window.__urlBoletos = "{% url 'comprarboleto' %}";
+      window.__urlLogin = "{% url 'login' %}";
       window.__urlGetCorridaDetails = "/transportes-cuervo-negro/dashboard/corrida/";
 
-      // Restricción de fechas: hoy hasta +30 días
       const inputFecha = document.getElementById("dialog-fecha");
       const hoy = new Date();
       const max = new Date();
@@ -361,6 +282,9 @@
       const toISO = (d) => d.toISOString().split("T")[0];
       inputFecha.min = toISO(hoy);
       inputFecha.max = toISO(max);
+
+      window.__urlCambiarContra = "{% url 'cambiar_contrasena' %}";
+      window.__csrfToken = "{{ csrf_token }}";
     </script>
 
     <script src="{% static 'js/dashboard.js' %}"></script>

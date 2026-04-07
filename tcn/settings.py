@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'apps.login',
     'apps.registro',
     'apps.dashboard',
@@ -141,3 +142,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# AYUDA PARA EL INICIO DE SESION
+AUTH_USER_MODEL = 'login.Usuario'
+LOGIN_URL = '/transportes-cuervo-negro/inicio-de-sesion/'

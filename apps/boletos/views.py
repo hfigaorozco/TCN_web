@@ -1,18 +1,17 @@
 import json
 from datetime import date
-
 from django.shortcuts import render, redirect, get_object_or_404
-
 from .models import Boleto
 from apps.corridas.models import Corrida, CorridaAsiento
 from apps.reservaciones.models import Reservacion, AsientoReservacion
 from apps.autobuses.models import Asiento
 from apps.rutas.models import Ciudad
 from apps.pasajeros.models import Pasajero, TipoPasajero
-
+from django.contrib.auth.decorators import login_required
 
 # BUSCAR CORRIDAS 
 
+@login_required
 def buscar_corridas(request):
     corridas = []
     sin_resultados = False
@@ -75,6 +74,7 @@ def buscar_corridas(request):
 
 # Mapa de los asientos de cada autobus
 
+@login_required
 def seleccionar_asiento(request, corrida_id):
     corrida = Corrida.objects.select_related(
         'autobus__tipoAutobus',
@@ -119,6 +119,7 @@ def seleccionar_asiento(request, corrida_id):
 
 # Confirmacion de la compra
 
+@login_required
 def confirmacion_compra(request):
     if request.method == 'POST':
         corrida_id = request.POST.get('corrida_id')
@@ -174,6 +175,7 @@ def confirmacion_compra(request):
 
 # Generar los boletos
 
+@login_required
 def generar_boletos(request):
     if request.method != 'POST':
         return redirect('index')
@@ -270,6 +272,7 @@ def generar_boletos(request):
 
 # Ver boletos desde modulo de reservaciones
 
+@login_required
 def ver_boletos(request, reserva_id):
     reservacion = get_object_or_404(
         Reservacion.objects.select_related(

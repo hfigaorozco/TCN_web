@@ -171,12 +171,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Cerrar sesión
+   let logoutInProgress = false;
+
     btnSalir.addEventListener('click', () => {
+        if (logoutInProgress) return; 
+        logoutInProgress = true;
+
+        btnSalir.disabled = true;
+
         dialogoUsuario.close();
         createToast('error', 'fa-solid fa-right-from-bracket', 'Cerrando sesión...', 'Hasta pronto');
+
         setTimeout(() => {
-            window.location.href = window.__urlLogin;
-        }, 3000);
+            fetch(window.__urlLogout, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': window.__csrfToken,
+                }
+            })
+            .then(() => {
+                window.location.href = window.__urlLogin;
+            })
+            .catch(() => {
+                logoutInProgress = false;
+                btnSalir.disabled = false;
+                createToast('error', 'fa-solid fa-x', 'Error', 'No se pudo cerrar sesión');
+            });
+        }, 4000);
+    });
+
+    const btnGuardarContra = document.getElementById('btn-guardar-contra');
+
+    btnGuardarContra.addEventListener('click', () => {
+        const actual = dialogoContra.querySelector('[name="password_actual"]').value;
+        const nueva  = dialogoContra.querySelector('[name="password_nueva"]').value;
+
+        if (!actual || !nueva) {
+            createToast('error', 'fa-solid fa-exclamation', 'Error', 'Completa ambos campos');
+            return;
+        }
+
+        fetch(window.__urlCambiarContra, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': window.__csrfToken,
+            },
+            body: `password_actual=${encodeURIComponent(actual)}&password_nueva=${encodeURIComponent(nueva)}`
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.ok) {
+                dialogoContra.close();
+                createToast('exito', 'fa-solid fa-check', 'Éxito', 'Contraseña actualizada correctamente');
+            } else {
+                createToast('error', 'fa-solid fa-exclamation', 'Error', data.error);
+            }
+        });
     });
 
 });
