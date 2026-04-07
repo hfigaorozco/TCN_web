@@ -18,4 +18,4 @@ class LoginSerializer(serializers.Serializer):
         else:
             data['user'] = usuario
         
-        return dataw
+        return data
