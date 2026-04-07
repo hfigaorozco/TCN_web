@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate
 
 
 class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
     
     def validate(self, data):
         email = data.get('email')
@@ -14,6 +16,6 @@ class LoginSerializer(serializers.Serializer):
         if not usuario:
             raise serializers.ValidationError('La contraseña o el correo electrónico es incorrecto')
         else:
-            usuario['user'] = usuario
+            data['user'] = usuario
         
         return data
