@@ -1,8 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.authtoken.models import Token
-from ..registro.serializers import RegistroSerializer
 from .serializers import LoginSerializer
 
 @api_view(['POST'])
