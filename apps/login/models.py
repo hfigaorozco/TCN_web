@@ -22,9 +22,11 @@ class UsuarioManager(BaseUserManager):
 class Usuario(AbstractBaseUser, PermissionsMixin):
     ROL_ADMIN = 'admin'
     ROL_TAQUILLERO = 'taquillero'
+    ROL_PASAJERO = 'pasajero'
     ROLES = [
         (ROL_ADMIN, 'Administrador'),
         (ROL_TAQUILLERO, 'Taquillero'),
+        (ROL_PASAJERO, 'Pasajero'),
     ]
 
     email = models.EmailField(max_length=40, unique=True)
