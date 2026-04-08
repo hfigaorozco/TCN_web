@@ -15,6 +15,7 @@ def registro_api(request):
     return Response({
         'id': usuario.id,
         'nombre': usuario.nombre,
-        'email': usuario.email
+        'email': usuario.email,
+        'nombre': usuario.nombre,
     }, status=status.HTTP_201_CREATED)
     
