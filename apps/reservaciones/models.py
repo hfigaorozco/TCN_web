@@ -2,24 +2,32 @@ from django.db import models
 
 
 class Reservacion(models.Model):
-    numero        = models.AutoField(primary_key=True)
-    fecha         = models.DateField()
-    fechaLimPago  = models.DateField()
+    numero = models.AutoField(primary_key=True)
+    fecha = models.DateField()
+    fechaLimPago = models.DateField()
     cantPasajeros = models.IntegerField()
-    subtotal      = models.FloatField()
-    IVA           = models.FloatField()
-    total         = models.FloatField()
-    pasajero      = models.ForeignKey(
+    subtotal = models.FloatField()
+    IVA = models.FloatField()
+    total = models.FloatField()
+    pasajero = models.ForeignKey(
         'pasajeros.Pasajero',
         on_delete=models.RESTRICT,
         db_column='pasajero',
         related_name='reservaciones',
     )
-    corrida       = models.ForeignKey(
+    corrida = models.ForeignKey(
         'corridas.Corrida',
         on_delete=models.RESTRICT,
         db_column='corrida',
         related_name='reservaciones',
+    )
+    usuario = models.ForeignKey(
+        'login.Usuario',
+        on_delete=models.RESTRICT,
+        db_column='usuario',
+        related_name='reservaciones',
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -30,7 +38,7 @@ class Reservacion(models.Model):
 
 
 class AsientoReservacion(models.Model):
-    asiento     = models.ForeignKey(
+    asiento = models.ForeignKey(
         'autobuses.Asiento',
         on_delete=models.RESTRICT,
         db_column='asiento',
@@ -44,7 +52,7 @@ class AsientoReservacion(models.Model):
     )
 
     class Meta:
-        db_table        = 'asiento_reservacion'
+        db_table = 'asiento_reservacion'
         unique_together = ('asiento', 'reservacion')
 
     def __str__(self):
