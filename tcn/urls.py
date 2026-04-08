@@ -30,6 +30,7 @@ urlpatterns = [
         path('', include('apps.rutas.urls')),
         path('', include('apps.operadores.urls')),
         path('', include('apps.boletos.urls')),
+        path('asientos/', include('apps.asientos.urls')),
         path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     ])),
 ]
