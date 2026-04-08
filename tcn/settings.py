@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'apps.login',
     'apps.registro',
     'apps.dashboard',
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,3 +148,5 @@ STATICFILES_DIRS = [
 # AYUDA PARA EL INICIO DE SESION
 AUTH_USER_MODEL = 'login.Usuario'
 LOGIN_URL = '/transportes-cuervo-negro/inicio-de-sesion/'
+
+CORS_ALLOW_ALL_ORIGINS = True
