@@ -1,16 +1,24 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import Reservacion
+=======
+from .models import Reservacion, AsientoReservacion
+>>>>>>> 81e1bc3feacc746c8d9cf0b25dd0dea08eb194f4
 from apps.boletos.models import Boleto
 from apps.autobuses.models import Asiento
 from apps.rutas.models import Ciudad, Ruta
 from apps.corridas.models import Corrida
+<<<<<<< HEAD
 from apps.pasajeros.models import TipoPasajero
+=======
+from apps.pasajeros.models import TipoPasajero, Pasajero
+>>>>>>> 81e1bc3feacc746c8d9cf0b25dd0dea08eb194f4
 
 
 class TipoPasajeroSerializer(serializers.ModelSerializer):
     class Meta:
         model  = TipoPasajero
-        fields = ['codigo', 'descripcion', 'porcentaje_desc']  
+        fields = ['codigo', 'descripcion', 'porcentaje_desc']
 
 
 class AsientoSerializer(serializers.ModelSerializer):
@@ -19,13 +27,20 @@ class AsientoSerializer(serializers.ModelSerializer):
         fields = ['clave', 'numero', 'ubicacion']
 
 
+class PasajeroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model  = Pasajero
+        fields = ['numero', 'nombre', 'apellPat', 'apellMat']
+
+
 class BoletoSerializer(serializers.ModelSerializer):
     asiento      = AsientoSerializer()
     tipoPasajero = TipoPasajeroSerializer()
+    pasajero     = PasajeroSerializer()   # nuevo
 
     class Meta:
         model  = Boleto
-        fields = ['numero', 'precio', 'asiento', 'tipoPasajero']
+        fields = ['numero', 'precio', 'asiento', 'tipoPasajero', 'pasajero']
 
 
 class CiudadSerializer(serializers.ModelSerializer):
@@ -44,12 +59,14 @@ class RutaSerializer(serializers.ModelSerializer):
 
 
 class CorridaResumenSerializer(serializers.ModelSerializer):
-    ruta   = RutaSerializer()
-    estado = serializers.CharField(source='estado.codigo')
+    ruta    = RutaSerializer()
+    estado  = serializers.CharField(source='estado.codigo')
+    autobus = serializers.IntegerField(source='autobus.numero')  # nuevo
 
     class Meta:
         model  = Corrida
-        fields = ['numero', 'hora_salida', 'fecha_salida', 'hora_llegada', 'tarifaBase', 'ruta', 'estado']
+        fields = ['numero', 'hora_salida', 'fecha_salida', 'hora_llegada',
+                  'fecha_llegada', 'tarifaBase', 'ruta', 'estado', 'autobus']
 
 
 class ReservacionSerializer(serializers.ModelSerializer):
@@ -65,8 +82,13 @@ class ReservacionSerializer(serializers.ModelSerializer):
         ]
 
     def get_boletos(self, reservacion):
+        asientos_clave = AsientoReservacion.objects.filter(
+            reservacion=reservacion
+        ).values_list('asiento', flat=True)
+
         qs = Boleto.objects.filter(
             corrida=reservacion.corrida,
-            pasajero=reservacion.pasajero
-        ).select_related('asiento', 'tipoPasajero')
+            asiento__in=asientos_clave,
+        ).select_related('asiento', 'tipoPasajero', 'pasajero')  
+
         return BoletoSerializer(qs, many=True).data
