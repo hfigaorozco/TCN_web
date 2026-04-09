@@ -1,18 +1,10 @@
 from rest_framework import serializers
-<<<<<<< HEAD
-from .models import Reservacion
-=======
 from .models import Reservacion, AsientoReservacion
->>>>>>> 81e1bc3feacc746c8d9cf0b25dd0dea08eb194f4
 from apps.boletos.models import Boleto
 from apps.autobuses.models import Asiento
 from apps.rutas.models import Ciudad, Ruta
 from apps.corridas.models import Corrida
-<<<<<<< HEAD
-from apps.pasajeros.models import TipoPasajero
-=======
 from apps.pasajeros.models import TipoPasajero, Pasajero
->>>>>>> 81e1bc3feacc746c8d9cf0b25dd0dea08eb194f4
 
 
 class TipoPasajeroSerializer(serializers.ModelSerializer):

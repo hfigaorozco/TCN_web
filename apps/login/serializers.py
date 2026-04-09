@@ -19,3 +19,18 @@ class LoginSerializer(serializers.Serializer):
             data['user'] = usuario
         
         return data
+
+class CambiarContraSerializer(serializers.Serializer):
+    actual_password = serializers.CharField();
+    nuevo_password = serializers.CharField();
+    
+    def validate(self, data):
+        usuario = self.context.get('usuario')
+        
+        actual_password = data.get('actual_password')
+        nuevo_password = data.get('nuevo_password')
+        
+        if not usuario.check_password(actual_password):
+            raise serializers.ValidationError('Contraseña incorrecta')
+        
+        return data
