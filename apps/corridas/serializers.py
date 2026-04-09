@@ -6,7 +6,7 @@ class CorridaSerializer(serializers.ModelSerializer):
     estado = serializers.CharField(source='estado.codigo')
     ciudadOrigen = serializers.CharField(source='ruta.ciudadOrigen.nombre')
     ciudadDestino = serializers.CharField(source='ruta.ciudadDestino.nombre')
-    tipoAutobus = serializers.CharField(source='autobus.tipoAutobus.codigo') # nuevo
+    tipoAutobus = serializers.CharField(source='autobus.tipoAutobus.codigo')
 
     class Meta:
         model = Corrida

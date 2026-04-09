@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Boleto(models.Model):
     numero      = models.AutoField(primary_key=True)
     precio      = models.FloatField()
