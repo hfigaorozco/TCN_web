@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)9og^nht0qtu^9-#61duwsmm@l%3gqi274a^q4!g2-f3&ob)=5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.8', 'localhost', '127.0.0.1', '192.168.1.201', '189.223.49.38']
+ALLOWED_HOSTS = ['192.168.0.8', 'localhost', '127.0.0.1', '192.168.1.240', '189.223.49.38']
 
 
 # Application definition
@@ -150,3 +150,13 @@ AUTH_USER_MODEL = 'login.Usuario'
 LOGIN_URL = '/transportes-cuervo-negro/inicio-de-sesion/'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Por ahora
+    ],
+}
