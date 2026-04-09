@@ -1,0 +1,68 @@
+[
+  {
+    "model": "autobuses.edoautobus",
+    "pk": "ACTI",
+    "fields": {
+      "descripcion": "Activo"
+    }
+  },
+  {
+    "model": "autobuses.edoautobus",
+    "pk": "INAC",
+    "fields": {
+      "descripcion": "Inactivo"
+    }
+  },
+  {
+    "model": "corridas.edocorrida",
+    "pk": "ACT",
+    "fields": {
+      "descripcion": "Activa"
+    }
+  },
+  {
+    "model": "corridas.edocorrida",
+    "pk": "INA",
+    "fields": {
+      "descripcion": "Inactiva"
+    }
+  },
+  {
+    "model": "autobuses.tipoautobus",
+    "pk": "PLUS",
+    "fields": {
+      "descripcion": "Plus"
+    }
+  },
+  {
+    "model": "autobuses.tipoautobus",
+    "pk": "PLAT",
+    "fields": {
+      "descripcion": "Platino"
+    }
+  },
+  {
+    "model": "pasajeros.tipopasajero",
+    "pk": "REGU",
+    "fields": {
+      "descripcion": "Regular",
+      "porcentaje_desc": 0
+    }
+  },
+  {
+    "model": "pasajeros.tipopasajero",
+    "pk": "NINO",
+    "fields": {
+      "descripcion": "Niño",
+      "porcentaje_desc": 50
+    }
+  },
+  {
+    "model": "pasajeros.tipopasajero",
+    "pk": "3DAD",
+    "fields": {
+      "descripcion": "3ra Edad",
+      "porcentaje_desc": 50
+    }
+  }
+]
