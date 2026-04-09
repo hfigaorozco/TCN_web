@@ -15,7 +15,7 @@ def login_api(request):
     
     return Response({
         'token': token.key,
-        'user_id': user.id,
+        'id': user.id,
         'email': user.email,
         'nombre': user.nombre
     })

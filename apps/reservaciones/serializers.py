@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from .models import Reservacion
-from boletos.models import Boleto
-from autobuses.models import Asiento
-from rutas.models import Ciudad, Ruta
-from corridas.models import Corrida
-from pasajeros.models import TipoPasajero
+from apps.boletos.models import Boleto
+from apps.autobuses.models import Asiento
+from apps.rutas.models import Ciudad, Ruta
+from apps.corridas.models import Corrida
+from apps.pasajeros.models import TipoPasajero
 
 
 class TipoPasajeroSerializer(serializers.ModelSerializer):
