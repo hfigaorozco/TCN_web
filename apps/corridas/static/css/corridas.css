@@ -1,5 +1,3 @@
-/* ================= RESET ================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +10,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .top-nav {
     width: 95%;
@@ -32,7 +30,7 @@ body {
 }
 
 .logo-box img {
-    height: 8vh;
+    height: clamp(50px, 6vw, 80px);
     width: auto;
 }
 
@@ -73,14 +71,14 @@ body {
     color: #2f6fed;
 }
 
-/* ================= CONTENEDOR ================= */
+/*  CONTENEDOR  */
 
 .container {
     width: 95%;
     margin: 0 auto;
 }
 
-/* ================= TÍTULO ================= */
+/*  TÍTULO  */
 
 .title {
     font-size: clamp(30px, 4vw, 48px);
@@ -88,7 +86,7 @@ body {
     font-weight: 600;
 }
 
-/* ================= CARDS ================= */
+/*  CARDS  */
 
 .cards {
     display: flex;
@@ -99,7 +97,7 @@ body {
 
 .card {
     background: white;
-    padding: 20px 30px;
+    padding: 20px 50px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
     min-width: 180px;
@@ -127,7 +125,7 @@ body {
     color: white;
 }
 
-/* ================= FILTROS ================= */
+/*  FILTROS  */
 
 .filter-boxes {
     display: flex;
@@ -139,28 +137,29 @@ body {
 }
 
 .filter-box {
-    margin-left: auto;
-    padding-left: 5vh;
-    height: auto;
-    gap: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
 }
 
 .filter-box h2 {
-    font-weight: normal;
-    font-size: 2.4vh;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
 }
 
 .filter-box input {
-    font-weight: normal;
-    height: 4.4vh;
-    padding: 0 1.6vh;
-    border-radius: 1.2vh;
-    border: 0.1vh solid #e0e0e0;
+    height: 50px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
     background: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
-    font-size: 2vh;
+    font-size: 16px;
     font-family: 'Segoe UI', sans-serif;
     outline: none;
+    box-sizing: border-box;
 }
 
 .filter-box input:focus,
@@ -171,25 +170,32 @@ body {
 }
 
 .filter-box select {
-    padding: 0 1.6vh;
-    height: 4.4vh;
-    border-radius: 1.2vh;
-    border: 0.1vh solid #e0e0e0;
+    height: 50px;
+    padding: 0 18px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
     background: white;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
     outline: none;
     appearance: none;
     cursor: pointer;
-    min-width: 170px;
-    appearance: none;
-    cursor: pointer;
-    min-width: 18vh;
+    min-width: 180px;
     box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ================= SECCIÓN PRINCIPAL ================= */
+/*  FORM DE FILTROS  */
+
+.form-filtros {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+/*  SECCIÓN PRINCIPAL  */
 
 .main-section {
     width: 95%;
@@ -199,7 +205,7 @@ body {
     align-items: stretch;
 }
 
-/* ================= SIDEBAR ================= */
+/*  SIDEBAR  */
 
 .sidebar {
     width: 90px;
@@ -210,8 +216,8 @@ body {
 }
 
 .side-btn {
-    width: 8vh;
-    height: 6vh;
+    width: 80px;
+    height: 60px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -222,7 +228,8 @@ body {
     border: none;
 }
 
-/* ================= BOTON AGREGAR ================= */
+/*  ICONOS SIDEBAR  */
+
 .agregar {
     background: white url("../images/agregar.png") no-repeat center;
     background-size: 32px 32px;
@@ -273,7 +280,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= CAJA GRANDE ================= */
+/*  CAJA GRANDE  */
 
 .content-box {
     flex: 1;
@@ -317,7 +324,19 @@ body {
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  SELECCIÓN DE FILA  */
+
+.table tbody tr.selected {
+    background-color: #2f6fed !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.table tbody tr.selected td {
+    color: white !important;
+}
+
+/*  RESPONSIVE  */
 
 @media (max-width: 1024px) {
     .main-section {
@@ -351,6 +370,10 @@ body {
         width: 100%;
     }
 
+    .form-filtros {
+        flex-direction: column;
+    }
+
     .filter-box input,
     .filter-box select {
         min-width: unset;
@@ -358,7 +381,7 @@ body {
     }
 }
 
-/* ================= DIALOG BASE ================= */
+/*  DIALOG BASE  */
 
 dialog::backdrop {
     background: rgba(15, 23, 42, 0.35);
@@ -422,7 +445,7 @@ dialog::backdrop {
     outline: none;
 }
 
-/* ================= CAJITAS (grupos de campos) ================= */
+/*  CAJITAS (grupos de campos)  */
 
 .cajitas {
     display: flex;
@@ -436,13 +459,15 @@ dialog::backdrop {
     min-width: 120px;
 }
 
-/* ================= BOTONES ACEPTAR / CANCELAR ================= */
+/*  BOTONES ACEPTAR / CANCELAR  */
 
 .aceptar-cancelar {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
     margin-top: 24px;
+    padding: 0;
+    height: max-content;
 }
 
 .btn-aceptar {
@@ -465,57 +490,6 @@ dialog::backdrop {
     transform: translateY(-2px);
 }
 
-.btn-cancelar:hover {
-    background: #FF8600;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* ================= DIALOG AGREGAR ================= */
-.dialog-agregar select {
-    height: 3.819vh;
-    width: 100%;
-}
-
-.dialog-agregar input {
-    height: 3.819vh;
-    width: 100%;
-}
-
-/* ================= DIALOG EDITAR ================= */
-
-/* ================= DIALOG ELIMINAR ================= */
-.dialog-eliminar {
-    height: fit-content;
-    width: 300px;
-}
-
-.dialog-eliminar select {
-    height: 3vh;
-    width: 100%;
-}
-
-.dialog-eliminar input {
-    height: 3vh;
-    width: 100%;
-}
-
-/* ================= BOTON ACEPTAR Y CANCELAR ================= */
-.btn-aceptar {
-    background: #2f6fed;
-    border-radius: 2.5vh;
-    padding: 5px 15px 5px 15px;
-    color: white;
-    font-size: 2vh;
-    border: none;
-}
-
-.btn-aceptar:hover {
-    background: #fff;
-    color: #2f6fed;
-    border: #2f6fed solid 1px;
-}
-
 .btn-cancelar {
     height: 40px;
     padding: 0 24px;
@@ -534,13 +508,32 @@ dialog::backdrop {
 .btn-cancelar:hover {
     background: #FF8600;
     color: white;
+    transform: translateY(-2px);
 }
 
-.aceptar-cancelar {
-    height: max-content;
-    padding: 7vh 0px 0px 19vh;
+/*  DIALOG AGREGAR  */
+
+.dialog-agregar select,
+.dialog-agregar input {
+    height: 38px;
+    width: 100%;
 }
-/* ================= DIALOGO CORRIDAS POR FECHA Y CIUDAD ================= */
+
+/*  DIALOG ELIMINAR  */
+
+.dialog-eliminar {
+    height: fit-content;
+    width: 300px;
+}
+
+.dialog-eliminar select,
+.dialog-eliminar input {
+    height: 38px;
+    width: 100%;
+}
+
+/*  DIALOGO CORRIDAS POR FECHA Y CIUDAD  */
+
 .dialog-fechaCiudad {
     height: fit-content;
     width: fit-content;
@@ -600,9 +593,8 @@ dialog::backdrop {
     padding-top: 15px;
 }
 
-/* ================= TOAST ================= */
+/*  TOAST  */
 
-/* ================= TOAST PRUEBA ================= */
 .notificaciones {
     position: fixed;
     bottom: 2vh;
@@ -625,7 +617,7 @@ dialog::backdrop {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    animation: show 00.3s ease 1 forwards;
+    animation: show 0.3s ease 1 forwards;
 }
 
 .toast.content {
@@ -654,7 +646,7 @@ dialog::backdrop {
 }
 
 .toast span {
-    font-size: 1.6vh;
+    font-size: 13px;
     line-height: 1;
     font-weight: 500;
 }
@@ -677,26 +669,6 @@ dialog::backdrop {
     animation: timeOut 3s linear 1 forwards;
 }
 
-@keyframes timeOut {
-    to {
-        width: 0;
-    }
-}
-
-@keyframes show {
-    0% {
-        transform: translateX(100%);
-    }
-
-    40% {
-        transform: translateX(-5%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
 .toast.error {
     --color: #FF8600;
     border-color: #FF8600;
@@ -706,30 +678,12 @@ dialog::backdrop {
     color: #FF8600;
 }
 
+@keyframes timeOut {
+    to { width: 0; }
+}
 
 @keyframes show {
     0%   { transform: translateX(100%); }
     40%  { transform: translateX(-5%); }
     100% { transform: translateX(0); }
-}
-
-
-
-/* ================= SELECCIÓN DE FILA ================= */
-
-.table tbody tr.selected {
-    background-color: #2f6fed !important;
-    color: white !important;
-    font-weight: 600;
-}
-
-.table tbody tr.selected td {
-    color: white !important;
-}
-
-
-
-/* ================= FORM DE FILTROS ================= */
-.form-filtros { 
-    display: flex;
 }

@@ -11,7 +11,7 @@ body {
 }
 
 
-/* ── TÍTULO ── */
+/*  TÍTULO  */
 
 .encabezado {
     text-align: center;
@@ -26,7 +26,7 @@ body {
 }
 
 
-/* ── TARJETAS DE INFO ── */
+/*  TARJETAS DE INFO  */
 
 .info {
     display: flex;
@@ -129,7 +129,7 @@ body {
 }
 
 
-/* ── LISTA DE CORRIDAS ── */
+/*  LISTA DE CORRIDAS  */
 
 .lista_corridas {
     width: 95%;
@@ -173,7 +173,7 @@ body {
 }
 
 
-/* ── IZQUIERDA ── */
+/*  IZQUIERDA  */
 
 .izquierda {
     align-items: center;
@@ -201,7 +201,7 @@ body {
 }
 
 
-/* ── ORIGEN ── */
+/*  ORIGEN  */
 
 .origen {
     display: flex;
@@ -229,7 +229,7 @@ body {
 }
 
 
-/* ── MEDIO ── */
+/*  MEDIO  */
 
 .medio {
     display: flex;
@@ -279,7 +279,7 @@ body {
 }
 
 
-/* ── DESTINO ── */
+/*  DESTINO  */
 
 .destino {
     display: flex;
@@ -307,7 +307,7 @@ body {
 }
 
 
-/* ── DERECHA ── */
+/*  DERECHA  */
 
 .derecha {
     text-align: center;
@@ -330,7 +330,7 @@ body {
 }
 
 
-/* ── VARIANTE PLATINO (AZUL) ── */
+/*  VARIANTE PLATINO  */
 
 .corrida--platino:hover {
     outline: 3px solid #1061C4;
@@ -360,7 +360,7 @@ body {
 }
 
 
-/* ── VARIANTE PLUS (NARANJA) ── */
+/*  VARIANTE PLUS (NARANJA)  */
 
 .corrida--plus:hover {
     outline: 3px solid #FF8600;
@@ -390,11 +390,6 @@ body {
 }
 
 
-/* ════════════════════════════
-   RESPONSIVE - MEDIA QUERIES
-   ════════════════════════════ */
-
-/* Tablet (≤ 1024px) */
 @media (max-width: 1024px) {
     .titulo {
         font-size: 50px;
@@ -436,7 +431,7 @@ body {
     }
 }
 
-/* Móvil grande (≤ 768px) */
+
 @media (max-width: 768px) {
     .titulo {
         font-size: 36px;
@@ -487,7 +482,7 @@ body {
     }
 }
 
-/* Móvil pequeño (≤ 480px) */
+
 @media (max-width: 480px) {
     .titulo {
         font-size: 28px;
@@ -527,7 +522,7 @@ body {
 }
 
 
-/* ================= DIÁLOGO SIN RESULTADOS ================= */
+/*  DIÁLOGO SIN RESULTADOS  */
 
 #dialogo-sin-resultados {
     border: none;

@@ -27,9 +27,6 @@ body {
     box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.15);
 }
 
-
-/* ── SECCIÓN IMAGEN ── */
-
 .image-section {
     width: 40%;
     overflow: hidden;
@@ -42,9 +39,6 @@ body {
     object-fit: cover;
 }
 
-
-/* ── SECCIÓN FORMULARIO ── */
-
 .form-section {
     width: 60%;
     background-color: #ffffff;
@@ -54,9 +48,6 @@ body {
     align-items: center;
     padding: 60px 50px;
 }
-
-
-/* ── ENCABEZADO ── */
 
 .form-header {
     text-align: center;
@@ -82,9 +73,6 @@ body {
     color: #111;
 }
 
-
-/* ── AVISO ── */
-
 .aviso {
     display: flex;
     flex-direction: row;
@@ -109,9 +97,6 @@ body {
     color: #333;
     line-height: 1.5;
 }
-
-
-/* ── FORMULARIO ── */
 
 form {
     width: 100%;
@@ -150,9 +135,6 @@ form {
     transform: translateY(-3px);
 }
 
-
-/* ── FILA INFERIOR: SELECT + BOTÓN ── */
-
 .form-footer {
     display: flex;
     flex-direction: row;
@@ -186,9 +168,6 @@ form {
     outline: none;
 }
 
-
-/* ── BOTÓN ── */
-
 .btn-primary {
     height: 44px;
     padding: 0 28px;
@@ -215,7 +194,7 @@ form {
 }
 
 
-/* Tablet (≤ 900px) */
+/* RESPONSIVO */
 @media (max-width: 900px) {
     .image-section {
         width: 35%;
@@ -235,7 +214,6 @@ form {
     }
 }
 
-/* Móvil (≤ 640px): imagen oculta */
 @media (max-width: 640px) {
     .container {
         flex-direction: column;

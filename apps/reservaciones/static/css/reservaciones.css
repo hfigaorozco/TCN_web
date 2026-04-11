@@ -5,7 +5,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .top-nav {
     width: 95%;
@@ -65,14 +65,14 @@ body {
     color: #2f6fed;
 }
 
-/* ================= CONTENEDOR ================= */
+/*  CONTENEDOR  */
 
 .container {
     width: 95%;
     margin: 0 auto;
 }
 
-/* ================= TÍTULO ================= */
+/*  TÍTULO  */
 
 .title {
     font-size: clamp(30px, 4vw, 48px);
@@ -80,7 +80,7 @@ body {
     font-weight: 600;
 }
 
-/* ================= CARDS Y FILTROS ================= */
+/*  CARDS Y FILTROS  */
 
 .cards-filters-wrapper {
     display: flex;
@@ -91,18 +91,18 @@ body {
     gap: 20px;
 }
 
-/* ================= CARDS ================= */
+/*  CARDS  */
 
 .cards {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 17px;
     flex-wrap: wrap;
 }
 
 .card {
     background: white;
-    padding: 20px 30px;
+    padding: 20px 25px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
     min-width: 180px;
@@ -130,7 +130,7 @@ body {
     color: white;
 }
 
-/* ================= FILTROS ================= */
+/*  FILTROS  */
 
 .filter-boxes {
     display: flex;
@@ -170,7 +170,7 @@ body {
     outline: none;
 }
 
-/* ================= SECCIÓN PRINCIPAL ================= */
+/*  SECCIÓN PRINCIPAL  */
 
 .main-section {
     width: 95%;
@@ -180,7 +180,7 @@ body {
     align-items: stretch;
 }
 
-/* ================= SIDEBAR ================= */
+/*  SIDEBAR  */
 
 .sidebar {
     width: 90px;
@@ -213,7 +213,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= TABLA ================= */
+/*  TABLA  */
 
 .content-box {
     flex: 1;
@@ -246,9 +246,8 @@ body {
     text-align: center;
 }
 
-/* FILAS SALTEADAS (Zebra Striping) */
 .content-box table tbody tr:nth-child(even) {
-    background: #f5f8ff; /* Color salteado suave */
+    background: #f5f8ff; 
 }
 
 .content-box table tbody tr {
@@ -256,11 +255,11 @@ body {
 }
 
 .content-box table tbody tr:hover {
-    background-color: #eef3ff; /* Color al pasar el mouse */
+    background-color: #eef3ff; 
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 1024px) {
     .main-section {
@@ -290,9 +289,8 @@ body {
     }
 }
 
-/* ... (manten tus estilos anteriores) ... */
 
-/* ESTILO PARA FILA SELECCIONADA */
+/* ESTILOS PARA FILAS */
 .fila-reserva.selected-row {
     background-color: #2f6fed !important;
     color: white !important;
@@ -302,7 +300,6 @@ body {
     color: white !important;
 }
 
-/* Efecto visual al pasar el mouse por filas no seleccionadas */
 .fila-reserva:not(.selected-row):hover {
     background-color: #eef3ff;
     cursor: pointer;

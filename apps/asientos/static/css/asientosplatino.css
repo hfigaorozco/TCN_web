@@ -18,7 +18,7 @@ body {
 }
 
 
-/* ── TÍTULO ── */
+/*  TÍTULO  */
 
 .encabezado {
     text-align: center;
@@ -31,7 +31,7 @@ body {
 }
 
 
-/* ── BARRA DE INFO ── */
+/*  BARRA DE INFO  */
 
 .info {
     display: flex;
@@ -105,7 +105,7 @@ body {
 }
 
 
-/* ── LEYENDA ── */
+/*  LEYENDA  */
 
 .leyenda {
     display: flex;
@@ -140,7 +140,7 @@ body {
 .leyenda-circulo.seleccionado { background-color: #2b64e7; }
 
 
-/* ── MAPA DEL AUTOBÚS ── */
+/*  MAPA DEL AUTOBÚS  */
 
 .mapa-wrapper {
     width: 100%;
@@ -190,7 +190,7 @@ body {
 }
 
 
-/* ── BOTONES DE ASIENTO ── */
+/*  BOTONES DE ASIENTO  */
 
 .asiento {
     width: 50px;
@@ -247,10 +247,6 @@ body {
 }
 
 
-/* ════════════════════════════
-   RESPONSIVE
-   ════════════════════════════ */
-
 @media (max-width: 900px) {
     .titulo {
         font-size: 36px;
@@ -303,7 +299,7 @@ body {
 }
 
 
-/* ================= PANEL INFERIOR ================= */
+/*  PANEL INFERIOR  */
 
 .detail-section{
     width: 95%;
@@ -325,7 +321,7 @@ body {
     margin-bottom: 6px;
 }
 
-/* ================= PROGRESS BAR ================= */
+/*  PROGRESS BAR  */
 
 .progress-bar{
     width: 100%;
@@ -344,7 +340,7 @@ body {
     transition: width 0.5s ease;
 }
 
-/* ================= COLUMNA CON FILTRO ================= */
+/*  COLUMNA CON FILTRO  */
 
 .section-column{
     flex: 1;
@@ -352,7 +348,7 @@ body {
     flex-direction: column;
 }
 
-/* ================= FILTRO ARRIBA DEL CARD ================= */
+/*  FILTRO ARRIBA DEL CARD  */
 
 .filter-top{
     display: flex;
@@ -361,7 +357,7 @@ body {
 }
 
 
-/* ================ DIÁLOGO PERFIL ================== */
+/*  DIÁLOGO PERFIL  */
 
 #dialogo-perfil {
     padding: 0;
@@ -400,7 +396,7 @@ body {
 }
 
 
-/* ── SECCIÓN SUPERIOR ── */
+/*  SECCIÓN SUPERIOR  */
 
 .dialog-superior {
     display: flex;
@@ -432,7 +428,7 @@ body {
 }
 
 
-/* ── SECCIÓN INFO ── */
+/*  SECCIÓN INFO  */
 
 .dialog-info {
     display: flex;
@@ -465,7 +461,7 @@ body {
 }
 
 
-/* ── BOTONES ── */
+/*  BOTONES  */
 
 .dialog-buttons {
     display: flex;
@@ -520,7 +516,7 @@ body {
 }
 
 
-/* ── RESPONSIVE ── */
+/*  RESPONSIVE  */
 
 @media (max-width: 480px) {
     #dialogo-perfil {
@@ -540,7 +536,7 @@ body {
 
 
 
-/* ================ DIÁLOGO PASAJERO PLATINO ================== */
+/*  DIÁLOGO PASAJERO PLATINO  */
 
 #dialogo-pasajero {
     padding: 0;
@@ -575,7 +571,7 @@ body {
 }
 
 
-/* ── TÍTULO ── */
+/*  TÍTULO  */
 
 .dialog-pasajero-titulo {
     font-size: 24px;
@@ -586,7 +582,7 @@ body {
 }
 
 
-/* ── GRUPOS DE INPUT ── */
+/*  GRUPOS DE INPUT  */
 
 .dialog-pasajero-group {
     display: flex;
@@ -630,7 +626,7 @@ body {
 }
 
 
-/* ── BOTÓN ── */
+/*  BOTÓN  */
 
 .dialog-btn-continuar {
     width: 100%;
