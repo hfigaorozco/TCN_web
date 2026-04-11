@@ -1,4 +1,4 @@
-/* ================= BASE ================= */
+/*  BASE  */
 
 body{
     background: #f4f6fb;
@@ -6,7 +6,7 @@ body{
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .top-nav{
     width: 95%;
@@ -66,7 +66,7 @@ body{
     color: #2f6fed;
 }
 
-/* ================= CONTENEDOR ================= */
+/*  CONTENEDOR  */
 
 .container{
     width: 95%;
@@ -79,7 +79,7 @@ body{
     font-weight: 600;
 }
 
-/* ================= CARDS ================= */
+/*  CARDS  */
 
 .cards{
     display: flex;
@@ -116,7 +116,7 @@ body{
     color: white;
 }
 
-/* ================= FILTROS ================= */
+/*  FILTROS  */
 
 .filter-box{
     display: flex;
@@ -157,7 +157,7 @@ body{
     outline: none;
 }
 
-/* ================= MAIN SECTION ================= */
+/*  MAIN SECTION  */
 
 .main-section{
     width: 95%;
@@ -168,7 +168,7 @@ body{
     flex-wrap: wrap;
 }
 
-/* ================= SIDEBAR ================= */
+/*  SIDEBAR  */
 
 .sidebar{
     width: 90px;
@@ -196,7 +196,7 @@ body{
     background-color: #2f6fed;
 }
 
-/* ICONOS DESDE TU CARPETA */
+/* ICONOS DESDE LA CARPETA */
 
 .agregar{
     background-image: url("../images/agregar.png");
@@ -222,7 +222,7 @@ body{
     background-image: url("../images/ciudadHover.png");
 }
 
-/* ================= CONTENT BOX ================= */
+/*  CONTENT BOX  */
 
 .content-box{
     flex: 1;
@@ -242,7 +242,7 @@ body{
     border-radius: 12px;
 }
 
-/* ================= TABLA ================= */
+/*  TABLA  */
 
 .table{
     width: 100%;
@@ -296,7 +296,7 @@ body{
     border-top-right-radius: 12px;
 }
 
-/* ================= DIALOG BASE ================= */
+/*  DIALOG BASE  */
 
 dialog::backdrop {
     background: rgba(15, 23, 42, 0.35);
@@ -308,8 +308,8 @@ dialog::backdrop {
     border-radius: 20px;
     border: none;
     box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
-    padding: 35px; /* Aumentamos un poco el padding interno */
-    width: 500px;  /* Ancho fijo para que se vea más cuadrado */
+    padding: 35px; 
+    width: 500px;  
     height: fit-content;
     position: fixed;
     top: 50%;
@@ -360,7 +360,7 @@ dialog::backdrop {
     outline: none;
 }
 
-/* ================= CAJITAS (grupos de campos) ================= */
+/*  CAJITAS  */
 
 .cajitas {
     display: flex;
@@ -374,7 +374,7 @@ dialog::backdrop {
     min-width: 120px;
 }
 
-/* ================= BOTONES ACEPTAR / CANCELAR ================= */
+/*  BOTONES ACEPTAR / CANCELAR  */
 
 .aceptar-cancelar {
     display: flex;
@@ -423,7 +423,7 @@ dialog::backdrop {
     color: white;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 768px){
 
@@ -461,7 +461,7 @@ dialog::backdrop {
     }
 }
 
-/* ================= SELECCIÓN DE FILA ================= */
+/*  SELECCIÓN DE FILA  */
 
 .table tbody tr.selected {
     background-color: #eef3ff !important;
@@ -473,7 +473,7 @@ dialog::backdrop {
     font-weight: 600;
 }
 
-/* ================= TOAST (NOTIFICACIONES) ================= */
+/*  TOAST  */
 
 .notificaciones {
     position: fixed;

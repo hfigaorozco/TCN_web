@@ -11,7 +11,7 @@ body{
     
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .top-nav{
     width: 95%;
@@ -69,7 +69,7 @@ body{
     color: #2f6fed;
 }
 
-/* ================= FILTRO ================= */
+/*  FILTRO  */
 
 .filter-box{
     display: flex;
@@ -103,7 +103,7 @@ body{
     outline: none;
 }
 
-/* ================= BOTONES SUPERIORES ================= */
+/*  BOTONES SUPERIORES  */
 
 .action-bar{
     width: 95%;
@@ -157,7 +157,7 @@ body{
     width: 60%;
 }
 
-/* ================= TÍTULO ================= */
+/*  TÍTULO  */
 
 .title-row{
     width: 95%;
@@ -171,7 +171,7 @@ body{
     font-weight: 600;
 }
 
-/* ================= SECCIÓN PRINCIPAL ================= */
+/*  SECCIÓN PRINCIPAL  */
 
 .main-section{
     width: 95%;
@@ -187,7 +187,7 @@ body{
     min-width: 0;
 }
 
-/* ================= CONTENT BOX ================= */
+/*  CONTENT BOX  */
 
 .content-box{
     min-height: 480px;
@@ -217,7 +217,7 @@ body{
     color: #666;
 }
 
-/* ================= SCROLL DE TABLAS ================= */
+/*  SCROLL DE TABLAS  */
 
 .table-wrapper{
     max-height: 380px;
@@ -250,7 +250,7 @@ body{
     background: #2f6fed;
 }
 
-/* ================= TABLAS ================= */
+/*  TABLAS  */
 
 .table{
     width: 100%;
@@ -310,7 +310,7 @@ body{
     border-top-right-radius: 12px;
 }
 
-/* ================= STATUS BADGES ================= */
+/*  STATUS BADGES  */
 
 .status{
     padding: 6px 12px;
@@ -350,7 +350,7 @@ body{
     color: #ff0000;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 1024px){
     .menu{ justify-content: center; }
@@ -375,7 +375,7 @@ body{
     .card-title{ left: 20px; }
 }
 
-/* ================= DIÁLOGO PERFIL ================= */
+/*  DIÁLOGO PERFIL  */
 
 #dialogo-perfil{
     border: none;
@@ -502,7 +502,7 @@ body{
     transform: translateY(-5px);
 }
 
-/* ================= DIÁLOGO CAMBIO DE CONTRASEÑA ================= */
+/*  DIÁLOGO CAMBIO DE CONTRASEÑA  */
 
 #dialogo-contrasena{
     border: none;
@@ -584,7 +584,7 @@ body{
     transform: translateY(-2px);
 }
 
-/* ================= DIÁLOGO BÚSQUEDA DE VIAJE ================= */
+/*  DIÁLOGO BÚSQUEDA DE VIAJE  */
 
 #dialogo-buscar{
     border: none;
@@ -720,7 +720,7 @@ body{
     transform: translateY(-2px);
 }
 
-/* ================= TOASTS ================= */
+/*  TOASTS DE NOTIFICACIONES */
 
 .notificaciones{
     position: fixed;
