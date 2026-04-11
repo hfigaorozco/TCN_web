@@ -8,7 +8,7 @@ body {
     flex-direction: column;
 }
 
-/* ====== HEADER ======= */
+/*  HEADER  */
 
 .header {
     display: flex;
@@ -25,7 +25,7 @@ body {
     font-weight: bold;
 }
 
-/* ====== ZONA CENTRAL ====== */
+/*  ZONA CENTRAL  */
 
 .resumen {
     background-color: white;
@@ -95,7 +95,7 @@ body {
 }
 
 
-/* ======= BOTONES ======== */
+/*  BOTONES  */
 
 .botones {
     height: auto;
@@ -171,7 +171,7 @@ body {
     transform: translateY(-4px);
 }
 
-/* ======= RESPONSIVO ======= */
+/*  RESPONSIVO  */
 
 @media (max-width: 768px) {
 

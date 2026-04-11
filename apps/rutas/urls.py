@@ -8,6 +8,5 @@ urlpatterns = [
     path('editar-ciudad/', editar_ciudad, name='editar_ciudad'),
     path('agregar-ruta/', agregar_ruta, name='agregar_ruta'),
     path('editar-ruta/', editar_ruta, name='editar_ruta'),
-
     path('api/ciudades/', listar_ciudades_api, name='listar_ciudades_api'),
 ]

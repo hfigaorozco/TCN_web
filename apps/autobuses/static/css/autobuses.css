@@ -10,7 +10,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 
 .top-nav {
     width: 95%;
@@ -70,14 +70,14 @@ body {
     color: #2f6fed;
 }
 
-/* ================= CONTENEDOR ================= */
+/*  CONTENEDOR  */
 
 .container {
     width: 95%;
     margin: 0 auto;
 }
 
-/* ================= TÍTULO ================= */
+/*  TÍTULO  */
 
 .title {
     font-size: 48px;
@@ -85,7 +85,7 @@ body {
     font-weight: 600;
 }
 
-/* ================= CARDS ================= */
+/*  CARDS  */
 
 .cards {
     display: flex;
@@ -124,7 +124,7 @@ body {
     color: white;
 }
 
-/* ================= FILTROS ================= */
+/*  FILTROS  */
 
 .filter {
     display: flex;
@@ -174,7 +174,7 @@ body {
     margin-left: auto;
 }
 
-/* ================= SECCIÓN PRINCIPAL ================= */
+/*  SECCIÓN PRINCIPAL  */
 
 .main-section {
     width: 95%;
@@ -184,7 +184,7 @@ body {
     align-items: stretch;
 }
 
-/* ================= SIDEBAR ================= */
+/*  SIDEBAR  */
 
 .sidebar {
     width: 90px;
@@ -220,7 +220,7 @@ body {
     font-size: 14px;
 }
 
-/* ================= BOTÓN AGREGAR ================= */
+/*  BOTÓN AGREGAR  */
 
 .agregar {
     background: white url("../images/agregar.png") no-repeat center;
@@ -233,7 +233,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= BOTÓN ELIMINAR ================= */
+/*  BOTÓN ELIMINAR  */
 
 .eliminar {
     background: white url("../images/eliminar.png") no-repeat center;
@@ -245,7 +245,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= BOTÓN AGREGAR MARCA ================= */
+/*  BOTÓN AGREGAR MARCA  */
 
 .side-btn-agregar-marca {
     width: 80px;
@@ -267,7 +267,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= BOTÓN AGREGAR MODELO ================= */
+/*  BOTÓN AGREGAR MODELO  */
 
 .side-btn-agregar-modelo {
     width: 80px;
@@ -289,7 +289,7 @@ body {
     background-size: 32px 32px;
 }
 
-/* ================= CAJA GRANDE ================= */
+/*  CAJA GRANDE  */
 
 .content-box {
     flex: 1;
@@ -314,7 +314,7 @@ body {
     padding: 18px 16px;
 }
 
-/* ================= FILAS SALTEADAS ================= */
+/*  FILAS SALTEADAS  */
 
 .content-box table tbody tr:nth-child(even) {
     background: #f5f8ff;
@@ -325,7 +325,7 @@ body {
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 1400px) {
     .logo-box img {
@@ -342,7 +342,7 @@ body {
     }
 }
 
-/* ================= ESTILOS COMPARTIDOS DIÁLOGOS ================= */
+/*  ESTILOS COMPARTIDOS DIÁLOGOS  */
 
 #dialogo-agregar-bus,
 #dialogo-eliminar-bus,
@@ -371,7 +371,7 @@ body {
     background: rgba(0, 0, 0, 0.45);
 }
 
-/* Anchos individuales */
+
 #dialogo-agregar-bus {
     max-width: 420px;
 }
@@ -388,7 +388,7 @@ body {
     max-width: 360px;
 }
 
-/* ================= DIÁLOGO: REGISTRAR AUTOBÚS ================= */
+/*  DIÁLOGO: REGISTRAR AUTOBÚS  */
 
 .dialog-bus-container {
     display: flex;
@@ -488,7 +488,7 @@ body {
     transform: translateY(0);
 }
 
-/* ================= DIÁLOGO: BAJA DE AUTOBÚS ================= */
+/*  DIÁLOGO: BAJA DE AUTOBÚS  */
 
 .dialog-baja-container {
     display: flex;
@@ -608,7 +608,7 @@ body {
     transform: translateY(0);
 }
 
-/* ================= DIÁLOGO: NUEVA MARCA ================= */
+/*  DIÁLOGO NUEVA MARCA  */
 
 .dialog-marca-container {
     display: flex;
@@ -712,7 +712,7 @@ body {
     transform: translateY(0);
 }
 
-/* ================= DIÁLOGO: NUEVO MODELO ================= */
+/*  DIÁLOGO NUEVO MODELO  */
 
 .dialog-modelo-container {
     display: flex;
@@ -819,7 +819,7 @@ body {
     transform: translateY(0);
 }
 
-/* ================= RESPONSIVE DIÁLOGOS ================= */
+/*  RESPONSIVE DIÁLOGOS  */
 
 @media (max-width: 480px) {
 
@@ -839,7 +839,7 @@ body {
 }
 
 
-/* ================= TOAST ================= */
+/*  TOAST  */
 
 .notificaciones {
     position: fixed;
