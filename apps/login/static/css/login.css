@@ -142,6 +142,12 @@ form {
     transform: translateY(0);
 }
 
+.error-msg{
+    font-size: 16px;
+    font-weight: 600;
+    color: #d01010;
+    margin-top: 15px;
+}
 
 @media (max-width: 900px) {
     .image-section {
