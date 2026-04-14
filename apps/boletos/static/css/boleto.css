@@ -198,11 +198,26 @@ body {
 .btn-cerrar {
   background: var(--naranja);
   color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-cerrar:hover {
+  background: #ffffff;
+  color: #F57C00;
+  transform: translateY(-3px);
+  outline: solid 2px #F57C00;
 }
 
 .btn-reimprimir {
   background: var(--azul);
   color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-reimprimir:hover {
+  background: #022246;
+  color: white;
+  transform: translateY(-3px);
 }
 
 .nav-btn {
