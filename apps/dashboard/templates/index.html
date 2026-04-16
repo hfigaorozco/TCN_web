@@ -276,12 +276,19 @@
 
       const inputFecha = document.getElementById("dialog-fecha");
       const hoy = new Date();
-      const max = new Date();
+
+      const toLocalISO = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const dia = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${dia}`;
+      };
+
+      const max = new Date(hoy);
       max.setDate(hoy.getDate() + 30);
 
-      const toISO = (d) => d.toISOString().split("T")[0];
-      inputFecha.min = toISO(hoy);
-      inputFecha.max = toISO(max);
+      inputFecha.min = toLocalISO(hoy);
+      inputFecha.max = toLocalISO(max);
 
       window.__urlCambiarContra = "{% url 'cambiar_contrasena' %}";
       window.__csrfToken = "{{ csrf_token }}";

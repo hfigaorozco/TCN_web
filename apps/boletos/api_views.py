@@ -16,6 +16,7 @@ def generar_boletos_api(request):
     corrida_id     = data.get('corrida_id')
     pasajeros_data = data.get('pasajeros', [])
     usuario_id     = data.get('usuario_id')  
+    print(f">>> usuario_id recibido: {usuario_id}")
 
     if not corrida_id or not pasajeros_data:
         return Response(
