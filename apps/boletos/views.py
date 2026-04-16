@@ -8,6 +8,7 @@ from apps.autobuses.models import Asiento
 from apps.rutas.models import Ciudad
 from apps.pasajeros.models import Pasajero, TipoPasajero
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 # BUSCAR CORRIDAS 
 
@@ -40,12 +41,17 @@ def buscar_corridas(request):
     if origen and destino and fecha and pasajeros:
         try:
             pasajeros_int = int(pasajeros)
+            ahora = timezone.localtime()
+
             corridas = Corrida.objects.filter(
                 ruta__ciudadOrigen__codigo=origen,
                 ruta__ciudadDestino__codigo=destino,
                 fecha_salida=fecha,
                 lugaresDisp__gte=pasajeros_int,
                 estado__codigo='ACT',
+            ).exclude(
+                fecha_salida=ahora.date(),
+                hora_salida__lte=ahora.time(),
             ).select_related(
                 'ruta__ciudadOrigen',
                 'ruta__ciudadDestino',

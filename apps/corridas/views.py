@@ -10,17 +10,14 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def pagina_corridas(request):
-    #  CONSULTAS BASE 
     rutas = Ruta.objects.all()
     operadores = Operador.objects.all()
     autobuses = Autobus.objects.filter(estado__codigo='ACTI')
     ciudades = Ciudad.objects.all()
     estados_corrida = EdoCorrida.objects.all()
 
-    #  PROCESAR POST 
     if request.method == 'POST' and 'action' in request.POST:
 
-        #  AGREGAR CORRIDA 
         if request.POST['action'] == 'agregar_corrida':
             try:
                 estado_obj   = EdoCorrida.objects.get(codigo='ACT')
@@ -29,11 +26,10 @@ def pagina_corridas(request):
                 ruta_obj     = Ruta.objects.get(codigo=request.POST.get('ruta'))
                 operador_obj = Operador.objects.get(numero=request.POST.get('operador'))
 
-                fecha_salida  = request.POST.get('fecha_salida')
-                hora_salida   = request.POST['hora_salida']
-                hora_llegada  = request.POST['hora_llegada']
+                fecha_salida = request.POST.get('fecha_salida')
+                hora_salida  = request.POST['hora_salida']
+                hora_llegada = request.POST['hora_llegada']
 
-                # Calcular fecha_llegada automáticamente
                 h_salida         = datetime.strptime(hora_salida,  '%H:%M').time()
                 h_llegada        = datetime.strptime(hora_llegada, '%H:%M').time()
                 fecha_salida_obj = datetime.strptime(fecha_salida, '%Y-%m-%d').date()
@@ -42,6 +38,32 @@ def pagina_corridas(request):
                     fecha_llegada_obj = fecha_salida_obj + timedelta(days=1)
                 else:
                     fecha_llegada_obj = fecha_salida_obj
+
+                operador_ocupado = Corrida.objects.filter(
+                    operador=operador_obj,
+                    fecha_salida=fecha_salida_obj,
+                    estado__codigo='ACT',
+                ).filter(
+                    hora_salida__lt=h_llegada,
+                    hora_llegada__gt=h_salida,
+                ).exists()
+
+                if operador_ocupado:
+                    messages.error(request, f"El operador {operador_obj.nombre} {operador_obj.apellPat} ya tiene una corrida en ese horario.")
+                    return redirect('corridas')
+
+                autobus_ocupado = Corrida.objects.filter(
+                    autobus=autobus_obj,
+                    fecha_salida=fecha_salida_obj,
+                    estado__codigo='ACT',
+                ).filter(
+                    hora_salida__lt=h_llegada,
+                    hora_llegada__gt=h_salida,
+                ).exists()
+
+                if autobus_ocupado:
+                    messages.error(request, f"El autobús {autobus_obj.numero} ya tiene una corrida en ese horario.")
+                    return redirect('corridas')
 
                 nueva_corrida = Corrida.objects.create(
                     hora_salida=hora_salida,
@@ -73,14 +95,13 @@ def pagina_corridas(request):
 
             return redirect('corridas')
 
-        #  EDITAR CORRIDA 
         elif request.POST['action'] == 'editar_corrida':
             try:
                 corrida = Corrida.objects.get(numero=request.POST['corrida_numero'])
-                corrida.operador_id = request.POST['edit_operador']
-                corrida.autobus_id = request.POST['edit_autobus']
+                corrida.operador_id  = request.POST['edit_operador']
+                corrida.autobus_id   = request.POST['edit_autobus']
                 corrida.fecha_salida = request.POST['edit_fecha_salida']
-                corrida.hora_salida = request.POST['edit_hora_salida']
+                corrida.hora_salida  = request.POST['edit_hora_salida']
                 corrida.hora_llegada = request.POST['hora_llegada']
                 corrida.fecha_llegada = request.POST['edit_fecha_salida']
                 corrida.save()
@@ -89,7 +110,6 @@ def pagina_corridas(request):
                 messages.error(request, f"Error al actualizar corrida: {str(e)}")
             return redirect('corridas')
 
-        #  CAMBIAR ESTADO 
         elif request.POST['action'] == 'cambiar_estado_corrida':
             try:
                 corrida = Corrida.objects.get(numero=request.POST['estado_corrida_numero'])
@@ -100,7 +120,6 @@ def pagina_corridas(request):
                 messages.error(request, f"Error al cambiar estado: {str(e)}")
             return redirect('corridas')
 
-    #  CONSULTAS GET 
     corridas = Corrida.objects.select_related(
         'ruta__ciudadOrigen',
         'ruta__ciudadDestino',
@@ -110,11 +129,11 @@ def pagina_corridas(request):
     ).filter(
         fecha_salida__gte=timezone.localdate(),
         estado__codigo='ACT'
-    )   
+    )
 
     numero_corrida = request.GET.get('filtro_corrida', '')
-    origen = request.GET.get('filtro_origen', '')
-    destino = request.GET.get('filtro_destino', '')
+    origen         = request.GET.get('filtro_origen', '')
+    destino        = request.GET.get('filtro_destino', '')
 
     if numero_corrida:
         corridas = corridas.filter(numero__icontains=numero_corrida)
@@ -138,24 +157,23 @@ def pagina_corridas(request):
     if fecha:
         corridas_ciudad_fecha = corridas_ciudad_fecha.filter(fecha_salida=fecha)
 
-    fecha_boletos  = request.GET.get('fecha_boletos', '')
+    fecha_boletos    = request.GET.get('fecha_boletos', '')
     corridas_boletos = Corrida.objects.all()
 
     if fecha_boletos:
         corridas_boletos = corridas_boletos.filter(fecha_salida=fecha_boletos)
 
-    #  CONTEXTO 
     context = {
-        'operadores':           operadores,
-        'rutas':                rutas,
-        'autobuses':            autobuses,
-        'corridas':             corridas,
-        'ciudades':             ciudades,
-        'estados_corrida':      estados_corrida,
-        'total_activas':        Corrida.objects.filter(estado__codigo='ACT').count(),
-        'total_pasajeros':      CorridaAsiento.objects.filter(estado=CorridaAsiento.OCUPADO).count(),
+        'operadores':            operadores,
+        'rutas':                 rutas,
+        'autobuses':             autobuses,
+        'corridas':              corridas,
+        'ciudades':              ciudades,
+        'estados_corrida':       estados_corrida,
+        'total_activas':         Corrida.objects.filter(estado__codigo='ACT').count(),
+        'total_pasajeros':       CorridaAsiento.objects.filter(estado=CorridaAsiento.OCUPADO).count(),
         'corridas_ciudad_fecha': corridas_ciudad_fecha,
-        'corridas_boletos':     corridas_boletos,
+        'corridas_boletos':      corridas_boletos,
     }
 
     return render(request, 'corridas.html', context)
