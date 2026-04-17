@@ -156,12 +156,15 @@ def pagina_corridas(request):
         corridas_ciudad_fecha = corridas_ciudad_fecha.filter(ruta__ciudadOrigen__codigo=ciudad)
     if fecha:
         corridas_ciudad_fecha = corridas_ciudad_fecha.filter(fecha_salida=fecha)
+        
 
     fecha_boletos    = request.GET.get('fecha_boletos', '')
-    corridas_boletos = Corrida.objects.all()
+    corridas_boletos = Corrida.objects.filter(estado__codigo='ACT')
 
     if fecha_boletos:
         corridas_boletos = corridas_boletos.filter(fecha_salida=fecha_boletos)
+    for c in corridas_boletos:
+        c.asientos_ocupados = c.autobus.cantAsientos - c.lugaresDisp
 
     context = {
         'operadores':            operadores,
